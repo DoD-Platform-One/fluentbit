@@ -1,0 +1,55 @@
+nameOverride: ""
+fullnameOverride: ""
+imagePullSecrets: []
+#  - name: private-registry
+
+image:
+  repository: registry1.dsop.io/ironbank/opensource/fluent/fluent-bit
+  tag: 1.6.3
+  pullPolicy: IfNotPresent
+
+serviceAccount:
+  create: true
+  name:
+  annotations: {}
+
+rbac:
+  create: true
+
+service:
+  type: ClusterIP
+  port: 2020
+  labels:
+    {}
+  annotations:
+    {}
+
+resources:
+  {}
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+#   memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+podAnnotations: {}
+
+podLabels: {}
+
+podSecurityPolicy:
+  create: true
+
+elasticsearch:
+  host: logging-efk-es-http
+  port: 9200
+  user: elastic
+  password:
+    secret: logging-efk-es-elastic-user
+    key: elastic
