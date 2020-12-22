@@ -1,3 +1,0 @@
-istio:
-  enabled: false
-  gateway: istio-ingressgateway.istio-system.svc.cluster.local
