@@ -4,7 +4,7 @@ imagePullSecrets: []
 #  - name: private-registry
 
 image:
-  repository: registry1.dsop.io/ironbank/opensource/fluent/fluent-bit
+  repository: registry1.dso.mil/ironbank/opensource/fluent/fluent-bit
   tag: 1.6.3
   pullPolicy: IfNotPresent
 
