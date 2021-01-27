@@ -1,4 +1,4 @@
 apiVersion: v2
 name: fluent-bit
-version: 0.1.0-bb.0
+version: 0.1.0-bb.1
 appVersion: 1.6.3
