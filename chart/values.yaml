@@ -1,7 +1,6 @@
 nameOverride: ""
 fullnameOverride: ""
-imagePullSecrets: []
-#  - name: private-registry
+imagePullSecrets: [ ]
 
 image:
   repository: registry1.dso.mil/ironbank/opensource/fluent/fluent-bit

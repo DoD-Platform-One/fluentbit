@@ -1,0 +1,6 @@
+elasticsearch:
+  host: "logging-ek-es-http"
+  password:
+    secret: "logging-ek-es-elastic-user"
+
+imagePullSecrets: [ private-registry-mil ]
