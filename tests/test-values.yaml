@@ -3,4 +3,5 @@ elasticsearch:
   password:
     secret: "logging-ek-es-elastic-user"
 
-imagePullSecrets: [ private-registry-mil ]
+imagePullSecrets:
+- name: private-registry-mil
