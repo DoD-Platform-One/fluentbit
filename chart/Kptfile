@@ -1,0 +1,11 @@
+apiVersion: kpt.dev/v1alpha1
+kind: Kptfile
+metadata:
+    name: chart
+upstream:
+    type: git
+    git:
+        commit: 7476eb720e13cd973e885954ec6ba8cb25e9ec08
+        repo: https://github.com/fluent/helm-charts
+        directory: /charts/fluent-bit
+        ref: fluent-bit-0.7.5
