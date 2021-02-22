@@ -9,10 +9,6 @@ priorityClassName: {{ .Values.priorityClassName }}
 serviceAccountName: {{ include "fluent-bit.serviceAccountName" . }}
 securityContext:
   {{- toYaml .Values.podSecurityContext | nindent 2 }}
-{{- with .Values.dnsConfig }}
-dnsConfig:
-  {{- toYaml . | nindent 2 }}
-{{- end }}
 containers:
   - name: {{ .Chart.Name }}
     securityContext:
