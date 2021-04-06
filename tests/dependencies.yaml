@@ -1,2 +1,10 @@
-eckoperator:
-  git: "https://repo1.dso.mil/platform-one/big-bang/apps/core/eck-operator.git"
+eck-operator:
+  git: 
+    repo: "https://repo1.dso.mil/platform-one/big-bang/apps/core/eck-operator.git"
+    tag: "1.3.0-bb.4"
+elastic-kibana:
+  git:
+    repo: "https://repo1.dso.mil/platform-one/big-bang/apps/core/elasticsearch-kibana.git"
+    tag: "0.1.5-bb.0"
+  namespace: "logging"
+  package-name: "logging-ek"
