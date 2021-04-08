@@ -243,6 +243,8 @@ config:
         Logstash_Format On
         Retry_Limit False
         Replace_Dots On
+        tls On
+        tls.verify Off
 
     [OUTPUT]
         Name es
@@ -253,6 +255,8 @@ config:
         Logstash_Format On
         Logstash_Prefix node
         Retry_Limit False
+        tls On
+        tls.verify Off
 
   ## https://docs.fluentbit.io/manual/pipeline/parsers
   customParsers: |
