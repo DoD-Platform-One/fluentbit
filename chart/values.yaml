@@ -56,14 +56,13 @@ dnsConfig: {}
   #   - name: ndots
 #     value: "2"
 #   - name: edns0
+
 securityContext:
   runAsUser: 0
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
+  readOnlyRootFilesystem: true
+  privileged: false
+  seLinuxOptions:
+    type: spc_t
 
 service:
   type: ClusterIP
