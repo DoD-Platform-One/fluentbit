@@ -4,6 +4,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [0.15.8-bb.0]
+### Changed
+- Pointing to upstream helm chart tag 0.15.8
+- Updating fluent-bit image to 1.7.4 image from IronBank
+
+## [0.15.3-bb.1]
+### Changed
+- SecurityContext settings for a more ideal setup for production environments
+
 ## [0.15.3-bb.0]
 ### Changed
 - Pointing to upstream helm chart tag 0.15.3
