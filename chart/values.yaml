@@ -18,7 +18,7 @@ replicaCount: 1
 image:
   repository: registry1.dso.mil/ironbank/opensource/fluent/fluent-bit
   pullPolicy: Always
-  tag: 1.7.2
+  tag: 1.7.4
 
 testFramework:
   enabled: false
@@ -56,13 +56,13 @@ dnsConfig: {}
   #   - name: ndots
 #     value: "2"
 #   - name: edns0
-
 securityContext:
   runAsUser: 0
   readOnlyRootFilesystem: true
   privileged: false
   seLinuxOptions:
     type: spc_t
+
 
 service:
   type: ClusterIP
@@ -139,11 +139,13 @@ podLabels: {}
 priorityClassName: ""
 
 env:
+# -- Pointing to specific Big Bang ECK stack "logging-ek" elastic user for auth.
   - name: FLUENT_ELASTICSEARCH_PASSWORD
     valueFrom:
       secretKeyRef:
         name: logging-ek-es-elastic-user
         key: elastic
+
 
 envFrom: []
 
@@ -159,12 +161,14 @@ extraPorts: []
 #     name: tcp
 
 extraVolumes:
+# -- Mount /var/log/flb-storage/ for the storage buffer, recommended for production systems.
   - hostPath:
       path: /var/log/flb-storage/
       type: DirectoryOrCreate
     name: flb-storage
 
 extraVolumeMounts:
+# -- Mount /var/log/flb-storage/ for the storage buffer, recommended for production systems.
   - mountPath: /var/log/flb-storage/
     name: flb-storage
 
@@ -195,16 +199,17 @@ config:
         HTTP_Server On
         HTTP_Listen 0.0.0.0
         HTTP_Port {{ .Values.service.port }}
+        # -- Setting up storage buffer on filesystem and slighty upping backlog mem_limit value.
         storage.path {{ .Values.storage_buffer.path }}
         storage.sync normal
         storage.backlog.mem_limit 15M
-
 
   ## https://docs.fluentbit.io/manual/pipeline/inputs
   inputs: |
     [INPUT]
         Name tail
         Path /var/log/containers/*.log
+        # -- Excluding fluentbit logs from sending to ECK, along with gatekeeper-audit logs which are shipped by clusterAuditor.
         Exclude_Path /var/log/containers/*fluent*.log,/var/log/containers/*gatekeeper-audit*.log
         Parser containerd
         Tag kube.*
@@ -236,6 +241,7 @@ config:
     [OUTPUT]
         Name es
         Match kube.*
+        # -- Pointing to Elasticsearch service installed by ECK, based off EK name "logging-ek", update elasticsearch.name above to update.
         Host {{ .Values.elasticsearch.name }}-es-http
         HTTP_User elastic
         HTTP_Passwd ${FLUENT_ELASTICSEARCH_PASSWORD}
@@ -248,6 +254,7 @@ config:
     [OUTPUT]
         Name es
         Match host.*
+        # -- Pointing to Elasticsearch service installed by ECK, based off EK name "logging-ek", update elasticsearch.name above to update.
         Host {{ .Values.elasticsearch.name }}-es-http
         HTTP_User elastic
         HTTP_Passwd ${FLUENT_ELASTICSEARCH_PASSWORD}
@@ -355,3 +362,8 @@ daemonSetVolumeMounts:
 args: []
 
 command: []
+
+initContainers: []
+  # - name: do-something
+  #   image: busybox
+  #   command: ['do', 'something']
