@@ -4,6 +4,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [0.15.8-bb.1]
+### Changed
+- Re-adding namespace value for grafana dashboard configmap template
+
 ## [0.15.8-bb.0]
 ### Changed
 - Pointing to upstream helm chart tag 0.15.8
