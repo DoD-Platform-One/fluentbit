@@ -27,7 +27,9 @@ testFramework:
     pullPolicy: Always
     tag: latest
 
-imagePullSecrets: []
+imagePullSecrets:
+- name: private-registry
+
 nameOverride: ""
 fullnameOverride: ""
 

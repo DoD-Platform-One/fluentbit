@@ -1,0 +1,17 @@
+{{- include "bb-test-lib.script-configmap.overrides" (list . "fluent-bit-test.script-configmap") }}
+{{- define "fluent-bit-test.script-configmap" }}
+metadata:
+  labels:
+    helm.sh/chart: {{ include "fluent-bit.chart" . }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- end }}
+---
+{{- include "bb-test-lib.script-runner.overrides" (list . "fluent-bit-test.script-runner") -}}
+{{- define "fluent-bit-test.script-runner" -}}
+metadata:
+  labels:
+    helm.sh/chart: {{ include "fluent-bit.chart" . }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- end }}
