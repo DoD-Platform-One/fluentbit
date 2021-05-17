@@ -5,7 +5,7 @@ keywords:
   - logging
   - fluent-bit
   - fluentd
-version: 0.15.8-bb.1
+version: 0.15.8-bb.2
 appVersion: 1.7.4
 icon: https://fluentbit.io/assets/img/logo1-default.png
 home: https://fluentbit.io/
@@ -21,3 +21,7 @@ maintainers:
 annotations:
   artifacthub.io/changes: |
     - Upgrade fluent-bit image to v1.7.4
+dependencies:
+  - name: bb-test-lib
+    version: "0.4.0"
+    repository: "oci://registry.dso.mil/platform-one/big-bang/pipeline-templates/pipeline-templates"

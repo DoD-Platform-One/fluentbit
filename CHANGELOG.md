@@ -4,6 +4,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [0.15.8-bb.2]
+### Added
+- `bb-test-lib` as a dependency
+- Test script to hit Fluentbit API and do some basic validation that records have been input and output
+
 ## [0.15.8-bb.1]
 ### Changed
 - Re-adding namespace value for grafana dashboard configmap template
