@@ -1,5 +1,0 @@
-istio:
-  enabled: true
-
-monitoring:
-  enabled: true
