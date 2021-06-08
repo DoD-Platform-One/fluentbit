@@ -4,6 +4,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [0.15.8-bb.3]
+### Added
+- Added optional NetworkPolicies for isolation
 ## [0.15.8-bb.2]
 ### Added
 - `bb-test-lib` as a dependency
