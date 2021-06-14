@@ -18,4 +18,7 @@ spec:
       podSelector:
         matchLabels:
           app: prometheus
+    ports:
+    - protocol: TCP
+      port: {{ .Values.service.port }}
 {{- end }}

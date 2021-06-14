@@ -12,12 +12,8 @@ spec:
   - Egress
   ingress:
   - from:
-    - namespaceSelector:
-        matchLabels:
-          name: logging
+    - podSelector: {}
   egress:
   - to:
-    - namespaceSelector:
-        matchLabels:
-          name: logging 
+    - podSelector: {}
 {{- end }}
