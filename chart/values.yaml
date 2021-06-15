@@ -4,6 +4,10 @@
 elasticsearch:
   name: logging-ek
 
+# Only affects sidecar networkPolicy
+istio:
+  enabled: false
+
 # Also update extraVolumes + extraVolumeMounts section if updating storage_buffer.path
 storage_buffer:
   path: /var/log/flb-storage/

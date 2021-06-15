@@ -4,6 +4,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [0.15.8-bb.4]
+### Fixed
+- Conditionals on network policies updated to toggle appropriately (specifically monitoring and istio)
+
 ## [0.15.8-bb.3]
 ### Added
 - Added optional NetworkPolicies for isolation
