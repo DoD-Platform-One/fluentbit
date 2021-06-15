@@ -20,6 +20,9 @@ image:
   pullPolicy: Always
   tag: 1.7.4
 
+networkPolicies:
+  enabled: false
+
 testFramework:
   enabled: false
   image:
