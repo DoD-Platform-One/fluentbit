@@ -4,8 +4,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [0.15.8-bb.5]
+### Added
+- kube-api-egress Network Policy Template to allow fluent-bit to communicate with the cluster kube-api.
+- networkPolicies.controlPlaneCidr value for kube-api-egress specific Network Policy template.
+
 ## [0.15.8-bb.4]
-### Fixed
+### Changed
 - Conditionals on network policies updated to toggle appropriately (specifically monitoring and istio)
 
 ## [0.15.8-bb.3]
