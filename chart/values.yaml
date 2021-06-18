@@ -26,6 +26,7 @@ image:
 
 networkPolicies:
   enabled: false
+  controlPlaneCidr: 0.0.0.0/0
 
 testFramework:
   enabled: false
