@@ -3,9 +3,9 @@ kind: Kptfile
 metadata:
     name: chart
 upstream:
-    type: git
-    git:
-        commit: f9aae18f09ad06afb5e37316e86626aaa76726a2
-        repo: https://github.com/fluent/helm-charts
-        directory: /charts/fluent-bit
-        ref: fluent-bit-0.15.8
+  type: git
+  git:
+    commit: 821c4fad8d5c118daf6e2cbead7b5b53631072c5
+    repo: https://github.com/fluent/helm-charts
+    directory: /charts/fluent-bit
+    ref: fluent-bit-0.15.14

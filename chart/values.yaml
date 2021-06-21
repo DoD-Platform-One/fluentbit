@@ -22,7 +22,7 @@ replicaCount: 1
 image:
   repository: registry1.dso.mil/ironbank/opensource/fluent/fluent-bit
   pullPolicy: Always
-  tag: 1.7.4
+  tag: 1.7.8
 
 networkPolicies:
   enabled: false
@@ -67,6 +67,13 @@ dnsConfig: {}
   #   - name: ndots
 #     value: "2"
 #   - name: edns0
+
+hostAliases: []
+  # - ip: "1.2.3.4"
+  #   hostnames:
+  #   - "foo.local"
+  #   - "bar.local"
+
 securityContext:
   runAsUser: 0
   readOnlyRootFilesystem: true
