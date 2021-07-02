@@ -4,6 +4,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [0.15.14-bb.1]
+### Fixed
+- Added missing network policy for istio sidecar scraping
+
 ## [0.15.14-bb.0]
 ### Changed
 - Bumped upstream Helm chart version to 0.15.14
