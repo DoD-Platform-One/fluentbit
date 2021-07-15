@@ -22,7 +22,7 @@ replicaCount: 1
 image:
   repository: registry1.dso.mil/ironbank/opensource/fluent/fluent-bit
   pullPolicy: Always
-  tag: 1.7.8
+  tag: 1.7.9
 
 networkPolicies:
   enabled: false
