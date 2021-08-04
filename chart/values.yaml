@@ -184,11 +184,18 @@ extraVolumes:
       path: /var/log/flb-storage/
       type: DirectoryOrCreate
     name: flb-storage
+# -- Mount Logging-ek-es-http-certs-public for fluent-bit for TLS verification to elasticsearch, recommended for production systems
+  - secret:
+      secretName: logging-ek-es-http-certs-public
+    name: elasticsearch-certs
 
 extraVolumeMounts:
 # -- Mount /var/log/flb-storage/ for the storage buffer, recommended for production systems.
   - mountPath: /var/log/flb-storage/
     name: flb-storage
+# -- Mount /etc/elasticsearch/certs/ for fluent-bit for TLS verification to elasticsearch, recommended for production systems.
+  - mountPath: /etc/elasticsearch/certs/
+    name: elasticsearch-certs
 
 updateStrategy: {}
   # type: RollingUpdate
@@ -267,7 +274,8 @@ config:
         Retry_Limit False
         Replace_Dots On
         tls On
-        tls.verify Off
+        tls.verify On
+        tls.ca_file /etc/elasticsearch/certs/ca.crt
 
     [OUTPUT]
         Name es
@@ -280,7 +288,8 @@ config:
         Logstash_Prefix node
         Retry_Limit False
         tls On
-        tls.verify Off
+        tls.verify On
+        tls.ca_file /etc/elasticsearch/certs/ca.crt
 
   ## https://docs.fluentbit.io/manual/pipeline/parsers
   customParsers: |
