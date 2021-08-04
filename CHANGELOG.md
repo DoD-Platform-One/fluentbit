@@ -3,6 +3,12 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [0.15.15-bb.2]
+### Added
+- Add Elasticsearch CA and turned on tls.verify
+- Add port 53 TCP to dns NetworkPolicy to allow proper name resolution
+- Add port 5353 TCP to dns NetworkPolicy for openshift.
+
 ## [0.15.15-bb.1]
 ### Added
 - Add openshift toggle. If it's set, add port 5353 egress rule.
