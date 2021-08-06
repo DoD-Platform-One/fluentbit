@@ -3,6 +3,11 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [0.16.1-bb.0]
+### Added
+- Pointing to upstream helm chart tag 0.16.1
+- Updating fluent-bit image to 1.8.1 image from IronBank
+
 ## [0.15.15-bb.2]
 ### Added
 - Add Elasticsearch CA and turned on tls.verify
