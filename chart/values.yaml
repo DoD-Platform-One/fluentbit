@@ -22,7 +22,7 @@ replicaCount: 1
 image:
   repository: registry1.dso.mil/ironbank/opensource/fluent/fluent-bit
   pullPolicy: Always
-  tag: 1.8.1
+  tag: 1.8.5
 
 networkPolicies:
   enabled: false
@@ -148,6 +148,10 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+labels: {}
+
+annotations: {}
 
 podAnnotations: {}
 
@@ -355,6 +359,14 @@ config:
         Time_Key    time
         Time_Format %b %d %H:%M:%S
 
+  # This allows adding more files with arbitary filenames to /fluent-bit/etc by providing key/value pairs.
+  # The key becomes the filename, the value becomes the file content.
+  extraFiles: {}
+#     example.conf: |
+#       [OUTPUT]
+#           Name example
+#           Match foo.*
+#           Host bar
 
 # The config volume is mounted by default, either to the existingConfigMap value, or the default of "fluent-bit.fullname"
 volumeMounts:
