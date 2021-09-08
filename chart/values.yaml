@@ -11,6 +11,12 @@ istio:
 # Also update extraVolumes + extraVolumeMounts section if updating storage_buffer.path
 storage_buffer:
   path: /var/log/flb-storage/
+  
+# Limits the number of Chunks that exists in the file system for a certain logical output destination. 
+# If one destination reaches the storage.total_limit_size limit, the oldest Chunk from the queue for that logical output destination will be discarded.
+# see https://docs.fluentbit.io/manual/administration/buffering-and-storage
+storage:
+  total_limit_size: 10G
 
 # Default values for fluent-bit.
 # kind -- DaemonSet or Deployment
@@ -281,6 +287,7 @@ config:
         tls On
         tls.verify On
         tls.ca_file /etc/elasticsearch/certs/ca.crt
+        storage.total_limit_size {{ .Values.storage.total_limit_size }}
 
     [OUTPUT]
         Name es
@@ -295,6 +302,7 @@ config:
         tls On
         tls.verify On
         tls.ca_file /etc/elasticsearch/certs/ca.crt
+        storage.total_limit_size {{ .Values.storage.total_limit_size }}
 
   ## https://docs.fluentbit.io/manual/pipeline/parsers
   customParsers: |

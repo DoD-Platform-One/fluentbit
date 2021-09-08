@@ -2,7 +2,7 @@
 set -e
 
 echo "Hitting Fluentbit endpoint..."
-curl -sIS "${fluent_host}" &>/dev/null || export FLUENT_DOWN="true"
+curl --retry-delay 1 --retry-max-time 30 --retry 30 --retry-connrefused -sIS "${fluent_host}" &>/dev/null || export FLUENT_DOWN="true"
 if [[ ${FLUENT_DOWN} == "true" ]]; then
   echo "Test 1 Failure: Cannot hit Fluentbit endpoint."
   echo "Debug information (curl response):"
