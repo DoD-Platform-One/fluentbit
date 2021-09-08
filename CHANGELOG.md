@@ -3,6 +3,11 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [0.16.6-bb.0]
+### Changed
+- Updated to upstream helm chart tag 0.16.6
+- Updated fluent-bit image to 1.8.6 image from IronBank
+
 ## [0.16.5-bb.1]
 ### Added
 - Added a new configuration value -- storage.total_limit_size -- to limit storage space
@@ -11,7 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Changed curl call in CI test script to use retry logic
 
 ## [0.16.5-bb.0]
-### Updated
+### Changed
 - Updated to upstream helm chart tag 0.16.5
 - Updated fluent-bit image to 1.8.5 image from IronBank
 
