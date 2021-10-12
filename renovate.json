@@ -1,0 +1,29 @@
+{
+    "baseBranches": ["main"],
+    "configWarningReuseIssue": false,
+    "dependencyDashboard": true,
+    "dependencyDashboardAutoclose": true,
+    "dependencyDashboardHeader": "- [ ] Sync upstream helm chart version with updated dependencies.",
+    "dependencyDashboardTitle": "Renovate: Upgrade Fluentbit Dependencies",
+    "dependencyDashboardLabels": ["fluentbit","renovate","Big Bang Add-Ons","Package Sustainment","kind::chore","team::execution","priority::3"],
+    "draftPR": true,
+    "enabledManagers": ["helm-values", "regex"],
+    "ignorePaths": ["chart/charts/**"],
+    "labels": ["fluentbit","renovate"],
+    "packageRules": [
+        {
+            "matchDatasources": ["docker"],
+            "groupName": "Ironbank"
+        }
+    ],
+    "regexManagers": [
+        {
+            "fileMatch": ["^chart/values\\.yaml$"],
+            "matchStrings": [
+                "image:[^\\S\\r\\n]+(?<depName>.+)\\s+tag:[^\\S\\r\\n]+(?<currentValue>[\\d\\.]+)"
+            ],
+            "datasourceTemplate": "docker"
+        }
+    ],
+    "separateMajorMinor": false
+}
