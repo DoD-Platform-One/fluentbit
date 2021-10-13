@@ -4,7 +4,7 @@
     "dependencyDashboard": true,
     "dependencyDashboardAutoclose": true,
     "dependencyDashboardHeader": "- [ ] Sync upstream helm chart version with updated dependencies.",
-    "dependencyDashboardTitle": "Renovate: Upgrade Fluentbit Dependencies",
+    "dependencyDashboardTitle": "Renovate: Upgrade Fluentbit Package Dependencies",
     "dependencyDashboardLabels": ["fluentbit","renovate","Package Sustainment"],
     "draftPR": true,
     "enabledManagers": ["helm-values", "regex"],
