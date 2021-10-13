@@ -5,7 +5,7 @@
     "dependencyDashboardAutoclose": true,
     "dependencyDashboardHeader": "- [ ] Sync upstream helm chart version with updated dependencies.",
     "dependencyDashboardTitle": "Renovate: Upgrade Fluentbit Dependencies",
-    "dependencyDashboardLabels": ["fluentbit","renovate","Big Bang Add-Ons","Package Sustainment","kind::chore","team::execution","priority::3"],
+    "dependencyDashboardLabels": ["fluentbit","renovate","Package Sustainment"],
     "draftPR": true,
     "enabledManagers": ["helm-values", "regex"],
     "ignorePaths": ["chart/charts/**"],
@@ -20,7 +20,7 @@
         {
             "fileMatch": ["^chart/values\\.yaml$"],
             "matchStrings": [
-                "image:[^\\S\\r\\n]+(?<depName>.+)\\s+tag:[^\\S\\r\\n]+(?<currentValue>[\\d\\.]+)"
+                "image:[^\\S\\n]+(?<depName>.+)\\s+tag:[^\\S\\n]+(?<currentValue>[\\d\\.]+)"
             ],
             "datasourceTemplate": "docker"
         }
