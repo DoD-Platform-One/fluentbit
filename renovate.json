@@ -7,22 +7,13 @@
     "dependencyDashboardTitle": "Renovate: Upgrade Fluentbit Package Dependencies",
     "dependencyDashboardLabels": ["fluentbit","renovate","Package Sustainment"],
     "draftPR": true,
-    "enabledManagers": ["helm-values", "regex"],
+    "enabledManagers": ["helm-values"],
     "ignorePaths": ["chart/charts/**"],
     "labels": ["fluentbit","renovate"],
     "packageRules": [
         {
             "matchDatasources": ["docker"],
             "groupName": "Ironbank"
-        }
-    ],
-    "regexManagers": [
-        {
-            "fileMatch": ["^chart/values\\.yaml$"],
-            "matchStrings": [
-                "image:[^\\S\\n]+(?<depName>.+)\\s+tag:[^\\S\\n]+(?<currentValue>[\\d\\.]+)"
-            ],
-            "datasourceTemplate": "docker"
         }
     ],
     "separateMajorMinor": false
