@@ -1,15 +1,16 @@
 #!/bin/bash
 set -e
 
+fluent_timeout=$((6*60))
 echo "Hitting Fluentbit endpoint..."
-curl --retry-delay 1 --retry-max-time 30 --retry 30 --retry-connrefused -sIS "${fluent_host}" &>/dev/null || export FLUENT_DOWN="true"
-if [[ ${FLUENT_DOWN} == "true" ]]; then
-  echo "Test 1 Failure: Cannot hit Fluentbit endpoint."
-  echo "Debug information (curl response):"
-  echo $(curl "${fluent_host}")
+time curl --retry-delay 2 --retry-max-time ${fluent_timeout} --retry $((fluent_timeout/2)) --retry-connrefused -sIS "${fluent_host}" 1>/dev/null || fluent_ec=$?
+# time output shows up a bit after the next two echoes, sleep for formatting
+sleep .1
+if [ -n "${fluent_ec}" ]; then
+  echo "curl returned exit code ${fluent_ec}, see above for error message and curl's elapsed wait time (timeout is ${fluent_timeout}s)"
   exit 1
 fi
-echo "Test 1 Success: Fluentbit is up."
+echo "Test 1 Success: Fluentbit is up, see above for curl's elapsed wait time."
 
 echo "Checking Fluentbit version..."
 fluent_response=$(curl ${fluent_host} 2>/dev/null)
