@@ -5,8 +5,8 @@ keywords:
   - logging
   - fluent-bit
   - fluentd
-version: 0.16.6-bb.1
-appVersion: 1.8.6
+version: 0.19.3
+appVersion: 1.8.9
 icon: https://fluentbit.io/assets/img/logo1-default.png
 home: https://fluentbit.io/
 sources:
@@ -21,7 +21,7 @@ maintainers:
 annotations:
   artifacthub.io/changes: |
     - kind: changed
-      description: "Update image version to v1.8.6."
+      description: "Update image version to v1.8.9."
 dependencies:
   - name: gluon
     version: 0.2.4
