@@ -18,6 +18,8 @@ maintainers:
     email: naseem@transit.app
   - name: Towmeykaw
     email: towmeykaw@gmail.com
+  - name: stevehipwell
+    email: steve.hipwell@gmail.com
 annotations:
   artifacthub.io/changes: |
     - kind: changed
