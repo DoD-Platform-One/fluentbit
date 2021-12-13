@@ -19,6 +19,7 @@ storage:
   total_limit_size: 10G
 
 # Default values for fluent-bit.
+
 # kind -- DaemonSet or Deployment
 kind: DaemonSet
 
@@ -28,7 +29,7 @@ replicaCount: 1
 image:
   repository: registry1.dso.mil/ironbank/opensource/fluent/fluent-bit
   pullPolicy: Always
-  tag: 1.8.9
+  tag: 1.8.10
 
 networkPolicies:
   enabled: false
@@ -107,8 +108,26 @@ serviceMonitor:
 #   namespace: monitoring
 #   interval: 10s
 #   scrapeTimeout: 10s
+#   jobLabel: fluentbit
 #   selector:
 #    prometheus: my-prometheus
+#  ## metric relabel configs to apply to samples before ingestion.
+#  ##
+#  metricRelabelings:
+#    - sourceLabels: [__meta_kubernetes_service_label_cluster]
+#      targetLabel: cluster
+#      regex: (.*)
+#      replacement: ${1}
+#      action: replace
+#  ## relabel configs to apply to samples after ingestion.
+#  ##
+#  relabelings:
+#    - sourceLabels: [__meta_kubernetes_pod_node_name]
+#      separator: ;
+#      regex: ^(.*)$
+#      targetLabel: nodename
+#      replacement: $1
+#      action: replace
 
 prometheusRule:
   enabled: false
@@ -131,6 +150,11 @@ dashboards:
   # namespace: monitoring
   labelKey: grafana_dashboard
   annotations: {}
+
+lifecycle: {}
+  # preStop:
+  #   exec:
+  #     command: ["/bin/sh", "-c", "sleep 20"]
 
 livenessProbe:
   httpGet:
