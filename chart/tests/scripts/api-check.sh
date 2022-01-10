@@ -23,6 +23,9 @@ if [ ! ${desired_version} ==  ${current_version} ]; then
 fi
 echo "Test 2 Success: Fluentbit version matches."
 
+echo "Waiting 15 seconds to allow Fluentbit to collect some records..."
+sleep 15
+
 echo "Checking Fluentbit records input..."
 records_response=$(curl "${fluent_host}/api/v1/metrics" 2>/dev/null)
 records_in=$(echo ${records_response} | jq '.input."tail.0".records' | xargs)
