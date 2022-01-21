@@ -66,6 +66,6 @@ component-definition:
       rlinks:
       - href: https://fluentbit.io/
     - uuid: B66A99BD-680E-48AF-B81B-D2113155331E
-      title: Big Bang Authservice package
+      title: Big Bang Fluentbit package
       rlinks:
-        - href: https://repo1.dso.mil/platform-one/big-bang/apps/core/authservice
+        - href: https://repo1.dso.mil/platform-one/big-bang/apps/core/fluentbit
