@@ -4,6 +4,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [0.19.16-bb.1]
+### Added
+- Added `additionalOutputs` values to provide clean interface for adding new outputs
+- Added `additionalOutputs.elasticsearch` and required template changes to simplify additional elastic output
+
 ## [0.19.16-bb.0]
 ### Changed
 - Updated to upstream helm chart tag 0.19.16

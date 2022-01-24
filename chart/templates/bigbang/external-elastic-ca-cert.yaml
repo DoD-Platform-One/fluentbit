@@ -1,0 +1,14 @@
+{{- with .Values.additionalOutputs.elasticsearch }}
+{{- if and .host .user .password .port .tlsVerify .caCert}}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: external-es-ca-cert
+  namespace: {{ $.Release.Namespace }}
+  labels:
+    {{- include "fluent-bit.labels" $ | nindent 4 }}
+type: Opaque
+data:
+  ca.crt: {{ .caCert }}
+{{- end }}
+{{- end }}

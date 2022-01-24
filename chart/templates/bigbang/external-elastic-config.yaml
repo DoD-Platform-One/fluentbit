@@ -1,0 +1,17 @@
+{{- with .Values.additionalOutputs.elasticsearch }}
+{{- if and .host .user .password .port }}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: external-es-config
+  namespace: {{ $.Release.Namespace }}
+  labels:
+    {{- include "fluent-bit.labels" $ | nindent 4 }}
+type: Opaque
+stringData:
+  EXTERNAL_ES_HOST: {{ .host | quote }}
+  EXTERNAL_ES_PORT: {{ .port | quote }}
+  EXTERNAL_ES_USER: {{ .user | quote }}
+  EXTERNAL_ES_PASSWORD: {{ .password | quote }}
+{{- end }}
+{{- end }}

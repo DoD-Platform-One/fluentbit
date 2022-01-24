@@ -13,6 +13,64 @@ data:
     {{- (tpl .Values.config.inputs $)  | nindent 4 }}
     {{- (tpl .Values.config.filters $)  | nindent 4 }}
     {{- (tpl .Values.config.outputs $)  | nindent 4 }}
+
+    {{- with .Values.additionalOutputs.elasticsearch }}
+    {{- if and .host .user .password .port }}
+    [OUTPUT]
+        Name es
+        Match kube.*
+        Host ${EXTERNAL_ES_HOST}
+        Port ${EXTERNAL_ES_PORT}
+        HTTP_User ${EXTERNAL_ES_USER}
+        HTTP_Passwd ${EXTERNAL_ES_PASSWORD}
+        Logstash_Format On
+        Retry_Limit False
+        Replace_Dots On
+        tls {{ if .tls }}On{{ else }}Off{{ end }}
+        tls.verify {{ if and .tlsVerify .caCert }}On{{ else }}Off{{ end }}
+        {{- if and .tlsVerify .caCert }}
+        tls.ca_file /etc/external-es/certs/ca.crt
+        {{- end }}
+        Retry_Limit False
+        {{- if .additionalConfig }}
+        {{- range $key, $value := .additionalConfig }}
+        {{- $preset := (list "Name" "Match" "Host" "Port" "HTTP_User" "HTTP_Passwd" "Logstash_Format" "Logstash_Prefix" "Retry_Limit" "tls" "tls.verify" "tls.ca_file" "Retry_Limit") }}
+        {{- if has $key $preset }}
+        {{- fail (printf "Cannot specify config option `%s`, Big Bang has set a default, please use `outputs` if you need to customize this value." $key) }}
+        {{- else }}
+        {{ $key }} {{ $value }}
+        {{- end }}
+        {{- end }}
+        {{- end }}
+
+    [OUTPUT]
+        Name es
+        Match host.*
+        Host ${EXTERNAL_ES_HOST}
+        Port ${EXTERNAL_ES_PORT}
+        HTTP_User ${EXTERNAL_ES_USER}
+        HTTP_Passwd ${EXTERNAL_ES_PASSWORD}
+        Logstash_Format On
+        Logstash_Prefix node
+        Retry_Limit False
+        tls {{ if .tls }}On{{ else }}Off{{ end }}
+        tls.verify {{ if and .tlsVerify .caCert }}On{{ else }}Off{{ end }}
+        {{- if and .tlsVerify .caCert }}
+        tls.ca_file /etc/external-es/certs/ca.crt
+        {{- end }}
+        Retry_Limit False
+        {{- if .additionalConfig }}
+        {{- range $key, $value := .additionalConfig }}
+        {{- $preset := (list "Name" "Match" "Host" "Port" "HTTP_User" "HTTP_Passwd" "Logstash_Format" "Logstash_Prefix" "Retry_Limit" "tls" "tls.verify" "tls.ca_file" "Retry_Limit") }}
+        {{- if has $key $preset }}
+        {{- fail (printf "Cannot specify config option `%s`, Big Bang has set a default, please use `outputs` if you need to customize this value." $key) }}
+        {{- else }}
+        {{ $key }} {{ $value }}
+        {{- end }}
+        {{- end }}
+        {{- end }}
+    {{- end }}
+    {{- end }}
   {{- range $key, $val := .Values.config.extraFiles }}
   {{ $key }}: |
     {{- (tpl $val $) | nindent 4 }}

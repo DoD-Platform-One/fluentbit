@@ -1,6 +1,6 @@
 # fluent-bit
 
-![Version: 0.19.16-bb.0](https://img.shields.io/badge/Version-0.19.16--bb.0-informational?style=flat-square) ![AppVersion: 1.8.11](https://img.shields.io/badge/AppVersion-1.8.11-informational?style=flat-square)
+![Version: 0.19.16-bb.1](https://img.shields.io/badge/Version-0.19.16--bb.1-informational?style=flat-square) ![AppVersion: 1.8.11](https://img.shields.io/badge/AppVersion-1.8.11-informational?style=flat-square)
 
 Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
 
@@ -37,6 +37,15 @@ helm install fluent-bit chart/
 |-----|------|---------|-------------|
 | elasticsearch.name | string | `"logging-ek"` |  |
 | istio.enabled | bool | `false` |  |
+| additionalOutputs.disableDefault | bool | `false` |  |
+| additionalOutputs.elasticsearch.host | string | `""` |  |
+| additionalOutputs.elasticsearch.port | int | `9200` |  |
+| additionalOutputs.elasticsearch.user | string | `"elastic"` |  |
+| additionalOutputs.elasticsearch.password | string | `""` |  |
+| additionalOutputs.elasticsearch.tls | bool | `true` |  |
+| additionalOutputs.elasticsearch.tlsVerify | bool | `false` |  |
+| additionalOutputs.elasticsearch.caCert | string | `""` |  |
+| additionalOutputs.elasticsearch.additionalConfig | object | `{}` |  |
 | storage_buffer.path | string | `"/var/log/flb-storage/"` |  |
 | storage.total_limit_size | string | `"10G"` |  |
 | kind | string | `"DaemonSet"` | DaemonSet or Deployment |
