@@ -8,6 +8,33 @@ elasticsearch:
 istio:
   enabled: false
 
+# Additional Outputs for Big Bang
+# These are wrappers to simplify the config of outputs
+# Extends whatever is specified under the `outputs` values
+additionalOutputs:
+  # Option to disable the default elastic output configured under `outputs`
+  disableDefault: false
+  # Options to enable an additional elastic output
+  elasticsearch:
+    host: ""
+    port: 9200
+    user: "elastic"
+    password: ""
+    # Toggle on TLS
+    tls: true
+    # Verify TLS certificates, requires a caCert to be specified
+    tlsVerify: false
+    # Full ca.crt, base64 encoded
+    caCert: ""
+    # Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/elasticsearch
+    # Customer values are used for: Name, Host, Port, HTTP_User, HTTP_Passwd, tls, tls.verify, and tls.ca_file
+    #   Specify these values with the above host, port, user, password, tls, tlsVerify, and caCert
+    # Defaults are set for: Match, Logstash_Format, Logstash_Prefix, Retry_Limit, Retry_Limit
+    #   Overriding these values is not supported here, use `outputs` if you do not want to use the defaults
+    # Example:
+    #   Buffer_Size: 8KB
+    additionalConfig: {}
+
 # Also update extraVolumes + extraVolumeMounts section if updating storage_buffer.path
 storage_buffer:
   path: /var/log/flb-storage/

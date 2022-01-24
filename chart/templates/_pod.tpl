@@ -41,9 +41,16 @@ containers:
     env:
       {{- toYaml .Values.env | nindent 6 }}
   {{- end }}
-  {{- if .Values.envFrom }}
+  {{- $additionalElastic := (and .Values.additionalOutputs.elasticsearch.host .Values.additionalOutputs.elasticsearch.user .Values.additionalOutputs.elasticsearch.password .Values.additionalOutputs.elasticsearch.port) }}
+  {{- if or .Values.envFrom $additionalElastic }}
     envFrom:
+      {{- if .Values.envFrom }}
       {{- toYaml .Values.envFrom | nindent 6 }}
+      {{- end }}
+      {{- if $additionalElastic }}
+      - secretRef:
+          name: external-es-config
+      {{- end }}
   {{- end }}
   {{- if .Values.args }}
     args:
@@ -88,6 +95,10 @@ containers:
         mountPath: /fluent-bit/scripts/{{ $key }}
         subPath: {{ $key }}
     {{- end }}
+    {{- if and .Values.additionalOutputs.elasticsearch.tlsVerify .Values.additionalOutputs.elasticsearch.caCert }}
+      - name: external-es-ca-cert
+        mountPath: /etc/external-es/certs/
+    {{- end }}
     {{- if eq .Values.kind "DaemonSet" }}
       {{- toYaml .Values.daemonSetVolumeMounts | nindent 6 }}
     {{- end }}
@@ -112,6 +123,12 @@ volumes:
 {{- if .Values.extraVolumes }}
   {{- toYaml .Values.extraVolumes | nindent 2 }}
 {{- end }}
+{{- if and .Values.additionalOutputs.elasticsearch.tlsVerify .Values.additionalOutputs.elasticsearch.caCert }}
+  - name: external-es-ca-cert
+    secret:
+      secretName: external-es-ca-cert
+{{- end }}
+
 {{- with .Values.nodeSelector }}
 nodeSelector:
   {{- toYaml . | nindent 2 }}
