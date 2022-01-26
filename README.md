@@ -1,6 +1,6 @@
 # fluent-bit
 
-![Version: 0.19.16-bb.2](https://img.shields.io/badge/Version-0.19.16--bb.2-informational?style=flat-square) ![AppVersion: 1.8.11](https://img.shields.io/badge/AppVersion-1.8.11-informational?style=flat-square)
+![Version: 0.19.16-bb.3](https://img.shields.io/badge/Version-0.19.16--bb.3-informational?style=flat-square) ![AppVersion: 1.8.11](https://img.shields.io/badge/AppVersion-1.8.11-informational?style=flat-square)
 
 Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
 
@@ -46,6 +46,15 @@ helm install fluent-bit chart/
 | additionalOutputs.elasticsearch.tlsVerify | bool | `false` |  |
 | additionalOutputs.elasticsearch.caCert | string | `""` |  |
 | additionalOutputs.elasticsearch.additionalConfig | object | `{}` |  |
+| additionalOutputs.fluentd.host | string | `""` |  |
+| additionalOutputs.fluentd.port | int | `24224` |  |
+| additionalOutputs.fluentd.user | string | `""` |  |
+| additionalOutputs.fluentd.password | string | `""` |  |
+| additionalOutputs.fluentd.sharedKey | string | `""` |  |
+| additionalOutputs.fluentd.tls | bool | `true` |  |
+| additionalOutputs.fluentd.tlsVerify | bool | `false` |  |
+| additionalOutputs.fluentd.caCert | string | `""` |  |
+| additionalOutputs.fluentd.additionalConfig | object | `{}` |  |
 | storage_buffer.path | string | `"/var/log/flb-storage/"` |  |
 | storage.total_limit_size | string | `"10G"` |  |
 | kind | string | `"DaemonSet"` | DaemonSet or Deployment |

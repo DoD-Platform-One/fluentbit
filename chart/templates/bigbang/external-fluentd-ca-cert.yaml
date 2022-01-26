@@ -1,9 +1,10 @@
-{{- with .Values.additionalOutputs.elasticsearch }}
-{{- if and .host .user .password .port .tlsVerify .caCert}}
+{{- with .Values.additionalOutputs.fluentd }}
+{{- $auth := (or (and .user .password) .sharedKey) }}
+{{- if and .host .port $auth .tlsVerify .caCert}}
 apiVersion: v1
 kind: Secret
 metadata:
-  name: external-es-ca-cert
+  name: external-fluentd-ca-cert
   namespace: {{ $.Release.Namespace }}
   labels:
     {{- include "fluent-bit.labels" $ | nindent 4 }}

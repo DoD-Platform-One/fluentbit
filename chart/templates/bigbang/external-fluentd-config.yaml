@@ -1,0 +1,21 @@
+{{- with .Values.additionalOutputs.fluentd }}
+{{- if and .host .port (or (and .user .password) .sharedKey) }}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: external-fluentd-config
+  namespace: {{ $.Release.Namespace }}
+  labels:
+    {{- include "fluent-bit.labels" $ | nindent 4 }}
+type: Opaque
+stringData:
+  EXTERNAL_FLUENTD_HOST: {{ .host | quote }}
+  EXTERNAL_FLUENTD_PORT: {{ .port | quote }}
+  {{- if and .user .password }}
+  EXTERNAL_FLUENTD_USER: {{ .user | quote }}
+  EXTERNAL_FLUENTD_PASSWORD: {{ .password | quote }}
+  {{- else }}
+  EXTERNAL_FLUENTD_SHARED_KEY: {{ .sharedKey | quote }}
+  {{- end }}
+{{- end }}
+{{- end }}
