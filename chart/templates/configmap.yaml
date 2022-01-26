@@ -71,6 +71,68 @@ data:
         {{- end }}
     {{- end }}
     {{- end }}
+
+    {{- with .Values.additionalOutputs.fluentd }}
+    {{- $auth := (or (and .user .password) .sharedKey) }}
+    {{- if and .host .port $auth }}
+    [OUTPUT]
+        Name          forward
+        Match         kube.*
+        Host          ${EXTERNAL_FLUENTD_HOST}
+        Port          ${EXTERNAL_FLUENTD_PORT}
+        {{- if and .user .password }}
+        Username      ${EXTERNAL_FLUENTD_USER}
+        Password      ${EXTERNAL_FLUENTD_PASSWORD}
+        {{- else }}
+        Shared_Key    ${EXTERNAL_FLUENTD_SHARED_KEY}
+        {{- end }}
+        Retry_Limit   False
+        tls           {{ if .tls }}On{{ else }}Off{{ end }}
+        tls.verify    {{ if and .tlsVerify .caCert }}On{{ else }}Off{{ end }}
+        {{- if and .tlsVerify .caCert }}
+        tls.ca_file   /etc/external-fluentd/certs/ca.crt
+        {{- end }}
+        {{- if .additionalConfig }}
+        {{- range $key, $value := .additionalConfig }}
+        {{- $preset := (list "Name" "Match" "Host" "Port" "Username" "Password" "Shared_Key" "Retry_Limit" "tls" "tls.verify" "tls.ca_file") }}
+        {{- if has $key $preset }}
+        {{- fail (printf "Cannot specify config option `%s`, Big Bang has set a default, please use `outputs` if you need to customize this value." $key) }}
+        {{- else }}
+        {{ $key }} {{ $value }}
+        {{- end }}
+        {{- end }}
+        {{- end }}
+
+    [OUTPUT]
+        Name          forward
+        Match         host.*
+        Host          ${EXTERNAL_FLUENTD_HOST}
+        Port          ${EXTERNAL_FLUENTD_PORT}
+        {{- if and .user .password }}
+        Username      ${EXTERNAL_FLUENTD_USER}
+        Password      ${EXTERNAL_FLUENTD_PASSWORD}
+        {{- else }}
+        Shared_Key    ${EXTERNAL_FLUENTD_SHARED_KEY}
+        {{- end }}
+        Retry_Limit   False
+        tls           {{ if .tls }}On{{ else }}Off{{ end }}
+        tls.verify    {{ if and .tlsVerify .caCert }}On{{ else }}Off{{ end }}
+        {{- if and .tlsVerify .caCert }}
+        tls.ca_file   /etc/external-fluentd/certs/ca.crt
+        {{- end }}
+        {{- if .additionalConfig }}
+        {{- range $key, $value := .additionalConfig }}
+        {{- $preset := (list "Name" "Match" "Host" "Port" "Username" "Password" "Shared_Key" "Retry_Limit" "tls" "tls.verify" "tls.ca_file") }}
+        {{- if has $key $preset }}
+        {{- fail (printf "Cannot specify config option `%s`, Big Bang has set a default, please use `outputs` if you need to customize this value." $key) }}
+        {{- else }}
+        {{ $key }} {{ $value }}
+        {{- end }}
+        {{- end }}
+        {{- end }}
+    {{- end }}
+    {{- end }}
+
   {{- range $key, $val := .Values.config.extraFiles }}
   {{ $key }}: |
     {{- (tpl $val $) | nindent 4 }}

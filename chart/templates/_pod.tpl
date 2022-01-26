@@ -42,7 +42,8 @@ containers:
       {{- toYaml .Values.env | nindent 6 }}
   {{- end }}
   {{- $additionalElastic := (and .Values.additionalOutputs.elasticsearch.host .Values.additionalOutputs.elasticsearch.user .Values.additionalOutputs.elasticsearch.password .Values.additionalOutputs.elasticsearch.port) }}
-  {{- if or .Values.envFrom $additionalElastic }}
+  {{- $additionalFluentd := (and .Values.additionalOutputs.fluentd.host (or (and .Values.additionalOutputs.fluentd.user .Values.additionalOutputs.fluentd.password) .Values.additionalOutputs.fluentd.sharedKey) .Values.additionalOutputs.fluentd.port) }}
+  {{- if or .Values.envFrom $additionalElastic $additionalFluentd }}
     envFrom:
       {{- if .Values.envFrom }}
       {{- toYaml .Values.envFrom | nindent 6 }}
@@ -50,6 +51,10 @@ containers:
       {{- if $additionalElastic }}
       - secretRef:
           name: external-es-config
+      {{- end }}
+      {{- if $additionalFluentd }}
+      - secretRef:
+          name: external-fluentd-config
       {{- end }}
   {{- end }}
   {{- if .Values.args }}
@@ -99,6 +104,10 @@ containers:
       - name: external-es-ca-cert
         mountPath: /etc/external-es/certs/
     {{- end }}
+    {{- if and .Values.additionalOutputs.fluentd.tlsVerify .Values.additionalOutputs.fluentd.caCert }}
+      - name: external-fluentd-ca-cert
+        mountPath: /etc/external-fluentd/certs/
+    {{- end }}
     {{- if eq .Values.kind "DaemonSet" }}
       {{- toYaml .Values.daemonSetVolumeMounts | nindent 6 }}
     {{- end }}
@@ -128,6 +137,12 @@ volumes:
     secret:
       secretName: external-es-ca-cert
 {{- end }}
+{{- if and .Values.additionalOutputs.fluentd.tlsVerify .Values.additionalOutputs.fluentd.caCert }}
+  - name: external-fluentd-ca-cert
+    secret:
+      secretName: external-fluentd-ca-cert
+{{- end }}
+
 
 {{- with .Values.nodeSelector }}
 nodeSelector:
