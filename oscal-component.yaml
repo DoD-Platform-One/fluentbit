@@ -1,0 +1,71 @@
+component-definition:
+  uuid: CBD81069-0E3E-42B7-A40A-CBBED775436B
+  metadata: 
+    title: Fluentbit
+    last-modified: '2021-10-19T12:00:00Z'
+    version: 20211019
+    oscal-version: 1.0.0
+    parties:
+      # Should be consistent across all of the packages, but where is ground truth?
+    - uuid: 72134592-08C2-4A77-ABAD-C880F109367A 
+      type: organization
+      name: Platform One
+      links:
+      - href: <https://p1.dso.mil>
+        rel: website
+  components: # for BB, this would be all the pieces of big bang
+  - uuid: BE039F48-F418-4D86-BD5F-8CE8CBEAD91E
+    type: software
+    title: Fluentbit
+    description: |
+      Log collector
+    purpose: Collects logs from the cluster
+    responsible-roles:
+    - role-id: provider
+      party-uuid: 72134592-08C2-4A77-ABAD-C880F109367A # matches parties entry for p1
+    control-implementations:
+    - uuid: 6358159C-2710-46EF-ACC5-39FD3117391D
+      source: https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json
+      description:
+        Controls implemented by authservice for inheritance by applications
+      implemented-requirements:
+      - uuid: D9D09567-C4C7-4DEA-921C-6318DF2F9331
+        control-id: ac-6.9
+        description: >-
+          Fluentbit can be configured to collect all logs from Kubernetes and underlying operating systems, allowing the aggregation of privileged function calls.
+      - uuid: 373074CC-F1EA-40CB-AD17-DB8F199D0600
+        control-id: au-2
+        description: >-
+          Logging daemons are present on each node that BigBang is installed on.  Out of the box, the following events are captured:
+
+          * all containers emitting to STDOUT or STDERR (captured  by container runtime translating container logs to /var/log/containers)
+          * all kubernetes api server requests 
+          * all events emitted by the kubelet
+      - uuid: 90FFF3BA-3E88-47AD-88B7-B50A92833A45
+        control-id: au-3
+        description: >-
+          Records captured by the logging daemon are enriched to  ensure the following are always present:
+
+          * time of the event (UTC)
+          * source of event (pod, namespace, container id)
+
+          Applications are responsible for providing all other information.
+      - uuid: 3230D443-A18C-4F9B-A0DE-DC89CE5D01C8
+        control-id: au-8
+        description: >-
+          Records captured by the logging daemon are enriched to  ensure the following are always present:
+
+          * time of the event (UTC)
+          * source of event (pod, namespace, container id)
+
+          Applications are responsible for providing all other information.
+  back-matter: 
+    resources:
+    - uuid: 97FF87A0-EB34-4001-839A-32FF0815D896
+      title: Fluentbit
+      rlinks:
+      - href: https://fluentbit.io/
+    - uuid: B66A99BD-680E-48AF-B81B-D2113155331E
+      title: Big Bang Fluentbit package
+      rlinks:
+        - href: https://repo1.dso.mil/platform-one/big-bang/apps/core/fluentbit
