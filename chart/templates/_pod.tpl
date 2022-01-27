@@ -43,6 +43,7 @@ containers:
   {{- end }}
   {{- $additionalElastic := (and .Values.additionalOutputs.elasticsearch.host .Values.additionalOutputs.elasticsearch.user .Values.additionalOutputs.elasticsearch.password .Values.additionalOutputs.elasticsearch.port) }}
   {{- $additionalFluentd := (and .Values.additionalOutputs.fluentd.host (or (and .Values.additionalOutputs.fluentd.user .Values.additionalOutputs.fluentd.password) .Values.additionalOutputs.fluentd.sharedKey) .Values.additionalOutputs.fluentd.port) }}
+  {{- $additionalLoki := (and .Values.additionalOutputs.loki.host .Values.additionalOutputs.loki.user .Values.additionalOutputs.loki.password .Values.additionalOutputs.loki.port) }}
   {{- if or .Values.envFrom $additionalElastic $additionalFluentd }}
     envFrom:
       {{- if .Values.envFrom }}
@@ -55,6 +56,10 @@ containers:
       {{- if $additionalFluentd }}
       - secretRef:
           name: external-fluentd-config
+      {{- end }}
+      {{- if $additionalLoki }}
+      - secretRef:
+          name: external-loki-config
       {{- end }}
   {{- end }}
   {{- if .Values.args }}
@@ -108,6 +113,10 @@ containers:
       - name: external-fluentd-ca-cert
         mountPath: /etc/external-fluentd/certs/
     {{- end }}
+    {{- if and .Values.additionalOutputs.loki.tlsVerify .Values.additionalOutputs.loki.caCert }}
+      - name: external-loki-ca-cert
+        mountPath: /etc/external-loki/certs/
+    {{- end }}
     {{- if eq .Values.kind "DaemonSet" }}
       {{- toYaml .Values.daemonSetVolumeMounts | nindent 6 }}
     {{- end }}
@@ -141,6 +150,11 @@ volumes:
   - name: external-fluentd-ca-cert
     secret:
       secretName: external-fluentd-ca-cert
+{{- end }}
+{{- if and .Values.additionalOutputs.loki.tlsVerify .Values.additionalOutputs.loki.caCert }}
+  - name: external-loki-ca-cert
+    secret:
+      secretName: external-loki-ca-cert
 {{- end }}
 
 

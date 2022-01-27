@@ -136,10 +136,10 @@ data:
     [OUTPUT]
       name          loki
       match         kube.*
-      host          ${EXTERNAL_FLUENTD_HOST}
-      port          ${EXTERNAL_FLUENTD_PORT}
-      http_user     ${EXTERNAL_ES_USER}
-      http_passwd   ${EXTERNAL_ES_PASSWORD}
+      host          ${EXTERNAL_LOKI_HOST}
+      port          ${EXTERNAL_LOKI_PORT}
+      http_user     ${EXTERNAL_LOKI_USER}
+      http_passwd   ${EXTERNAL_LOKI_PASSWORD}
       Retry_Limit   False
       tls           {{ if .tls }}On{{ else }}Off{{ end }}
       tls.verify    {{ if and .tlsVerify .caCert }}On{{ else }}Off{{ end }}
@@ -159,10 +159,10 @@ data:
     [OUTPUT]
       name          loki
       match         host.*
-      host          ${EXTERNAL_FLUENTD_HOST}
-      port          ${EXTERNAL_FLUENTD_PORT}
-      http_user     ${EXTERNAL_ES_USER}
-      http_passwd   ${EXTERNAL_ES_PASSWORD}
+      host          ${EXTERNAL_LOKI_HOST}
+      port          ${EXTERNAL_LOKI_PORT}
+      http_user     ${EXTERNAL_LOKI_USER}
+      http_passwd   ${EXTERNAL_LOKI_PASSWORD}
       Retry_Limit   False
       tls           {{ if .tls }}On{{ else }}Off{{ end }}
       tls.verify    {{ if and .tlsVerify .caCert }}On{{ else }}Off{{ end }}
