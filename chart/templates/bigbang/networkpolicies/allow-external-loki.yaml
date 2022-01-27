@@ -4,7 +4,7 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: allow-external-fluentd-egress-fluentbit
+  name: allow-external-loki-egress-fluentbit
   namespace: {{ $.Release.Namespace }}
 spec:
   egress:
