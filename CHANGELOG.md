@@ -3,6 +3,10 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [0.19.16-bb.4]
+### Changed
+- Relocated `bbtests` to `values.yaml`
+
 ## [0.19.16-bb.3]
 ### Added
 - Added `additionalOutputs.fluentd` and required template changes to simplify additional fluentd output
