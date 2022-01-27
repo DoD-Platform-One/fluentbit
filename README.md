@@ -1,6 +1,6 @@
 # fluent-bit
 
-![Version: 0.19.19-bb.1](https://img.shields.io/badge/Version-0.19.19--bb.1-informational?style=flat-square) ![AppVersion: 1.8.11](https://img.shields.io/badge/AppVersion-1.8.11-informational?style=flat-square)
+![Version: 0.19.16-bb.4](https://img.shields.io/badge/Version-0.19.16--bb.4-informational?style=flat-square) ![AppVersion: 1.8.11](https://img.shields.io/badge/AppVersion-1.8.11-informational?style=flat-square)
 
 Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
 
@@ -180,6 +180,10 @@ helm install fluent-bit chart/
 | initContainers | list | `[]` |  |
 | logLevel | string | `"info"` |  |
 | openshift | bool | `false` |  |
+| bbtests.enabled | bool | `false` |  |
+| bbtests.scripts.image | string | `"registry1.dso.mil/ironbank/stedolan/jq:1.6"` |  |
+| bbtests.scripts.envs.fluent_host | string | `"http://{{ include \"fluent-bit.fullname\" . }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.service.port }}"` |  |
+| bbtests.scripts.envs.desired_version | string | `"{{ .Values.image.tag }}"` |  |
 
 ## Contributing
 
