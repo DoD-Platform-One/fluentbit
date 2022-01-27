@@ -63,6 +63,30 @@ additionalOutputs:
     # Example:
     #   Self_Hostname: "custom_value"
     additionalConfig: {}
+  loki:
+    host: ""
+    port: 3100
+    user: ""
+    password: ""
+    sharedKey: "" #overriden by username and password
+    # Toggle on TLS
+    tls: true
+    # Verify TLS certificates, requires a caCert to be specified
+    tlsVerify: false
+    # Full ca.crt
+    caCert: ""
+    # caCert: |
+    # -----BEGIN CERTIFICATE-----
+    # MIIE4jCCAsqgAwIBAgIBATANBgkqhkiG9w0BAQsFADARMQ8wDQYDVQQDEwZzZm8t
+    # Y2EwHhcNMTkxMjIwMDAxNjI1WhcNMjEwNjIwMDAxNjIxWjARMQ8wDQYDVQQDEwZz
+    # -----END CERTIFICATE-----
+    # Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/forward
+    # Customer values are used for: Time_as_Integer, Upstream, Tag, Send_options, Require_ack_response, Compress, Empty_Shared_Key, Self_Hostname, tls.debug, tls.crt_file, tls.key_file, tls.key_passwd
+    #   Specify these values with the above host, port, user, password, tls, tlsVerify, and caCert
+    # Defaults are set for: Name, Match, Host, Port, Username, Password, Shared_Key, tls, tls.verify, tls.ca_file
+    # Example:
+    #   Self_Hostname: "custom_value"
+    additionalConfig: {}
 
 
 # Also update extraVolumes + extraVolumeMounts section if updating storage_buffer.path
