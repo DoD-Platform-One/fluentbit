@@ -31,10 +31,9 @@ data:
         {{- if and .tlsVerify .caCert }}
         tls.ca_file /etc/external-es/certs/ca.crt
         {{- end }}
-        Retry_Limit False
         {{- if .additionalConfig }}
         {{- range $key, $value := .additionalConfig }}
-        {{- $preset := (list "Name" "Match" "Host" "Port" "HTTP_User" "HTTP_Passwd" "Logstash_Format" "Logstash_Prefix" "Retry_Limit" "tls" "tls.verify" "tls.ca_file" "Retry_Limit") }}
+        {{- $preset := (list "Name" "Match" "Host" "Port" "HTTP_User" "HTTP_Passwd" "Logstash_Format" "Logstash_Prefix" "Retry_Limit" "tls" "tls.verify" "tls.ca_file") }}
         {{- if has $key $preset }}
         {{- fail (printf "Cannot specify config option `%s`, Big Bang has set a default, please use `outputs` if you need to customize this value." $key) }}
         {{- else }}
@@ -58,10 +57,9 @@ data:
         {{- if and .tlsVerify .caCert }}
         tls.ca_file /etc/external-es/certs/ca.crt
         {{- end }}
-        Retry_Limit False
         {{- if .additionalConfig }}
         {{- range $key, $value := .additionalConfig }}
-        {{- $preset := (list "Name" "Match" "Host" "Port" "HTTP_User" "HTTP_Passwd" "Logstash_Format" "Logstash_Prefix" "Retry_Limit" "tls" "tls.verify" "tls.ca_file" "Retry_Limit") }}
+        {{- $preset := (list "Name" "Match" "Host" "Port" "HTTP_User" "HTTP_Passwd" "Logstash_Format" "Logstash_Prefix" "Retry_Limit" "tls" "tls.verify" "tls.ca_file") }}
         {{- if has $key $preset }}
         {{- fail (printf "Cannot specify config option `%s`, Big Bang has set a default, please use `outputs` if you need to customize this value." $key) }}
         {{- else }}
@@ -130,6 +128,57 @@ data:
         {{- end }}
         {{- end }}
         {{- end }}
+    {{- end }}
+    {{- end }}
+
+    {{- with .Values.additionalOutputs.loki }}
+    {{- if and .host .user .password .port }}
+    [OUTPUT]
+      name          loki
+      match         kube.*
+      host          ${EXTERNAL_FLUENTD_HOST}
+      port          ${EXTERNAL_FLUENTD_PORT}
+      http_user     ${EXTERNAL_ES_USER}
+      http_passwd   ${EXTERNAL_ES_PASSWORD}
+      Retry_Limit   False
+      tls           {{ if .tls }}On{{ else }}Off{{ end }}
+      tls.verify    {{ if and .tlsVerify .caCert }}On{{ else }}Off{{ end }}
+      {{- if and .tlsVerify .caCert }}
+      tls.ca_file   /etc/external-loki/certs/ca.crt
+      {{- end }}
+      {{- if .additionalConfig }}
+      {{- range $key, $value := .additionalConfig }}
+      {{- $preset := (list "name" "match" "host" "port" "http_user" "http_passwd" "Retry_Limit" "tls" "tls.verify" "tls.ca_file") }}
+      {{- if has $key $preset }}
+      {{- fail (printf "Cannot specify config option `%s`, Big Bang has set a default, please use `outputs` if you need to customize this value." $key) }}
+      {{- else }}
+      {{ $key }} {{ $value }}
+      {{- end }}
+      {{- end }}
+      {{- end }}
+    [OUTPUT]
+      name          loki
+      match         host.*
+      host          ${EXTERNAL_FLUENTD_HOST}
+      port          ${EXTERNAL_FLUENTD_PORT}
+      http_user     ${EXTERNAL_ES_USER}
+      http_passwd   ${EXTERNAL_ES_PASSWORD}
+      Retry_Limit   False
+      tls           {{ if .tls }}On{{ else }}Off{{ end }}
+      tls.verify    {{ if and .tlsVerify .caCert }}On{{ else }}Off{{ end }}
+      {{- if and .tlsVerify .caCert }}
+      tls.ca_file   /etc/external-loki/certs/ca.crt
+      {{- end }}
+      {{- if .additionalConfig }}
+      {{- range $key, $value := .additionalConfig }}
+      {{- $preset := (list "name" "match" "host" "port" "http_user" "http_passwd" "Retry_Limit" "tls" "tls.verify" "tls.ca_file") }}
+      {{- if has $key $preset }}
+      {{- fail (printf "Cannot specify config option `%s`, Big Bang has set a default, please use `outputs` if you need to customize this value." $key) }}
+      {{- else }}
+      {{ $key }} {{ $value }}
+      {{- end }}
+      {{- end }}
+      {{- end }}
     {{- end }}
     {{- end }}
 
