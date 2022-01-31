@@ -55,6 +55,11 @@ helm install fluent-bit chart/
 | additionalOutputs.fluentd.tlsVerify | bool | `false` |  |
 | additionalOutputs.fluentd.caCert | string | `""` |  |
 | additionalOutputs.fluentd.additionalConfig | object | `{}` |  |
+| additionalOutputs.s3.bucket | string | `""` |  |
+| additionalOutputs.s3.region | string | `"us-east-1"` |  |
+| additionalOutputs.s3.aws_access_key_id | string | `""` |  |
+| additionalOutputs.s3.aws_secret_access_key | string | `""` |  |
+| additionalOutputs.s3.additionalConfig | object | `{}` |  |
 | storage_buffer.path | string | `"/var/log/flb-storage/"` |  |
 | storage.total_limit_size | string | `"10G"` |  |
 | kind | string | `"DaemonSet"` | DaemonSet or Deployment |

@@ -49,7 +49,8 @@ containers:
   {{- end }}
   {{- $additionalElastic := (and .Values.additionalOutputs.elasticsearch.host .Values.additionalOutputs.elasticsearch.user .Values.additionalOutputs.elasticsearch.password .Values.additionalOutputs.elasticsearch.port) }}
   {{- $additionalFluentd := (and .Values.additionalOutputs.fluentd.host (or (and .Values.additionalOutputs.fluentd.user .Values.additionalOutputs.fluentd.password) .Values.additionalOutputs.fluentd.sharedKey) .Values.additionalOutputs.fluentd.port) }}
-  {{- if or .Values.envFrom $additionalElastic $additionalFluentd }}
+  {{- $additionalS3 := (and .Values.additionalOutputs.s3.bucket .Values.additionalOutputs.s3.region .Values.additionalOutputs.s3.aws_access_key_id  .Values.additionalOutputs.s3.aws_secret_access_key) }}
+  {{- if or .Values.envFrom $additionalElastic $additionalFluentd $additionalS3 }}
     envFrom:
       {{- if .Values.envFrom }}
       {{- toYaml .Values.envFrom | nindent 6 }}
@@ -61,6 +62,10 @@ containers:
       {{- if $additionalFluentd }}
       - secretRef:
           name: external-fluentd-config
+      {{- end }}
+      {{- if $additionalS3 }}
+      - secretRef:
+          name: external-s3-config
       {{- end }}
   {{- end }}
   {{- if .Values.args }}
