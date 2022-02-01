@@ -5,7 +5,7 @@ keywords:
   - logging
   - fluent-bit
   - fluentd
-version: 0.19.16-bb.4
+version: 0.19.16-bb.5
 appVersion: 1.8.11
 icon: https://fluentbit.io/assets/img/logo1-default.png
 home: https://fluentbit.io/
@@ -28,3 +28,7 @@ dependencies:
   - name: gluon
     version: 0.2.4
     repository: "oci://registry.dso.mil/platform-one/big-bang/apps/library-charts/gluon"
+annotations:
+  bigbang.dev/applicationVersions: |
+    - Fluent Bit: 1.8.11
+

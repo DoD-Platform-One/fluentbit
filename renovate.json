@@ -5,13 +5,24 @@
     "dependencyDashboardHeader": "- [ ] Sync upstream helm chart version with updated dependencies.",
     "dependencyDashboardTitle": "Renovate: Upgrade Fluentbit Package Dependencies",
     "draftPR": true,
-    "enabledManagers": ["helm-values"],
+    "enabledManagers": ["helm-values", "regex"],
     "ignorePaths": ["chart/charts/**"],
     "labels": ["fluentbit","renovate"],
     "packageRules": [
         {
             "matchDatasources": ["docker"],
             "groupName": "Ironbank"
+        }
+    ],
+    "regexManagers": [
+        {
+        "fileMatch": ["^chart/Chart\\.yaml$"],
+        "matchStrings": [
+            "- Fluent Bit:\\s+(?<currentValue>.+)"
+        ],
+        "registryUrlTemplate": "https://registry1.dso.mil",
+        "depNameTemplate": "ironbank/opensource/fluent/fluent-bit",
+        "datasourceTemplate": "docker"
         }
     ],
     "separateMajorMinor": false
