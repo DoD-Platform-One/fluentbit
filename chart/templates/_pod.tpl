@@ -44,7 +44,7 @@ containers:
   {{- $additionalElastic := (and .Values.additionalOutputs.elasticsearch.host .Values.additionalOutputs.elasticsearch.user .Values.additionalOutputs.elasticsearch.password .Values.additionalOutputs.elasticsearch.port) }}
   {{- $additionalFluentd := (and .Values.additionalOutputs.fluentd.host (or (and .Values.additionalOutputs.fluentd.user .Values.additionalOutputs.fluentd.password) .Values.additionalOutputs.fluentd.sharedKey) .Values.additionalOutputs.fluentd.port) }}
   {{- $additionalLoki := (and .Values.additionalOutputs.loki.host .Values.additionalOutputs.loki.user .Values.additionalOutputs.loki.password .Values.additionalOutputs.loki.port) }}
-  {{- if or .Values.envFrom $additionalElastic $additionalFluentd }}
+  {{- if or .Values.envFrom $additionalElastic $additionalFluentd $additionalLoki }}
     envFrom:
       {{- if .Values.envFrom }}
       {{- toYaml .Values.envFrom | nindent 6 }}
