@@ -132,14 +132,17 @@ data:
     {{- end }}
 
     {{- with .Values.additionalOutputs.loki }}
-    {{- if and .host .user .password .port }}
+    {{- if and .host .port }}
     [OUTPUT]
-        name          loki
-        match         kube.*
+        Name          loki
+        Match         kube.*
         host          ${EXTERNAL_LOKI_HOST}
         port          ${EXTERNAL_LOKI_PORT}
+        {{- if and .user .password }}
         http_user     ${EXTERNAL_LOKI_USER}
         http_passwd   ${EXTERNAL_LOKI_PASSWORD}
+        {{- end }}
+        auto_kubernetes_labels  on
         Retry_Limit   False
         tls           {{ if .tls }}On{{ else }}Off{{ end }}
         tls.verify    {{ if and .tlsVerify .caCert }}On{{ else }}Off{{ end }}
@@ -148,7 +151,7 @@ data:
         {{- end }}
         {{- if .additionalConfig }}
         {{- range $key, $value := .additionalConfig }}
-        {{- $preset := (list "name" "match" "host" "port" "http_user" "http_passwd" "Retry_Limit" "tls" "tls.verify" "tls.ca_file") }}
+        {{- $preset := (list "Name" "Match" "host" "port" "http_user" "http_passwd" "Retry_Limit" "tls" "tls.verify" "tls.ca_file" "auto_kubernetes_labels") }}
         {{- if has $key $preset }}
         {{- fail (printf "Cannot specify config option `%s`, Big Bang has set a default, please use `outputs` if you need to customize this value." $key) }}
         {{- else }}
@@ -156,13 +159,17 @@ data:
         {{- end }}
         {{- end }}
         {{- end }}
+
     [OUTPUT]
-        name          loki
-        match         host.*
+        Name          loki
+        Match         host.*
         host          ${EXTERNAL_LOKI_HOST}
         port          ${EXTERNAL_LOKI_PORT}
+        {{- if and .user .password }}
         http_user     ${EXTERNAL_LOKI_USER}
         http_passwd   ${EXTERNAL_LOKI_PASSWORD}
+        {{- end }}
+        auto_kubernetes_labels  on
         Retry_Limit   False
         tls           {{ if .tls }}On{{ else }}Off{{ end }}
         tls.verify    {{ if and .tlsVerify .caCert }}On{{ else }}Off{{ end }}
@@ -171,7 +178,7 @@ data:
         {{- end }}
         {{- if .additionalConfig }}
         {{- range $key, $value := .additionalConfig }}
-        {{- $preset := (list "name" "match" "host" "port" "http_user" "http_passwd" "Retry_Limit" "tls" "tls.verify" "tls.ca_file") }}
+        {{- $preset := (list "Name" "Match" "host" "port" "http_user" "http_passwd" "Retry_Limit" "tls" "tls.verify" "tls.ca_file" "auto_kubernetes_labels") }}
         {{- if has $key $preset }}
         {{- fail (printf "Cannot specify config option `%s`, Big Bang has set a default, please use `outputs` if you need to customize this value." $key) }}
         {{- else }}
