@@ -1,5 +1,5 @@
 {{- with .Values.additionalOutputs.loki }}
-{{- if and .host .user .password .port .tlsVerify .caCert}}
+{{- if and .host .port .tlsVerify .caCert}}
 apiVersion: v1
 kind: Secret
 metadata:
