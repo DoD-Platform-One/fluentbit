@@ -142,7 +142,6 @@ data:
         http_user     ${EXTERNAL_LOKI_USER}
         http_passwd   ${EXTERNAL_LOKI_PASSWORD}
         {{- end }}
-        auto_kubernetes_labels  on
         Retry_Limit   False
         tls           {{ if .tls }}On{{ else }}Off{{ end }}
         tls.verify    {{ if and .tlsVerify .caCert }}On{{ else }}Off{{ end }}
@@ -169,7 +168,6 @@ data:
         http_user     ${EXTERNAL_LOKI_USER}
         http_passwd   ${EXTERNAL_LOKI_PASSWORD}
         {{- end }}
-        auto_kubernetes_labels  on
         Retry_Limit   False
         tls           {{ if .tls }}On{{ else }}Off{{ end }}
         tls.verify    {{ if and .tlsVerify .caCert }}On{{ else }}Off{{ end }}
