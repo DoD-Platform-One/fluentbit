@@ -159,6 +159,8 @@ data:
         {{- end }}
         {{- end }}
         {{- end }}
+    {{- end }}
+    {{- end }}
 
   {{- range $key, $val := .Values.config.extraFiles }}
   {{ $key }}: |
