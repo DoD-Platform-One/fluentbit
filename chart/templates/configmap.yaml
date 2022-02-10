@@ -134,7 +134,7 @@ data:
     {{- with .Values.additionalOutputs.loki }}
     {{- if and .host .port }}
     [OUTPUT]
-        name          grafana-loki
+        name          loki
         match         kube.*
         labels        {job="fluent-bit"}
         host          ${EXTERNAL_LOKI_HOST}
