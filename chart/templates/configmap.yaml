@@ -134,7 +134,7 @@ data:
     {{- with .Values.additionalOutputs.loki }}
     {{- if and .host .port }}
     [OUTPUT]
-        name          loki
+        name          grafana-loki
         match         kube.*
         labels        job=fluentbit, container=$kubernetes['container_name'], pod=$kubernetes['pod_name'], namespace=$kubernetes['namespace_name'], node_name=$kubernetes['host']
         host          ${EXTERNAL_LOKI_HOST}
