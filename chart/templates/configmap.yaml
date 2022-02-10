@@ -134,11 +134,13 @@ data:
     {{- with .Values.additionalOutputs.loki }}
     {{- if and .host .port }}
     [OUTPUT]
-        name          loki
+        name          grafana-loki
         match         kube.*
-        labels        job=fluentbit
+        labels        {job="fluent-bit"}
         host          ${EXTERNAL_LOKI_HOST}
         port          ${EXTERNAL_LOKI_PORT}
+        line_format   json
+        BatchWait     1s
         {{- if and .user .password }}
         http_user     ${EXTERNAL_LOKI_USER}
         http_passwd   ${EXTERNAL_LOKI_PASSWORD}
