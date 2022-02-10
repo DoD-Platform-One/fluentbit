@@ -134,8 +134,9 @@ data:
     {{- with .Values.additionalOutputs.loki }}
     {{- if and .host .port }}
     [OUTPUT]
-        Name          loki
-        Match         kube.*
+        name          loki
+        match         kube.*
+        labels        job=fluentbit
         host          ${EXTERNAL_LOKI_HOST}
         port          ${EXTERNAL_LOKI_PORT}
         {{- if and .user .password }}
@@ -158,34 +159,6 @@ data:
         {{- end }}
         {{- end }}
         {{- end }}
-
-    [OUTPUT]
-        Name          loki
-        Match         host.*
-        host          ${EXTERNAL_LOKI_HOST}
-        port          ${EXTERNAL_LOKI_PORT}
-        {{- if and .user .password }}
-        http_user     ${EXTERNAL_LOKI_USER}
-        http_passwd   ${EXTERNAL_LOKI_PASSWORD}
-        {{- end }}
-        Retry_Limit   False
-        tls           {{ if .tls }}On{{ else }}Off{{ end }}
-        tls.verify    {{ if and .tlsVerify .caCert }}On{{ else }}Off{{ end }}
-        {{- if and .tlsVerify .caCert }}
-        tls.ca_file   /etc/external-loki/certs/ca.crt
-        {{- end }}
-        {{- if .additionalConfig }}
-        {{- range $key, $value := .additionalConfig }}
-        {{- $preset := (list "Name" "Match" "host" "port" "http_user" "http_passwd" "Retry_Limit" "tls" "tls.verify" "tls.ca_file" "auto_kubernetes_labels") }}
-        {{- if has $key $preset }}
-        {{- fail (printf "Cannot specify config option `%s`, Big Bang has set a default, please use `outputs` if you need to customize this value." $key) }}
-        {{- else }}
-        {{ $key }} {{ $value }}
-        {{- end }}
-        {{- end }}
-        {{- end }}
-    {{- end }}
-    {{- end }}
 
   {{- range $key, $val := .Values.config.extraFiles }}
   {{ $key }}: |
