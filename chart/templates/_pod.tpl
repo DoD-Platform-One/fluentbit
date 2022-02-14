@@ -119,6 +119,10 @@ containers:
       - name: external-fluentd-ca-cert
         mountPath: /etc/external-fluentd/certs/
     {{- end }}
+    {{- if $additionalS3 }}
+      - name: fluentbit-temp
+        mountPath: /tmp/fluent-bit/
+    {{- end }}
     {{- if eq .Values.kind "DaemonSet" }}
       {{- toYaml .Values.daemonSetVolumeMounts | nindent 6 }}
     {{- end }}
@@ -152,6 +156,10 @@ volumes:
   - name: external-fluentd-ca-cert
     secret:
       secretName: external-fluentd-ca-cert
+{{- end }}
+{{- if $additionalS3 }}
+  - name: fluentbit-temp
+    emptyDir: {}
 {{- end }}
 
 
