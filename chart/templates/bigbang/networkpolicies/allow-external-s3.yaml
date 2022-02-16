@@ -1,11 +1,10 @@
-{{- with .Values.additionalOutputs.fluentd }}
-{{- $auth := (or (and .user .password) .sharedKey) }}
-{{- $additionalFluentd := (and .host .port $auth) }}
-{{- if and $additionalFluentd $.Values.networkPolicies.enabled }}
+{{- with .Values.additionalOutputs.s3 }}
+{{- $additionalFluentd := (and .bucket .region .aws_access_key_id .aws_secret_access_key) }}
+{{- if $additionalFluentd }}
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: allow-external-fluentd-egress-fluentbit
+  name: allow-external-s3-egress-fluentbit
   namespace: {{ $.Release.Namespace }}
 spec:
   egress:
@@ -16,8 +15,6 @@ spec:
         except:
         - 169.254.169.254/32
     ports:
-    - port: 80
-      protocol: TCP 
     - port: 443
       protocol: TCP 
   podSelector: 
