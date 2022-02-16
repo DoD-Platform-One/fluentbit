@@ -1,6 +1,6 @@
 {{- with .Values.additionalOutputs.s3 }}
-{{- $additionalFluentd := (and .bucket .region .aws_access_key_id .aws_secret_access_key) }}
-{{- if $additionalFluentd }}
+{{- $additionalS3 := (and .bucket .region .aws_access_key_id .aws_secret_access_key) }}
+{{- if $additionalS3 }}
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
