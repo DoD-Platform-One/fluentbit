@@ -141,9 +141,10 @@ data:
         Match         kube.*
         bucket        {{ .bucket }}
         region        {{ .region }}
+        Retry_Limit   False
         {{- if .additionalConfig }}
         {{- range $key, $value := .additionalConfig }}
-        {{- $preset := (list "Name" "Match" "bucket" "region") }}
+        {{- $preset := (list "Name" "Match" "bucket" "region" "Retry_Limit") }}
         {{- if has $key $preset }}
         {{- fail (printf "Cannot specify config option `%s`, Big Bang has set a default, please use `outputs` if you need to customize this value." $key) }}
         {{- else }}
@@ -157,9 +158,10 @@ data:
         Match         host.*
         bucket        {{ .bucket }}
         region        {{ .region }}
+        Retry_Limit   False
         {{- if .additionalConfig }}
         {{- range $key, $value := .additionalConfig }}
-        {{- $preset := (list "Name" "Match" "bucket" "region") }}
+        {{- $preset := (list "Name" "Match" "bucket" "region" "Retry_Limit") }}
         {{- if has $key $preset }}
         {{- fail (printf "Cannot specify config option `%s`, Big Bang has set a default, please use `outputs` if you need to customize this value." $key) }}
         {{- else }}
