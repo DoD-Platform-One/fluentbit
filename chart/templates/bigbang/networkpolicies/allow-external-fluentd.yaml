@@ -16,9 +16,7 @@ spec:
         except:
         - 169.254.169.254/32
     ports:
-    - port: 80
-      protocol: TCP 
-    - port: 443
+    - port: {{ .port }}
       protocol: TCP 
   podSelector: 
     matchLabels:
