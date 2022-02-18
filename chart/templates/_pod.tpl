@@ -37,9 +37,15 @@ containers:
   {{- end }}
     image: "{{ .Values.image.repository }}:{{ default .Chart.AppVersion .Values.image.tag }}"
     imagePullPolicy: {{ .Values.image.pullPolicy }}
-  {{- if .Values.env }}
+  {{- if or .Values.env .Values.envWithTpl }}
     env:
-      {{- toYaml .Values.env | nindent 6 }}
+    {{- with .Values.env }}
+      {{- toYaml . | nindent 6 }}
+    {{- end }}
+    {{- range $item := .Values.envWithTpl }}
+      - name: {{ $item.name }}
+        value: {{ tpl $item.value $ | quote }}
+    {{- end }}
   {{- end }}
   {{- $additionalElastic := (and .Values.additionalOutputs.elasticsearch.host .Values.additionalOutputs.elasticsearch.user .Values.additionalOutputs.elasticsearch.password .Values.additionalOutputs.elasticsearch.port) }}
   {{- $additionalFluentd := (and .Values.additionalOutputs.fluentd.host (or (and .Values.additionalOutputs.fluentd.user .Values.additionalOutputs.fluentd.password) .Values.additionalOutputs.fluentd.sharedKey) .Values.additionalOutputs.fluentd.port) }}
