@@ -1,6 +1,6 @@
 # fluent-bit
 
-![Version: 0.19.16-bb.6](https://img.shields.io/badge/Version-0.19.16--bb.6-informational?style=flat-square) ![AppVersion: 1.8.11](https://img.shields.io/badge/AppVersion-1.8.11-informational?style=flat-square)
+![Version: 0.19.19-bb.0](https://img.shields.io/badge/Version-0.19.19--bb.0-informational?style=flat-square) ![AppVersion: 1.8.12](https://img.shields.io/badge/AppVersion-1.8.12-informational?style=flat-square)
 
 Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
 
@@ -61,7 +61,7 @@ helm install fluent-bit chart/
 | replicaCount | int | `1` | Only applicable if kind=Deployment |
 | image.repository | string | `"registry1.dso.mil/ironbank/opensource/fluent/fluent-bit"` |  |
 | image.pullPolicy | string | `"Always"` |  |
-| image.tag | string | `"1.8.11"` |  |
+| image.tag | string | `"1.8.12"` |  |
 | networkPolicies.enabled | bool | `false` |  |
 | networkPolicies.controlPlaneCidr | string | `"0.0.0.0/0"` |  |
 | testFramework.enabled | bool | `false` |  |
@@ -128,6 +128,7 @@ helm install fluent-bit chart/
 | env[0] | object | `{"name":"FLUENT_ELASTICSEARCH_PASSWORD","valueFrom":{"secretKeyRef":{"key":"elastic","name":"logging-ek-es-elastic-user"}}}` | Pointing to specific Big Bang ECK stack "logging-ek" elastic user for auth. |
 | envFrom | list | `[]` |  |
 | extraContainers | list | `[]` |  |
+| flush | int | `1` |  |
 | metricsPort | int | `2020` |  |
 | extraPorts | list | `[]` |  |
 | extraVolumes[0] | object | `{"hostPath":{"path":"/var/log/flb-storage/","type":"DirectoryOrCreate"},"name":"flb-storage"}` | Mount /var/log/flb-storage/ for the storage buffer, recommended for production systems. |
@@ -140,7 +141,7 @@ helm install fluent-bit chart/
 | existingConfigMap | string | `""` |  |
 | networkPolicy.enabled | bool | `false` |  |
 | luaScripts | object | `{}` |  |
-| config.service | string | `"[SERVICE]\n    Daemon Off\n    Flush 1\n    Log_Level {{ .Values.logLevel }}\n    Parsers_File parsers.conf\n    Parsers_File custom_parsers.conf\n    HTTP_Server On\n    HTTP_Listen 0.0.0.0\n    HTTP_Port {{ .Values.metricsPort }}\n    # -- Setting up storage buffer on filesystem and slighty upping backlog mem_limit value.\n    storage.path {{ .Values.storage_buffer.path }}\n    storage.sync normal\n    storage.backlog.mem_limit 15M\n    Health_Check On\n"` |  |
+| config.service | string | `"[SERVICE]\n    Daemon Off\n    Flush {{ .Values.flush }}\n    Log_Level {{ .Values.logLevel }}\n    Parsers_File parsers.conf\n    Parsers_File custom_parsers.conf\n    HTTP_Server On\n    HTTP_Listen 0.0.0.0\n    HTTP_Port {{ .Values.metricsPort }}\n    # -- Setting up storage buffer on filesystem and slighty upping backlog mem_limit value.\n    storage.path {{ .Values.storage_buffer.path }}\n    storage.sync normal\n    storage.backlog.mem_limit 15M\n    Health_Check On\n"` |  |
 | config.inputs | string | `"[INPUT]\n    Name tail\n    Path /var/log/containers/*.log\n    # -- Excluding fluentbit logs from sending to ECK, along with gatekeeper-audit logs which are shipped by clusterAuditor.\n    Exclude_Path /var/log/containers/*fluent*.log,/var/log/containers/*gatekeeper-audit*.log\n    Parser containerd\n    Tag kube.*\n    Mem_Buf_Limit 50MB\n    Skip_Long_Lines On\n    storage.type filesystem\n\n[INPUT]\n    Name systemd\n    Tag host.*\n    Systemd_Filter _SYSTEMD_UNIT=kubelet.service\n    Read_From_Tail On\n    storage.type filesystem\n"` |  |
 | config.filters | string | `"[FILTER]\n    Name kubernetes\n    Match kube.*\n    Kube_CA_File /var/run/secrets/kubernetes.io/serviceaccount/ca.crt\n    Kube_Token_File /var/run/secrets/kubernetes.io/serviceaccount/token\n    Merge_Log On\n    Merge_Log_Key log_processed\n    K8S-Logging.Parser On\n    K8S-Logging.Exclude Off\n"` |  |
 | config.outputs | string | `"[OUTPUT]\n    Name es\n    Match kube.*\n    # -- Pointing to Elasticsearch service installed by ECK, based off EK name \"logging-ek\", update elasticsearch.name above to update.\n    Host {{ .Values.elasticsearch.name }}-es-http\n    HTTP_User elastic\n    HTTP_Passwd ${FLUENT_ELASTICSEARCH_PASSWORD}\n    Logstash_Format On\n    Retry_Limit False\n    Replace_Dots On\n    tls On\n    tls.verify On\n    tls.ca_file /etc/elasticsearch/certs/ca.crt\n    storage.total_limit_size {{ .Values.storage.total_limit_size }}\n\n[OUTPUT]\n    Name es\n    Match host.*\n    # -- Pointing to Elasticsearch service installed by ECK, based off EK name \"logging-ek\", update elasticsearch.name above to update.\n    Host {{ .Values.elasticsearch.name }}-es-http\n    HTTP_User elastic\n    HTTP_Passwd ${FLUENT_ELASTICSEARCH_PASSWORD}\n    Logstash_Format On\n    Logstash_Prefix node\n    Retry_Limit False\n    tls On\n    tls.verify On\n    tls.ca_file /etc/elasticsearch/certs/ca.crt\n    storage.total_limit_size {{ .Values.storage.total_limit_size }}\n"` |  |
