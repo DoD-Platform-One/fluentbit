@@ -73,7 +73,10 @@ additionalOutputs:
     # For other custom values, checkout the plugin link above
     # Example:
     #   role_arn: "custom_value"
-    additionalConfig: {}
+    additionalConfig:
+      total_file_size: 1M 
+      upload_timeout: 1m 
+      use_put_object: On
 
 
 # Also update extraVolumes + extraVolumeMounts section if updating storage_buffer.path
