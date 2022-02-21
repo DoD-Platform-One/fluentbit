@@ -3,6 +3,11 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+
+## [0.19.19-bb.1]
+### Added
+- Added `additionalOutputs.loki` and required template changes to simplify additional loki output
+
 ## [0.19.16-bb.3]
 ### Added
 - Added `additionalOutputs.fluentd` and required template changes to simplify additional fluentd output
