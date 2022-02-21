@@ -134,15 +134,16 @@ data:
     {{- with .Values.additionalOutputs.loki }}
     {{- if and .host .port }}
     [OUTPUT]
-        Name          loki
-        Match         kube.*
+        name          loki
+        match         kube.*
+        labels        job=fluentbit, mystream=$sub['stream'], container=$kubernetes['container_name'], pod=$kubernetes['pod_name']
         host          ${EXTERNAL_LOKI_HOST}
         port          ${EXTERNAL_LOKI_PORT}
+        auto_kubernetes_labels  on
         {{- if and .user .password }}
         http_user     ${EXTERNAL_LOKI_USER}
         http_passwd   ${EXTERNAL_LOKI_PASSWORD}
         {{- end }}
-        auto_kubernetes_labels  on
         Retry_Limit   False
         tls           {{ if .tls }}On{{ else }}Off{{ end }}
         tls.verify    {{ if and .tlsVerify .caCert }}On{{ else }}Off{{ end }}
@@ -159,17 +160,17 @@ data:
         {{- end }}
         {{- end }}
         {{- end }}
-
     [OUTPUT]
-        Name          loki
-        Match         host.*
+        name          loki
+        match         host.*
+        labels        job=fluentbit, mystream=$sub['stream'], container=$kubernetes['container_name'], pod=$kubernetes['pod_name']
         host          ${EXTERNAL_LOKI_HOST}
         port          ${EXTERNAL_LOKI_PORT}
+        auto_kubernetes_labels  on
         {{- if and .user .password }}
         http_user     ${EXTERNAL_LOKI_USER}
         http_passwd   ${EXTERNAL_LOKI_PASSWORD}
         {{- end }}
-        auto_kubernetes_labels  on
         Retry_Limit   False
         tls           {{ if .tls }}On{{ else }}Off{{ end }}
         tls.verify    {{ if and .tlsVerify .caCert }}On{{ else }}Off{{ end }}
@@ -185,7 +186,7 @@ data:
         {{ $key }} {{ $value }}
         {{- end }}
         {{- end }}
-        {{- end }}
+        {{- end }}    
     {{- end }}
     {{- end }}
 
