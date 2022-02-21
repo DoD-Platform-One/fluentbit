@@ -136,11 +136,10 @@ data:
     [OUTPUT]
         name          loki
         match         kube.*
-        labels        {job="fluent-bit"}
+        labels        job=fluentbit, mystream=$sub['stream'], container=$kubernetes['container_name'], pod=$kubernetes['pod_name']
         host          ${EXTERNAL_LOKI_HOST}
         port          ${EXTERNAL_LOKI_PORT}
-        line_format   json
-        BatchWait     1s
+        auto_kubernetes_labels  on
         {{- if and .user .password }}
         http_user     ${EXTERNAL_LOKI_USER}
         http_passwd   ${EXTERNAL_LOKI_PASSWORD}
