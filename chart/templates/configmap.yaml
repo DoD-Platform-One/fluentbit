@@ -136,10 +136,9 @@ data:
     [OUTPUT]
         name          loki
         match         kube.*
-        labels        job=fluentbit, container=$kubernetes['container_name'], pod=$kubernetes['pod_name'], namespace=$kubernetes['namespace_name'], node_name=$kubernetes['host']
+        labels        job=fluentbit, mystream=$sub['stream'], container=$kubernetes['container_name'], pod=$kubernetes['pod_name'], namespace=$kubernetes['namespace_name'], node_name=$kubernetes['host']
         host          ${EXTERNAL_LOKI_HOST}
         port          ${EXTERNAL_LOKI_PORT}
-        format        json_lines
         auto_kubernetes_labels on
         {{- if and .user .password }}
         http_user     ${EXTERNAL_LOKI_USER}
@@ -164,10 +163,9 @@ data:
     [OUTPUT]
         name          loki
         match         host.*
-        labels        job=fluentbit, container=$kubernetes['container_name'], pod=$kubernetes['pod_name'], namespace=$kubernetes['namespace_name'], node_name=$kubernetes['host']
+        labels        job=fluentbit, mystream=$sub['stream'], container=$kubernetes['container_name'], pod=$kubernetes['pod_name'], namespace=$kubernetes['namespace_name'], node_name=$kubernetes['host']
         host          ${EXTERNAL_LOKI_HOST}
         port          ${EXTERNAL_LOKI_PORT}
-        format        json_lines
         auto_kubernetes_labels on
         {{- if and .user .password }}
         http_user     ${EXTERNAL_LOKI_USER}
