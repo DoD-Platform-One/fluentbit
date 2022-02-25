@@ -187,7 +187,9 @@ data:
         {{- end }}
         {{- end }}
         {{- end }}    
-
+    {{- end }}
+    {{- end }}
+    
     {{- with .Values.additionalOutputs.s3 }}
     {{- if and .bucket .region }}
     [OUTPUT]
