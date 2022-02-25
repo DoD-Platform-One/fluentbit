@@ -68,6 +68,7 @@ containers:
       {{- if $additionalLoki }}
       - secretRef:
           name: external-loki-config
+      {{- end }}
       {{- if and $additionalS3 .Values.additionalOutputs.s3.existingSecret }}
       - secretRef:
           name: {{ .Values.additionalOutputs.s3.existingSecret }}
@@ -130,6 +131,7 @@ containers:
     {{- if and .Values.additionalOutputs.loki.tlsVerify .Values.additionalOutputs.loki.caCert }}
       - name: external-loki-ca-cert
         mountPath: /etc/external-loki/certs/
+    {{- end }}
     {{- if $additionalS3 }}
       - name: fluentbit-temp
         mountPath: /tmp/fluent-bit/
@@ -172,6 +174,7 @@ volumes:
   - name: external-loki-ca-cert
     secret:
       secretName: external-loki-ca-cert
+{{- end }}
 {{- if $additionalS3 }}
   - name: fluentbit-temp
     emptyDir: {}
