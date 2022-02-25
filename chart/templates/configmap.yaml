@@ -187,6 +187,42 @@ data:
         {{- end }}
         {{- end }}
         {{- end }}    
+
+    {{- with .Values.additionalOutputs.s3 }}
+    {{- if and .bucket .region }}
+    [OUTPUT]
+        Name          s3
+        Match         kube.*
+        bucket        {{ .bucket }}
+        region        {{ .region }}
+        Retry_Limit   False
+        {{- if .additionalConfig }}
+        {{- range $key, $value := .additionalConfig }}
+        {{- $preset := (list "Name" "Match" "bucket" "region" "Retry_Limit") }}
+        {{- if has $key $preset }}
+        {{- fail (printf "Cannot specify config option `%s`, Big Bang has set a default, please use `outputs` if you need to customize this value." $key) }}
+        {{- else }}
+        {{ $key }}     {{ $value }}
+        {{- end }}
+        {{- end }}
+        {{- end }}
+
+    [OUTPUT]
+        Name          s3
+        Match         host.*
+        bucket        {{ .bucket }}
+        region        {{ .region }}
+        Retry_Limit   False
+        {{- if .additionalConfig }}
+        {{- range $key, $value := .additionalConfig }}
+        {{- $preset := (list "Name" "Match" "bucket" "region" "Retry_Limit") }}
+        {{- if has $key $preset }}
+        {{- fail (printf "Cannot specify config option `%s`, Big Bang has set a default, please use `outputs` if you need to customize this value." $key) }}
+        {{- else }}
+        {{ $key }}     {{ $value }}
+        {{- end }}
+        {{- end }}
+        {{- end }}
     {{- end }}
     {{- end }}
 

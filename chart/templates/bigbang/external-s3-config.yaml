@@ -1,0 +1,15 @@
+{{- with .Values.additionalOutputs.s3 }}
+{{- if and .bucket .region .aws_access_key_id .aws_secret_access_key (not .existingSecret) }}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: external-s3-config
+  namespace: {{ $.Release.Namespace }}
+  labels:
+    {{- include "fluent-bit.labels" $ | nindent 4 }}
+type: Opaque
+data:
+  AWS_ACCESS_KEY_ID: {{ .aws_access_key_id | b64enc | quote }}
+  AWS_SECRET_ACCESS_KEY: {{ .aws_secret_access_key | b64enc | quote }}
+{{- end }}
+{{- end }}
