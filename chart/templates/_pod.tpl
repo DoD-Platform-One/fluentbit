@@ -49,7 +49,7 @@ containers:
   {{- end }}
   {{- $additionalElastic := (and .Values.additionalOutputs.elasticsearch.host .Values.additionalOutputs.elasticsearch.user .Values.additionalOutputs.elasticsearch.password .Values.additionalOutputs.elasticsearch.port) }}
   {{- $additionalFluentd := (and .Values.additionalOutputs.fluentd.host (or (and .Values.additionalOutputs.fluentd.user .Values.additionalOutputs.fluentd.password) .Values.additionalOutputs.fluentd.sharedKey) .Values.additionalOutputs.fluentd.port) }}
-  {{- $additionalS3 := (and .Values.additionalOutputs.s3.bucket .Values.additionalOutputs.s3.region .Values.additionalOutputs.s3.aws_access_key_id  .Values.additionalOutputs.s3.aws_secret_access_key) }}
+  {{- $additionalS3 := (and .Values.additionalOutputs.s3.bucket (or (and .Values.additionalOutputs.s3.region .Values.additionalOutputs.s3.aws_access_key_id) .Values.additionalOutputs.s3.existingSecret)  .Values.additionalOutputs.s3.aws_secret_access_key) }}
   {{- if or .Values.envFrom $additionalElastic $additionalFluentd $additionalS3 }}
     envFrom:
       {{- if .Values.envFrom }}
@@ -63,7 +63,10 @@ containers:
       - secretRef:
           name: external-fluentd-config
       {{- end }}
-      {{- if $additionalS3 }}
+      {{- if and $additionalS3 .Values.additionalOutputs.s3.existingSecret }}
+      - secretRef:
+          name: {{ .Values.additionalOutputs.s3.existingSecret }}
+      {{- else if $additionalS3 }}
       - secretRef:
           name: external-s3-config
       {{- end }}
