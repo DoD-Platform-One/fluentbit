@@ -8,7 +8,7 @@ metadata:
   labels:
     {{- include "fluent-bit.labels" $ | nindent 4 }}
 type: Opaque
-string:
+data:
   AWS_ACCESS_KEY_ID: {{ .aws_access_key_id | b64enc | quote }}
   AWS_SECRET_ACCESS_KEY: {{ .aws_secret_access_key | b64enc | quote }}
 {{- end }}
