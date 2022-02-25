@@ -63,7 +63,6 @@ additionalOutputs:
     # Example:
     #   Self_Hostname: "custom_value"
     additionalConfig: {}
-<<<<<<< HEAD
   loki:
     host: ""
     port: 3100
@@ -90,7 +89,6 @@ additionalOutputs:
     # Example:
     #   tenant_id: "custom_value"
     additionalConfig: {}
-=======
   s3:
     bucket: ""
     region: "us-east-1"
@@ -106,8 +104,7 @@ additionalOutputs:
       total_file_size: 1M 
       upload_timeout: 1m 
       use_put_object: On
-
->>>>>>> main
+      
 
 # Also update extraVolumes + extraVolumeMounts section if updating storage_buffer.path
 storage_buffer:
