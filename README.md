@@ -1,6 +1,6 @@
 # fluent-bit
 
-![Version: 0.19.19-bb.0](https://img.shields.io/badge/Version-0.19.19--bb.0-informational?style=flat-square) ![AppVersion: 1.8.12](https://img.shields.io/badge/AppVersion-1.8.12-informational?style=flat-square)
+![Version: 0.19.19-bb.1](https://img.shields.io/badge/Version-0.19.19--bb.1-informational?style=flat-square) ![AppVersion: 1.8.12](https://img.shields.io/badge/AppVersion-1.8.12-informational?style=flat-square)
 
 Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
 
@@ -55,6 +55,14 @@ helm install fluent-bit chart/
 | additionalOutputs.fluentd.tlsVerify | bool | `false` |  |
 | additionalOutputs.fluentd.caCert | string | `""` |  |
 | additionalOutputs.fluentd.additionalConfig | object | `{}` |  |
+| additionalOutputs.s3.bucket | string | `""` |  |
+| additionalOutputs.s3.region | string | `"us-east-1"` |  |
+| additionalOutputs.s3.aws_access_key_id | string | `""` |  |
+| additionalOutputs.s3.aws_secret_access_key | string | `""` |  |
+| additionalOutputs.s3.existingSecret | string | `""` |  |
+| additionalOutputs.s3.additionalConfig.total_file_size | string | `"1M"` |  |
+| additionalOutputs.s3.additionalConfig.upload_timeout | string | `"1m"` |  |
+| additionalOutputs.s3.additionalConfig.use_put_object | string | `"On"` |  |
 | storage_buffer.path | string | `"/var/log/flb-storage/"` |  |
 | storage.total_limit_size | string | `"10G"` |  |
 | kind | string | `"DaemonSet"` | DaemonSet or Deployment |

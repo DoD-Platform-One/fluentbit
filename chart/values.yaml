@@ -63,6 +63,21 @@ additionalOutputs:
     # Example:
     #   Self_Hostname: "custom_value"
     additionalConfig: {}
+  s3:
+    bucket: ""
+    region: "us-east-1"
+    aws_access_key_id: "" #checkout https://github.com/fluent/fluent-bit-docs/blob/master/administration/aws-credentials.md
+    aws_secret_access_key: ""
+    existingSecret: ""
+    # Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/s3
+    # Defaults are set for: Name, Match, bucket, region
+    # For other custom values, checkout the plugin link above
+    # Example:
+    #   role_arn: "custom_value"
+    additionalConfig:
+      total_file_size: 1M 
+      upload_timeout: 1m 
+      use_put_object: On
 
 
 # Also update extraVolumes + extraVolumeMounts section if updating storage_buffer.path
