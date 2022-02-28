@@ -1,0 +1,19 @@
+{{- with .Values.additionalOutputs.loki }}
+{{- if and .host .port }}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: external-loki-config
+  namespace: {{ $.Release.Namespace }}
+  labels:
+    {{- include "fluent-bit.labels" $ | nindent 4 }}
+type: Opaque
+stringData:
+  EXTERNAL_LOKI_HOST: {{ .host | quote }}
+  EXTERNAL_LOKI_PORT: {{ .port | quote }}
+  {{- if and .user .password }}
+  EXTERNAL_LOKI_USER: {{ .user | quote }}
+  EXTERNAL_LOKI_PASSWORD: {{ .password | quote }}
+  {{- end }}
+{{- end }}
+{{- end }}

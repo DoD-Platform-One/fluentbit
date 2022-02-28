@@ -1,0 +1,26 @@
+{{- with .Values.additionalOutputs.loki }}
+{{- $additionalLoki := (and .host .user) }}
+{{- if and  $additionalLoki $.Values.networkPolicies.enabled}}
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-external-loki-egress-fluentbit
+  namespace: {{ $.Release.Namespace }}
+spec:
+  egress:
+  - to:
+    - ipBlock:
+        cidr: 0.0.0.0/0
+        # ONLY Block requests to cloud metadata IP
+        except:
+        - 169.254.169.254/32
+    ports:
+    - port: {{ .port }}
+      protocol: TCP 
+  podSelector: 
+    matchLabels:
+      app.kubernetes.io/name: fluent-bit
+  policyTypes:
+  - Egress
+{{- end }}
+{{- end }}

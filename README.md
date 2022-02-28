@@ -1,6 +1,6 @@
 # fluent-bit
 
-![Version: 0.19.19-bb.1](https://img.shields.io/badge/Version-0.19.19--bb.1-informational?style=flat-square) ![AppVersion: 1.8.12](https://img.shields.io/badge/AppVersion-1.8.12-informational?style=flat-square)
+![Version: 0.19.19-bb.2](https://img.shields.io/badge/Version-0.19.19--bb.2-informational?style=flat-square) ![AppVersion: 1.8.12](https://img.shields.io/badge/AppVersion-1.8.12-informational?style=flat-square)
 
 Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
 
@@ -55,6 +55,14 @@ helm install fluent-bit chart/
 | additionalOutputs.fluentd.tlsVerify | bool | `false` |  |
 | additionalOutputs.fluentd.caCert | string | `""` |  |
 | additionalOutputs.fluentd.additionalConfig | object | `{}` |  |
+| additionalOutputs.loki.host | string | `""` |  |
+| additionalOutputs.loki.port | int | `3100` |  |
+| additionalOutputs.loki.user | string | `""` |  |
+| additionalOutputs.loki.password | string | `""` |  |
+| additionalOutputs.loki.tls | bool | `false` |  |
+| additionalOutputs.loki.tlsVerify | bool | `false` |  |
+| additionalOutputs.loki.caCert | string | `""` |  |
+| additionalOutputs.loki.additionalConfig | object | `{}` |  |
 | additionalOutputs.s3.bucket | string | `""` |  |
 | additionalOutputs.s3.region | string | `"us-east-1"` |  |
 | additionalOutputs.s3.aws_access_key_id | string | `""` |  |
