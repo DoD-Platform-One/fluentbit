@@ -25,7 +25,7 @@ annotations:
     - kind: changed
       description: "Update Fluent Bit image to v1.8.12."
   bigbang.dev/applicationVersions: |
-    - Fluent Bit: 1.8.12
+    - Fluent Bit: 1.8.13
 dependencies:
   - name: gluon
     version: 0.2.4
