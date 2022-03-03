@@ -12,10 +12,10 @@ Fluent Bit is a CNCF (Cloud Native Computing Foundation) subproject under the um
 
 ## How it works
 
-Fluent-bit mounts a hostPath volume at `/var/log` for each node in a cluster and the service tails each log it finds and sends to the configured output or set of outputs in the [values](../chart/values.yaml#L276). The default production setup of the package provided by Platform One is configured to use a [storage buffer](https://docs.fluentbit.io/manual/administration/buffering-and-storage#filesystem-buffering-to-the-rescue) to better keep track of the many logs a production kubernetes cluster will generate. The default output for fluent-bit within BigBang is Elasticsearch but fluent-bit has many [output plugins available](https://docs.fluentbit.io/manual/pipeline/outputs).
+Fluent-bit mounts a hostPath volume at `/var/log` for each node in a cluster and the service tails each log it finds and sends to the configured output or set of outputs in the [values](../chart/values.yaml#L276). The default production setup of the package provided by Platform One is configured to use a [storage buffer](https://docs.fluentbit.io/manual/administration/buffering-and-storage#filesystem-buffering-to-the-rescue) to better keep track of the many logs a production kubernetes cluster will generate. Recent changes to BigBang and this package mean no default output is configured but fluent-bit has many [output plugins available](https://docs.fluentbit.io/manual/pipeline/outputs). BigBang has the following configurations available:
+  - Loki enabled - loki additionalOutput configured for fluent-bit and `additionOutputs.disableDefault` set to true so no Elasticsearch specific output is configured
+  - Logging enabled - Elasticsearch (es) output configured for fluent-bit
+  - Please review the `additionalOutputs` section of the values and [README](../README.md) for other package-specific outputs.
 
 Please review the BigBang [Architecture Document](https://repo1.dso.mil/platform-one/big-bang/bigbang/-/blob/master/charter/packages/fluentbit/Architecture.md) for more information about it's role within BigBang.
 
-## Pre-Requisites
-
-An elasticsearch cluster must be running in order for the `DaemonSet` to become healthy.  You can use [BigBang](https://repo1.dso.mil/platform-one/big-bang/umbrella) or the standalone [Elasticsearch](https://repo1.dso.mil/platform-one/big-bang/apps/core/elasticsearch-kibana) chart.
