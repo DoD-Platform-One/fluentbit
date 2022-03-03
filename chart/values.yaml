@@ -1,116 +1,126 @@
 # BigBang specific values for fluent-bit.
 #
-# Also update secret ref in env section if updating elasticsearch release name
+# -- Configuration for Elasticsearch interaction
 elasticsearch:
-  name: logging-ek
+  # -- Name is only used at the BB level for host templating
+  name: ""
 
-# Only affects sidecar networkPolicy
+# -- Configuration for Istio interaction
 istio:
+  # -- Toggle currently only controls NetworkPolicies
   enabled: false
 
-# Additional Outputs for Big Bang
-# These are wrappers to simplify the config of outputs
-# Extends whatever is specified under the `outputs` values
+# -- Additional Outputs for Big Bang,
+# these are wrappers to simplify the config of outputs and
+# extend whatever is specified under the `outputs` values
 additionalOutputs:
-  # Option to disable the default elastic output configured under `outputs`
+  # -- Option to disable the default elastic output configured under `outputs`,
+  # this only works at the Big Bang chart level
   disableDefault: false
-  # Options to enable an additional elastic output
+  # -- Options to enable an additional elastic output
   elasticsearch:
     host: ""
     port: 9200
     user: "elastic"
     password: ""
-    # Toggle on TLS
+    # -- Toggle on TLS
     tls: true
-    # Verify TLS certificates, requires a caCert to be specified
+    # -- Verify TLS certificates, requires a caCert to be specified
     tlsVerify: false
-    # Full ca.crt
+    # -- Full ca.crt specified as multiline string, see example
     caCert: ""
     # caCert: |
     # /  -----BEGIN CERTIFICATE-----
     #   MIIE4jCCAsqgAwIBAgIBATANBgkqhkiG9w0BAQsFADARMQ8wDQYDVQQDEwZzZm8t
     #   Y2EwHhcNMTkxMjIwMDAxNjI1WhcNMjEwNjIwMDAxNjIxWjARMQ8wDQYDVQQDEwZz
     # /  -----END CERTIFICATE-----
-    # Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/elasticsearch
+    # -- Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/elasticsearch
+    additionalConfig: {}
     # Customer values are used for: Name, Host, Port, HTTP_User, HTTP_Passwd, tls, tls.verify, and tls.ca_file
     #   Specify these values with the above host, port, user, password, tls, tlsVerify, and caCert
     # Defaults are set for: Match, Logstash_Format, Logstash_Prefix, Retry_Limit, Retry_Limit
     #   Overriding these values is not supported here, use `outputs` if you do not want to use the defaults
     # Example:
     #   Buffer_Size: 8KB
-    additionalConfig: {}
+  # -- Options to enable a fluentd output
   fluentd:
     host: ""
     port: 24224
     user: ""
     password: ""
-    sharedKey: "" #overriden by username and password
-    # Toggle on TLS
+    # -- Overriden by username and password
+    sharedKey: ""
+    # -- Toggle on TLS
     tls: true
-    # Verify TLS certificates, requires a caCert to be specified
+    # -- Verify TLS certificates, requires a caCert to be specified
     tlsVerify: false
-    # Full ca.crt
+    # -- Full ca.crt specified as multiline string, see example
     caCert: ""
     # caCert: |
     # /  -----BEGIN CERTIFICATE-----
     #   MIIE4jCCAsqgAwIBAgIBATANBgkqhkiG9w0BAQsFADARMQ8wDQYDVQQDEwZzZm8t
     #   Y2EwHhcNMTkxMjIwMDAxNjI1WhcNMjEwNjIwMDAxNjIxWjARMQ8wDQYDVQQDEwZz
     # /  -----END CERTIFICATE-----
-    # Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/forward
+    # -- Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/forward
+    additionalConfig: {}
     # Customer values are used for: Time_as_Integer, Upstream, Tag, Send_options, Require_ack_response, Compress, Empty_Shared_Key, Self_Hostname, tls.debug, tls.crt_file, tls.key_file, tls.key_passwd
     #   Specify these values with the above host, port, user, password, tls, tlsVerify, and caCert
     # Defaults are set for: Name, Match, Host, Port, Username, Password, Shared_Key, tls, tls.verify, tls.ca_file
     # Example:
     #   Self_Hostname: "custom_value"
-    additionalConfig: {}
+  # -- Options to enable a loki output
   loki:
     host: ""
     port: 3100
-    # User and Password are optional - only required if running proxy in front of Loki
-    # See https://grafana.com/docs/loki/latest/operations/authentication/
+    # -- User and Password are optional - only required if running proxy in front of Loki,
+    # see https://grafana.com/docs/loki/latest/operations/authentication/
     user: ""
     password: ""
-    # Toggle on TLS - disabled by default to support in cluster Loki
+    # -- Toggle on TLS - disabled by default to support in cluster Loki
     tls: false
-    # Verify TLS certificates, requires a caCert to be specified
+    # -- Verify TLS certificates, requires a caCert to be specified
     tlsVerify: false
-    # Full ca.crt
+    # -- Full ca.crt specified as multiline string, see example
     caCert: ""
     # caCert: |
     # /  -----BEGIN CERTIFICATE-----
     #   MIIE4jCCAsqgAwIBAgIBATANBgkqhkiG9w0BAQsFADARMQ8wDQYDVQQDEwZzZm8t
     #   Y2EwHhcNMTkxMjIwMDAxNjI1WhcNMjEwNjIwMDAxNjIxWjARMQ8wDQYDVQQDEwZz
     # /  -----END CERTIFICATE-----
-    # Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/loki
+    # -- Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/loki
+    additionalConfig: {}
     # Customer values are used for: host, post, http_user, http_passwd, tls, tls.verify, and tls.ca_file
     #   Specify these values with the above host, port, user, password, tls, tlsVerify, and caCert
     # Defaults are provided for Name, Match, Retry_Limit, and auto_kubernetes_labels
     #   Overriding these values is not supported here, use `outputs` if you do not want to use the defaults
     # Example:
     #   tenant_id: "custom_value"
-    additionalConfig: {}
+  # -- Options to enable a S3 output
   s3:
     bucket: ""
     region: "us-east-1"
-    aws_access_key_id: "" #checkout https://github.com/fluent/fluent-bit-docs/blob/master/administration/aws-credentials.md
+    aws_access_key_id: ""
     aws_secret_access_key: ""
+    # -- Reference an existing secret with your access and secret key,
+    # must contain key values pairs for AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
     existingSecret: ""
-    # Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/s3
-    # Defaults are set for: Name, Match, bucket, region
-    # For other custom values, checkout the plugin link above
-    # Example:
-    #   role_arn: "custom_value"
+    # -- Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/s3
     additionalConfig:
       total_file_size: 1M 
       upload_timeout: 1m 
       use_put_object: On
-      
+    # Defaults are set for: Name, Match, bucket, region
+    # For other custom values, checkout the plugin link above
+    # Example:
+    #   role_arn: "custom_value"
 
-# Also update extraVolumes + extraVolumeMounts section if updating storage_buffer.path
+# -- Options to configure hostPath mounted storage buffer for production use
+# Specified in fluentbit service configuration section below
+# see https://docs.fluentbit.io/manual/administration/buffering-and-storage
 storage_buffer:
   path: /var/log/flb-storage/
   
-# Limits the number of Chunks that exists in the file system for a certain logical output destination. 
+# -- Limits the number of Chunks that exists in the file system for a certain logical output destination. 
 # If one destination reaches the storage.total_limit_size limit, the oldest Chunk from the queue for that logical output destination will be discarded.
 # see https://docs.fluentbit.io/manual/administration/buffering-and-storage
 storage:
@@ -340,14 +350,7 @@ podLabels: {}
 
 priorityClassName: ""
 
-env:
-# -- Pointing to specific Big Bang ECK stack "logging-ek" elastic user for auth.
-  - name: FLUENT_ELASTICSEARCH_PASSWORD
-    valueFrom:
-      secretKeyRef:
-        name: logging-ek-es-elastic-user
-        key: elastic
-
+env: {}
 
 envFrom: []
 
@@ -373,18 +376,11 @@ extraVolumes:
       path: /var/log/flb-storage/
       type: DirectoryOrCreate
     name: flb-storage
-# -- Mount Logging-ek-es-http-certs-public for fluent-bit for TLS verification to elasticsearch, recommended for production systems
-  - secret:
-      secretName: logging-ek-es-http-certs-public
-    name: elasticsearch-certs
 
 extraVolumeMounts:
 # -- Mount /var/log/flb-storage/ for the storage buffer, recommended for production systems.
   - mountPath: /var/log/flb-storage/
     name: flb-storage
-# -- Mount /etc/elasticsearch/certs/ for fluent-bit for TLS verification to elasticsearch, recommended for production systems.
-  - mountPath: /etc/elasticsearch/certs/
-    name: elasticsearch-certs
 
 updateStrategy: {}
 #   type: RollingUpdate
@@ -452,36 +448,23 @@ config:
         K8S-Logging.Exclude Off
 
   ## https://docs.fluentbit.io/manual/pipeline/outputs
-  outputs: |
-    [OUTPUT]
-        Name es
-        Match kube.*
-        # -- Pointing to Elasticsearch service installed by ECK, based off EK name "logging-ek", update elasticsearch.name above to update.
-        Host {{ .Values.elasticsearch.name }}-es-http
-        HTTP_User elastic
-        HTTP_Passwd ${FLUENT_ELASTICSEARCH_PASSWORD}
-        Logstash_Format On
-        Retry_Limit False
-        Replace_Dots On
-        tls On
-        tls.verify On
-        tls.ca_file /etc/elasticsearch/certs/ca.crt
-        storage.total_limit_size {{ .Values.storage.total_limit_size }}
-
-    [OUTPUT]
-        Name es
-        Match host.*
-        # -- Pointing to Elasticsearch service installed by ECK, based off EK name "logging-ek", update elasticsearch.name above to update.
-        Host {{ .Values.elasticsearch.name }}-es-http
-        HTTP_User elastic
-        HTTP_Passwd ${FLUENT_ELASTICSEARCH_PASSWORD}
-        Logstash_Format On
-        Logstash_Prefix node
-        Retry_Limit False
-        tls On
-        tls.verify On
-        tls.ca_file /etc/elasticsearch/certs/ca.crt
-        storage.total_limit_size {{ .Values.storage.total_limit_size }}
+  outputs: ""
+  # Example:
+  # outputs: |
+  #   [OUTPUT]
+  #       Name es
+  #       Match kube.*
+  #       # -- Pointing to Elasticsearch service installed by ECK, based off EK name "logging-ek", update elasticsearch.name above to update.
+  #       Host {{ .Values.elasticsearch.name }}-es-http
+  #       HTTP_User elastic
+  #       HTTP_Passwd ${FLUENT_ELASTICSEARCH_PASSWORD}
+  #       Logstash_Format On
+  #       Retry_Limit False
+  #       Replace_Dots On
+  #       tls On
+  #       tls.verify On
+  #       tls.ca_file /etc/elasticsearch/certs/ca.crt
+  #       storage.total_limit_size {{ .Values.storage.total_limit_size }}
 
   ## https://docs.fluentbit.io/manual/pipeline/parsers
   customParsers: |
@@ -606,12 +589,21 @@ initContainers: []
 #     command: ['kubectl', 'version']
 
 logLevel: info
+
+# -- Toggle for Openshift, currently only controls NetworkPolicy changes
 openshift: false
 
+# -- Values used for Big Bang CI testing
 bbtests:
+  # -- Toggles test manifests
   enabled: false
+  # Values used for Big Bang script based testing
   scripts:
+    # -- Image used to run script tests, must include curl and jq
     image: registry1.dso.mil/ironbank/stedolan/jq:1.6
+    # -- Envs that are passed into the script runner pod
     envs:
+      # -- Hostname/port to contact Fluentbit
       fluent_host: "http://{{ include \"fluent-bit.fullname\" . }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.service.port }}"
+      # -- Version that should be running
       desired_version: "{{ .Values.image.tag }}"

@@ -1,6 +1,6 @@
 # fluent-bit
 
-![Version: 0.19.19-bb.2](https://img.shields.io/badge/Version-0.19.19--bb.2-informational?style=flat-square) ![AppVersion: 1.8.12](https://img.shields.io/badge/AppVersion-1.8.12-informational?style=flat-square)
+![Version: 0.19.19-bb.3](https://img.shields.io/badge/Version-0.19.19--bb.3-informational?style=flat-square) ![AppVersion: 1.8.12](https://img.shields.io/badge/AppVersion-1.8.12-informational?style=flat-square)
 
 Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
 
@@ -35,44 +35,34 @@ helm install fluent-bit chart/
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| elasticsearch.name | string | `"logging-ek"` |  |
-| istio.enabled | bool | `false` |  |
-| additionalOutputs.disableDefault | bool | `false` |  |
-| additionalOutputs.elasticsearch.host | string | `""` |  |
-| additionalOutputs.elasticsearch.port | int | `9200` |  |
-| additionalOutputs.elasticsearch.user | string | `"elastic"` |  |
-| additionalOutputs.elasticsearch.password | string | `""` |  |
-| additionalOutputs.elasticsearch.tls | bool | `true` |  |
-| additionalOutputs.elasticsearch.tlsVerify | bool | `false` |  |
-| additionalOutputs.elasticsearch.caCert | string | `""` |  |
-| additionalOutputs.elasticsearch.additionalConfig | object | `{}` |  |
-| additionalOutputs.fluentd.host | string | `""` |  |
-| additionalOutputs.fluentd.port | int | `24224` |  |
-| additionalOutputs.fluentd.user | string | `""` |  |
-| additionalOutputs.fluentd.password | string | `""` |  |
-| additionalOutputs.fluentd.sharedKey | string | `""` |  |
-| additionalOutputs.fluentd.tls | bool | `true` |  |
-| additionalOutputs.fluentd.tlsVerify | bool | `false` |  |
-| additionalOutputs.fluentd.caCert | string | `""` |  |
-| additionalOutputs.fluentd.additionalConfig | object | `{}` |  |
-| additionalOutputs.loki.host | string | `""` |  |
-| additionalOutputs.loki.port | int | `3100` |  |
-| additionalOutputs.loki.user | string | `""` |  |
-| additionalOutputs.loki.password | string | `""` |  |
-| additionalOutputs.loki.tls | bool | `false` |  |
-| additionalOutputs.loki.tlsVerify | bool | `false` |  |
-| additionalOutputs.loki.caCert | string | `""` |  |
-| additionalOutputs.loki.additionalConfig | object | `{}` |  |
-| additionalOutputs.s3.bucket | string | `""` |  |
-| additionalOutputs.s3.region | string | `"us-east-1"` |  |
-| additionalOutputs.s3.aws_access_key_id | string | `""` |  |
-| additionalOutputs.s3.aws_secret_access_key | string | `""` |  |
-| additionalOutputs.s3.existingSecret | string | `""` |  |
-| additionalOutputs.s3.additionalConfig.total_file_size | string | `"1M"` |  |
-| additionalOutputs.s3.additionalConfig.upload_timeout | string | `"1m"` |  |
-| additionalOutputs.s3.additionalConfig.use_put_object | string | `"On"` |  |
-| storage_buffer.path | string | `"/var/log/flb-storage/"` |  |
-| storage.total_limit_size | string | `"10G"` |  |
+| elasticsearch | object | `{"name":""}` | Configuration for Elasticsearch interaction |
+| elasticsearch.name | string | `""` | Name is only used at the BB level for host templating |
+| istio | object | `{"enabled":false}` | Configuration for Istio interaction |
+| istio.enabled | bool | `false` | Toggle currently only controls NetworkPolicies |
+| additionalOutputs | object | `{"disableDefault":false,"elasticsearch":{"additionalConfig":{},"caCert":"","host":"","password":"","port":9200,"tls":true,"tlsVerify":false,"user":"elastic"},"fluentd":{"additionalConfig":{},"caCert":"","host":"","password":"","port":24224,"sharedKey":"","tls":true,"tlsVerify":false,"user":""},"loki":{"additionalConfig":{},"caCert":"","host":"","password":"","port":3100,"tls":false,"tlsVerify":false,"user":""},"s3":{"additionalConfig":{"total_file_size":"1M","upload_timeout":"1m","use_put_object":"On"},"aws_access_key_id":"","aws_secret_access_key":"","bucket":"","existingSecret":"","region":"us-east-1"}}` | Additional Outputs for Big Bang, these are wrappers to simplify the config of outputs and extend whatever is specified under the `outputs` values |
+| additionalOutputs.disableDefault | bool | `false` | Option to disable the default elastic output configured under `outputs`, this only works at the Big Bang chart level |
+| additionalOutputs.elasticsearch | object | `{"additionalConfig":{},"caCert":"","host":"","password":"","port":9200,"tls":true,"tlsVerify":false,"user":"elastic"}` | Options to enable an additional elastic output |
+| additionalOutputs.elasticsearch.tls | bool | `true` | Toggle on TLS |
+| additionalOutputs.elasticsearch.tlsVerify | bool | `false` | Verify TLS certificates, requires a caCert to be specified |
+| additionalOutputs.elasticsearch.caCert | string | `""` | Full ca.crt specified as multiline string, see example |
+| additionalOutputs.elasticsearch.additionalConfig | object | `{}` | Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/elasticsearch |
+| additionalOutputs.fluentd | object | `{"additionalConfig":{},"caCert":"","host":"","password":"","port":24224,"sharedKey":"","tls":true,"tlsVerify":false,"user":""}` | Options to enable a fluentd output |
+| additionalOutputs.fluentd.sharedKey | string | `""` | Overriden by username and password |
+| additionalOutputs.fluentd.tls | bool | `true` | Toggle on TLS |
+| additionalOutputs.fluentd.tlsVerify | bool | `false` | Verify TLS certificates, requires a caCert to be specified |
+| additionalOutputs.fluentd.caCert | string | `""` | Full ca.crt specified as multiline string, see example |
+| additionalOutputs.fluentd.additionalConfig | object | `{}` | Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/forward |
+| additionalOutputs.loki | object | `{"additionalConfig":{},"caCert":"","host":"","password":"","port":3100,"tls":false,"tlsVerify":false,"user":""}` | Options to enable a loki output |
+| additionalOutputs.loki.user | string | `""` | User and Password are optional - only required if running proxy in front of Loki, see https://grafana.com/docs/loki/latest/operations/authentication/ |
+| additionalOutputs.loki.tls | bool | `false` | Toggle on TLS - disabled by default to support in cluster Loki |
+| additionalOutputs.loki.tlsVerify | bool | `false` | Verify TLS certificates, requires a caCert to be specified |
+| additionalOutputs.loki.caCert | string | `""` | Full ca.crt specified as multiline string, see example |
+| additionalOutputs.loki.additionalConfig | object | `{}` | Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/loki |
+| additionalOutputs.s3 | object | `{"additionalConfig":{"total_file_size":"1M","upload_timeout":"1m","use_put_object":"On"},"aws_access_key_id":"","aws_secret_access_key":"","bucket":"","existingSecret":"","region":"us-east-1"}` | Options to enable a S3 output |
+| additionalOutputs.s3.existingSecret | string | `""` | Reference an existing secret with your access and secret key, must contain key values pairs for AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY |
+| additionalOutputs.s3.additionalConfig | object | `{"total_file_size":"1M","upload_timeout":"1m","use_put_object":"On"}` | Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/s3 |
+| storage_buffer | object | `{"path":"/var/log/flb-storage/"}` | Options to configure hostPath mounted storage buffer for production use Specified in fluentbit service configuration section below see https://docs.fluentbit.io/manual/administration/buffering-and-storage |
+| storage | object | `{"total_limit_size":"10G"}` | Limits the number of Chunks that exists in the file system for a certain logical output destination.  If one destination reaches the storage.total_limit_size limit, the oldest Chunk from the queue for that logical output destination will be discarded. see https://docs.fluentbit.io/manual/administration/buffering-and-storage |
 | kind | string | `"DaemonSet"` | DaemonSet or Deployment |
 | replicaCount | int | `1` | Only applicable if kind=Deployment |
 | image.repository | string | `"registry1.dso.mil/ironbank/opensource/fluent/fluent-bit"` |  |
@@ -141,18 +131,14 @@ helm install fluent-bit chart/
 | podAnnotations | object | `{}` |  |
 | podLabels | object | `{}` |  |
 | priorityClassName | string | `""` |  |
-| env[0] | object | `{"name":"FLUENT_ELASTICSEARCH_PASSWORD","valueFrom":{"secretKeyRef":{"key":"elastic","name":"logging-ek-es-elastic-user"}}}` | Pointing to specific Big Bang ECK stack "logging-ek" elastic user for auth. |
+| env | object | `{}` |  |
 | envFrom | list | `[]` |  |
 | extraContainers | list | `[]` |  |
 | flush | int | `1` |  |
 | metricsPort | int | `2020` |  |
 | extraPorts | list | `[]` |  |
 | extraVolumes[0] | object | `{"hostPath":{"path":"/var/log/flb-storage/","type":"DirectoryOrCreate"},"name":"flb-storage"}` | Mount /var/log/flb-storage/ for the storage buffer, recommended for production systems. |
-| extraVolumes[1].secret.secretName | string | `"logging-ek-es-http-certs-public"` |  |
-| extraVolumes[1].name | string | `"elasticsearch-certs"` |  |
 | extraVolumeMounts[0] | object | `{"mountPath":"/var/log/flb-storage/","name":"flb-storage"}` | Mount /var/log/flb-storage/ for the storage buffer, recommended for production systems. |
-| extraVolumeMounts[1].mountPath | string | `"/etc/elasticsearch/certs/"` |  |
-| extraVolumeMounts[1].name | string | `"elasticsearch-certs"` |  |
 | updateStrategy | object | `{}` |  |
 | existingConfigMap | string | `""` |  |
 | networkPolicy.enabled | bool | `false` |  |
@@ -160,7 +146,7 @@ helm install fluent-bit chart/
 | config.service | string | `"[SERVICE]\n    Daemon Off\n    Flush {{ .Values.flush }}\n    Log_Level {{ .Values.logLevel }}\n    Parsers_File parsers.conf\n    Parsers_File custom_parsers.conf\n    HTTP_Server On\n    HTTP_Listen 0.0.0.0\n    HTTP_Port {{ .Values.metricsPort }}\n    # -- Setting up storage buffer on filesystem and slighty upping backlog mem_limit value.\n    storage.path {{ .Values.storage_buffer.path }}\n    storage.sync normal\n    storage.backlog.mem_limit 15M\n    Health_Check On\n"` |  |
 | config.inputs | string | `"[INPUT]\n    Name tail\n    Path /var/log/containers/*.log\n    # -- Excluding fluentbit logs from sending to ECK, along with gatekeeper-audit logs which are shipped by clusterAuditor.\n    Exclude_Path /var/log/containers/*fluent*.log,/var/log/containers/*gatekeeper-audit*.log\n    Parser containerd\n    Tag kube.*\n    Mem_Buf_Limit 50MB\n    Skip_Long_Lines On\n    storage.type filesystem\n\n[INPUT]\n    Name systemd\n    Tag host.*\n    Systemd_Filter _SYSTEMD_UNIT=kubelet.service\n    Read_From_Tail On\n    storage.type filesystem\n"` |  |
 | config.filters | string | `"[FILTER]\n    Name kubernetes\n    Match kube.*\n    Kube_CA_File /var/run/secrets/kubernetes.io/serviceaccount/ca.crt\n    Kube_Token_File /var/run/secrets/kubernetes.io/serviceaccount/token\n    Merge_Log On\n    Merge_Log_Key log_processed\n    K8S-Logging.Parser On\n    K8S-Logging.Exclude Off\n"` |  |
-| config.outputs | string | `"[OUTPUT]\n    Name es\n    Match kube.*\n    # -- Pointing to Elasticsearch service installed by ECK, based off EK name \"logging-ek\", update elasticsearch.name above to update.\n    Host {{ .Values.elasticsearch.name }}-es-http\n    HTTP_User elastic\n    HTTP_Passwd ${FLUENT_ELASTICSEARCH_PASSWORD}\n    Logstash_Format On\n    Retry_Limit False\n    Replace_Dots On\n    tls On\n    tls.verify On\n    tls.ca_file /etc/elasticsearch/certs/ca.crt\n    storage.total_limit_size {{ .Values.storage.total_limit_size }}\n\n[OUTPUT]\n    Name es\n    Match host.*\n    # -- Pointing to Elasticsearch service installed by ECK, based off EK name \"logging-ek\", update elasticsearch.name above to update.\n    Host {{ .Values.elasticsearch.name }}-es-http\n    HTTP_User elastic\n    HTTP_Passwd ${FLUENT_ELASTICSEARCH_PASSWORD}\n    Logstash_Format On\n    Logstash_Prefix node\n    Retry_Limit False\n    tls On\n    tls.verify On\n    tls.ca_file /etc/elasticsearch/certs/ca.crt\n    storage.total_limit_size {{ .Values.storage.total_limit_size }}\n"` |  |
+| config.outputs | string | `""` |  |
 | config.customParsers | string | `"[PARSER]\n    Name docker_no_time\n    Format json\n    Time_Keep Off\n    Time_Key time\n    Time_Format %Y-%m-%dT%H:%M:%S.%L\n\n[PARSER]\n    Name containerd\n    Format regex\n    Regex ^(?<time>[^ ]+) (?<stream>stdout|stderr) (?<logtag>[^ ]*) (?<log>.*)$\n    Time_Key time\n    Time_Format %Y-%m-%dT%H:%M:%S.%L%z\n    Time_Keep On\n\n[PARSER]\n    Name   apache\n    Format regex\n    Regex  ^(?<host>[^ ]*) [^ ]* (?<user>[^ ]*) \\[(?<time>[^\\]]*)\\] \"(?<method>\\S+)(?: +(?<path>[^\\\"]*?)(?: +\\S*)?)?\" (?<code>[^ ]*) (?<size>[^ ]*)(?: \"(?<referer>[^\\\"]*)\" \"(?<agent>[^\\\"]*)\")?$\n    Time_Key time\n    Time_Format %d/%b/%Y:%H:%M:%S %z\n\n[PARSER]\n    Name   apache2\n    Format regex\n    Regex  ^(?<host>[^ ]*) [^ ]* (?<user>[^ ]*) \\[(?<time>[^\\]]*)\\] \"(?<method>\\S+)(?: +(?<path>[^ ]*) +\\S*)?\" (?<code>[^ ]*) (?<size>[^ ]*)(?: \"(?<referer>[^\\\"]*)\" \"(?<agent>[^\\\"]*)\")?$\n    Time_Key time\n    Time_Format %d/%b/%Y:%H:%M:%S %z\n\n[PARSER]\n    Name   apache_error\n    Format regex\n    Regex  ^\\[[^ ]* (?<time>[^\\]]*)\\] \\[(?<level>[^\\]]*)\\](?: \\[pid (?<pid>[^\\]]*)\\])?( \\[client (?<client>[^\\]]*)\\])? (?<message>.*)$\n\n[PARSER]\n    Name   nginx\n    Format regex\n    Regex ^(?<remote>[^ ]*) (?<host>[^ ]*) (?<user>[^ ]*) \\[(?<time>[^\\]]*)\\] \"(?<method>\\S+)(?: +(?<path>[^\\\"]*?)(?: +\\S*)?)?\" (?<code>[^ ]*) (?<size>[^ ]*)(?: \"(?<referer>[^\\\"]*)\" \"(?<agent>[^\\\"]*)\")?$\n    Time_Key time\n    Time_Format %d/%b/%Y:%H:%M:%S %z\n\n[PARSER]\n    Name   json\n    Format json\n    Time_Key time\n    Time_Format %d/%b/%Y:%H:%M:%S %z\n\n[PARSER]\n    Name        docker\n    Format      json\n    Time_Key    time\n    Time_Format %Y-%m-%dT%H:%M:%S.%L\n    Time_Keep   On\n\n[PARSER]\n    Name        syslog\n    Format      regex\n    Regex       ^\\<(?<pri>[0-9]+)\\>(?<time>[^ ]* {1,2}[^ ]* [^ ]*) (?<host>[^ ]*) (?<ident>[a-zA-Z0-9_\\/\\.\\-]*)(?:\\[(?<pid>[0-9]+)\\])?(?:[^\\:]*\\:)? *(?<message>.*)$\n    Time_Key    time\n    Time_Format %b %d %H:%M:%S\n"` |  |
 | config.extraFiles | object | `{}` |  |
 | volumeMounts[0].name | string | `"config"` |  |
@@ -188,11 +174,13 @@ helm install fluent-bit chart/
 | command | list | `[]` |  |
 | initContainers | list | `[]` |  |
 | logLevel | string | `"info"` |  |
-| openshift | bool | `false` |  |
-| bbtests.enabled | bool | `false` |  |
-| bbtests.scripts.image | string | `"registry1.dso.mil/ironbank/stedolan/jq:1.6"` |  |
-| bbtests.scripts.envs.fluent_host | string | `"http://{{ include \"fluent-bit.fullname\" . }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.service.port }}"` |  |
-| bbtests.scripts.envs.desired_version | string | `"{{ .Values.image.tag }}"` |  |
+| openshift | bool | `false` | Toggle for Openshift, currently only controls NetworkPolicy changes |
+| bbtests | object | `{"enabled":false,"scripts":{"envs":{"desired_version":"{{ .Values.image.tag }}","fluent_host":"http://{{ include \"fluent-bit.fullname\" . }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.service.port }}"},"image":"registry1.dso.mil/ironbank/stedolan/jq:1.6"}}` | Values used for Big Bang CI testing |
+| bbtests.enabled | bool | `false` | Toggles test manifests |
+| bbtests.scripts.image | string | `"registry1.dso.mil/ironbank/stedolan/jq:1.6"` | Image used to run script tests, must include curl and jq |
+| bbtests.scripts.envs | object | `{"desired_version":"{{ .Values.image.tag }}","fluent_host":"http://{{ include \"fluent-bit.fullname\" . }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.service.port }}"}` | Envs that are passed into the script runner pod |
+| bbtests.scripts.envs.fluent_host | string | `"http://{{ include \"fluent-bit.fullname\" . }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.service.port }}"` | Hostname/port to contact Fluentbit |
+| bbtests.scripts.envs.desired_version | string | `"{{ .Values.image.tag }}"` | Version that should be running |
 
 ## Contributing
 
