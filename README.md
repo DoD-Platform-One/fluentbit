@@ -35,7 +35,6 @@ helm install fluent-bit chart/
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| elasticsearch | object | `{"name":""}` | Configuration for Elasticsearch interaction |
 | elasticsearch.name | string | `""` | Name is only used at the BB level for host templating |
 | istio | object | `{"enabled":false}` | Configuration for Istio interaction |
 | istio.enabled | bool | `false` | Toggle currently only controls NetworkPolicies |
@@ -45,19 +44,16 @@ helm install fluent-bit chart/
 | additionalOutputs.elasticsearch.tls | bool | `true` | Toggle on TLS |
 | additionalOutputs.elasticsearch.tlsVerify | bool | `false` | Verify TLS certificates, requires a caCert to be specified |
 | additionalOutputs.elasticsearch.caCert | string | `""` | Full ca.crt specified as multiline string, see example |
-| additionalOutputs.elasticsearch.additionalConfig | object | `{}` | Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/elasticsearch |
 | additionalOutputs.fluentd | object | `{"additionalConfig":{},"caCert":"","host":"","password":"","port":24224,"sharedKey":"","tls":true,"tlsVerify":false,"user":""}` | Options to enable a fluentd output |
 | additionalOutputs.fluentd.sharedKey | string | `""` | Overriden by username and password |
 | additionalOutputs.fluentd.tls | bool | `true` | Toggle on TLS |
 | additionalOutputs.fluentd.tlsVerify | bool | `false` | Verify TLS certificates, requires a caCert to be specified |
 | additionalOutputs.fluentd.caCert | string | `""` | Full ca.crt specified as multiline string, see example |
-| additionalOutputs.fluentd.additionalConfig | object | `{}` | Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/forward |
 | additionalOutputs.loki | object | `{"additionalConfig":{},"caCert":"","host":"","password":"","port":3100,"tls":false,"tlsVerify":false,"user":""}` | Options to enable a loki output |
 | additionalOutputs.loki.user | string | `""` | User and Password are optional - only required if running proxy in front of Loki, see https://grafana.com/docs/loki/latest/operations/authentication/ |
 | additionalOutputs.loki.tls | bool | `false` | Toggle on TLS - disabled by default to support in cluster Loki |
 | additionalOutputs.loki.tlsVerify | bool | `false` | Verify TLS certificates, requires a caCert to be specified |
 | additionalOutputs.loki.caCert | string | `""` | Full ca.crt specified as multiline string, see example |
-| additionalOutputs.loki.additionalConfig | object | `{}` | Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/loki |
 | additionalOutputs.s3 | object | `{"additionalConfig":{"total_file_size":"1M","upload_timeout":"1m","use_put_object":"On"},"aws_access_key_id":"","aws_secret_access_key":"","bucket":"","existingSecret":"","region":"us-east-1"}` | Options to enable a S3 output |
 | additionalOutputs.s3.existingSecret | string | `""` | Reference an existing secret with your access and secret key, must contain key values pairs for AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY |
 | additionalOutputs.s3.additionalConfig | object | `{"total_file_size":"1M","upload_timeout":"1m","use_put_object":"On"}` | Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/s3 |
