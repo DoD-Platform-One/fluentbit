@@ -23,7 +23,7 @@ maintainers:
 annotations:
   artifacthub.io/changes: |
     - kind: changed
-      description: "Update Fluent Bit image to v1.8.12."
+      description: "Update Fluent Bit image to v1.8.13."
   bigbang.dev/applicationVersions: |
     - Fluent Bit: 1.8.13
 dependencies:
