@@ -381,6 +381,7 @@ extraVolumeMounts:
 # -- Mount /var/log/flb-storage/ for the storage buffer, recommended for production systems.
   - mountPath: /var/log/flb-storage/
     name: flb-storage
+    readOnly: false
 
 updateStrategy: {}
 #   type: RollingUpdate
@@ -562,6 +563,7 @@ daemonSetVolumes:
 daemonSetVolumeMounts:
   - name: varlog
     mountPath: /var/log
+    readOnly: true
   - name: varlibdockercontainers
     mountPath: /var/lib/docker/containers
     readOnly: true
