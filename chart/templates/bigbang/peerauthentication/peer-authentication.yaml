@@ -10,4 +10,10 @@ spec:
   selector:
     matchLabels:
       {{- include "fluent-bit.selectorLabels" . | nindent 6 }}
+  {{- if and (.Capabilities.APIVersions.Has "monitoring.coreos.com/v1") .Values.serviceMonitor.enabled }}
+  portLevelMtls:
+    # Port number (in quotes due to Flux getting angry about a number as a yaml key)
+    "{{ .Values.service.port }}":
+      mode: PERMISSIVE
+  {{- end }}
 {{- end }}
