@@ -1,0 +1,19 @@
+{{- if .Values.istio.enabled  }}
+apiVersion: "security.istio.io/v1beta1"
+kind: PeerAuthentication
+metadata:
+  name: fluentbit
+  namespace: {{ .Release.Namespace }}
+spec:
+  mtls:
+    mode: {{ .Values.istio.mtls.mode }}
+  selector:
+    matchLabels:
+      {{- include "fluent-bit.selectorLabels" . | nindent 6 }}
+  {{- if and (eq .Values.istio.mtls.mode "STRICT") (.Capabilities.APIVersions.Has "monitoring.coreos.com/v1") .Values.serviceMonitor.enabled }}
+  # Monitoring exception
+  portLevelMtls:
+    "{{ .Values.service.port }}":
+      mode: PERMISSIVE
+  {{- end }}
+{{- end }}
