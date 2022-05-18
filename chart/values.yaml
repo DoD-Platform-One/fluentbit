@@ -428,7 +428,7 @@ config:
         Name tail
         Path /var/log/containers/*.log
         # -- Excluding fluentbit logs from sending to ECK, along with gatekeeper-audit logs which are shipped by clusterAuditor.
-        Exclude_Path /var/log/containers/*fluent*.log,/var/log/containers/*gatekeeper-audit*.log
+        Exclude_Path /var/log/containers/*fluent*.log
         Parser containerd
         Tag kube.*
         Mem_Buf_Limit 50MB
