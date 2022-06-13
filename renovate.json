@@ -16,12 +16,19 @@
     ],
     "regexManagers": [
         {
+            "fileMatch": ["^chart/values\\.yaml$"],
+            "matchStrings": [
+              "^\\s+image:\\s+(?<depName>.+):(?<currentValue>.+)"
+            ],
+            "datasourceTemplate": "docker"
+        },
+        {
         "fileMatch": ["^chart/Chart\\.yaml$"],
         "matchStrings": [
-            "- Fluent Bit:\\s+(?<currentValue>.+)"
+            "- Fluent Bit:\\s+(?<currentValue>.+)",
+            "appVersion:\\s+(?<currentValue>.+)"            
         ],
-        "registryUrlTemplate": "https://registry1.dso.mil",
-        "depNameTemplate": "ironbank/opensource/fluent/fluent-bit",
+        "depNameTemplate": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit",
         "datasourceTemplate": "docker"
         }
     ],
