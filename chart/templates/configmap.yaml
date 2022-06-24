@@ -24,6 +24,7 @@ data:
         HTTP_User ${EXTERNAL_ES_USER}
         HTTP_Passwd ${EXTERNAL_ES_PASSWORD}
         Logstash_Format On
+        Suppress_Type_Name       On
         Retry_Limit False
         Replace_Dots On
         tls {{ if .tls }}On{{ else }}Off{{ end }}
@@ -50,6 +51,7 @@ data:
         HTTP_User ${EXTERNAL_ES_USER}
         HTTP_Passwd ${EXTERNAL_ES_PASSWORD}
         Logstash_Format On
+        Suppress_Type_Name       On
         Logstash_Prefix node
         Retry_Limit False
         tls {{ if .tls }}On{{ else }}Off{{ end }}

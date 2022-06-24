@@ -1,6 +1,6 @@
 # fluent-bit
 
-![Version: 0.20.2-bb.0](https://img.shields.io/badge/Version-0.20.2--bb.0-informational?style=flat-square) ![AppVersion: 1.9.4](https://img.shields.io/badge/AppVersion-1.9.4-informational?style=flat-square)
+![Version: 0.20.2-bb.1](https://img.shields.io/badge/Version-0.20.2--bb.1-informational?style=flat-square) ![AppVersion: 1.9.4](https://img.shields.io/badge/AppVersion-1.9.4-informational?style=flat-square)
 
 Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
 
