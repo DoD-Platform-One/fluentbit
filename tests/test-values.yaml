@@ -35,6 +35,7 @@ config:
         Logstash_Format On
         Retry_Limit False
         Replace_Dots On
+        Suppress_Type_Name On
         tls On
         tls.verify On
         tls.ca_file /etc/elasticsearch/certs/ca.crt
@@ -50,6 +51,7 @@ config:
         Logstash_Format On
         Logstash_Prefix node
         Retry_Limit False
+        Suppress_Type_Name On
         tls On
         tls.verify On
         tls.ca_file /etc/elasticsearch/certs/ca.crt
