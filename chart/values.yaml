@@ -104,6 +104,9 @@ additionalOutputs:
   s3:
     bucket: ""
     region: "us-east-1"
+    match:
+      - "kube.*"
+      - "host.*"
     aws_access_key_id: ""
     aws_secret_access_key: ""
     # -- Reference an existing secret with your access and secret key,

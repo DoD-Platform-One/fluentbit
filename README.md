@@ -1,6 +1,6 @@
 # fluent-bit
 
-![Version: 0.20.2-bb.2](https://img.shields.io/badge/Version-0.20.2--bb.2-informational?style=flat-square) ![AppVersion: 1.9.4](https://img.shields.io/badge/AppVersion-1.9.4-informational?style=flat-square)
+![Version: 0.20.2-bb.3](https://img.shields.io/badge/Version-0.20.2--bb.3-informational?style=flat-square) ![AppVersion: 1.9.4](https://img.shields.io/badge/AppVersion-1.9.4-informational?style=flat-square)
 
 Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
 
@@ -41,7 +41,7 @@ helm install fluent-bit chart/
 | istio.enabled | bool | `false` | Toggle currently only controls NetworkPolicies |
 | istio.mtls | object | `{"mode":"STRICT"}` | Default peer authentication setting |
 | istio.mtls.mode | string | `"STRICT"` | STRICT = Allow only mutual TLS traffic PERMISSIVE = Allow both plain text and mutual TLS traffic |
-| additionalOutputs | object | `{"disableDefault":false,"elasticsearch":{"additionalConfig":{},"caCert":"","host":"","password":"","port":9200,"tls":true,"tlsVerify":false,"user":"elastic"},"fluentd":{"additionalConfig":{},"caCert":"","host":"","password":"","port":24224,"sharedKey":"","tls":true,"tlsVerify":false,"user":""},"loki":{"additionalConfig":{},"caCert":"","host":"","password":"","port":3100,"tls":false,"tlsVerify":false,"user":""},"s3":{"additionalConfig":{"total_file_size":"1M","upload_timeout":"1m","use_put_object":"On"},"aws_access_key_id":"","aws_secret_access_key":"","bucket":"","existingSecret":"","region":"us-east-1"}}` | Additional Outputs for Big Bang, these are wrappers to simplify the config of outputs and extend whatever is specified under the `outputs` values |
+| additionalOutputs | object | `{"disableDefault":false,"elasticsearch":{"additionalConfig":{},"caCert":"","host":"","password":"","port":9200,"tls":true,"tlsVerify":false,"user":"elastic"},"fluentd":{"additionalConfig":{},"caCert":"","host":"","password":"","port":24224,"sharedKey":"","tls":true,"tlsVerify":false,"user":""},"loki":{"additionalConfig":{},"caCert":"","host":"","password":"","port":3100,"tls":false,"tlsVerify":false,"user":""},"s3":{"additionalConfig":{"total_file_size":"1M","upload_timeout":"1m","use_put_object":"On"},"aws_access_key_id":"","aws_secret_access_key":"","bucket":"","existingSecret":"","match":["kube.*","host.*"],"region":"us-east-1"}}` | Additional Outputs for Big Bang, these are wrappers to simplify the config of outputs and extend whatever is specified under the `outputs` values |
 | additionalOutputs.disableDefault | bool | `false` | Option to disable the default elastic output configured under `outputs`, this only works at the Big Bang chart level |
 | additionalOutputs.elasticsearch | object | `{"additionalConfig":{},"caCert":"","host":"","password":"","port":9200,"tls":true,"tlsVerify":false,"user":"elastic"}` | Options to enable an additional elastic output |
 | additionalOutputs.elasticsearch.tls | bool | `true` | Toggle on TLS |
@@ -60,7 +60,7 @@ helm install fluent-bit chart/
 | additionalOutputs.loki.tlsVerify | bool | `false` | Verify TLS certificates, requires a caCert to be specified |
 | additionalOutputs.loki.caCert | string | `""` | Full ca.crt specified as multiline string, see example |
 | additionalOutputs.loki.additionalConfig | object | `{}` | Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/loki |
-| additionalOutputs.s3 | object | `{"additionalConfig":{"total_file_size":"1M","upload_timeout":"1m","use_put_object":"On"},"aws_access_key_id":"","aws_secret_access_key":"","bucket":"","existingSecret":"","region":"us-east-1"}` | Options to enable a S3 output |
+| additionalOutputs.s3 | object | `{"additionalConfig":{"total_file_size":"1M","upload_timeout":"1m","use_put_object":"On"},"aws_access_key_id":"","aws_secret_access_key":"","bucket":"","existingSecret":"","match":["kube.*","host.*"],"region":"us-east-1"}` | Options to enable a S3 output |
 | additionalOutputs.s3.existingSecret | string | `""` | Reference an existing secret with your access and secret key, must contain key values pairs for AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY |
 | additionalOutputs.s3.additionalConfig | object | `{"total_file_size":"1M","upload_timeout":"1m","use_put_object":"On"}` | Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/s3 |
 | storage_buffer | object | `{"path":"/var/log/flb-storage/"}` | Options to configure hostPath mounted storage buffer for production use Specified in fluentbit service configuration section below see https://docs.fluentbit.io/manual/administration/buffering-and-storage |
