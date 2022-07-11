@@ -145,7 +145,7 @@ replicaCount: 1
 image:
   repository: registry1.dso.mil/ironbank/opensource/fluent/fluent-bit
   pullPolicy: Always
-  tag: 1.9.4
+  tag: 1.9.6
 
 networkPolicies:
   enabled: false
@@ -467,6 +467,7 @@ config:
         Merge_Log_Key log_processed
         K8S-Logging.Parser On
         K8S-Logging.Exclude Off
+        Buffer_Size 1M
 
   ## https://docs.fluentbit.io/manual/pipeline/outputs
   outputs: ""
