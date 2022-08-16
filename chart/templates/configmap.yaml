@@ -27,6 +27,7 @@ data:
         Suppress_Type_Name       On
         Retry_Limit False
         Replace_Dots On
+        storage.total_limit_size {{ $.Values.storage.total_limit_size }}
         tls {{ if .tls }}On{{ else }}Off{{ end }}
         tls.verify {{ if and .tlsVerify .caCert }}On{{ else }}Off{{ end }}
         {{- if and .tlsVerify .caCert }}
@@ -54,6 +55,7 @@ data:
         Suppress_Type_Name       On
         Logstash_Prefix node
         Retry_Limit False
+        storage.total_limit_size {{ $.Values.storage.total_limit_size }}
         tls {{ if .tls }}On{{ else }}Off{{ end }}
         tls.verify {{ if and .tlsVerify .caCert }}On{{ else }}Off{{ end }}
         {{- if and .tlsVerify .caCert }}
@@ -87,6 +89,7 @@ data:
         Shared_Key    ${EXTERNAL_FLUENTD_SHARED_KEY}
         {{- end }}
         Retry_Limit   False
+        storage.total_limit_size {{ $.Values.storage.total_limit_size }}
         tls           {{ if .tls }}On{{ else }}Off{{ end }}
         tls.verify    {{ if and .tlsVerify .caCert }}On{{ else }}Off{{ end }}
         {{- if and .tlsVerify .caCert }}
@@ -115,6 +118,7 @@ data:
         Shared_Key    ${EXTERNAL_FLUENTD_SHARED_KEY}
         {{- end }}
         Retry_Limit   False
+        storage.total_limit_size {{ $.Values.storage.total_limit_size }}
         tls           {{ if .tls }}On{{ else }}Off{{ end }}
         tls.verify    {{ if and .tlsVerify .caCert }}On{{ else }}Off{{ end }}
         {{- if and .tlsVerify .caCert }}
@@ -147,6 +151,7 @@ data:
         http_passwd   ${EXTERNAL_LOKI_PASSWORD}
         {{- end }}
         Retry_Limit   False
+        storage.total_limit_size {{ $.Values.storage.total_limit_size }}
         tls           {{ if .tls }}On{{ else }}Off{{ end }}
         tls.verify    {{ if and .tlsVerify .caCert }}On{{ else }}Off{{ end }}
         {{- if and .tlsVerify .caCert }}
@@ -174,6 +179,7 @@ data:
         http_passwd   ${EXTERNAL_LOKI_PASSWORD}
         {{- end }}
         Retry_Limit   False
+        storage.total_limit_size {{ $.Values.storage.total_limit_size }}
         tls           {{ if .tls }}On{{ else }}Off{{ end }}
         tls.verify    {{ if and .tlsVerify .caCert }}On{{ else }}Off{{ end }}
         {{- if and .tlsVerify .caCert }}
@@ -204,6 +210,7 @@ data:
         bucket        {{ $bucket }}
         region        {{ $region }}
         Retry_Limit   False
+        storage.total_limit_size {{ $.Values.storage.total_limit_size }}
         {{- if $additionalConfig }}
         {{- range $key, $value := $additionalConfig }}
         {{- $preset := (list "Name" "Match" "bucket" "region" "Retry_Limit") }}
