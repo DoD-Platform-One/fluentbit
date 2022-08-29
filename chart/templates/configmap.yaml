@@ -225,6 +225,10 @@ data:
     {{- end }}
     {{- end }}
 
+  {{- range $key, $val := .Values.config.upstream }}
+  {{ $key }}: |
+    {{- (tpl $val $) | nindent 4 }}
+  {{- end }}
   {{- range $key, $val := .Values.config.extraFiles }}
   {{ $key }}: |
     {{- (tpl $val $) | nindent 4 }}

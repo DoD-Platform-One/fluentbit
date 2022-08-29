@@ -32,3 +32,14 @@ Testing Steps:
 - Navigate to `Analytics` -> `Discover` and validate that pod logs are appearing in the `logstash` index pattern
 
 When in doubt with any testing or upgrade steps ask one of the CODEOWNERS for assistance.
+
+# Modifications made to upstream chart
+
+chart/templates/configmap.yaml
+
+- re-add `fluent-bit.conf:` [OUTPUT]s, lines 11 to 226
+
+chart/templates/_pod.tpl
+
+- re-add `additionalElastic` to `additionalLoki` (lines 50 to 77) with the adjustment in order to `envFrom` in the middle (lines 55-58)
+- re-add `Values.additionalOutputs` (lines 122 to 137 and lines 162-180)
