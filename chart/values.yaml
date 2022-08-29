@@ -145,7 +145,7 @@ replicaCount: 1
 image:
   repository: registry1.dso.mil/ironbank/opensource/fluent/fluent-bit
   pullPolicy: Always
-  tag: 1.9.6
+  tag: 1.9.7
 
 networkPolicies:
   enabled: false
@@ -487,6 +487,17 @@ config:
   #       tls.verify On
   #       tls.ca_file /etc/elasticsearch/certs/ca.crt
   #       storage.total_limit_size {{ .Values.storage.total_limit_size }}
+
+  ## https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/upstream-servers
+  upstream: {}
+#      upstream.conf: |
+#        [UPSTREAM]
+#            upstream1
+#
+#        [NODE]
+#            name       node-1
+#            host       127.0.0.1
+#            port       43000
 
   ## https://docs.fluentbit.io/manual/pipeline/parsers
   customParsers: |

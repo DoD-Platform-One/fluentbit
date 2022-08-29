@@ -3,13 +3,18 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [0.20.6-bb.0]
+### Changed
+- Updated upstream helm chart tag `0.20.6`
+- Updated fluent-bit image to `1.9.7` from IB
+
 ## [0.20.3-bb.1]
 ### Changed
 - Added storage buffer limit for all `additionalOutputs`
 
 ## [0.20.3-bb.0]
 ### Changed
-- Updated upstream helm chart tag 0.20.3
+- Updated upstream helm chart tag `0.20.3`
 - Updated fluent-bit image to `1.9.6` from IB
 - Updated gluon image to `0.2.10`
 
