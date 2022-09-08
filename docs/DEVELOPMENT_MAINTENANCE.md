@@ -35,11 +35,24 @@ When in doubt with any testing or upgrade steps ask one of the CODEOWNERS for as
 
 # Modifications made to upstream chart
 
-chart/templates/configmap.yaml
+Note that this list is likely incomplete currently.
+
+## chart/templates/configmap.yaml
 
 - re-add `fluent-bit.conf:` [OUTPUT]s, lines 11 to 226
 
-chart/templates/_pod.tpl
+## chart/templates/_pod.tpl
 
 - re-add `additionalElastic` to `additionalLoki` (lines 50 to 77) with the adjustment in order to `envFrom` in the middle (lines 55-58)
 - re-add `Values.additionalOutputs` (lines 122 to 137 and lines 162-180)
+
+## chart/servicemonitor.yaml
+
+- Added `scheme` and `tlsConfig`
+
+## chart/values.yaml
+
+- Added values for `elasticsearch`, `istio`, `additionalOutputs`, `storage_buffer`, `networkPolicies`, `openshift`, and `bbtests`
+- Changed image to default to Ironbank image
+- Set default `securityContext`, `imagePullSecrets`, `extraVolumes`, `extraVolumeMounts`, and `config`
+- Added commented out values for `serviceMonitor.scheme` and `serviceMonitor.tlsConfig`

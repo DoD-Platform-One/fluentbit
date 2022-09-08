@@ -256,6 +256,8 @@ serviceMonitor:
 #      targetLabel: nodename
 #      replacement: $1
 #      action: replace
+#  scheme: ""
+#  tlsConfig: {}
 
 prometheusRule:
   enabled: false
