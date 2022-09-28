@@ -5,7 +5,7 @@ metadata:
 upstream:
   type: git
   git:
-    commit: f979f9fdebd928070e0791ed58cce98d97322a90
+    commit: 5b0d1ccaaf414d737548ac0a9cdb37fd0c22b7c9
     repo: https://github.com/fluent/helm-charts
     directory: /charts/fluent-bit
-    ref: fluent-bit-0.20.6
+    ref: fluent-bit-0.20.8
