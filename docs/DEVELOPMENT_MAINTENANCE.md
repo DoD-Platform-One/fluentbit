@@ -46,10 +46,6 @@ Note that this list is likely incomplete currently.
 - re-add `additionalElastic` to `additionalLoki` (lines 50 to 77) with the adjustment in order to `envFrom` in the middle (lines 55-58)
 - re-add `Values.additionalOutputs` (lines 122 to 137 and lines 162-180)
 
-## chart/servicemonitor.yaml
-
-- Added `scheme` and `tlsConfig`
-
 ## chart/values.yaml
 
 - Added values for `elasticsearch`, `istio`, `additionalOutputs`, `storage_buffer`, `networkPolicies`, `openshift`, and `bbtests`
