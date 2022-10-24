@@ -23,10 +23,11 @@ maintainers:
 annotations:
   artifacthub.io/changes: |
     - kind: changed
-      description: "Additional upstream config option added"
+      description: "Updated Fluent Bit image to v1.9.9."
   bigbang.dev/applicationVersions: |
     - Fluent Bit: 1.9.9
 dependencies:
   - name: gluon
     version: 0.3.0
     repository: "oci://registry.dso.mil/platform-one/big-bang/apps/library-charts/gluon"
+
