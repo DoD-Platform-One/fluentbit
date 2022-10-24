@@ -5,8 +5,8 @@ keywords:
   - logging
   - fluent-bit
   - fluentd
-version: 0.20.8-bb.0
-appVersion: 1.9.8
+version: 0.20.9-bb.0
+appVersion: 1.9.9
 icon: https://fluentbit.io/assets/img/logo1-default.png
 home: https://fluentbit.io/
 sources:
@@ -23,10 +23,11 @@ maintainers:
 annotations:
   artifacthub.io/changes: |
     - kind: changed
-      description: "Additional upstream config option added"
+      description: "Updated Fluent Bit image to v1.9.9."
   bigbang.dev/applicationVersions: |
-    - Fluent Bit: 1.9.8
+    - Fluent Bit: 1.9.9
 dependencies:
   - name: gluon
     version: 0.3.0
     repository: "oci://registry.dso.mil/platform-one/big-bang/apps/library-charts/gluon"
+
