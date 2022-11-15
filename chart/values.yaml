@@ -145,7 +145,7 @@ replicaCount: 1
 image:
   repository: registry1.dso.mil/ironbank/opensource/fluent/fluent-bit
   pullPolicy: Always
-  tag: 1.9.9
+  tag: 2.0.3
 
 networkPolicies:
   enabled: false
@@ -491,15 +491,8 @@ config:
   #       storage.total_limit_size {{ .Values.storage.total_limit_size }}
 
   ## https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/upstream-servers
+  ## This configuration is deprecated, please use `extraFiles` instead.
   upstream: {}
-#      upstream.conf: |
-#        [UPSTREAM]
-#            upstream1
-#
-#        [NODE]
-#            name       node-1
-#            host       127.0.0.1
-#            port       43000
 
   ## https://docs.fluentbit.io/manual/pipeline/parsers
   customParsers: |
@@ -567,6 +560,14 @@ config:
   # This allows adding more files with arbitary filenames to /fluent-bit/etc by providing key/value pairs.
   # The key becomes the filename, the value becomes the file content.
   extraFiles: {}
+#     upstream.conf: |
+#       [UPSTREAM]
+#           upstream1
+#
+#       [NODE]
+#           name       node-1
+#           host       127.0.0.1
+#           port       43000
 #     example.conf: |
 #       [OUTPUT]
 #           Name example
