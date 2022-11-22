@@ -5,8 +5,8 @@ keywords:
   - logging
   - fluent-bit
   - fluentd
-version: 0.20.10-bb.0
-appVersion: 2.0.3
+version: 0.21.2-bb.0
+appVersion: 2.0.5
 icon: https://fluentbit.io/assets/img/logo1-default.png
 home: https://fluentbit.io/
 sources:
@@ -25,7 +25,7 @@ annotations:
     - kind: changed
       description: "Mark config.upstream as deprecated"
   bigbang.dev/applicationVersions: |
-    - Fluent Bit: 2.0.3
+    - Fluent Bit: 2.0.5
 dependencies:
   - name: gluon
     version: 0.3.0

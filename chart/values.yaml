@@ -145,7 +145,7 @@ replicaCount: 1
 image:
   repository: registry1.dso.mil/ironbank/opensource/fluent/fluent-bit
   pullPolicy: Always
-  tag: 2.0.3
+  tag: 2.0.5
 
 networkPolicies:
   enabled: false
@@ -369,6 +369,14 @@ podAnnotations: {}
 
 podLabels: {}
 #  traffic.sidecar.istio.io/excludeOutboundPorts: "443"
+
+## How long (in seconds) a pods needs to be stable before progressing the deployment
+##
+minReadySeconds:
+
+## How long (in seconds) a pod may take to exit (useful with lifecycle hooks to ensure lb deregistration is done)
+##
+terminationGracePeriodSeconds:
 
 priorityClassName: ""
 
