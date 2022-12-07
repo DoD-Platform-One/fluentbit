@@ -31,6 +31,13 @@
         ],
         "depNameTemplate": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit",
         "datasourceTemplate": "docker"
+        },
+        {
+            "fileMatch": ["^chart/Chart\\.yaml$"],
+            "matchStrings": [
+                "image:[^\\S\\r\\n]+(?<depName>.+):(?<currentValue>.+)"
+            ],
+            "datasourceTemplate": "docker"
         }
     ],
     "separateMajorMinor": false

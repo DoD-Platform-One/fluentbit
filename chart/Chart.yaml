@@ -26,6 +26,12 @@ annotations:
       description: "Mark config.upstream as deprecated"
   bigbang.dev/applicationVersions: |
     - Fluent Bit: 2.0.5
+  helm.sh/images: |
+    - name: fluent-bit
+      image: registry1.dso.mil/ironbank/opensource/fluent/fluent-bit:2.0.5
+    - name: script-tests
+      condition: bbtests.enabled 
+      image: registry1.dso.mil/ironbank/stedolan/jq:1.6
 dependencies:
   - name: gluon
     version: 0.3.0
