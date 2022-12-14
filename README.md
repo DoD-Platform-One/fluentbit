@@ -1,6 +1,6 @@
 # fluent-bit
 
-![Version: 0.21.2-bb.0](https://img.shields.io/badge/Version-0.21.2--bb.0-informational?style=flat-square) ![AppVersion: 2.0.5](https://img.shields.io/badge/AppVersion-2.0.5-informational?style=flat-square)
+![Version: 0.21.2-bb.1](https://img.shields.io/badge/Version-0.21.2--bb.1-informational?style=flat-square) ![AppVersion: 2.0.5](https://img.shields.io/badge/AppVersion-2.0.5-informational?style=flat-square)
 
 Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
 
@@ -104,7 +104,24 @@ helm install fluent-bit chart/
 | service.labels | object | `{}` |  |
 | service.annotations | object | `{}` |  |
 | serviceMonitor.enabled | bool | `false` |  |
-| prometheusRule.enabled | bool | `false` |  |
+| prometheusRule.enabled | bool | `true` |  |
+| prometheusRule.additionalLabels | object | `{}` |  |
+| prometheusRule.spec[0].alert | string | `"fluentbitJobAbsent"` |  |
+| prometheusRule.spec[0].annotations.message | string | `""` |  |
+| prometheusRule.spec[0].expr | string | `"absent(up{job=\"fluentbit\", namespace=\"logging\"})"` |  |
+| prometheusRule.spec[0].for | string | `"10m"` |  |
+| prometheusRule.spec[0].labels.severity | string | `"critical"` |  |
+| prometheusRule.spec[1].alert | string | `"FluentdLowNumberOfPods"` |  |
+| prometheusRule.spec[1].expr | string | `"avg without (instance) (up{job=\"fluentbit\"}) < .20"` |  |
+| prometheusRule.spec[1].for | string | `"10m"` |  |
+| prometheusRule.spec[1].annotations | string | `nil` |  |
+| prometheusRule.spec[1].labels.severity | string | `"critical"` |  |
+| prometheusRule.spec[2].alert | string | `"LogsNotFlowing"` |  |
+| prometheusRule.spec[2].expr | string | `"sum(rate(fluentd_output_status_num_records_total{}[4h])) by (tag) < .001"` |  |
+| prometheusRule.spec[2].for | string | `"30m"` |  |
+| prometheusRule.spec[2].annotations | string | `nil` |  |
+| prometheusRule.spec[2].labels | string | `nil` |  |
+| prometheusRule.spec[2].severity | string | `"critical"` |  |
 | dashboards.enabled | bool | `false` |  |
 | dashboards.labelKey | string | `"grafana_dashboard"` |  |
 | dashboards.annotations | object | `{}` |  |

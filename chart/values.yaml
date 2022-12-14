@@ -262,18 +262,40 @@ serviceMonitor:
 prometheusRule:
   enabled: false
 #   namespace: ""
-#   additionalLabels: {}
-#   rules:
-#   - alert: NoOutputBytesProcessed
-#     expr: rate(fluentbit_output_proc_bytes_total[5m]) == 0
-#     annotations:
-#       message: |
-#         Fluent Bit instance {{ $labels.instance }}'s output plugin {{ $labels.name }} has not processed any
-#         bytes for at least 15 minutes.
-#       summary: No Output Bytes Processed
-#     for: 15m
-#     labels:
-#       severity: critical
+  additionalLabels: {}
+# Rules to be deployed
+  rules:
+  - alert: fluentbitJobAbsent
+    annotations:
+      message: "Fluent Bit job not present for 10m"
+    expr: absent(up{job="fluentbit", namespace="logging"})
+    for: 10m
+    labels:
+      severity: critical
+  - alert: FluentdLowNumberOfPods
+    expr: |-
+      avg without (instance) (up{job="fluentbit"}) < .20
+    for: 10m
+    annotations:
+    labels:
+      severity: critical
+  - alert: LogsNotFlowing
+    expr: |-
+      sum(rate(fluentd_output_status_num_records_total{}[4h])) by (tag) < .001
+    for: 30m
+    annotations:
+    labels:
+      severity: critical
+  - alert: NoOutputBytesProcessed
+    expr: rate(fluentbit_output_proc_bytes_total[5m]) == 0
+    annotations:
+      message: |
+        Fluent Bit instance {{ $labels.instance }}'s output plugin {{ $labels.name }} has not processed any
+        bytes for at least 15 minutes.
+    for: 15m
+    labels:
+      severity: critical
+
 
 dashboards:
   enabled: false
