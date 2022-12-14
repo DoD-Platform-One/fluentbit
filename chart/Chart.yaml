@@ -5,9 +5,9 @@ keywords:
   - logging
   - fluent-bit
   - fluentd
-version: 0.21.2-bb.1
-appVersion: 2.0.5
-icon: https://fluentbit.io/assets/img/logo1-default.png
+version: 0.21.4-bb.0
+appVersion: 2.0.6
+icon: https://raw.githubusercontent.com/cncf/artwork/master/projects/fluentd/fluentbit/icon/fluentbit-icon-color.svg
 home: https://fluentbit.io/
 sources:
   - https://github.com/fluent/fluent-bit/
@@ -23,12 +23,12 @@ maintainers:
 annotations:
   artifacthub.io/changes: |
     - kind: changed
-      description: "Mark config.upstream as deprecated"
+      description: "Update fluent-bit image to 2.0.6"
   bigbang.dev/applicationVersions: |
-    - Fluent Bit: 2.0.5
+    - Fluent Bit: 2.0.6
   helm.sh/images: |
     - name: fluent-bit
-      image: registry1.dso.mil/ironbank/opensource/fluent/fluent-bit:2.0.5
+      image: registry1.dso.mil/ironbank/opensource/fluent/fluent-bit:2.0.6
     - name: script-tests
       condition: bbtests.enabled 
       image: registry1.dso.mil/ironbank/stedolan/jq:1.6
@@ -36,5 +36,4 @@ dependencies:
   - name: gluon
     version: 0.3.0
     repository: "oci://registry.dso.mil/platform-one/big-bang/apps/library-charts/gluon"
-
-      
+     
