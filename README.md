@@ -1,6 +1,6 @@
 # fluent-bit
 
-![Version: 0.21.4-bb.0](https://img.shields.io/badge/Version-0.21.4--bb.0-informational?style=flat-square) ![AppVersion: 2.0.6](https://img.shields.io/badge/AppVersion-2.0.6-informational?style=flat-square)
+![Version: 0.21.7-bb.0](https://img.shields.io/badge/Version-0.21.7--bb.0-informational?style=flat-square) ![AppVersion: 2.0.8](https://img.shields.io/badge/AppVersion-2.0.8-informational?style=flat-square)
 
 Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
 
@@ -69,7 +69,7 @@ helm install fluent-bit chart/
 | replicaCount | int | `1` | Only applicable if kind=Deployment |
 | image.repository | string | `"registry1.dso.mil/ironbank/opensource/fluent/fluent-bit"` |  |
 | image.pullPolicy | string | `"Always"` |  |
-| image.tag | string | `"2.0.6"` |  |
+| image.tag | string | `"2.0.8"` |  |
 | networkPolicies.enabled | bool | `false` |  |
 | networkPolicies.controlPlaneCidr | string | `"0.0.0.0/0"` |  |
 | testFramework.enabled | bool | `false` |  |
@@ -101,27 +101,33 @@ helm install fluent-bit chart/
 | securityContext.capabilities.drop[0] | string | `"ALL"` |  |
 | service.type | string | `"ClusterIP"` |  |
 | service.port | int | `2020` |  |
+| service.loadBalancerClass | string | `nil` |  |
+| service.loadBalancerSourceRanges | list | `[]` |  |
 | service.labels | object | `{}` |  |
 | service.annotations | object | `{}` |  |
 | serviceMonitor.enabled | bool | `false` |  |
-| prometheusRule.enabled | bool | `true` |  |
+| prometheusRule.enabled | bool | `false` |  |
 | prometheusRule.additionalLabels | object | `{}` |  |
-| prometheusRule.spec[0].alert | string | `"fluentbitJobAbsent"` |  |
-| prometheusRule.spec[0].annotations.message | string | `""` |  |
-| prometheusRule.spec[0].expr | string | `"absent(up{job=\"fluentbit\", namespace=\"logging\"})"` |  |
-| prometheusRule.spec[0].for | string | `"10m"` |  |
-| prometheusRule.spec[0].labels.severity | string | `"critical"` |  |
-| prometheusRule.spec[1].alert | string | `"FluentdLowNumberOfPods"` |  |
-| prometheusRule.spec[1].expr | string | `"avg without (instance) (up{job=\"fluentbit\"}) < .20"` |  |
-| prometheusRule.spec[1].for | string | `"10m"` |  |
-| prometheusRule.spec[1].annotations | string | `nil` |  |
-| prometheusRule.spec[1].labels.severity | string | `"critical"` |  |
-| prometheusRule.spec[2].alert | string | `"LogsNotFlowing"` |  |
-| prometheusRule.spec[2].expr | string | `"sum(rate(fluentd_output_status_num_records_total{}[4h])) by (tag) < .001"` |  |
-| prometheusRule.spec[2].for | string | `"30m"` |  |
-| prometheusRule.spec[2].annotations | string | `nil` |  |
-| prometheusRule.spec[2].labels | string | `nil` |  |
-| prometheusRule.spec[2].severity | string | `"critical"` |  |
+| prometheusRule.rules[0].alert | string | `"fluentbitJobAbsent"` |  |
+| prometheusRule.rules[0].annotations.message | string | `"Fluent Bit job not present for 10m"` |  |
+| prometheusRule.rules[0].expr | string | `"absent(up{job=\"fluentbit\", namespace=\"logging\"})"` |  |
+| prometheusRule.rules[0].for | string | `"10m"` |  |
+| prometheusRule.rules[0].labels.severity | string | `"critical"` |  |
+| prometheusRule.rules[1].alert | string | `"FluentdLowNumberOfPods"` |  |
+| prometheusRule.rules[1].expr | string | `"avg without (instance) (up{job=\"fluentbit\"}) < .20"` |  |
+| prometheusRule.rules[1].for | string | `"10m"` |  |
+| prometheusRule.rules[1].annotations | string | `nil` |  |
+| prometheusRule.rules[1].labels.severity | string | `"critical"` |  |
+| prometheusRule.rules[2].alert | string | `"LogsNotFlowing"` |  |
+| prometheusRule.rules[2].expr | string | `"sum(rate(fluentd_output_status_num_records_total{}[4h])) by (tag) < .001"` |  |
+| prometheusRule.rules[2].for | string | `"30m"` |  |
+| prometheusRule.rules[2].annotations | string | `nil` |  |
+| prometheusRule.rules[2].labels.severity | string | `"critical"` |  |
+| prometheusRule.rules[3].alert | string | `"NoOutputBytesProcessed"` |  |
+| prometheusRule.rules[3].expr | string | `"rate(fluentbit_output_proc_bytes_total[5m]) == 0"` |  |
+| prometheusRule.rules[3].annotations.message | string | `"Fluent Bit instance {{ $labels.instance }}'s output plugin {{ $labels.name }} has not processed any\nbytes for at least 15 minutes.\n"` |  |
+| prometheusRule.rules[3].for | string | `"15m"` |  |
+| prometheusRule.rules[3].labels.severity | string | `"critical"` |  |
 | dashboards.enabled | bool | `false` |  |
 | dashboards.labelKey | string | `"grafana_dashboard"` |  |
 | dashboards.annotations | object | `{}` |  |
