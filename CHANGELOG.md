@@ -3,6 +3,11 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [0.21.7-bb.0]
+### Changed
+- Updated upstream helm chart tag `0.21.7`
+- Updated fluent-bit image to `2.0.8` from IB
+
 ## [0.21.4-bb.0]
 ### Changed
 - Updated upstream helm chart tag `0.21.4`
