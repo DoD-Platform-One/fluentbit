@@ -162,7 +162,7 @@ testFramework:
 imagePullSecrets:
 - name: private-registry
 
-nameOverride: ""
+nameOverride: "fluent-bit"
 fullnameOverride: ""
 
 serviceAccount:

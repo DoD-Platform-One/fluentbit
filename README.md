@@ -1,6 +1,6 @@
-# fluent-bit
+# fluentbit
 
-![Version: 0.21.7-bb.0](https://img.shields.io/badge/Version-0.21.7--bb.0-informational?style=flat-square) ![AppVersion: 2.0.8](https://img.shields.io/badge/AppVersion-2.0.8-informational?style=flat-square)
+![Version: 0.21.7-bb.1](https://img.shields.io/badge/Version-0.21.7--bb.1-informational?style=flat-square) ![AppVersion: 2.0.8](https://img.shields.io/badge/AppVersion-2.0.8-informational?style=flat-square)
 
 Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
 
@@ -28,7 +28,7 @@ https://helm.sh/docs/intro/install/
 * Clone down the repository
 * cd into directory
 ```bash
-helm install fluent-bit chart/
+helm install fluentbit chart/
 ```
 
 ## Values
@@ -77,7 +77,7 @@ helm install fluent-bit chart/
 | testFramework.image.pullPolicy | string | `"Always"` |  |
 | testFramework.image.tag | string | `"latest"` |  |
 | imagePullSecrets[0].name | string | `"private-registry"` |  |
-| nameOverride | string | `""` |  |
+| nameOverride | string | `"fluent-bit"` |  |
 | fullnameOverride | string | `""` |  |
 | serviceAccount.create | bool | `true` |  |
 | serviceAccount.annotations | object | `{}` |  |
