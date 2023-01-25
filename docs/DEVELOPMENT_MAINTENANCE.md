@@ -39,12 +39,13 @@ Note that this list is likely incomplete currently.
 
 ## chart/templates/configmap.yaml
 
-- re-add `fluent-bit.conf:` [OUTPUT]s, lines 11 to 226
+- Add `fluent-bit.conf:` [OUTPUT]s, lines 11 to 226
 
 ## chart/templates/_pod.tpl
 
-- re-add `additionalElastic` to `additionalLoki` (lines 50 to 77) with the adjustment in order to `envFrom` in the middle (lines 55-58)
-- re-add `Values.additionalOutputs` (lines 122 to 137 and lines 162-180)
+- Add `additionalElastic` to `additionalLoki` (lines 50 to 77) with the adjustment in order to `envFrom` in the middle (lines 55-58)
+- Add `Values.additionalOutputs` (lines 122 to 137 and lines 162-180)
+- Change container name to `name: {{ default .Chart.Name .Values.nameOverride }}`
 
 ## chart/values.yaml
 
@@ -52,3 +53,9 @@ Note that this list is likely incomplete currently.
 - Changed image to default to Ironbank image
 - Set default `securityContext`, `imagePullSecrets`, `extraVolumes`, `extraVolumeMounts`, and `config`
 - Added commented out values for `serviceMonitor.scheme` and `serviceMonitor.tlsConfig`
+
+## chart/Chart.yaml
+
+- Name changed to `fluentbit`
+- Annotations added for versioning, images
+- Gluon dependency added for helm tests

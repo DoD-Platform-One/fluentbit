@@ -33,7 +33,7 @@ initContainers:
 {{- end -}}
 {{- end }}
 containers:
-  - name: {{ .Chart.Name }}
+  - name: {{ default .Chart.Name .Values.nameOverride }}
   {{- with .Values.securityContext }}
     securityContext:
       {{- toYaml . | nindent 6 }}
