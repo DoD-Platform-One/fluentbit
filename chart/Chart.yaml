@@ -5,8 +5,8 @@ keywords:
   - logging
   - fluent-bit
   - fluentd
-version: 0.21.7-bb.1
-appVersion: 2.0.8
+version: 0.24.0-bb.0
+appVersion: 2.0.9
 icon: https://raw.githubusercontent.com/cncf/artwork/master/projects/fluentd/fluentbit/icon/fluentbit-icon-color.svg
 home: https://fluentbit.io/
 sources:
@@ -23,12 +23,12 @@ maintainers:
 annotations:
   artifacthub.io/changes: |
     - kind: changed
-      description: "Update fluent-bit image to 2.0.8"
+      description: "Updated Fluent Bit image to v2.0.9."
   bigbang.dev/applicationVersions: |
-    - Fluent Bit: 2.0.8
+    - Fluent Bit: 2.0.9
   helm.sh/images: |
     - name: fluent-bit
-      image: registry1.dso.mil/ironbank/opensource/fluent/fluent-bit:2.0.8
+      image: registry1.dso.mil/ironbank/opensource/fluent/fluent-bit:2.0.9
     - name: script-tests
       condition: bbtests.enabled 
       image: registry1.dso.mil/ironbank/stedolan/jq:1.6
