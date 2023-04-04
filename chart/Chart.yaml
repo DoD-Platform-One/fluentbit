@@ -5,7 +5,7 @@ keywords:
   - logging
   - fluent-bit
   - fluentd
-version: 0.25.0-bb.0
+version: 0.25.0-bb.1
 appVersion: 2.0.10
 icon: https://raw.githubusercontent.com/cncf/artwork/master/projects/fluentd/fluentbit/icon/fluentbit-icon-color.svg
 home: https://fluentbit.io/
@@ -30,10 +30,9 @@ annotations:
     - name: fluent-bit
       image: registry1.dso.mil/ironbank/opensource/fluent/fluent-bit:2.0.10
     - name: script-tests
-      condition: bbtests.enabled 
+      condition: bbtests.enabled
       image: registry1.dso.mil/ironbank/stedolan/jq:1.6
 dependencies:
   - name: gluon
     version: 0.3.0
     repository: "oci://registry.dso.mil/platform-one/big-bang/apps/library-charts/gluon"
-     

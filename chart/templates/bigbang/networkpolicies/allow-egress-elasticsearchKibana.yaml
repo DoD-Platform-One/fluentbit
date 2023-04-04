@@ -1,0 +1,24 @@
+{{- if and .Values.elasticsearchKibana.enabled .Values.networkPolicies.enabled }}
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-elasticsearch-egress-{{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: fluent-bit
+  policyTypes:
+  - Egress
+  # Allow access to logging
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          app.kubernetes.io/name: logging
+      podSelector:
+        matchLabels:
+          common.k8s.elastic.co/type: elasticsearch
+    ports:
+    - port: 9200
+{{- end }}
