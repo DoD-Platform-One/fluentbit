@@ -1,6 +1,6 @@
 # fluentbit
 
-![Version: 0.25.0-bb.0](https://img.shields.io/badge/Version-0.25.0--bb.0-informational?style=flat-square) ![AppVersion: 2.0.10](https://img.shields.io/badge/AppVersion-2.0.10-informational?style=flat-square)
+![Version: 0.25.0-bb.1](https://img.shields.io/badge/Version-0.25.0--bb.1-informational?style=flat-square) ![AppVersion: 2.0.10](https://img.shields.io/badge/AppVersion-2.0.10-informational?style=flat-square)
 
 Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
 
@@ -64,7 +64,7 @@ helm install fluentbit chart/
 | additionalOutputs.s3.existingSecret | string | `""` | Reference an existing secret with your access and secret key, must contain key values pairs for AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY |
 | additionalOutputs.s3.additionalConfig | object | `{"total_file_size":"1M","upload_timeout":"1m","use_put_object":"On"}` | Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/s3 |
 | storage_buffer | object | `{"path":"/var/log/flb-storage/"}` | Options to configure hostPath mounted storage buffer for production use Specified in fluentbit service configuration section below see https://docs.fluentbit.io/manual/administration/buffering-and-storage |
-| storage | object | `{"total_limit_size":"10G"}` | Limits the number of Chunks that exists in the file system for a certain logical output destination.  If one destination reaches the storage.total_limit_size limit, the oldest Chunk from the queue for that logical output destination will be discarded. see https://docs.fluentbit.io/manual/administration/buffering-and-storage |
+| storage | object | `{"total_limit_size":"10G"}` | Limits the number of Chunks that exists in the file system for a certain logical output destination. If one destination reaches the storage.total_limit_size limit, the oldest Chunk from the queue for that logical output destination will be discarded. see https://docs.fluentbit.io/manual/administration/buffering-and-storage |
 | kind | string | `"DaemonSet"` | DaemonSet or Deployment |
 | replicaCount | int | `1` | Only applicable if kind=Deployment |
 | image.repository | string | `"registry1.dso.mil/ironbank/opensource/fluent/fluent-bit"` |  |
@@ -215,6 +215,8 @@ helm install fluentbit chart/
 | initContainers | list | `[]` |  |
 | logLevel | string | `"info"` |  |
 | openshift | bool | `false` | Toggle for Openshift, currently only controls NetworkPolicy changes |
+| loki | object | `{"enabled":false}` | List of enabled Big Bang log storage package(s), used to control networkPolicies and auth only |
+| elasticsearchKibana.enabled | bool | `false` |  |
 | bbtests | object | `{"enabled":false,"scripts":{"envs":{"desired_version":"{{ .Values.image.tag }}","fluent_host":"http://{{ include \"fluent-bit.fullname\" . }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.service.port }}"},"image":"registry1.dso.mil/ironbank/stedolan/jq:1.6"}}` | Values used for Big Bang CI testing |
 | bbtests.enabled | bool | `false` | Toggles test manifests |
 | bbtests.scripts.image | string | `"registry1.dso.mil/ironbank/stedolan/jq:1.6"` | Image used to run script tests, must include curl and jq |
