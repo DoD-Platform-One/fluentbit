@@ -1,6 +1,6 @@
 # fluentbit
 
-![Version: 0.27.0-bb.0](https://img.shields.io/badge/Version-0.27.0--bb.0-informational?style=flat-square) ![AppVersion: 2.0.11](https://img.shields.io/badge/AppVersion-2.0.11-informational?style=flat-square)
+![Version: 0.28.0-bb.0](https://img.shields.io/badge/Version-0.28.0--bb.0-informational?style=flat-square) ![AppVersion: 2.1.2](https://img.shields.io/badge/AppVersion-2.1.2-informational?style=flat-square)
 
 Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
 
@@ -69,7 +69,7 @@ helm install fluentbit chart/
 | replicaCount | int | `1` | Only applicable if kind=Deployment |
 | image.repository | string | `"registry1.dso.mil/ironbank/opensource/fluent/fluent-bit"` |  |
 | image.pullPolicy | string | `"Always"` |  |
-| image.tag | string | `"2.0.11"` |  |
+| image.tag | string | `"2.1.2"` |  |
 | networkPolicies.enabled | bool | `false` |  |
 | networkPolicies.controlPlaneCidr | string | `"0.0.0.0/0"` |  |
 | testFramework.enabled | bool | `false` |  |
