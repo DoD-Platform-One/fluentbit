@@ -21,13 +21,13 @@ Fluentbit within Big Bang is a modified version of an upstream chart. `kpt` is u
 NOTE: For these testing steps it is good to do them on both a clean install and an upgrade. For clean install, point fluentbit to your branch. For an upgrade do an install with fluentbit pointing to the latest tag, then perform a helm upgrade with fluentbit pointing to your branch.
 
 You will want to install with:
-- ECK Operator, Logging, and Fluentbit enabled
+- ECK Operator, loki, and Fluentbit enabled
 - Istio enabled
 - Monitoring enabled
 
 Testing Steps:
 - Login to Prometheus, validate under `Status` -> `Targets` that all fluentbit targets are showing as up
-- Login to Grafana, then navigate to https://grafana.bigbang.dev/d/logging-fluent-bit/logging-fluent-bit and validate that the dashboard displays data
+- Login to Grafana, then navigate to https://grafana.bigbang.dev/d/fluentbit-fluent-bit/logging-fluent-bit and validate that the dashboard displays data
 - Login to Kibana, then navigate to https://kibana.bigbang.dev/app/management/kibana/indexPatterns and add an index pattern for `logstash-*`
 - Navigate to `Analytics` -> `Discover` and validate that pod logs are appearing in the `logstash` index pattern
 

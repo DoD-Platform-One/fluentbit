@@ -145,7 +145,7 @@ replicaCount: 1
 image:
   repository: registry1.dso.mil/ironbank/opensource/fluent/fluent-bit
   pullPolicy: Always
-  tag: 2.1.2
+  tag: 2.1.4
 
 networkPolicies:
   enabled: false
@@ -154,10 +154,12 @@ networkPolicies:
 
 testFramework:
   enabled: false
+  namespace:
   image:
     repository: busybox
     pullPolicy: Always
     tag: latest
+    digest: ""
 
 imagePullSecrets:
 - name: private-registry
