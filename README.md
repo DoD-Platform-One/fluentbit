@@ -1,6 +1,6 @@
 # fluentbit
 
-![Version: 0.28.0-bb.1](https://img.shields.io/badge/Version-0.28.0--bb.1-informational?style=flat-square) ![AppVersion: 2.1.2](https://img.shields.io/badge/AppVersion-2.1.2-informational?style=flat-square)
+![Version: 0.30.4-bb.0](https://img.shields.io/badge/Version-0.30.4--bb.0-informational?style=flat-square) ![AppVersion: 2.1.4](https://img.shields.io/badge/AppVersion-2.1.4-informational?style=flat-square)
 
 Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
 
@@ -69,13 +69,15 @@ helm install fluentbit chart/
 | replicaCount | int | `1` | Only applicable if kind=Deployment |
 | image.repository | string | `"registry1.dso.mil/ironbank/opensource/fluent/fluent-bit"` |  |
 | image.pullPolicy | string | `"Always"` |  |
-| image.tag | string | `"2.1.2"` |  |
+| image.tag | string | `"2.1.4"` |  |
 | networkPolicies.enabled | bool | `false` |  |
 | networkPolicies.controlPlaneCidr | string | `"0.0.0.0/0"` |  |
 | testFramework.enabled | bool | `false` |  |
+| testFramework.namespace | string | `nil` |  |
 | testFramework.image.repository | string | `"busybox"` |  |
 | testFramework.image.pullPolicy | string | `"Always"` |  |
 | testFramework.image.tag | string | `"latest"` |  |
+| testFramework.image.digest | string | `""` |  |
 | imagePullSecrets[0].name | string | `"private-registry"` |  |
 | nameOverride | string | `"fluent-bit"` |  |
 | fullnameOverride | string | `""` |  |
