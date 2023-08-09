@@ -1,6 +1,6 @@
 # fluentbit
 
-![Version: 0.30.4-bb.0](https://img.shields.io/badge/Version-0.30.4--bb.0-informational?style=flat-square) ![AppVersion: 2.1.4](https://img.shields.io/badge/AppVersion-2.1.4-informational?style=flat-square)
+![Version: 0.37.0-bb.0](https://img.shields.io/badge/Version-0.37.0--bb.0-informational?style=flat-square) ![AppVersion: 2.1.8](https://img.shields.io/badge/AppVersion-2.1.8-informational?style=flat-square)
 
 Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
 
@@ -69,7 +69,7 @@ helm install fluentbit chart/
 | replicaCount | int | `1` | Only applicable if kind=Deployment |
 | image.repository | string | `"registry1.dso.mil/ironbank/opensource/fluent/fluent-bit"` |  |
 | image.pullPolicy | string | `"Always"` |  |
-| image.tag | string | `"2.1.4"` |  |
+| image.tag | string | `"2.1.8"` |  |
 | networkPolicies.enabled | bool | `false` |  |
 | networkPolicies.controlPlaneCidr | string | `"0.0.0.0/0"` |  |
 | testFramework.enabled | bool | `false` |  |
@@ -77,7 +77,7 @@ helm install fluentbit chart/
 | testFramework.image.repository | string | `"busybox"` |  |
 | testFramework.image.pullPolicy | string | `"Always"` |  |
 | testFramework.image.tag | string | `"latest"` |  |
-| testFramework.image.digest | string | `""` |  |
+| testFramework.image.digest | string | `nil` |  |
 | imagePullSecrets[0].name | string | `"private-registry"` |  |
 | nameOverride | string | `"fluent-bit"` |  |
 | fullnameOverride | string | `""` |  |
@@ -90,7 +90,9 @@ helm install fluentbit chart/
 | podSecurityPolicy.annotations | object | `{}` |  |
 | openShift.enabled | bool | `false` |  |
 | openShift.securityContextConstraints.create | bool | `true` |  |
+| openShift.securityContextConstraints.name | string | `""` |  |
 | openShift.securityContextConstraints.annotations | object | `{}` |  |
+| openShift.securityContextConstraints.existingName | string | `""` |  |
 | podSecurityContext | object | `{}` |  |
 | hostNetwork | bool | `false` |  |
 | dnsPolicy | string | `"ClusterFirst"` |  |
@@ -142,7 +144,7 @@ helm install fluentbit chart/
 | readinessProbe.httpGet.port | string | `"http"` |  |
 | resources | object | `{}` |  |
 | ingress.enabled | bool | `false` |  |
-| ingress.className | string | `""` |  |
+| ingress.ingressClassName | string | `""` |  |
 | ingress.annotations | object | `{}` |  |
 | ingress.hosts | list | `[]` |  |
 | ingress.extraHosts | list | `[]` |  |
@@ -184,7 +186,7 @@ helm install fluentbit chart/
 | existingConfigMap | string | `""` |  |
 | networkPolicy.enabled | bool | `false` |  |
 | luaScripts | object | `{}` |  |
-| config.service | string | `"[SERVICE]\n    Daemon Off\n    Flush {{ .Values.flush }}\n    Log_Level {{ .Values.logLevel }}\n    Parsers_File parsers.conf\n    Parsers_File custom_parsers.conf\n    HTTP_Server On\n    HTTP_Listen 0.0.0.0\n    HTTP_Port {{ .Values.metricsPort }}\n    # -- Setting up storage buffer on filesystem and slighty upping backlog mem_limit value.\n    storage.path {{ .Values.storage_buffer.path }}\n    storage.sync normal\n    storage.backlog.mem_limit 15M\n    Health_Check On\n"` |  |
+| config.service | string | `"[SERVICE]\n    Daemon Off\n    Flush {{ .Values.flush }}\n    Log_Level {{ .Values.logLevel }}\n    Parsers_File /fluent-bit/etc/parsers.conf\n    Parsers_File /fluent-bit/etc/conf/custom_parsers.conf\n    HTTP_Server On\n    HTTP_Listen 0.0.0.0\n    HTTP_Port {{ .Values.metricsPort }}\n    # -- Setting up storage buffer on filesystem and slighty upping backlog mem_limit value.\n    storage.path {{ .Values.storage_buffer.path }}\n    storage.sync normal\n    storage.backlog.mem_limit 15M\n    Health_Check On\n"` |  |
 | config.inputs | string | `"[INPUT]\n    Name tail\n    Path /var/log/containers/*.log\n    # -- Excluding fluentbit logs from sending to ECK, along with gatekeeper-audit logs which are shipped by clusterAuditor.\n    Exclude_Path /var/log/containers/*fluent*.log\n    Parser containerd\n    Tag kube.*\n    Mem_Buf_Limit 50MB\n    Skip_Long_Lines On\n    storage.type filesystem\n\n[INPUT]\n    Name systemd\n    Tag host.*\n    Systemd_Filter _SYSTEMD_UNIT=kubelet.service\n    Read_From_Tail On\n    storage.type filesystem\n"` |  |
 | config.filters | string | `"[FILTER]\n    Name kubernetes\n    Match kube.*\n    Kube_CA_File /var/run/secrets/kubernetes.io/serviceaccount/ca.crt\n    Kube_Token_File /var/run/secrets/kubernetes.io/serviceaccount/token\n    Merge_Log On\n    Merge_Log_Key log_processed\n    K8S-Logging.Parser On\n    K8S-Logging.Exclude Off\n    Buffer_Size 1M\n"` |  |
 | config.outputs | string | `""` |  |
@@ -192,11 +194,7 @@ helm install fluentbit chart/
 | config.customParsers | string | `"[PARSER]\n    Name docker_no_time\n    Format json\n    Time_Keep Off\n    Time_Key time\n    Time_Format %Y-%m-%dT%H:%M:%S.%L\n\n[PARSER]\n    Name containerd\n    Format regex\n    Regex ^(?<time>[^ ]+) (?<stream>stdout\|stderr) (?<logtag>[^ ]*) (?<log>.*)$\n    Time_Key time\n    Time_Format %Y-%m-%dT%H:%M:%S.%L%z\n    Time_Keep On\n\n[PARSER]\n    Name   apache\n    Format regex\n    Regex  ^(?<host>[^ ]*) [^ ]* (?<user>[^ ]*) \\[(?<time>[^\\]]*)\\] \"(?<method>\\S+)(?: +(?<path>[^\\\"]*?)(?: +\\S*)?)?\" (?<code>[^ ]*) (?<size>[^ ]*)(?: \"(?<referer>[^\\\"]*)\" \"(?<agent>[^\\\"]*)\")?$\n    Time_Key time\n    Time_Format %d/%b/%Y:%H:%M:%S %z\n\n[PARSER]\n    Name   apache2\n    Format regex\n    Regex  ^(?<host>[^ ]*) [^ ]* (?<user>[^ ]*) \\[(?<time>[^\\]]*)\\] \"(?<method>\\S+)(?: +(?<path>[^ ]*) +\\S*)?\" (?<code>[^ ]*) (?<size>[^ ]*)(?: \"(?<referer>[^\\\"]*)\" \"(?<agent>[^\\\"]*)\")?$\n    Time_Key time\n    Time_Format %d/%b/%Y:%H:%M:%S %z\n\n[PARSER]\n    Name   apache_error\n    Format regex\n    Regex  ^\\[[^ ]* (?<time>[^\\]]*)\\] \\[(?<level>[^\\]]*)\\](?: \\[pid (?<pid>[^\\]]*)\\])?( \\[client (?<client>[^\\]]*)\\])? (?<message>.*)$\n\n[PARSER]\n    Name   nginx\n    Format regex\n    Regex ^(?<remote>[^ ]*) (?<host>[^ ]*) (?<user>[^ ]*) \\[(?<time>[^\\]]*)\\] \"(?<method>\\S+)(?: +(?<path>[^\\\"]*?)(?: +\\S*)?)?\" (?<code>[^ ]*) (?<size>[^ ]*)(?: \"(?<referer>[^\\\"]*)\" \"(?<agent>[^\\\"]*)\")?$\n    Time_Key time\n    Time_Format %d/%b/%Y:%H:%M:%S %z\n\n[PARSER]\n    Name   json\n    Format json\n    Time_Key time\n    Time_Format %d/%b/%Y:%H:%M:%S %z\n\n[PARSER]\n    Name        docker\n    Format      json\n    Time_Key    time\n    Time_Format %Y-%m-%dT%H:%M:%S.%L\n    Time_Keep   On\n\n[PARSER]\n    Name        syslog\n    Format      regex\n    Regex       ^\\<(?<pri>[0-9]+)\\>(?<time>[^ ]* {1,2}[^ ]* [^ ]*) (?<host>[^ ]*) (?<ident>[a-zA-Z0-9_\\/\\.\\-]*)(?:\\[(?<pid>[0-9]+)\\])?(?:[^\\:]*\\:)? *(?<message>.*)$\n    Time_Key    time\n    Time_Format %b %d %H:%M:%S\n"` |  |
 | config.extraFiles | object | `{}` |  |
 | volumeMounts[0].name | string | `"config"` |  |
-| volumeMounts[0].mountPath | string | `"/fluent-bit/etc/fluent-bit.conf"` |  |
-| volumeMounts[0].subPath | string | `"fluent-bit.conf"` |  |
-| volumeMounts[1].name | string | `"config"` |  |
-| volumeMounts[1].mountPath | string | `"/fluent-bit/etc/custom_parsers.conf"` |  |
-| volumeMounts[1].subPath | string | `"custom_parsers.conf"` |  |
+| volumeMounts[0].mountPath | string | `"/fluent-bit/etc/conf"` |  |
 | daemonSetVolumes[0].name | string | `"varlog"` |  |
 | daemonSetVolumes[0].hostPath.path | string | `"/var/log"` |  |
 | daemonSetVolumes[1].name | string | `"varlibdockercontainers"` |  |
@@ -213,8 +211,9 @@ helm install fluentbit chart/
 | daemonSetVolumeMounts[2].name | string | `"etcmachineid"` |  |
 | daemonSetVolumeMounts[2].mountPath | string | `"/etc/machine-id"` |  |
 | daemonSetVolumeMounts[2].readOnly | bool | `true` |  |
-| args | list | `[]` |  |
-| command | list | `[]` |  |
+| command[0] | string | `"/fluent-bit/bin/fluent-bit"` |  |
+| args[0] | string | `"--workdir=/fluent-bit/etc"` |  |
+| args[1] | string | `"--config=/fluent-bit/etc/conf/fluent-bit.conf"` |  |
 | initContainers | list | `[]` |  |
 | logLevel | string | `"info"` |  |
 | openshift | bool | `false` | Toggle for Openshift, currently only controls NetworkPolicy changes |
@@ -226,6 +225,12 @@ helm install fluentbit chart/
 | bbtests.scripts.envs | object | `{"desired_version":"{{ .Values.image.tag }}","fluent_host":"http://{{ include \"fluent-bit.fullname\" . }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.service.port }}"}` | Envs that are passed into the script runner pod |
 | bbtests.scripts.envs.fluent_host | string | `"http://{{ include \"fluent-bit.fullname\" . }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.service.port }}"` | Hostname/port to contact Fluentbit |
 | bbtests.scripts.envs.desired_version | string | `"{{ .Values.image.tag }}"` | Version that should be running |
+| hotReload.enabled | bool | `false` |  |
+| hotReload.image.repository | string | `"registry1.dso.mil/ironbank/opensource/jimmidyson/configmap-reload"` |  |
+| hotReload.image.tag | string | `"v0.11.1"` |  |
+| hotReload.image.digest | string | `nil` |  |
+| hotReload.image.pullPolicy | string | `"IfNotPresent"` |  |
+| hotReload.resources | object | `{}` |  |
 
 ## Contributing
 
