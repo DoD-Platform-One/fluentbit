@@ -1,6 +1,6 @@
 # fluentbit
 
-![Version: 0.39.0-bb.0](https://img.shields.io/badge/Version-0.39.0--bb.0-informational?style=flat-square) ![AppVersion: 2.1.10](https://img.shields.io/badge/AppVersion-2.1.10-informational?style=flat-square)
+![Version: 0.39.0-bb.1](https://img.shields.io/badge/Version-0.39.0--bb.1-informational?style=flat-square) ![AppVersion: 2.1.10](https://img.shields.io/badge/AppVersion-2.1.10-informational?style=flat-square)
 
 Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
 
@@ -228,7 +228,7 @@ helm install fluentbit chart/
 | bbtests.scripts.envs.desired_version | string | `"{{ .Values.image.tag }}"` | Version that should be running |
 | hotReload.enabled | bool | `false` |  |
 | hotReload.image.repository | string | `"registry1.dso.mil/ironbank/opensource/jimmidyson/configmap-reload"` |  |
-| hotReload.image.tag | string | `"v0.11.1"` |  |
+| hotReload.image.tag | string | `"v0.12.0"` |  |
 | hotReload.image.digest | string | `nil` |  |
 | hotReload.image.pullPolicy | string | `"IfNotPresent"` |  |
 | hotReload.resources | object | `{}` |  |
