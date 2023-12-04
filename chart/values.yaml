@@ -734,7 +734,7 @@ bbtests:
   # Values used for Big Bang script based testing
   scripts:
     # -- Image used to run script tests, must include curl and jq
-    image: registry1.dso.mil/ironbank/stedolan/jq:1.6
+    image: registry1.dso.mil/ironbank/stedolan/jq:1.7
     # -- Envs that are passed into the script runner pod
     envs:
       # -- Hostname/port to contact Fluentbit
