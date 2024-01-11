@@ -36,6 +36,17 @@ Note: as of BB 2.0, the following secrets will need to be copied from the loggin
 - `logging-ek-es-http-certs-internal`
 - `logging-ek-es-elastic-user`
 
+The following script can be run to copy the secrets over from the logging namespace. The yq package install instructions can be found [here](https://mikefarah.gitbook.io/yq/).
+
+```bash
+kubectl get secret -n logging logging-ek-es-http-certs-public -o yaml | yq '.metadata.namespace = "fluentbit"' - | kubectl apply -f -
+
+kubectl get secret -n logging logging-ek-es-http-certs-internal -o yaml | yq 'del(.metadata["creationTimestamp","resourceVersion","selfLink","uid","ownerReferences"])' | yq '.metadata.namespace = "fluentbit"' - | kubectl apply -f -
+
+kubectl get secret -n logging logging-ek-es-elastic-user -o yaml | yq '.metadata.namespace = "fluentbit"' - | kubectl apply -f -
+
+```
+
 When in doubt with any testing or upgrade steps ask one of the CODEOWNERS for assistance.
 
 # Modifications made to upstream chart
