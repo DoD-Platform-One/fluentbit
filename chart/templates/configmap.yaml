@@ -17,9 +17,11 @@ data:
 
     {{- with .Values.additionalOutputs.elasticsearch }}
     {{- if and .host .user .password .port }}
+    {{- $additionalConfig := .additionalConfig }}
+    {{- range $match := .match}}
     [OUTPUT]
         Name es
-        Match kube.*
+        Match {{ $match | quote }}
         Host ${EXTERNAL_ES_HOST}
         Port ${EXTERNAL_ES_PORT}
         HTTP_User ${EXTERNAL_ES_USER}
@@ -34,8 +36,8 @@ data:
         {{- if and .tlsVerify .caCert }}
         tls.ca_file /etc/external-es/certs/ca.crt
         {{- end }}
-        {{- if .additionalConfig }}
-        {{- range $key, $value := .additionalConfig }}
+        {{- if $additionalConfig }}
+        {{- range $key, $value := $additionalConfig }}
         {{- $preset := (list "Name" "Match" "Host" "Port" "HTTP_User" "HTTP_Passwd" "Logstash_Format" "Logstash_Prefix" "Retry_Limit" "tls" "tls.verify" "tls.ca_file") }}
         {{- if has $key $preset }}
         {{- fail (printf "Cannot specify config option `%s`, Big Bang has set a default, please use `outputs` if you need to customize this value." $key) }}
@@ -44,43 +46,18 @@ data:
         {{- end }}
         {{- end }}
         {{- end }}
-
-    [OUTPUT]
-        Name es
-        Match host.*
-        Host ${EXTERNAL_ES_HOST}
-        Port ${EXTERNAL_ES_PORT}
-        HTTP_User ${EXTERNAL_ES_USER}
-        HTTP_Passwd ${EXTERNAL_ES_PASSWORD}
-        Logstash_Format On
-        Suppress_Type_Name       On
-        Logstash_Prefix node
-        Retry_Limit False
-        storage.total_limit_size {{ $.Values.storage.total_limit_size }}
-        tls {{ if .tls }}On{{ else }}Off{{ end }}
-        tls.verify {{ if and .tlsVerify .caCert }}On{{ else }}Off{{ end }}
-        {{- if and .tlsVerify .caCert }}
-        tls.ca_file /etc/external-es/certs/ca.crt
-        {{- end }}
-        {{- if .additionalConfig }}
-        {{- range $key, $value := .additionalConfig }}
-        {{- $preset := (list "Name" "Match" "Host" "Port" "HTTP_User" "HTTP_Passwd" "Logstash_Format" "Logstash_Prefix" "Retry_Limit" "tls" "tls.verify" "tls.ca_file") }}
-        {{- if has $key $preset }}
-        {{- fail (printf "Cannot specify config option `%s`, Big Bang has set a default, please use `outputs` if you need to customize this value." $key) }}
-        {{- else }}
-        {{ $key }} {{ $value }}
-        {{- end }}
-        {{- end }}
-        {{- end }}
+    {{- end }}
     {{- end }}
     {{- end }}
 
     {{- with .Values.additionalOutputs.fluentd }}
     {{- $auth := (or (and .user .password) .sharedKey) }}
     {{- if and .host .port $auth }}
+    {{- $additionalConfig := .additionalConfig }}
+    {{- range $match := .match}}
     [OUTPUT]
         Name          forward
-        Match         kube.*
+        Match         {{ $match | quote }}
         Host          ${EXTERNAL_FLUENTD_HOST}
         Port          ${EXTERNAL_FLUENTD_PORT}
         {{- if and .user .password }}
@@ -96,8 +73,8 @@ data:
         {{- if and .tlsVerify .caCert }}
         tls.ca_file   /etc/external-fluentd/certs/ca.crt
         {{- end }}
-        {{- if .additionalConfig }}
-        {{- range $key, $value := .additionalConfig }}
+        {{- if $additionalConfig }}
+        {{- range $key, $value := $additionalConfig }}
         {{- $preset := (list "Name" "Match" "Host" "Port" "Username" "Password" "Shared_Key" "Retry_Limit" "tls" "tls.verify" "tls.ca_file") }}
         {{- if has $key $preset }}
         {{- fail (printf "Cannot specify config option `%s`, Big Bang has set a default, please use `outputs` if you need to customize this value." $key) }}
@@ -106,43 +83,17 @@ data:
         {{- end }}
         {{- end }}
         {{- end }}
-
-    [OUTPUT]
-        Name          forward
-        Match         host.*
-        Host          ${EXTERNAL_FLUENTD_HOST}
-        Port          ${EXTERNAL_FLUENTD_PORT}
-        {{- if and .user .password }}
-        Username      ${EXTERNAL_FLUENTD_USER}
-        Password      ${EXTERNAL_FLUENTD_PASSWORD}
-        {{- else }}
-        Shared_Key    ${EXTERNAL_FLUENTD_SHARED_KEY}
-        {{- end }}
-        Retry_Limit   False
-        storage.total_limit_size {{ $.Values.storage.total_limit_size }}
-        tls           {{ if .tls }}On{{ else }}Off{{ end }}
-        tls.verify    {{ if and .tlsVerify .caCert }}On{{ else }}Off{{ end }}
-        {{- if and .tlsVerify .caCert }}
-        tls.ca_file   /etc/external-fluentd/certs/ca.crt
-        {{- end }}
-        {{- if .additionalConfig }}
-        {{- range $key, $value := .additionalConfig }}
-        {{- $preset := (list "Name" "Match" "Host" "Port" "Username" "Password" "Shared_Key" "Retry_Limit" "tls" "tls.verify" "tls.ca_file") }}
-        {{- if has $key $preset }}
-        {{- fail (printf "Cannot specify config option `%s`, Big Bang has set a default, please use `outputs` if you need to customize this value." $key) }}
-        {{- else }}
-        {{ $key }} {{ $value }}
-        {{- end }}
-        {{- end }}
-        {{- end }}
+    {{- end }}
     {{- end }}
     {{- end }}
 
     {{- with .Values.additionalOutputs.loki }}
     {{- if and .host .port }}
+    {{- $additionalConfig := .additionalConfig }}
+    {{- range $match := .match}}
     [OUTPUT]
         name          loki
-        match         kube.*
+        match         {{ $match | quote }}
         labels        job=fluentbit, container=$kubernetes['container_name'], pod=$kubernetes['pod_name'], namespace=$kubernetes['namespace_name'], node_name=$kubernetes['host']
         host          ${EXTERNAL_LOKI_HOST}
         port          ${EXTERNAL_LOKI_PORT}
@@ -158,36 +109,8 @@ data:
         {{- if and .tlsVerify .caCert }}
         tls.ca_file   /etc/external-loki/certs/ca.crt
         {{- end }}
-        {{- if .additionalConfig }}
-        {{- range $key, $value := .additionalConfig }}
-        {{- $preset := (list "Name" "Match" "host" "port" "http_user" "http_passwd" "Retry_Limit" "tls" "tls.verify" "tls.ca_file" "auto_kubernetes_labels") }}
-        {{- if has $key $preset }}
-        {{- fail (printf "Cannot specify config option `%s`, Big Bang has set a default, please use `outputs` if you need to customize this value." $key) }}
-        {{- else }}
-        {{ $key }} {{ $value }}
-        {{- end }}
-        {{- end }}
-        {{- end }}
-    [OUTPUT]
-        name          loki
-        match         host.*
-        labels        job=fluentbit, container=$kubernetes['container_name'], pod=$kubernetes['pod_name'], namespace=$kubernetes['namespace_name'], node_name=$kubernetes['host']
-        host          ${EXTERNAL_LOKI_HOST}
-        port          ${EXTERNAL_LOKI_PORT}
-        auto_kubernetes_labels on
-        {{- if and .user .password }}
-        http_user     ${EXTERNAL_LOKI_USER}
-        http_passwd   ${EXTERNAL_LOKI_PASSWORD}
-        {{- end }}
-        Retry_Limit   False
-        storage.total_limit_size {{ $.Values.storage.total_limit_size }}
-        tls           {{ if .tls }}On{{ else }}Off{{ end }}
-        tls.verify    {{ if and .tlsVerify .caCert }}On{{ else }}Off{{ end }}
-        {{- if and .tlsVerify .caCert }}
-        tls.ca_file   /etc/external-loki/certs/ca.crt
-        {{- end }}
-        {{- if .additionalConfig }}
-        {{- range $key, $value := .additionalConfig }}
+        {{- if $additionalConfig }}
+        {{- range $key, $value := $additionalConfig }}
         {{- $preset := (list "Name" "Match" "host" "port" "http_user" "http_passwd" "Retry_Limit" "tls" "tls.verify" "tls.ca_file" "auto_kubernetes_labels") }}
         {{- if has $key $preset }}
         {{- fail (printf "Cannot specify config option `%s`, Big Bang has set a default, please use `outputs` if you need to customize this value." $key) }}
@@ -196,6 +119,7 @@ data:
         {{- end }}
         {{- end }}
         {{- end }}    
+    {{- end }}
     {{- end }}
     {{- end }}
     
