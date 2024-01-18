@@ -43,6 +43,9 @@ additionalOutputs:
   elasticsearch:
     host: ""
     port: 9200
+    match:
+      - "kube.*"
+      - "host.*"
     user: "elastic"
     password: ""
     # -- Toggle on TLS
@@ -68,6 +71,9 @@ additionalOutputs:
   fluentd:
     host: ""
     port: 24224
+    match:
+      - "kube.*"
+      - "host.*"
     user: ""
     password: ""
     # -- Overriden by username and password
@@ -94,6 +100,9 @@ additionalOutputs:
   loki:
     host: ""
     port: 3100
+    match:
+      - "kube.*"
+      - "host.*"
     # -- User and Password are optional - only required if running proxy in front of Loki,
     # see https://grafana.com/docs/loki/latest/operations/authentication/
     user: ""

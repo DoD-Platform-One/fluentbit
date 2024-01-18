@@ -1,6 +1,6 @@
 # fluentbit
 
-![Version: 0.39.0-bb.4](https://img.shields.io/badge/Version-0.39.0--bb.4-informational?style=flat-square) ![AppVersion: 2.1.10](https://img.shields.io/badge/AppVersion-2.1.10-informational?style=flat-square)
+![Version: 0.39.0-bb.5](https://img.shields.io/badge/Version-0.39.0--bb.5-informational?style=flat-square) ![AppVersion: 2.1.10](https://img.shields.io/badge/AppVersion-2.1.10-informational?style=flat-square)
 
 Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
 
@@ -41,20 +41,20 @@ helm install fluentbit chart/
 | istio.enabled | bool | `false` | Toggle currently only controls NetworkPolicies |
 | istio.mtls | object | `{"mode":"STRICT"}` | Default peer authentication setting |
 | istio.mtls.mode | string | `"STRICT"` | STRICT = Allow only mutual TLS traffic PERMISSIVE = Allow both plain text and mutual TLS traffic |
-| additionalOutputs | object | `{"disableDefault":false,"elasticsearch":{"additionalConfig":{},"caCert":"","host":"","password":"","port":9200,"tls":true,"tlsVerify":false,"user":"elastic"},"fluentd":{"additionalConfig":{},"caCert":"","host":"","password":"","port":24224,"sharedKey":"","tls":true,"tlsVerify":false,"user":""},"loki":{"additionalConfig":{},"caCert":"","host":"","password":"","port":3100,"tls":false,"tlsVerify":false,"user":""},"s3":{"additionalConfig":{"total_file_size":"1M","upload_timeout":"1m","use_put_object":"On"},"aws_access_key_id":"","aws_secret_access_key":"","bucket":"","existingSecret":"","match":["kube.*","host.*"],"region":"us-east-1"}}` | Additional Outputs for Big Bang, these are wrappers to simplify the config of outputs and extend whatever is specified under the `outputs` values |
+| additionalOutputs | object | `{"disableDefault":false,"elasticsearch":{"additionalConfig":{},"caCert":"","host":"","match":["kube.*","host.*"],"password":"","port":9200,"tls":true,"tlsVerify":false,"user":"elastic"},"fluentd":{"additionalConfig":{},"caCert":"","host":"","match":["kube.*","host.*"],"password":"","port":24224,"sharedKey":"","tls":true,"tlsVerify":false,"user":""},"loki":{"additionalConfig":{},"caCert":"","host":"","match":["kube.*","host.*"],"password":"","port":3100,"tls":false,"tlsVerify":false,"user":""},"s3":{"additionalConfig":{"total_file_size":"1M","upload_timeout":"1m","use_put_object":"On"},"aws_access_key_id":"","aws_secret_access_key":"","bucket":"","existingSecret":"","match":["kube.*","host.*"],"region":"us-east-1"}}` | Additional Outputs for Big Bang, these are wrappers to simplify the config of outputs and extend whatever is specified under the `outputs` values |
 | additionalOutputs.disableDefault | bool | `false` | Option to disable the default elastic output configured under `outputs`, this only works at the Big Bang chart level |
-| additionalOutputs.elasticsearch | object | `{"additionalConfig":{},"caCert":"","host":"","password":"","port":9200,"tls":true,"tlsVerify":false,"user":"elastic"}` | Options to enable an additional elastic output |
+| additionalOutputs.elasticsearch | object | `{"additionalConfig":{},"caCert":"","host":"","match":["kube.*","host.*"],"password":"","port":9200,"tls":true,"tlsVerify":false,"user":"elastic"}` | Options to enable an additional elastic output |
 | additionalOutputs.elasticsearch.tls | bool | `true` | Toggle on TLS |
 | additionalOutputs.elasticsearch.tlsVerify | bool | `false` | Verify TLS certificates, requires a caCert to be specified |
 | additionalOutputs.elasticsearch.caCert | string | `""` | Full ca.crt specified as multiline string, see example |
 | additionalOutputs.elasticsearch.additionalConfig | object | `{}` | Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/elasticsearch |
-| additionalOutputs.fluentd | object | `{"additionalConfig":{},"caCert":"","host":"","password":"","port":24224,"sharedKey":"","tls":true,"tlsVerify":false,"user":""}` | Options to enable a fluentd output |
+| additionalOutputs.fluentd | object | `{"additionalConfig":{},"caCert":"","host":"","match":["kube.*","host.*"],"password":"","port":24224,"sharedKey":"","tls":true,"tlsVerify":false,"user":""}` | Options to enable a fluentd output |
 | additionalOutputs.fluentd.sharedKey | string | `""` | Overriden by username and password |
 | additionalOutputs.fluentd.tls | bool | `true` | Toggle on TLS |
 | additionalOutputs.fluentd.tlsVerify | bool | `false` | Verify TLS certificates, requires a caCert to be specified |
 | additionalOutputs.fluentd.caCert | string | `""` | Full ca.crt specified as multiline string, see example |
 | additionalOutputs.fluentd.additionalConfig | object | `{}` | Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/forward |
-| additionalOutputs.loki | object | `{"additionalConfig":{},"caCert":"","host":"","password":"","port":3100,"tls":false,"tlsVerify":false,"user":""}` | Options to enable a loki output |
+| additionalOutputs.loki | object | `{"additionalConfig":{},"caCert":"","host":"","match":["kube.*","host.*"],"password":"","port":3100,"tls":false,"tlsVerify":false,"user":""}` | Options to enable a loki output |
 | additionalOutputs.loki.user | string | `""` | User and Password are optional - only required if running proxy in front of Loki, see https://grafana.com/docs/loki/latest/operations/authentication/ |
 | additionalOutputs.loki.tls | bool | `false` | Toggle on TLS - disabled by default to support in cluster Loki |
 | additionalOutputs.loki.tlsVerify | bool | `false` | Verify TLS certificates, requires a caCert to be specified |
