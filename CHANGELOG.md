@@ -3,6 +3,11 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [0.40.0-bb.0]
+### Changed
+- Updated upstream helm chart tag `0.40.0-bb.0`
+- Updated fluent-bit image to `2.2.1` from IB
+
 ## [0.39.0-bb.5]
 ### Added
 - Added configuration for Match in elasticsearch, fluentd and loki output
