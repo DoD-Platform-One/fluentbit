@@ -17,6 +17,7 @@ data:
 
     {{- with .Values.additionalOutputs.elasticsearch }}
     {{- if and .host .user .password .port }}
+    {{- $es := . }}
     {{- $additionalConfig := .additionalConfig }}
     {{- range $match := .match}}
     [OUTPUT]
@@ -31,9 +32,9 @@ data:
         Retry_Limit False
         Replace_Dots On
         storage.total_limit_size {{ $.Values.storage.total_limit_size }}
-        tls {{ if .tls }}On{{ else }}Off{{ end }}
-        tls.verify {{ if and .tlsVerify .caCert }}On{{ else }}Off{{ end }}
-        {{- if and .tlsVerify .caCert }}
+        tls {{ if $es.tls }}On{{ else }}Off{{ end }}
+        tls.verify {{ if and $es.tlsVerify $es.caCert }}On{{ else }}Off{{ end }}
+        {{- if and $es.tlsVerify $es.caCert }}
         tls.ca_file /etc/external-es/certs/ca.crt
         {{- end }}
         {{- if $additionalConfig }}
@@ -53,6 +54,7 @@ data:
     {{- with .Values.additionalOutputs.fluentd }}
     {{- $auth := (or (and .user .password) .sharedKey) }}
     {{- if and .host .port $auth }}
+    {{- $es := . }}
     {{- $additionalConfig := .additionalConfig }}
     {{- range $match := .match}}
     [OUTPUT]
@@ -68,9 +70,9 @@ data:
         {{- end }}
         Retry_Limit   False
         storage.total_limit_size {{ $.Values.storage.total_limit_size }}
-        tls           {{ if .tls }}On{{ else }}Off{{ end }}
-        tls.verify    {{ if and .tlsVerify .caCert }}On{{ else }}Off{{ end }}
-        {{- if and .tlsVerify .caCert }}
+        tls {{ if $es.tls }}On{{ else }}Off{{ end }}
+        tls.verify {{ if and $es.tlsVerify $es.caCert }}On{{ else }}Off{{ end }}
+        {{- if and $es.tlsVerify $es.caCert }}
         tls.ca_file   /etc/external-fluentd/certs/ca.crt
         {{- end }}
         {{- if $additionalConfig }}
@@ -89,6 +91,7 @@ data:
 
     {{- with .Values.additionalOutputs.loki }}
     {{- if and .host .port }}
+    {{- $es := . }}
     {{- $additionalConfig := .additionalConfig }}
     {{- range $match := .match}}
     [OUTPUT]
@@ -104,9 +107,9 @@ data:
         {{- end }}
         Retry_Limit   False
         storage.total_limit_size {{ $.Values.storage.total_limit_size }}
-        tls           {{ if .tls }}On{{ else }}Off{{ end }}
-        tls.verify    {{ if and .tlsVerify .caCert }}On{{ else }}Off{{ end }}
-        {{- if and .tlsVerify .caCert }}
+        tls {{ if $es.tls }}On{{ else }}Off{{ end }}
+        tls.verify {{ if and $es.tlsVerify $es.caCert }}On{{ else }}Off{{ end }}
+        {{- if and $es.tlsVerify $es.caCert }}
         tls.ca_file   /etc/external-loki/certs/ca.crt
         {{- end }}
         {{- if $additionalConfig }}
