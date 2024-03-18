@@ -1,6 +1,6 @@
 # fluentbit
 
-![Version: 0.43.0-bb.2](https://img.shields.io/badge/Version-0.43.0--bb.2-informational?style=flat-square) ![AppVersion: 2.2.2](https://img.shields.io/badge/AppVersion-2.2.2-informational?style=flat-square)
+![Version: 0.43.0-bb.3](https://img.shields.io/badge/Version-0.43.0--bb.3-informational?style=flat-square) ![AppVersion: 2.2.2](https://img.shields.io/badge/AppVersion-2.2.2-informational?style=flat-square)
 
 Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
 
@@ -37,7 +37,7 @@ helm install fluentbit chart/
 |-----|------|---------|-------------|
 | elasticsearch | object | `{"name":""}` | Configuration for Elasticsearch interaction |
 | elasticsearch.name | string | `""` | Name is only used at the BB level for host templating |
-| istio | object | `{"enabled":false,"hardened":{"customAuthorizationPolicies":[],"enabled":false,"monitoring":{"enabled":true,"namespaces":["monitoring"],"principals":["cluster.local/ns/monitoring/sa/monitoring-grafana","cluster.local/ns/monitoring/sa/monitoring-monitoring-kube-alertmanager","cluster.local/ns/monitoring/sa/monitoring-monitoring-kube-operator","cluster.local/ns/monitoring/sa/monitoring-monitoring-kube-prometheus","cluster.local/ns/monitoring/sa/monitoring-monitoring-kube-state-metrics","cluster.local/ns/monitoring/sa/monitoring-monitoring-prometheus-node-exporter"]}},"mtls":{"mode":"STRICT"}}` | Configuration for Istio interaction |
+| istio | object | `{"enabled":false,"hardened":{"customAuthorizationPolicies":[],"customServiceEntries":[],"enabled":false,"monitoring":{"enabled":true,"namespaces":["monitoring"],"principals":["cluster.local/ns/monitoring/sa/monitoring-grafana","cluster.local/ns/monitoring/sa/monitoring-monitoring-kube-alertmanager","cluster.local/ns/monitoring/sa/monitoring-monitoring-kube-operator","cluster.local/ns/monitoring/sa/monitoring-monitoring-kube-prometheus","cluster.local/ns/monitoring/sa/monitoring-monitoring-kube-state-metrics","cluster.local/ns/monitoring/sa/monitoring-monitoring-prometheus-node-exporter"]},"outboundTrafficPolicyMode":"REGISTRY_ONLY"},"mtls":{"mode":"STRICT"}}` | Configuration for Istio interaction |
 | istio.enabled | bool | `false` | Toggle currently only controls NetworkPolicies |
 | istio.mtls | object | `{"mode":"STRICT"}` | Default peer authentication setting |
 | istio.mtls.mode | string | `"STRICT"` | STRICT = Allow only mutual TLS traffic PERMISSIVE = Allow both plain text and mutual TLS traffic |
