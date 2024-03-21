@@ -6,7 +6,7 @@ metadata:
   name: {{ .Release.Name }}-sidecar
   namespace: {{.Release.Namespace}}
   labels:
-    name: authservice
+    {{- include "fluent-bit.selectorLabels" $ | nindent 4 }}
 spec:
   outboundTrafficPolicy:
     mode: {{ .Values.istio.hardened.outboundTrafficPolicyMode }}
