@@ -18,12 +18,32 @@ Fluentbit within Big Bang is a modified version of an upstream chart. `kpt` is u
 
 # Manual Testing for Updates
 
-NOTE: For these testing steps it is good to do them on both a clean install and an upgrade. For clean install, point fluentbit to your branch. For an upgrade do an install with fluentbit pointing to the latest tag, then perform a helm upgrade with fluentbit pointing to your branch.
+>NOTE: For these testing steps it is good to do them on both a clean install and an upgrade. For clean install, point fluentbit to your branch. For an upgrade do an install with fluentbit pointing to the latest tag, then perform a helm upgrade with fluentbit pointing to your branch.
 
-You will want to install with:
-- ECK Operator, elasticsearchKibana, Loki, and Fluentbit enabled; Promtail disabled
-- Istio enabled
-- Monitoring enabled
+The following overrides can be used for a bare minimum FluentBit deployment:
+
+```yaml
+elasticsearchKibana:
+  enabled: true
+  sso:
+    enabled: true
+    client_id: platform1_a8604cc9-f5e9-4656-802d-d05624370245_bb8-kibana
+eckOperator:
+  enabled: true
+fluentbit: 
+  enabled: true
+  git:
+    tag: null
+    branch: renovate/ironbank
+monitoring:
+  enabled: true
+loki:
+  enabled: true
+promtail:
+  enabled: false
+neuvector:
+  enabled: false
+```
 
 Testing Steps:
 - Login to Prometheus, validate under `Status` -> `Targets` that all fluentbit targets are showing as up
