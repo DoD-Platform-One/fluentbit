@@ -30,6 +30,17 @@ elasticsearchKibana:
     client_id: platform1_a8604cc9-f5e9-4656-802d-d05624370245_bb8-kibana
 eckOperator:
   enabled: true
+kyverno:
+  enabled: true
+kyvernoPolicies:
+  enabled: true
+  values:
+    policies:
+      restrict-host-path-mount-pv:
+        parameters:
+          allow:
+          - /var/lib/rancher/k3s/storage/pvc-*
+
 fluentbit: 
   enabled: true
   git:
@@ -51,7 +62,7 @@ Testing Steps:
 - Login to Kibana, then navigate to https://kibana.dev.bigbang.mil/app/management/kibana/indexPatterns and add an index pattern for `logstash-*`
 - Navigate to `Analytics` -> `Discover` and validate that pod logs are appearing in the `logstash` index pattern
 
-Note: as of BB 2.0, the following secrets will need to be copied from the logging namespace to fluentbit in order to successfully test fluentbit log shipping to elasticsearch
+Note: as of BB 2.0, if kyverno is not enabled in your cluster the following secrets will need to be copied from the logging namespace to fluentbit in order to successfully test fluentbit log shipping to elasticsearch.
 - `logging-ek-es-http-certs-public`
 - `logging-ek-es-http-certs-internal`
 - `logging-ek-es-elastic-user`
