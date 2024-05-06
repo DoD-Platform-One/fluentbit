@@ -552,7 +552,53 @@ networkPolicy:
 #   ingress:
 #     from: []
 
-luaScripts: {}
+luaScripts:
+  remove_labels.lua: |
+    function remove_labels(tag, timestamp, record)
+    
+      local patterns = {
+        "service.istio.-",
+        "security.istio.-",
+        "helm.-",
+        "istio.-",
+        "statefulset.kubernetes.io/pod-name",
+        "apps.kuberentes.io/pod-index",
+        "prometheus",
+        "operator.prometheus.io/name",
+        "app.kubernetes.io/managed-by",
+        "heritage",
+        "release"
+      }
+
+      if record["kubernetes"] ~= nil then
+        if record["kubernetes"]["labels"] ~= nil then
+    
+          for key, value in pairs(record["kubernetes"]["labels"]) do
+            -- Uncomment for debugging
+            -- print("Checking - Label " .. key .. "=" .. value)
+
+            local remove_key = false
+            local i = 1
+            while not remove_key and i <= #patterns do
+              if string.match(key, patterns[i]) then
+                remove_key = true
+              end
+              i = i + 1
+            end
+
+            -- Key matched a pattern, remove it
+            if remove_key then
+              -- Uncomment for debugging
+              -- print("Removing - Label " .. key .. "=" .. value)
+              record["kubernetes"]["labels"][key] = nil 
+            end
+          end
+        
+        end
+      end
+      
+      return 1, timestamp, record
+    end
 
 ## https://docs.fluentbit.io/manual/administration/configuring-fluent-bit/classic-mode/configuration-file
 config:
@@ -604,6 +650,13 @@ config:
         K8S-Logging.Parser On
         K8S-Logging.Exclude Off
         Buffer_Size 1M
+
+    [FILTER]
+        Name          lua
+        Match         kube.*
+        script        /fluent-bit/scripts/remove_labels.lua
+        call          remove_labels
+
 
   ## https://docs.fluentbit.io/manual/pipeline/outputs
   outputs: ""
