@@ -54,6 +54,8 @@ promtail:
   enabled: false
 neuvector:
   enabled: false
+grafana:
+  enabled: true
 ```
 
 Testing Steps:
