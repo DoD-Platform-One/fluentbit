@@ -185,7 +185,7 @@ replicaCount: 1
 image:
   repository: registry1.dso.mil/ironbank/opensource/fluent/fluent-bit
   pullPolicy: Always
-  tag: 3.0.2
+  tag: 3.0.3
 
 networkPolicies:
   enabled: false
@@ -285,6 +285,10 @@ service:
 #   prometheus.io/path: "/api/v1/metrics/prometheus"
 #   prometheus.io/port: "2020"
 #   prometheus.io/scrape: "true"
+  externalIPs: []
+  # externalIPs:
+  #  - 2.2.2.2
+
 
 serviceMonitor:
   enabled: false
@@ -510,10 +514,20 @@ env: {}
 
 envFrom: []
 
+# This supports either a structured array or a templatable string
 extraContainers: []
+
+# Array mode
+# extraContainers:
 #   - name: do-something
 #     image: busybox
 #     command: ['do', 'something']
+
+# String mode
+# extraContainers: |-
+#   - name: do-something
+#     image: bitnami/kubectl:{{ .Capabilities.KubeVersion.Major }}.{{ .Capabilities.KubeVersion.Minor }}
+#     command: ['kubectl', 'version']
 
 flush: 1
 
@@ -840,7 +854,7 @@ hotReload:
   enabled: false
   image:
     repository: registry1.dso.mil/ironbank/opensource/jimmidyson/configmap-reload
-    tag: v0.12.0
+    tag: v0.13.0
     digest:
     pullPolicy: IfNotPresent
   resources: {}

@@ -3,6 +3,12 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [0.46.5-bb.0] - 2024-05-08
+### Added
+- Gluon 0.4.9 -> 0.5.0
+- fluent-bit 3.0.2 -> 3.0.3
+- configmap-reload v0.12.0 -> v0.13.0
+
 ## [0.46.2-bb.2] - 2024-05-02
 ### Added
 - Drop unnecessary labels for Loki 3.0 support
