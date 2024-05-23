@@ -1,7 +1,7 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:44089030-1608-47df-8b0e-3b866b963108",
+  "serialNumber": "urn:uuid:9f393612-f7a6-4aa0-88d4-eb6cc3828e7a",
   "version": 1,
   "metadata": {
     "tools": null,
@@ -15,13 +15,13 @@
   "components": [
     {
       "type": "container",
-      "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:dea72c881c19eabd",
+      "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:99ae7debbebf8ad9",
       "name": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit",
-      "version": "3.0.3",
+      "version": "3.0.4",
       "components": [
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/alternatives@1.24-1.el9?arch=x86_64\u0026upstream=chkconfig-1.24-1.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=9319bcd88057ca07",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/alternatives@1.24-1.el9?arch=x86_64\u0026upstream=chkconfig-1.24-1.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=9319bcd88057ca07",
           "publisher": "Red Hat, Inc.",
           "name": "alternatives",
           "version": "1.24-1.el9",
@@ -53,7 +53,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -75,7 +75,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/audit-libs@3.1.2-2.el9?arch=x86_64\u0026upstream=audit-3.1.2-2.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=d9252f44ab1d6b5a",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/audit-libs@3.1.2-2.el9?arch=x86_64\u0026upstream=audit-3.1.2-2.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=d9252f44ab1d6b5a",
           "publisher": "Red Hat, Inc.",
           "name": "audit-libs",
           "version": "3.1.2-2.el9",
@@ -131,7 +131,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -153,7 +153,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/basesystem@11-13.el9?arch=noarch\u0026upstream=basesystem-11-13.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=fcabd006cb3bfe7d",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/basesystem@11-13.el9?arch=noarch\u0026upstream=basesystem-11-13.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=fcabd006cb3bfe7d",
           "publisher": "Red Hat, Inc.",
           "name": "basesystem",
           "version": "11-13.el9",
@@ -185,7 +185,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -207,7 +207,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/bash@5.1.8-9.el9?arch=x86_64\u0026upstream=bash-5.1.8-9.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=a6062d7253817d9d",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/bash@5.1.8-9.el9?arch=x86_64\u0026upstream=bash-5.1.8-9.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=a6062d7253817d9d",
           "publisher": "Red Hat, Inc.",
           "name": "bash",
           "version": "5.1.8-9.el9",
@@ -239,7 +239,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -261,7 +261,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/bzip2-libs@1.0.8-8.el9?arch=x86_64\u0026upstream=bzip2-1.0.8-8.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=6f2ea00452185c72",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/bzip2-libs@1.0.8-8.el9?arch=x86_64\u0026upstream=bzip2-1.0.8-8.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=6f2ea00452185c72",
           "publisher": "Red Hat, Inc.",
           "name": "bzip2-libs",
           "version": "1.0.8-8.el9",
@@ -317,7 +317,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -339,7 +339,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/ca-certificates@2023.2.60_v7.0.306-90.1.el9_2?arch=noarch\u0026upstream=ca-certificates-2023.2.60_v7.0.306-90.1.el9_2.src.rpm\u0026distro=rhel-9.4\u0026package-id=c20cc291effb1ef6",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/ca-certificates@2023.2.60_v7.0.306-90.1.el9_2?arch=noarch\u0026upstream=ca-certificates-2023.2.60_v7.0.306-90.1.el9_2.src.rpm\u0026distro=rhel-9.4\u0026package-id=c20cc291effb1ef6",
           "publisher": "Red Hat, Inc.",
           "name": "ca-certificates",
           "version": "2023.2.60_v7.0.306-90.1.el9_2",
@@ -395,7 +395,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -417,7 +417,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/coreutils-single@8.32-35.el9?arch=x86_64\u0026upstream=coreutils-8.32-35.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=90ea7db0d87c576b",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/coreutils-single@8.32-35.el9?arch=x86_64\u0026upstream=coreutils-8.32-35.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=90ea7db0d87c576b",
           "publisher": "Red Hat, Inc.",
           "name": "coreutils-single",
           "version": "8.32-35.el9",
@@ -473,7 +473,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -495,7 +495,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/crypto-policies@20240202-1.git283706d.el9?arch=noarch\u0026upstream=crypto-policies-20240202-1.git283706d.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=93d58366de27ef4a",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/crypto-policies@20240202-1.git283706d.el9?arch=noarch\u0026upstream=crypto-policies-20240202-1.git283706d.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=93d58366de27ef4a",
           "publisher": "Red Hat, Inc.",
           "name": "crypto-policies",
           "version": "20240202-1.git283706d.el9",
@@ -551,7 +551,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -573,7 +573,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/crypto-policies-scripts@20240202-1.git283706d.el9?arch=noarch\u0026upstream=crypto-policies-20240202-1.git283706d.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=a0e5837bada9d289",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/crypto-policies-scripts@20240202-1.git283706d.el9?arch=noarch\u0026upstream=crypto-policies-20240202-1.git283706d.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=a0e5837bada9d289",
           "publisher": "Red Hat, Inc.",
           "name": "crypto-policies-scripts",
           "version": "20240202-1.git283706d.el9",
@@ -645,7 +645,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -667,7 +667,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/curl-minimal@7.76.1-29.el9_4?arch=x86_64\u0026upstream=curl-7.76.1-29.el9_4.src.rpm\u0026distro=rhel-9.4\u0026package-id=5142c3aa22741cbb",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/curl-minimal@7.76.1-29.el9_4?arch=x86_64\u0026upstream=curl-7.76.1-29.el9_4.src.rpm\u0026distro=rhel-9.4\u0026package-id=5142c3aa22741cbb",
           "publisher": "Red Hat, Inc.",
           "name": "curl-minimal",
           "version": "7.76.1-29.el9_4",
@@ -723,7 +723,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -745,7 +745,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/cyrus-sasl-lib@2.1.27-21.el9?arch=x86_64\u0026upstream=cyrus-sasl-2.1.27-21.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=f9b976e083e7a639",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/cyrus-sasl-lib@2.1.27-21.el9?arch=x86_64\u0026upstream=cyrus-sasl-2.1.27-21.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=f9b976e083e7a639",
           "publisher": "Red Hat, Inc.",
           "name": "cyrus-sasl-lib",
           "version": "2.1.27-21.el9",
@@ -817,7 +817,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -839,7 +839,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/dejavu-sans-fonts@2.37-18.el9?arch=noarch\u0026upstream=dejavu-fonts-2.37-18.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=8ffd65a3ba31d3c5",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/dejavu-sans-fonts@2.37-18.el9?arch=noarch\u0026upstream=dejavu-fonts-2.37-18.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=8ffd65a3ba31d3c5",
           "publisher": "Red Hat, Inc.",
           "name": "dejavu-sans-fonts",
           "version": "2.37-18.el9",
@@ -911,7 +911,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -933,7 +933,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/dnf-data@4.14.0-9.el9?arch=noarch\u0026upstream=dnf-4.14.0-9.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=c7a819f5889d270d",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/dnf-data@4.14.0-9.el9?arch=noarch\u0026upstream=dnf-4.14.0-9.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=c7a819f5889d270d",
           "publisher": "Red Hat, Inc.",
           "name": "dnf-data",
           "version": "4.14.0-9.el9",
@@ -989,7 +989,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -1011,7 +1011,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/expat@2.5.0-2.el9_4?arch=x86_64\u0026upstream=expat-2.5.0-2.el9_4.src.rpm\u0026distro=rhel-9.4\u0026package-id=fac946905b14f31d",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/expat@2.5.0-2.el9_4?arch=x86_64\u0026upstream=expat-2.5.0-2.el9_4.src.rpm\u0026distro=rhel-9.4\u0026package-id=fac946905b14f31d",
           "publisher": "Red Hat, Inc.",
           "name": "expat",
           "version": "2.5.0-2.el9_4",
@@ -1043,7 +1043,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -1065,7 +1065,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/file-libs@5.39-16.el9?arch=x86_64\u0026upstream=file-5.39-16.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=a1a15ba27225256b",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/file-libs@5.39-16.el9?arch=x86_64\u0026upstream=file-5.39-16.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=a1a15ba27225256b",
           "publisher": "Red Hat, Inc.",
           "name": "file-libs",
           "version": "5.39-16.el9",
@@ -1121,7 +1121,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -1143,7 +1143,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/filesystem@3.16-2.el9?arch=x86_64\u0026upstream=filesystem-3.16-2.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=e61f17f9183fa594",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/filesystem@3.16-2.el9?arch=x86_64\u0026upstream=filesystem-3.16-2.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=e61f17f9183fa594",
           "publisher": "Red Hat, Inc.",
           "name": "filesystem",
           "version": "3.16-2.el9",
@@ -1175,7 +1175,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -1197,7 +1197,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/fonts-filesystem@2.0.5-7.el9.1?arch=noarch\u0026epoch=1\u0026upstream=fonts-rpm-macros-2.0.5-7.el9.1.src.rpm\u0026distro=rhel-9.4\u0026package-id=d72ee663c8d4ff8e",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/fonts-filesystem@2.0.5-7.el9.1?arch=noarch\u0026epoch=1\u0026upstream=fonts-rpm-macros-2.0.5-7.el9.1.src.rpm\u0026distro=rhel-9.4\u0026package-id=d72ee663c8d4ff8e",
           "publisher": "Red Hat, Inc.",
           "name": "fonts-filesystem",
           "version": "1:2.0.5-7.el9.1",
@@ -1253,7 +1253,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -1279,7 +1279,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/gawk@5.1.0-6.el9?arch=x86_64\u0026upstream=gawk-5.1.0-6.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=e3571498d06703a7",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/gawk@5.1.0-6.el9?arch=x86_64\u0026upstream=gawk-5.1.0-6.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=e3571498d06703a7",
           "publisher": "Red Hat, Inc.",
           "name": "gawk",
           "version": "5.1.0-6.el9",
@@ -1311,7 +1311,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -1333,7 +1333,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/gdbm-libs@1.19-4.el9?arch=x86_64\u0026epoch=1\u0026upstream=gdbm-1.19-4.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=d59bef29e19a3e9e",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/gdbm-libs@1.19-4.el9?arch=x86_64\u0026epoch=1\u0026upstream=gdbm-1.19-4.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=d59bef29e19a3e9e",
           "publisher": "Red Hat, Inc.",
           "name": "gdbm-libs",
           "version": "1:1.19-4.el9",
@@ -1389,7 +1389,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -1415,7 +1415,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/glib2@2.68.4-14.el9?arch=x86_64\u0026upstream=glib2-2.68.4-14.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=e9ca0a9e1fc475df",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/glib2@2.68.4-14.el9?arch=x86_64\u0026upstream=glib2-2.68.4-14.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=e9ca0a9e1fc475df",
           "publisher": "Red Hat, Inc.",
           "name": "glib2",
           "version": "2.68.4-14.el9",
@@ -1447,7 +1447,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -1469,7 +1469,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/glibc@2.34-100.el9?arch=x86_64\u0026upstream=glibc-2.34-100.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=e3b8d270355ce7dd",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/glibc@2.34-100.el9?arch=x86_64\u0026upstream=glibc-2.34-100.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=e3b8d270355ce7dd",
           "publisher": "Red Hat, Inc.",
           "name": "glibc",
           "version": "2.34-100.el9",
@@ -1501,7 +1501,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -1523,7 +1523,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/glibc-common@2.34-100.el9?arch=x86_64\u0026upstream=glibc-2.34-100.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=db1902474f4dd19d",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/glibc-common@2.34-100.el9?arch=x86_64\u0026upstream=glibc-2.34-100.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=db1902474f4dd19d",
           "publisher": "Red Hat, Inc.",
           "name": "glibc-common",
           "version": "2.34-100.el9",
@@ -1579,7 +1579,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -1601,7 +1601,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/glibc-minimal-langpack@2.34-100.el9?arch=x86_64\u0026upstream=glibc-2.34-100.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=0a42879eb7771de8",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/glibc-minimal-langpack@2.34-100.el9?arch=x86_64\u0026upstream=glibc-2.34-100.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=0a42879eb7771de8",
           "publisher": "Red Hat, Inc.",
           "name": "glibc-minimal-langpack",
           "version": "2.34-100.el9",
@@ -1673,7 +1673,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -1695,7 +1695,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/gmp@6.2.0-13.el9?arch=x86_64\u0026epoch=1\u0026upstream=gmp-6.2.0-13.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=1c5e468d61284435",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/gmp@6.2.0-13.el9?arch=x86_64\u0026epoch=1\u0026upstream=gmp-6.2.0-13.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=1c5e468d61284435",
           "publisher": "Red Hat, Inc.",
           "name": "gmp",
           "version": "1:6.2.0-13.el9",
@@ -1727,7 +1727,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -1753,7 +1753,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/gnupg2@2.3.3-4.el9?arch=x86_64\u0026upstream=gnupg2-2.3.3-4.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=4933454ace5f40dc",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/gnupg2@2.3.3-4.el9?arch=x86_64\u0026upstream=gnupg2-2.3.3-4.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=4933454ace5f40dc",
           "publisher": "Red Hat, Inc.",
           "name": "gnupg2",
           "version": "2.3.3-4.el9",
@@ -1785,7 +1785,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -1807,7 +1807,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/gnutls@3.8.3-4.el9_4?arch=x86_64\u0026upstream=gnutls-3.8.3-4.el9_4.src.rpm\u0026distro=rhel-9.4\u0026package-id=0adc520ee93e1a17",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/gnutls@3.8.3-4.el9_4?arch=x86_64\u0026upstream=gnutls-3.8.3-4.el9_4.src.rpm\u0026distro=rhel-9.4\u0026package-id=0adc520ee93e1a17",
           "publisher": "Red Hat, Inc.",
           "name": "gnutls",
           "version": "3.8.3-4.el9_4",
@@ -1839,7 +1839,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -1861,7 +1861,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/gnutls-dane@3.8.3-4.el9_4?arch=x86_64\u0026upstream=gnutls-3.8.3-4.el9_4.src.rpm\u0026distro=rhel-9.4\u0026package-id=fa0568de9b8e3a8e",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/gnutls-dane@3.8.3-4.el9_4?arch=x86_64\u0026upstream=gnutls-3.8.3-4.el9_4.src.rpm\u0026distro=rhel-9.4\u0026package-id=fa0568de9b8e3a8e",
           "publisher": "Red Hat, Inc.",
           "name": "gnutls-dane",
           "version": "3.8.3-4.el9_4",
@@ -1917,7 +1917,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -1939,7 +1939,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/gnutls-utils@3.8.3-4.el9_4?arch=x86_64\u0026upstream=gnutls-3.8.3-4.el9_4.src.rpm\u0026distro=rhel-9.4\u0026package-id=b5934594873e39c2",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/gnutls-utils@3.8.3-4.el9_4?arch=x86_64\u0026upstream=gnutls-3.8.3-4.el9_4.src.rpm\u0026distro=rhel-9.4\u0026package-id=b5934594873e39c2",
           "publisher": "Red Hat, Inc.",
           "name": "gnutls-utils",
           "version": "3.8.3-4.el9_4",
@@ -1995,7 +1995,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -2017,7 +2017,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/gobject-introspection@1.68.0-11.el9?arch=x86_64\u0026upstream=gobject-introspection-1.68.0-11.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=f4422bf03285e92c",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/gobject-introspection@1.68.0-11.el9?arch=x86_64\u0026upstream=gobject-introspection-1.68.0-11.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=f4422bf03285e92c",
           "publisher": "Red Hat, Inc.",
           "name": "gobject-introspection",
           "version": "1.68.0-11.el9",
@@ -2073,7 +2073,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -2095,7 +2095,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/gpg-pubkey@5a6340b3-6229229e?distro=rhel-9.4\u0026package-id=6a4614b48b443e33",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/gpg-pubkey@5a6340b3-6229229e?distro=rhel-9.4\u0026package-id=6a4614b48b443e33",
           "name": "gpg-pubkey",
           "version": "5a6340b3-6229229e",
           "licenses": [
@@ -2142,7 +2142,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -2160,7 +2160,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/gpg-pubkey@fd431d51-4ae0493b?distro=rhel-9.4\u0026package-id=0b9edfc7dd36b25d",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/gpg-pubkey@fd431d51-4ae0493b?distro=rhel-9.4\u0026package-id=0b9edfc7dd36b25d",
           "name": "gpg-pubkey",
           "version": "fd431d51-4ae0493b",
           "licenses": [
@@ -2207,7 +2207,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -2225,7 +2225,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/gpgme@1.15.1-6.el9?arch=x86_64\u0026upstream=gpgme-1.15.1-6.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=5441bf12f7bae9a7",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/gpgme@1.15.1-6.el9?arch=x86_64\u0026upstream=gpgme-1.15.1-6.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=5441bf12f7bae9a7",
           "publisher": "Red Hat, Inc.",
           "name": "gpgme",
           "version": "1.15.1-6.el9",
@@ -2257,7 +2257,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -2279,7 +2279,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/grep@3.6-5.el9?arch=x86_64\u0026upstream=grep-3.6-5.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=70a5e6e8918f3aed",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/grep@3.6-5.el9?arch=x86_64\u0026upstream=grep-3.6-5.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=70a5e6e8918f3aed",
           "publisher": "Red Hat, Inc.",
           "name": "grep",
           "version": "3.6-5.el9",
@@ -2311,7 +2311,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -2333,7 +2333,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/json-c@0.14-11.el9?arch=x86_64\u0026upstream=json-c-0.14-11.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=651b48f819a5c701",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/json-c@0.14-11.el9?arch=x86_64\u0026upstream=json-c-0.14-11.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=651b48f819a5c701",
           "publisher": "Red Hat, Inc.",
           "name": "json-c",
           "version": "0.14-11.el9",
@@ -2389,7 +2389,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -2411,7 +2411,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/json-glib@1.6.6-1.el9?arch=x86_64\u0026upstream=json-glib-1.6.6-1.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=365b8419bc55d31c",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/json-glib@1.6.6-1.el9?arch=x86_64\u0026upstream=json-glib-1.6.6-1.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=365b8419bc55d31c",
           "publisher": "Red Hat, Inc.",
           "name": "json-glib",
           "version": "1.6.6-1.el9",
@@ -2467,7 +2467,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -2489,7 +2489,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/keyutils-libs@1.6.3-1.el9?arch=x86_64\u0026upstream=keyutils-1.6.3-1.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=1c733566eec59498",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/keyutils-libs@1.6.3-1.el9?arch=x86_64\u0026upstream=keyutils-1.6.3-1.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=1c733566eec59498",
           "publisher": "Red Hat, Inc.",
           "name": "keyutils-libs",
           "version": "1.6.3-1.el9",
@@ -2545,7 +2545,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -2567,7 +2567,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/krb5-libs@1.21.1-1.el9?arch=x86_64\u0026upstream=krb5-1.21.1-1.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=dea5949a295651c6",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/krb5-libs@1.21.1-1.el9?arch=x86_64\u0026upstream=krb5-1.21.1-1.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=dea5949a295651c6",
           "publisher": "Red Hat, Inc.",
           "name": "krb5-libs",
           "version": "1.21.1-1.el9",
@@ -2623,7 +2623,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -2645,7 +2645,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/langpacks-core-en@3.0-16.el9?arch=noarch\u0026upstream=langpacks-3.0-16.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=e5c9121b759c3796",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/langpacks-core-en@3.0-16.el9?arch=noarch\u0026upstream=langpacks-3.0-16.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=e5c9121b759c3796",
           "publisher": "Red Hat, Inc.",
           "name": "langpacks-core-en",
           "version": "3.0-16.el9",
@@ -2717,7 +2717,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -2739,7 +2739,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/langpacks-core-font-en@3.0-16.el9?arch=noarch\u0026upstream=langpacks-3.0-16.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=029edc2f97f3281a",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/langpacks-core-font-en@3.0-16.el9?arch=noarch\u0026upstream=langpacks-3.0-16.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=029edc2f97f3281a",
           "publisher": "Red Hat, Inc.",
           "name": "langpacks-core-font-en",
           "version": "3.0-16.el9",
@@ -2827,7 +2827,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -2849,7 +2849,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/langpacks-en@3.0-16.el9?arch=noarch\u0026upstream=langpacks-3.0-16.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=30e1206228a1b3c6",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/langpacks-en@3.0-16.el9?arch=noarch\u0026upstream=langpacks-3.0-16.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=30e1206228a1b3c6",
           "publisher": "Red Hat, Inc.",
           "name": "langpacks-en",
           "version": "3.0-16.el9",
@@ -2905,7 +2905,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -2927,7 +2927,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libacl@2.3.1-4.el9?arch=x86_64\u0026upstream=acl-2.3.1-4.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=6a12891a28711ed0",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libacl@2.3.1-4.el9?arch=x86_64\u0026upstream=acl-2.3.1-4.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=6a12891a28711ed0",
           "publisher": "Red Hat, Inc.",
           "name": "libacl",
           "version": "2.3.1-4.el9",
@@ -2959,7 +2959,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -2981,7 +2981,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libarchive@3.5.3-4.el9?arch=x86_64\u0026upstream=libarchive-3.5.3-4.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=1a7fa851f023f96c",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libarchive@3.5.3-4.el9?arch=x86_64\u0026upstream=libarchive-3.5.3-4.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=1a7fa851f023f96c",
           "publisher": "Red Hat, Inc.",
           "name": "libarchive",
           "version": "3.5.3-4.el9",
@@ -3013,7 +3013,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -3035,7 +3035,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libassuan@2.5.5-3.el9?arch=x86_64\u0026upstream=libassuan-2.5.5-3.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=9a097a6f219831da",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libassuan@2.5.5-3.el9?arch=x86_64\u0026upstream=libassuan-2.5.5-3.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=9a097a6f219831da",
           "publisher": "Red Hat, Inc.",
           "name": "libassuan",
           "version": "2.5.5-3.el9",
@@ -3067,7 +3067,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -3089,7 +3089,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libattr@2.5.1-3.el9?arch=x86_64\u0026upstream=attr-2.5.1-3.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=246362466b6f01d4",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libattr@2.5.1-3.el9?arch=x86_64\u0026upstream=attr-2.5.1-3.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=246362466b6f01d4",
           "publisher": "Red Hat, Inc.",
           "name": "libattr",
           "version": "2.5.1-3.el9",
@@ -3121,7 +3121,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -3143,7 +3143,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libblkid@2.37.4-18.el9?arch=x86_64\u0026upstream=util-linux-2.37.4-18.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=1dbeeeab62a7ff2e",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libblkid@2.37.4-18.el9?arch=x86_64\u0026upstream=util-linux-2.37.4-18.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=1dbeeeab62a7ff2e",
           "publisher": "Red Hat, Inc.",
           "name": "libblkid",
           "version": "2.37.4-18.el9",
@@ -3175,7 +3175,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -3197,7 +3197,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libcap@2.48-9.el9_2?arch=x86_64\u0026upstream=libcap-2.48-9.el9_2.src.rpm\u0026distro=rhel-9.4\u0026package-id=e129417de8081c72",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libcap@2.48-9.el9_2?arch=x86_64\u0026upstream=libcap-2.48-9.el9_2.src.rpm\u0026distro=rhel-9.4\u0026package-id=e129417de8081c72",
           "publisher": "Red Hat, Inc.",
           "name": "libcap",
           "version": "2.48-9.el9_2",
@@ -3229,7 +3229,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -3251,7 +3251,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libcap-ng@0.8.2-7.el9?arch=x86_64\u0026upstream=libcap-ng-0.8.2-7.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=2704fa8bf6ffd549",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libcap-ng@0.8.2-7.el9?arch=x86_64\u0026upstream=libcap-ng-0.8.2-7.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=2704fa8bf6ffd549",
           "publisher": "Red Hat, Inc.",
           "name": "libcap-ng",
           "version": "0.8.2-7.el9",
@@ -3307,7 +3307,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -3329,7 +3329,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libcom_err@1.46.5-5.el9?arch=x86_64\u0026upstream=e2fsprogs-1.46.5-5.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=509571c6c88db196",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libcom_err@1.46.5-5.el9?arch=x86_64\u0026upstream=e2fsprogs-1.46.5-5.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=509571c6c88db196",
           "publisher": "Red Hat, Inc.",
           "name": "libcom_err",
           "version": "1.46.5-5.el9",
@@ -3385,7 +3385,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -3407,7 +3407,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libcurl-minimal@7.76.1-29.el9_4?arch=x86_64\u0026upstream=curl-7.76.1-29.el9_4.src.rpm\u0026distro=rhel-9.4\u0026package-id=f15f19a8ee602d39",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libcurl-minimal@7.76.1-29.el9_4?arch=x86_64\u0026upstream=curl-7.76.1-29.el9_4.src.rpm\u0026distro=rhel-9.4\u0026package-id=f15f19a8ee602d39",
           "publisher": "Red Hat, Inc.",
           "name": "libcurl-minimal",
           "version": "7.76.1-29.el9_4",
@@ -3463,7 +3463,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -3485,7 +3485,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libdnf@0.69.0-8.el9?arch=x86_64\u0026upstream=libdnf-0.69.0-8.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=e764edb01b583ef2",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libdnf@0.69.0-8.el9?arch=x86_64\u0026upstream=libdnf-0.69.0-8.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=e764edb01b583ef2",
           "publisher": "Red Hat, Inc.",
           "name": "libdnf",
           "version": "0.69.0-8.el9",
@@ -3517,7 +3517,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -3539,7 +3539,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libevent@2.1.12-6.el9?arch=x86_64\u0026upstream=libevent-2.1.12-6.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=6727d21630728a31",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libevent@2.1.12-6.el9?arch=x86_64\u0026upstream=libevent-2.1.12-6.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=6727d21630728a31",
           "publisher": "Red Hat, Inc.",
           "name": "libevent",
           "version": "2.1.12-6.el9",
@@ -3571,7 +3571,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -3593,7 +3593,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libffi@3.4.2-8.el9?arch=x86_64\u0026upstream=libffi-3.4.2-8.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=c3cc0616d4f3a6b0",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libffi@3.4.2-8.el9?arch=x86_64\u0026upstream=libffi-3.4.2-8.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=c3cc0616d4f3a6b0",
           "publisher": "Red Hat, Inc.",
           "name": "libffi",
           "version": "3.4.2-8.el9",
@@ -3625,7 +3625,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -3647,7 +3647,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libgcc@11.4.1-3.el9?arch=x86_64\u0026upstream=gcc-11.4.1-3.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=3566aa18d577f644",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libgcc@11.4.1-3.el9?arch=x86_64\u0026upstream=gcc-11.4.1-3.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=3566aa18d577f644",
           "publisher": "Red Hat, Inc.",
           "name": "libgcc",
           "version": "11.4.1-3.el9",
@@ -3679,7 +3679,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -3701,7 +3701,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libgcrypt@1.10.0-10.el9_2?arch=x86_64\u0026upstream=libgcrypt-1.10.0-10.el9_2.src.rpm\u0026distro=rhel-9.4\u0026package-id=1a30e5d6cde05811",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libgcrypt@1.10.0-10.el9_2?arch=x86_64\u0026upstream=libgcrypt-1.10.0-10.el9_2.src.rpm\u0026distro=rhel-9.4\u0026package-id=1a30e5d6cde05811",
           "publisher": "Red Hat, Inc.",
           "name": "libgcrypt",
           "version": "1.10.0-10.el9_2",
@@ -3733,7 +3733,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -3755,7 +3755,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libgpg-error@1.42-5.el9?arch=x86_64\u0026upstream=libgpg-error-1.42-5.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=b3ad2249280c24fa",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libgpg-error@1.42-5.el9?arch=x86_64\u0026upstream=libgpg-error-1.42-5.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=b3ad2249280c24fa",
           "publisher": "Red Hat, Inc.",
           "name": "libgpg-error",
           "version": "1.42-5.el9",
@@ -3811,7 +3811,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -3833,7 +3833,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libidn2@2.3.0-7.el9?arch=x86_64\u0026upstream=libidn2-2.3.0-7.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=f63c2ef431e64a8d",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libidn2@2.3.0-7.el9?arch=x86_64\u0026upstream=libidn2-2.3.0-7.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=f63c2ef431e64a8d",
           "publisher": "Red Hat, Inc.",
           "name": "libidn2",
           "version": "2.3.0-7.el9",
@@ -3865,7 +3865,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -3887,7 +3887,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libksba@1.5.1-6.el9_1?arch=x86_64\u0026upstream=libksba-1.5.1-6.el9_1.src.rpm\u0026distro=rhel-9.4\u0026package-id=03fdcceeef615ff5",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libksba@1.5.1-6.el9_1?arch=x86_64\u0026upstream=libksba-1.5.1-6.el9_1.src.rpm\u0026distro=rhel-9.4\u0026package-id=03fdcceeef615ff5",
           "publisher": "Red Hat, Inc.",
           "name": "libksba",
           "version": "1.5.1-6.el9_1",
@@ -3919,7 +3919,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -3941,7 +3941,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libmodulemd@2.13.0-2.el9?arch=x86_64\u0026upstream=libmodulemd-2.13.0-2.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=b2cdb213fba17da0",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libmodulemd@2.13.0-2.el9?arch=x86_64\u0026upstream=libmodulemd-2.13.0-2.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=b2cdb213fba17da0",
           "publisher": "Red Hat, Inc.",
           "name": "libmodulemd",
           "version": "2.13.0-2.el9",
@@ -3973,7 +3973,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -3995,7 +3995,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libmount@2.37.4-18.el9?arch=x86_64\u0026upstream=util-linux-2.37.4-18.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=06490321335f5660",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libmount@2.37.4-18.el9?arch=x86_64\u0026upstream=util-linux-2.37.4-18.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=06490321335f5660",
           "publisher": "Red Hat, Inc.",
           "name": "libmount",
           "version": "2.37.4-18.el9",
@@ -4027,7 +4027,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -4049,7 +4049,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libnghttp2@1.43.0-5.el9_3.1?arch=x86_64\u0026upstream=nghttp2-1.43.0-5.el9_3.1.src.rpm\u0026distro=rhel-9.4\u0026package-id=d0f31e9a0ece7f58",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libnghttp2@1.43.0-5.el9_3.1?arch=x86_64\u0026upstream=nghttp2-1.43.0-5.el9_3.1.src.rpm\u0026distro=rhel-9.4\u0026package-id=d0f31e9a0ece7f58",
           "publisher": "Red Hat, Inc.",
           "name": "libnghttp2",
           "version": "1.43.0-5.el9_3.1",
@@ -4081,7 +4081,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -4103,7 +4103,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libpeas@1.30.0-4.el9?arch=x86_64\u0026upstream=libpeas-1.30.0-4.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=4d4acb669d615b5a",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libpeas@1.30.0-4.el9?arch=x86_64\u0026upstream=libpeas-1.30.0-4.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=4d4acb669d615b5a",
           "publisher": "Red Hat, Inc.",
           "name": "libpeas",
           "version": "1.30.0-4.el9",
@@ -4135,7 +4135,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -4157,7 +4157,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libpq@13.11-1.el9?arch=x86_64\u0026upstream=libpq-13.11-1.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=284d81e7d6a3adc5",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libpq@13.11-1.el9?arch=x86_64\u0026upstream=libpq-13.11-1.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=284d81e7d6a3adc5",
           "publisher": "Red Hat, Inc.",
           "name": "libpq",
           "version": "13.11-1.el9",
@@ -4189,7 +4189,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -4211,7 +4211,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/librepo@1.14.5-2.el9?arch=x86_64\u0026upstream=librepo-1.14.5-2.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=dbd3c765ebb8ee87",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/librepo@1.14.5-2.el9?arch=x86_64\u0026upstream=librepo-1.14.5-2.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=dbd3c765ebb8ee87",
           "publisher": "Red Hat, Inc.",
           "name": "librepo",
           "version": "1.14.5-2.el9",
@@ -4243,7 +4243,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -4265,7 +4265,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libreport-filesystem@2.15.2-6.el9?arch=noarch\u0026upstream=libreport-2.15.2-6.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=5fb58e47d0037baf",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libreport-filesystem@2.15.2-6.el9?arch=noarch\u0026upstream=libreport-2.15.2-6.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=5fb58e47d0037baf",
           "publisher": "Red Hat, Inc.",
           "name": "libreport-filesystem",
           "version": "2.15.2-6.el9",
@@ -4321,7 +4321,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -4343,7 +4343,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/librhsm@0.0.3-7.el9_3.1?arch=x86_64\u0026upstream=librhsm-0.0.3-7.el9_3.1.src.rpm\u0026distro=rhel-9.4\u0026package-id=b034d557e9884a88",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/librhsm@0.0.3-7.el9_3.1?arch=x86_64\u0026upstream=librhsm-0.0.3-7.el9_3.1.src.rpm\u0026distro=rhel-9.4\u0026package-id=b034d557e9884a88",
           "publisher": "Red Hat, Inc.",
           "name": "librhsm",
           "version": "0.0.3-7.el9_3.1",
@@ -4375,7 +4375,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -4397,7 +4397,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libselinux@3.6-1.el9?arch=x86_64\u0026upstream=libselinux-3.6-1.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=d2d6d3f9b0e2d021",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libselinux@3.6-1.el9?arch=x86_64\u0026upstream=libselinux-3.6-1.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=d2d6d3f9b0e2d021",
           "publisher": "Red Hat, Inc.",
           "name": "libselinux",
           "version": "3.6-1.el9",
@@ -4429,7 +4429,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -4451,7 +4451,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libsemanage@3.6-1.el9?arch=x86_64\u0026upstream=libsemanage-3.6-1.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=e783470d7f39dbb6",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libsemanage@3.6-1.el9?arch=x86_64\u0026upstream=libsemanage-3.6-1.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=e783470d7f39dbb6",
           "publisher": "Red Hat, Inc.",
           "name": "libsemanage",
           "version": "3.6-1.el9",
@@ -4483,7 +4483,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -4505,7 +4505,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libsepol@3.6-1.el9?arch=x86_64\u0026upstream=libsepol-3.6-1.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=9891839d8f699944",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libsepol@3.6-1.el9?arch=x86_64\u0026upstream=libsepol-3.6-1.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=9891839d8f699944",
           "publisher": "Red Hat, Inc.",
           "name": "libsepol",
           "version": "3.6-1.el9",
@@ -4537,7 +4537,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -4559,7 +4559,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libsigsegv@2.13-4.el9?arch=x86_64\u0026upstream=libsigsegv-2.13-4.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=1d2739e0d786fc71",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libsigsegv@2.13-4.el9?arch=x86_64\u0026upstream=libsigsegv-2.13-4.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=1d2739e0d786fc71",
           "publisher": "Red Hat, Inc.",
           "name": "libsigsegv",
           "version": "2.13-4.el9",
@@ -4591,7 +4591,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -4613,7 +4613,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libsmartcols@2.37.4-18.el9?arch=x86_64\u0026upstream=util-linux-2.37.4-18.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=74126b495776cc0b",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libsmartcols@2.37.4-18.el9?arch=x86_64\u0026upstream=util-linux-2.37.4-18.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=74126b495776cc0b",
           "publisher": "Red Hat, Inc.",
           "name": "libsmartcols",
           "version": "2.37.4-18.el9",
@@ -4645,7 +4645,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -4667,7 +4667,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libsolv@0.7.24-2.el9?arch=x86_64\u0026upstream=libsolv-0.7.24-2.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=2bb0a052fe290788",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libsolv@0.7.24-2.el9?arch=x86_64\u0026upstream=libsolv-0.7.24-2.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=2bb0a052fe290788",
           "publisher": "Red Hat, Inc.",
           "name": "libsolv",
           "version": "0.7.24-2.el9",
@@ -4699,7 +4699,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -4721,7 +4721,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libstdc%2B%2B@11.4.1-3.el9?arch=x86_64\u0026upstream=gcc-11.4.1-3.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=db8f85688aa2ae44",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libstdc%2B%2B@11.4.1-3.el9?arch=x86_64\u0026upstream=gcc-11.4.1-3.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=db8f85688aa2ae44",
           "publisher": "Red Hat, Inc.",
           "name": "libstdc\u002B\u002B",
           "version": "11.4.1-3.el9",
@@ -4753,7 +4753,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -4775,7 +4775,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libtasn1@4.16.0-8.el9_1?arch=x86_64\u0026upstream=libtasn1-4.16.0-8.el9_1.src.rpm\u0026distro=rhel-9.4\u0026package-id=e089d185e5c321ef",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libtasn1@4.16.0-8.el9_1?arch=x86_64\u0026upstream=libtasn1-4.16.0-8.el9_1.src.rpm\u0026distro=rhel-9.4\u0026package-id=e089d185e5c321ef",
           "publisher": "Red Hat, Inc.",
           "name": "libtasn1",
           "version": "4.16.0-8.el9_1",
@@ -4807,7 +4807,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -4829,7 +4829,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libunistring@0.9.10-15.el9?arch=x86_64\u0026upstream=libunistring-0.9.10-15.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=a1bb48316a23ba96",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libunistring@0.9.10-15.el9?arch=x86_64\u0026upstream=libunistring-0.9.10-15.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=a1bb48316a23ba96",
           "publisher": "Red Hat, Inc.",
           "name": "libunistring",
           "version": "0.9.10-15.el9",
@@ -4861,7 +4861,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -4883,7 +4883,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libusbx@1.0.26-1.el9?arch=x86_64\u0026upstream=libusbx-1.0.26-1.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=85855c571980f5af",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libusbx@1.0.26-1.el9?arch=x86_64\u0026upstream=libusbx-1.0.26-1.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=85855c571980f5af",
           "publisher": "Red Hat, Inc.",
           "name": "libusbx",
           "version": "1.0.26-1.el9",
@@ -4915,7 +4915,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -4937,7 +4937,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libuuid@2.37.4-18.el9?arch=x86_64\u0026upstream=util-linux-2.37.4-18.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=94ad6be7a8142659",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libuuid@2.37.4-18.el9?arch=x86_64\u0026upstream=util-linux-2.37.4-18.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=94ad6be7a8142659",
           "publisher": "Red Hat, Inc.",
           "name": "libuuid",
           "version": "2.37.4-18.el9",
@@ -4969,7 +4969,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -4991,7 +4991,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libverto@0.3.2-3.el9?arch=x86_64\u0026upstream=libverto-0.3.2-3.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=8c9b346e407920ca",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libverto@0.3.2-3.el9?arch=x86_64\u0026upstream=libverto-0.3.2-3.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=8c9b346e407920ca",
           "publisher": "Red Hat, Inc.",
           "name": "libverto",
           "version": "0.3.2-3.el9",
@@ -5023,7 +5023,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -5045,7 +5045,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libxcrypt@4.4.18-3.el9?arch=x86_64\u0026upstream=libxcrypt-4.4.18-3.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=b28e214bc7a8f11d",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libxcrypt@4.4.18-3.el9?arch=x86_64\u0026upstream=libxcrypt-4.4.18-3.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=b28e214bc7a8f11d",
           "publisher": "Red Hat, Inc.",
           "name": "libxcrypt",
           "version": "4.4.18-3.el9",
@@ -5077,7 +5077,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -5099,7 +5099,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libxcrypt-compat@4.4.18-3.el9?arch=x86_64\u0026upstream=libxcrypt-4.4.18-3.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=b5dbf5a7d9c567ab",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libxcrypt-compat@4.4.18-3.el9?arch=x86_64\u0026upstream=libxcrypt-4.4.18-3.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=b5dbf5a7d9c567ab",
           "publisher": "Red Hat, Inc.",
           "name": "libxcrypt-compat",
           "version": "4.4.18-3.el9",
@@ -5155,7 +5155,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -5177,7 +5177,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libxml2@2.9.13-6.el9_4?arch=x86_64\u0026upstream=libxml2-2.9.13-6.el9_4.src.rpm\u0026distro=rhel-9.4\u0026package-id=dc90ad31602115f1",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libxml2@2.9.13-6.el9_4?arch=x86_64\u0026upstream=libxml2-2.9.13-6.el9_4.src.rpm\u0026distro=rhel-9.4\u0026package-id=dc90ad31602115f1",
           "publisher": "Red Hat, Inc.",
           "name": "libxml2",
           "version": "2.9.13-6.el9_4",
@@ -5209,7 +5209,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -5231,7 +5231,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libyaml@0.2.5-7.el9?arch=x86_64\u0026upstream=libyaml-0.2.5-7.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=686ed0952093671c",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libyaml@0.2.5-7.el9?arch=x86_64\u0026upstream=libyaml-0.2.5-7.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=686ed0952093671c",
           "publisher": "Red Hat, Inc.",
           "name": "libyaml",
           "version": "0.2.5-7.el9",
@@ -5263,7 +5263,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -5285,7 +5285,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/libzstd@1.5.1-2.el9?arch=x86_64\u0026upstream=zstd-1.5.1-2.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=c4d4ecb10dda140c",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/libzstd@1.5.1-2.el9?arch=x86_64\u0026upstream=zstd-1.5.1-2.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=c4d4ecb10dda140c",
           "publisher": "Red Hat, Inc.",
           "name": "libzstd",
           "version": "1.5.1-2.el9",
@@ -5317,7 +5317,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -5339,7 +5339,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/lua-libs@5.4.4-4.el9?arch=x86_64\u0026upstream=lua-5.4.4-4.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=c3c60231375f9ff1",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/lua-libs@5.4.4-4.el9?arch=x86_64\u0026upstream=lua-5.4.4-4.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=c3c60231375f9ff1",
           "publisher": "Red Hat, Inc.",
           "name": "lua-libs",
           "version": "5.4.4-4.el9",
@@ -5395,7 +5395,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -5417,7 +5417,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/lz4-libs@1.9.3-5.el9?arch=x86_64\u0026upstream=lz4-1.9.3-5.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=830b8696d9e7061c",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/lz4-libs@1.9.3-5.el9?arch=x86_64\u0026upstream=lz4-1.9.3-5.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=830b8696d9e7061c",
           "publisher": "Red Hat, Inc.",
           "name": "lz4-libs",
           "version": "1.9.3-5.el9",
@@ -5473,7 +5473,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -5495,7 +5495,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/microdnf@3.9.1-3.el9?arch=x86_64\u0026upstream=microdnf-3.9.1-3.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=a367e686a65cfe05",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/microdnf@3.9.1-3.el9?arch=x86_64\u0026upstream=microdnf-3.9.1-3.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=a367e686a65cfe05",
           "publisher": "Red Hat, Inc.",
           "name": "microdnf",
           "version": "3.9.1-3.el9",
@@ -5527,7 +5527,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -5549,7 +5549,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/mpfr@4.1.0-7.el9?arch=x86_64\u0026upstream=mpfr-4.1.0-7.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=7283f07ce761bc8e",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/mpfr@4.1.0-7.el9?arch=x86_64\u0026upstream=mpfr-4.1.0-7.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=7283f07ce761bc8e",
           "publisher": "Red Hat, Inc.",
           "name": "mpfr",
           "version": "4.1.0-7.el9",
@@ -5581,7 +5581,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -5603,7 +5603,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/ncurses-base@6.2-10.20210508.el9?arch=noarch\u0026upstream=ncurses-6.2-10.20210508.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=a0d19211c8c4589b",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/ncurses-base@6.2-10.20210508.el9?arch=noarch\u0026upstream=ncurses-6.2-10.20210508.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=a0d19211c8c4589b",
           "publisher": "Red Hat, Inc.",
           "name": "ncurses-base",
           "version": "6.2-10.20210508.el9",
@@ -5659,7 +5659,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -5681,7 +5681,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/ncurses-libs@6.2-10.20210508.el9?arch=x86_64\u0026upstream=ncurses-6.2-10.20210508.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=31b40b2b21390159",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/ncurses-libs@6.2-10.20210508.el9?arch=x86_64\u0026upstream=ncurses-6.2-10.20210508.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=31b40b2b21390159",
           "publisher": "Red Hat, Inc.",
           "name": "ncurses-libs",
           "version": "6.2-10.20210508.el9",
@@ -5737,7 +5737,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -5759,7 +5759,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/nettle@3.9.1-1.el9?arch=x86_64\u0026upstream=nettle-3.9.1-1.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=d4d1f5beadb364d6",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/nettle@3.9.1-1.el9?arch=x86_64\u0026upstream=nettle-3.9.1-1.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=d4d1f5beadb364d6",
           "publisher": "Red Hat, Inc.",
           "name": "nettle",
           "version": "3.9.1-1.el9",
@@ -5791,7 +5791,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -5813,7 +5813,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/npth@1.6-8.el9?arch=x86_64\u0026upstream=npth-1.6-8.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=263b96492eca8d00",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/npth@1.6-8.el9?arch=x86_64\u0026upstream=npth-1.6-8.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=263b96492eca8d00",
           "publisher": "Red Hat, Inc.",
           "name": "npth",
           "version": "1.6-8.el9",
@@ -5845,7 +5845,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -5867,7 +5867,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/openldap@2.6.6-3.el9?arch=x86_64\u0026upstream=openldap-2.6.6-3.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=62bd7d5e9ad297cf",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/openldap@2.6.6-3.el9?arch=x86_64\u0026upstream=openldap-2.6.6-3.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=62bd7d5e9ad297cf",
           "publisher": "Red Hat, Inc.",
           "name": "openldap",
           "version": "2.6.6-3.el9",
@@ -5899,7 +5899,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -5921,7 +5921,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/openssl-fips-provider@3.0.7-2.el9?arch=x86_64\u0026upstream=openssl-fips-provider-3.0.7-2.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=9ed8fcdc3f8893d7",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/openssl-fips-provider@3.0.7-2.el9?arch=x86_64\u0026upstream=openssl-fips-provider-3.0.7-2.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=9ed8fcdc3f8893d7",
           "publisher": "Red Hat, Inc.",
           "name": "openssl-fips-provider",
           "version": "3.0.7-2.el9",
@@ -5993,7 +5993,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -6015,7 +6015,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/openssl-libs@3.0.7-27.el9?arch=x86_64\u0026epoch=1\u0026upstream=openssl-3.0.7-27.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=43b6fd8c89da121e",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/openssl-libs@3.0.7-27.el9?arch=x86_64\u0026epoch=1\u0026upstream=openssl-3.0.7-27.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=43b6fd8c89da121e",
           "publisher": "Red Hat, Inc.",
           "name": "openssl-libs",
           "version": "1:3.0.7-27.el9",
@@ -6071,7 +6071,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -6097,7 +6097,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/p11-kit@0.25.3-2.el9?arch=x86_64\u0026upstream=p11-kit-0.25.3-2.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=0506313e008f878b",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/p11-kit@0.25.3-2.el9?arch=x86_64\u0026upstream=p11-kit-0.25.3-2.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=0506313e008f878b",
           "publisher": "Red Hat, Inc.",
           "name": "p11-kit",
           "version": "0.25.3-2.el9",
@@ -6153,7 +6153,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -6175,7 +6175,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/p11-kit-trust@0.25.3-2.el9?arch=x86_64\u0026upstream=p11-kit-0.25.3-2.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=05d525e19e731d43",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/p11-kit-trust@0.25.3-2.el9?arch=x86_64\u0026upstream=p11-kit-0.25.3-2.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=05d525e19e731d43",
           "publisher": "Red Hat, Inc.",
           "name": "p11-kit-trust",
           "version": "0.25.3-2.el9",
@@ -6247,7 +6247,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -6269,7 +6269,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/pcre@8.44-3.el9.3?arch=x86_64\u0026upstream=pcre-8.44-3.el9.3.src.rpm\u0026distro=rhel-9.4\u0026package-id=7003bb2758781491",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/pcre@8.44-3.el9.3?arch=x86_64\u0026upstream=pcre-8.44-3.el9.3.src.rpm\u0026distro=rhel-9.4\u0026package-id=7003bb2758781491",
           "publisher": "Red Hat, Inc.",
           "name": "pcre",
           "version": "8.44-3.el9.3",
@@ -6301,7 +6301,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -6323,7 +6323,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/pcre2@10.40-5.el9?arch=x86_64\u0026upstream=pcre2-10.40-5.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=bee67834b6791a30",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/pcre2@10.40-5.el9?arch=x86_64\u0026upstream=pcre2-10.40-5.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=bee67834b6791a30",
           "publisher": "Red Hat, Inc.",
           "name": "pcre2",
           "version": "10.40-5.el9",
@@ -6355,7 +6355,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -6377,7 +6377,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/pcre2-syntax@10.40-5.el9?arch=noarch\u0026upstream=pcre2-10.40-5.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=a209df8eaf0523c8",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/pcre2-syntax@10.40-5.el9?arch=noarch\u0026upstream=pcre2-10.40-5.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=a209df8eaf0523c8",
           "publisher": "Red Hat, Inc.",
           "name": "pcre2-syntax",
           "version": "10.40-5.el9",
@@ -6433,7 +6433,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -6455,7 +6455,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/popt@1.18-8.el9?arch=x86_64\u0026upstream=popt-1.18-8.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=87cdbb049d8ef3e3",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/popt@1.18-8.el9?arch=x86_64\u0026upstream=popt-1.18-8.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=87cdbb049d8ef3e3",
           "publisher": "Red Hat, Inc.",
           "name": "popt",
           "version": "1.18-8.el9",
@@ -6487,7 +6487,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -6509,7 +6509,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/protobuf-c@1.3.3-13.el9?arch=x86_64\u0026upstream=protobuf-c-1.3.3-13.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=8bac69fad07ff91e",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/protobuf-c@1.3.3-13.el9?arch=x86_64\u0026upstream=protobuf-c-1.3.3-13.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=8bac69fad07ff91e",
           "publisher": "Red Hat, Inc.",
           "name": "protobuf-c",
           "version": "1.3.3-13.el9",
@@ -6565,7 +6565,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -6587,7 +6587,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/python-unversioned-command@3.9.18-3.el9?arch=noarch\u0026upstream=python3.9-3.9.18-3.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=08488c393fc75313",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/python-unversioned-command@3.9.18-3.el9?arch=noarch\u0026upstream=python3.9-3.9.18-3.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=08488c393fc75313",
           "publisher": "Red Hat, Inc.",
           "name": "python-unversioned-command",
           "version": "3.9.18-3.el9",
@@ -6659,7 +6659,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -6681,7 +6681,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/python3@3.9.18-3.el9?arch=x86_64\u0026upstream=python3.9-3.9.18-3.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=d5be57e5902c906f",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/python3@3.9.18-3.el9?arch=x86_64\u0026upstream=python3.9-3.9.18-3.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=d5be57e5902c906f",
           "publisher": "Red Hat, Inc.",
           "name": "python3",
           "version": "3.9.18-3.el9",
@@ -6713,7 +6713,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -6735,7 +6735,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/python3-libs@3.9.18-3.el9?arch=x86_64\u0026upstream=python3.9-3.9.18-3.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=93b7642d15a5abde",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/python3-libs@3.9.18-3.el9?arch=x86_64\u0026upstream=python3.9-3.9.18-3.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=93b7642d15a5abde",
           "publisher": "Red Hat, Inc.",
           "name": "python3-libs",
           "version": "3.9.18-3.el9",
@@ -6791,7 +6791,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -6813,7 +6813,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/python3-pip-wheel@21.2.3-8.el9?arch=noarch\u0026upstream=python-pip-21.2.3-8.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=88670d8b6b89252d",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/python3-pip-wheel@21.2.3-8.el9?arch=noarch\u0026upstream=python-pip-21.2.3-8.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=88670d8b6b89252d",
           "publisher": "Red Hat, Inc.",
           "name": "python3-pip-wheel",
           "version": "21.2.3-8.el9",
@@ -6885,7 +6885,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -6907,7 +6907,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/python3-setuptools-wheel@53.0.0-12.el9?arch=noarch\u0026upstream=python-setuptools-53.0.0-12.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=cb456e0fda1a5e90",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/python3-setuptools-wheel@53.0.0-12.el9?arch=noarch\u0026upstream=python-setuptools-53.0.0-12.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=cb456e0fda1a5e90",
           "publisher": "Red Hat, Inc.",
           "name": "python3-setuptools-wheel",
           "version": "53.0.0-12.el9",
@@ -6979,7 +6979,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -7001,7 +7001,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/readline@8.1-4.el9?arch=x86_64\u0026upstream=readline-8.1-4.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=a04ccc767df1528c",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/readline@8.1-4.el9?arch=x86_64\u0026upstream=readline-8.1-4.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=a04ccc767df1528c",
           "publisher": "Red Hat, Inc.",
           "name": "readline",
           "version": "8.1-4.el9",
@@ -7033,7 +7033,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -7055,7 +7055,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/redhat-release@9.4-0.4.el9?arch=x86_64\u0026upstream=redhat-release-9.4-0.4.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=8201f1ed5896cd9b",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/redhat-release@9.4-0.4.el9?arch=x86_64\u0026upstream=redhat-release-9.4-0.4.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=8201f1ed5896cd9b",
           "publisher": "Red Hat, Inc.",
           "name": "redhat-release",
           "version": "9.4-0.4.el9",
@@ -7103,7 +7103,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -7125,7 +7125,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/rootfiles@8.1-31.el9?arch=noarch\u0026upstream=rootfiles-8.1-31.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=c676161f43c98d9b",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/rootfiles@8.1-31.el9?arch=noarch\u0026upstream=rootfiles-8.1-31.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=c676161f43c98d9b",
           "publisher": "Red Hat, Inc.",
           "name": "rootfiles",
           "version": "8.1-31.el9",
@@ -7157,7 +7157,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -7179,7 +7179,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/rpm@4.16.1.3-29.el9?arch=x86_64\u0026upstream=rpm-4.16.1.3-29.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=b025f49f86ad41eb",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/rpm@4.16.1.3-29.el9?arch=x86_64\u0026upstream=rpm-4.16.1.3-29.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=b025f49f86ad41eb",
           "publisher": "Red Hat, Inc.",
           "name": "rpm",
           "version": "4.16.1.3-29.el9",
@@ -7211,7 +7211,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -7233,7 +7233,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/rpm-libs@4.16.1.3-29.el9?arch=x86_64\u0026upstream=rpm-4.16.1.3-29.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=4bb0dffbad576858",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/rpm-libs@4.16.1.3-29.el9?arch=x86_64\u0026upstream=rpm-4.16.1.3-29.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=4bb0dffbad576858",
           "publisher": "Red Hat, Inc.",
           "name": "rpm-libs",
           "version": "4.16.1.3-29.el9",
@@ -7289,7 +7289,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -7311,7 +7311,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/sed@4.8-9.el9?arch=x86_64\u0026upstream=sed-4.8-9.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=ea6c58df85a4b172",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/sed@4.8-9.el9?arch=x86_64\u0026upstream=sed-4.8-9.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=ea6c58df85a4b172",
           "publisher": "Red Hat, Inc.",
           "name": "sed",
           "version": "4.8-9.el9",
@@ -7343,7 +7343,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -7365,7 +7365,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/setup@2.13.7-10.el9?arch=noarch\u0026upstream=setup-2.13.7-10.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=a0683610af2074c0",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/setup@2.13.7-10.el9?arch=noarch\u0026upstream=setup-2.13.7-10.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=a0683610af2074c0",
           "publisher": "Red Hat, Inc.",
           "name": "setup",
           "version": "2.13.7-10.el9",
@@ -7397,7 +7397,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -7419,7 +7419,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/shadow-utils@4.9-8.el9?arch=x86_64\u0026epoch=2\u0026upstream=shadow-utils-4.9-8.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=252167acab2d09a1",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/shadow-utils@4.9-8.el9?arch=x86_64\u0026epoch=2\u0026upstream=shadow-utils-4.9-8.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=252167acab2d09a1",
           "publisher": "Red Hat, Inc.",
           "name": "shadow-utils",
           "version": "2:4.9-8.el9",
@@ -7475,7 +7475,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -7501,7 +7501,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/sqlite-libs@3.34.1-7.el9_3?arch=x86_64\u0026upstream=sqlite-3.34.1-7.el9_3.src.rpm\u0026distro=rhel-9.4\u0026package-id=f9879b950aaab506",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/sqlite-libs@3.34.1-7.el9_3?arch=x86_64\u0026upstream=sqlite-3.34.1-7.el9_3.src.rpm\u0026distro=rhel-9.4\u0026package-id=f9879b950aaab506",
           "publisher": "Red Hat, Inc.",
           "name": "sqlite-libs",
           "version": "3.34.1-7.el9_3",
@@ -7557,7 +7557,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -7579,7 +7579,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/systemd-libs@252-32.el9_4?arch=x86_64\u0026upstream=systemd-252-32.el9_4.src.rpm\u0026distro=rhel-9.4\u0026package-id=03abf513f8f40523",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/systemd-libs@252-32.el9_4?arch=x86_64\u0026upstream=systemd-252-32.el9_4.src.rpm\u0026distro=rhel-9.4\u0026package-id=03abf513f8f40523",
           "publisher": "Red Hat, Inc.",
           "name": "systemd-libs",
           "version": "252-32.el9_4",
@@ -7635,7 +7635,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -7657,7 +7657,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/tzdata@2024a-1.el9?arch=noarch\u0026upstream=tzdata-2024a-1.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=b4ba3ef7051be978",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/tzdata@2024a-1.el9?arch=noarch\u0026upstream=tzdata-2024a-1.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=b4ba3ef7051be978",
           "publisher": "Red Hat, Inc.",
           "name": "tzdata",
           "version": "2024a-1.el9",
@@ -7689,7 +7689,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -7711,7 +7711,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/unbound-libs@1.16.2-3.el9_3.5?arch=x86_64\u0026upstream=unbound-1.16.2-3.el9_3.5.src.rpm\u0026distro=rhel-9.4\u0026package-id=ec9c9ce02c5c473e",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/unbound-libs@1.16.2-3.el9_3.5?arch=x86_64\u0026upstream=unbound-1.16.2-3.el9_3.5.src.rpm\u0026distro=rhel-9.4\u0026package-id=ec9c9ce02c5c473e",
           "publisher": "Red Hat, Inc.",
           "name": "unbound-libs",
           "version": "1.16.2-3.el9_3.5",
@@ -7767,7 +7767,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -7789,7 +7789,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/xz-libs@5.2.5-8.el9_0?arch=x86_64\u0026upstream=xz-5.2.5-8.el9_0.src.rpm\u0026distro=rhel-9.4\u0026package-id=f134cb8afcf0053f",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/xz-libs@5.2.5-8.el9_0?arch=x86_64\u0026upstream=xz-5.2.5-8.el9_0.src.rpm\u0026distro=rhel-9.4\u0026package-id=f134cb8afcf0053f",
           "publisher": "Red Hat, Inc.",
           "name": "xz-libs",
           "version": "5.2.5-8.el9_0",
@@ -7845,7 +7845,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -7867,7 +7867,7 @@
         },
         {
           "type": "library",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:pkg:rpm/rhel/zlib@1.2.11-40.el9?arch=x86_64\u0026upstream=zlib-1.2.11-40.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=37e131515aafce9b",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:pkg:rpm/rhel/zlib@1.2.11-40.el9?arch=x86_64\u0026upstream=zlib-1.2.11-40.el9.src.rpm\u0026distro=rhel-9.4\u0026package-id=37e131515aafce9b",
           "publisher": "Red Hat, Inc.",
           "name": "zlib",
           "version": "1.2.11-40.el9",
@@ -7899,7 +7899,7 @@
             },
             {
               "name": "syft:location:0:layerID",
-              "value": "sha256:781301735c97222fc2b3209c312354ed45a19d1c24b620cd38a5ca8ce46e1cd0"
+              "value": "sha256:a7ccb0c6c16c997530da8907184bb605e0d4a2805aa14b4a5117280ad0c86f30"
             },
             {
               "name": "syft:location:0:path",
@@ -7921,7 +7921,7 @@
         },
         {
           "type": "operating-system",
-          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:os:rhel@9.4",
+          "bom-ref": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:os:rhel@9.4",
           "name": "rhel",
           "version": "9.4",
           "description": "Red Hat Enterprise Linux 9.4 (Plow)",
@@ -15884,7 +15884,7 @@
     {
       "ref": "fluentbit@0.0.1",
       "dependsOn": [
-        "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.3:dea72c881c19eabd",
+        "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit@3.0.4:99ae7debbebf8ad9",
         "registry1.dso.mil/ironbank/stedolan/jq@1.7:1f39f67d75ad5424"
       ]
     }
