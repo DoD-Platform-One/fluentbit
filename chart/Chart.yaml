@@ -5,8 +5,8 @@ keywords:
   - logging
   - fluent-bit
   - fluentd
-version: 0.46.7-bb.1
-appVersion: 3.0.4
+version: 0.46.10-bb.0
+appVersion: 3.0.6
 icon: https://raw.githubusercontent.com/cncf/artwork/master/projects/fluentd/fluentbit/icon/fluentbit-icon-color.svg
 home: https://fluentbit.io/
 sources:
@@ -23,12 +23,12 @@ maintainers:
 annotations:
   artifacthub.io/changes: |
     - kind: changed
-      description: "Update _Fluent Bit_ OCI image to [v3.0.4](https://github.com/fluent/fluent-bit/releases/tag/v3.0.4) to patch CVE-2024-4323."
+      description: "Update _Fluent Bit_ OCI image to [v3.0.6](https://github.com/fluent/fluent-bit/releases/tag/v3.0.6)"
   bigbang.dev/applicationVersions: |
-    - Fluent Bit: 3.0.4
+    - Fluent Bit: 3.0.6
   helm.sh/images: |
     - name: fluent-bit
-      image: registry1.dso.mil/ironbank/opensource/fluent/fluent-bit:3.0.4
+      image: registry1.dso.mil/ironbank/opensource/fluent/fluent-bit:3.0.6
     - name: script-tests
       condition: bbtests.enabled
       image: registry1.dso.mil/ironbank/stedolan/jq:1.7
@@ -36,4 +36,3 @@ dependencies:
   - name: gluon
     version: 0.5.0
     repository: oci://registry1.dso.mil/bigbang
-
