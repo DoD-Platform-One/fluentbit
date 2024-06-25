@@ -1,6 +1,6 @@
 # fluentbit
 
-![Version: 0.46.10-bb.0](https://img.shields.io/badge/Version-0.46.10--bb.0-informational?style=flat-square) ![AppVersion: 3.0.6](https://img.shields.io/badge/AppVersion-3.0.6-informational?style=flat-square)
+![Version: 0.46.10-bb.1](https://img.shields.io/badge/Version-0.46.10--bb.1-informational?style=flat-square) ![AppVersion: 3.0.6](https://img.shields.io/badge/AppVersion-3.0.6-informational?style=flat-square)
 
 Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
 
@@ -179,6 +179,7 @@ helm install fluentbit chart/
 | terminationGracePeriodSeconds | string | `nil` |  |
 | priorityClassName | string | `""` |  |
 | env | object | `{}` |  |
+| envWithTpl | list | `[]` |  |
 | envFrom | list | `[]` |  |
 | extraContainers | list | `[]` |  |
 | flush | int | `1` |  |
