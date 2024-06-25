@@ -3,6 +3,10 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [0.46.10-bb.1] - 2024-06-25
+### Added
+- Added missing drift changed in chart
+
 ## [0.46.10-bb.0] - 2024-06-10
 ### Changed
 - Updated fluent-bit: 3.0.4 -> 3.0.6
