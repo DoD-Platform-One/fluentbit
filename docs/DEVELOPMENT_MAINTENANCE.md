@@ -12,7 +12,24 @@ Fluentbit within Big Bang is a modified version of an upstream chart. `kpt` is u
 
 5. Generate the `README.md` updates by following the [guide in gluon](https://repo1.dso.mil/platform-one/big-bang/apps/library-charts/gluon/-/blob/master/docs/bb-package-readme.md).
 
-6. Open an MR in "Draft" status and validate that CI passes. This will perform a number of smoke tests against the package, but it is good to manually deploy to test some things that CI doesn't. Follow the steps below for manual testing.
+6. As part of your MR that modifies bigbang packages, you should modify the bigbang  [bigbang/tests/test-values.yaml](https://repo1.dso.mil/big-bang/bigbang/-/blob/master/tests/test-values.yaml?ref_type=heads) against your branch for the CI/CD MR testing by enabling your packages. 
+
+    - To do this, at a minimum, you will need to follow the instructions at [bigbang/docs/developer/test-package-against-bb.md](https://repo1.dso.mil/big-bang/bigbang/-/blob/master/docs/developer/test-package-against-bb.md?ref_type=heads) with changes for Fluent Bit enabled (the below is a reference, actual changes could be more depending on what changes where made to Fluent Bit in the pakcage MR).
+
+### [test-values.yaml](https://repo1.dso.mil/big-bang/bigbang/-/blob/master/tests/test-values.yaml?ref_type=heads)
+    ```yaml
+    fluentbit:
+      enabled: true
+      git:
+        tag: null
+        branch: <my-package-branch-that-needs-testing>
+      values:
+        istio:
+          hardened:
+            enabled: true
+      ### Additional compononents of Fluent Bit should be changed to reflect testing changes introduced in the package MR
+    ```
+
 
 7. Once all manual testing is complete take your MR out of "Draft" status and add the review label.
 
