@@ -1,17 +1,15 @@
 # fluentbit
 
-![Version: 0.46.10-bb.1](https://img.shields.io/badge/Version-0.46.10--bb.1-informational?style=flat-square) ![AppVersion: 3.0.6](https://img.shields.io/badge/AppVersion-3.0.6-informational?style=flat-square)
+![Version: 0.46.10-bb.2](https://img.shields.io/badge/Version-0.46.10--bb.2-informational?style=flat-square) ![AppVersion: 3.0.6](https://img.shields.io/badge/AppVersion-3.0.6-informational?style=flat-square)
 
 Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
 
 ## Upstream References
-
 * <https://fluentbit.io/>
 
 * <https://github.com/fluent/fluent-bit/>
 
 ## Learn More
-
 * [Application Overview](docs/overview.md)
 * [Other Documentation](docs/)
 
@@ -23,13 +21,12 @@ Fast and lightweight log processor and forwarder or Linux, OSX and BSD family op
 
 Install Helm
 
-<https://helm.sh/docs/intro/install/>
+https://helm.sh/docs/intro/install/
 
 ## Deployment
 
 * Clone down the repository
 * cd into directory
-
 ```bash
 helm install fluentbit chart/
 ```
@@ -40,7 +37,7 @@ helm install fluentbit chart/
 |-----|------|---------|-------------|
 | elasticsearch | object | `{"name":""}` | Configuration for Elasticsearch interaction |
 | elasticsearch.name | string | `""` | Name is only used at the BB level for host templating |
-| istio | object | `{"enabled":false,"hardened":{"customAuthorizationPolicies":[],"customServiceEntries":[],"enabled":false,"monitoring":{"enabled":true,"namespaces":["monitoring"],"principals":["cluster.local/ns/monitoring/sa/monitoring-grafana","cluster.local/ns/monitoring/sa/monitoring-monitoring-kube-alertmanager","cluster.local/ns/monitoring/sa/monitoring-monitoring-kube-operator","cluster.local/ns/monitoring/sa/monitoring-monitoring-kube-prometheus","cluster.local/ns/monitoring/sa/monitoring-monitoring-kube-state-metrics","cluster.local/ns/monitoring/sa/monitoring-monitoring-prometheus-node-exporter"]},"outboundTrafficPolicyMode":"REGISTRY_ONLY"},"mtls":{"mode":"STRICT"}}` | Configuration for Istio interaction |
+| istio | object | `{"enabled":false,"hardened":{"customAuthorizationPolicies":[],"customServiceEntries":[],"enabled":false,"outboundTrafficPolicyMode":"REGISTRY_ONLY"},"mtls":{"mode":"STRICT"}}` | Configuration for Istio interaction |
 | istio.enabled | bool | `false` | Toggle currently only controls NetworkPolicies |
 | istio.mtls | object | `{"mode":"STRICT"}` | Default peer authentication setting |
 | istio.mtls.mode | string | `"STRICT"` | STRICT = Allow only mutual TLS traffic PERMISSIVE = Allow both plain text and mutual TLS traffic |
@@ -50,24 +47,24 @@ helm install fluentbit chart/
 | additionalOutputs.elasticsearch.tls | bool | `true` | Toggle on TLS |
 | additionalOutputs.elasticsearch.tlsVerify | bool | `false` | Verify TLS certificates, requires a caCert to be specified |
 | additionalOutputs.elasticsearch.caCert | string | `""` | Full ca.crt specified as multiline string, see example |
-| additionalOutputs.elasticsearch.additionalConfig | object | `{}` | Reference configuration parameters provided by Fluentbit - <https://docs.fluentbit.io/manual/pipeline/outputs/elasticsearch> |
+| additionalOutputs.elasticsearch.additionalConfig | object | `{}` | Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/elasticsearch |
 | additionalOutputs.fluentd | object | `{"additionalConfig":{},"caCert":"","host":"","match":["kube.*","host.*"],"password":"","port":24224,"sharedKey":"","tls":true,"tlsVerify":false,"user":""}` | Options to enable a fluentd output |
 | additionalOutputs.fluentd.sharedKey | string | `""` | Overriden by username and password |
 | additionalOutputs.fluentd.tls | bool | `true` | Toggle on TLS |
 | additionalOutputs.fluentd.tlsVerify | bool | `false` | Verify TLS certificates, requires a caCert to be specified |
 | additionalOutputs.fluentd.caCert | string | `""` | Full ca.crt specified as multiline string, see example |
-| additionalOutputs.fluentd.additionalConfig | object | `{}` | Reference configuration parameters provided by Fluentbit - <https://docs.fluentbit.io/manual/pipeline/outputs/forward> |
+| additionalOutputs.fluentd.additionalConfig | object | `{}` | Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/forward |
 | additionalOutputs.loki | object | `{"additionalConfig":{},"caCert":"","host":"","match":["kube.*","host.*"],"password":"","port":3100,"tls":false,"tlsVerify":false,"user":""}` | Options to enable a loki output |
-| additionalOutputs.loki.user | string | `""` | User and Password are optional - only required if running proxy in front of Loki, see <https://grafana.com/docs/loki/latest/operations/authentication/> |
+| additionalOutputs.loki.user | string | `""` | User and Password are optional - only required if running proxy in front of Loki, see https://grafana.com/docs/loki/latest/operations/authentication/ |
 | additionalOutputs.loki.tls | bool | `false` | Toggle on TLS - disabled by default to support in cluster Loki |
 | additionalOutputs.loki.tlsVerify | bool | `false` | Verify TLS certificates, requires a caCert to be specified |
 | additionalOutputs.loki.caCert | string | `""` | Full ca.crt specified as multiline string, see example |
-| additionalOutputs.loki.additionalConfig | object | `{}` | Reference configuration parameters provided by Fluentbit - <https://docs.fluentbit.io/manual/pipeline/outputs/loki> |
+| additionalOutputs.loki.additionalConfig | object | `{}` | Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/loki |
 | additionalOutputs.s3 | object | `{"additionalConfig":{"total_file_size":"1M","upload_timeout":"1m","use_put_object":"On"},"aws_access_key_id":"","aws_secret_access_key":"","bucket":"","existingSecret":"","match":["kube.*","host.*"],"region":"us-east-1"}` | Options to enable a S3 output |
 | additionalOutputs.s3.existingSecret | string | `""` | Reference an existing secret with your access and secret key, must contain key values pairs for AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY |
-| additionalOutputs.s3.additionalConfig | object | `{"total_file_size":"1M","upload_timeout":"1m","use_put_object":"On"}` | Reference configuration parameters provided by Fluentbit - <https://docs.fluentbit.io/manual/pipeline/outputs/s3> |
-| storage_buffer | object | `{"path":"/var/log/flb-storage/"}` | Options to configure hostPath mounted storage buffer for production use Specified in fluentbit service configuration section below see <https://docs.fluentbit.io/manual/administration/buffering-and-storage> |
-| storage | object | `{"total_limit_size":"10G"}` | Limits the number of Chunks that exists in the file system for a certain logical output destination. If one destination reaches the storage.total_limit_size limit, the oldest Chunk from the queue for that logical output destination will be discarded. see <https://docs.fluentbit.io/manual/administration/buffering-and-storage> |
+| additionalOutputs.s3.additionalConfig | object | `{"total_file_size":"1M","upload_timeout":"1m","use_put_object":"On"}` | Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/s3 |
+| storage_buffer | object | `{"path":"/var/log/flb-storage/"}` | Options to configure hostPath mounted storage buffer for production use Specified in fluentbit service configuration section below see https://docs.fluentbit.io/manual/administration/buffering-and-storage |
+| storage | object | `{"total_limit_size":"10G"}` | Limits the number of Chunks that exists in the file system for a certain logical output destination. If one destination reaches the storage.total_limit_size limit, the oldest Chunk from the queue for that logical output destination will be discarded. see https://docs.fluentbit.io/manual/administration/buffering-and-storage |
 | kind | string | `"DaemonSet"` | DaemonSet or Deployment |
 | replicaCount | int | `1` | Only applicable if kind=Deployment |
 | image.repository | string | `"registry1.dso.mil/ironbank/opensource/fluent/fluent-bit"` |  |
