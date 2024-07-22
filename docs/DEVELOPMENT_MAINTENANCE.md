@@ -45,10 +45,18 @@ elasticsearchKibana:
   sso:
     enabled: true
     client_id: platform1_a8604cc9-f5e9-4656-802d-d05624370245_bb8-kibana
+  values:
+    istio:
+      enabled: true
+      hardened:
+        enabled: true
+
 eckOperator:
   enabled: true
+
 kyverno:
   enabled: true
+
 kyvernoPolicies:
   enabled: true
   values:
@@ -58,21 +66,57 @@ kyvernoPolicies:
           allow:
           - /var/lib/rancher/k3s/storage/pvc-*
 
+istio:
+  enabled: true
+  values:
+    hardened:
+      enabled: true
+
 fluentbit: 
   enabled: true
   git:
     tag: null
     branch: renovate/ironbank
+  values:
+    istio:
+      enabled: true
+      hardened:
+        enabled: true
+
 monitoring:
   enabled: true
+  values:
+    istio:
+      enabled: true
+      hardened:
+        enabled: true
+
 loki:
   enabled: true
+  values:
+    istio:
+      enabled: true
+      hardened:
+        enabled: true
+
 promtail:
   enabled: false
+  values:
+    istio:
+      enabled: true
+      hardened:
+        enabled: true
+
 neuvector:
   enabled: false
+
 grafana:
   enabled: true
+  values:
+    istio:
+      enabled: true
+      hardened:
+        enabled: true
 ```
 
 Testing Steps:

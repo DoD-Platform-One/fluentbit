@@ -4,6 +4,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [0.47.3-bb.0] - 2024-07-16
+
+### Changed
+
+- Updated fluent-bit: 3.1.2 -> 3.1.3
+
+## [0.47.1-bb.0] - 2024-06-10
+
 ## [0.47.2-bb.0] - 2024-07-16
 
 ### Changed
