@@ -4,13 +4,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [0.47.5-bb.0] - 2024-07-26
+
+### Changed
+
+- Updated fluent-bit: 3.1.3 -> 3.1.4
+- Updated gluon: 0.5.0 -> 0.5.2
+
 ## [0.47.3-bb.0] - 2024-07-16
 
 ### Changed
 
 - Updated fluent-bit: 3.1.2 -> 3.1.3
-
-## [0.47.1-bb.0] - 2024-06-10
 
 ## [0.47.2-bb.0] - 2024-07-16
 
@@ -201,7 +206,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Updated upstream helm chart tag `0.37.0-bb.0`
 - Updated fluent-bit image to `2.1.8` from IB
 
-## [0.28.0-bb.0]
+## [0.30.4-bb.0]
 
 ### Changed
 

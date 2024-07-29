@@ -1,15 +1,22 @@
+<!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # fluentbit
 
-![Version: 0.47.3-bb.0](https://img.shields.io/badge/Version-0.47.3--bb.0-informational?style=flat-square) ![AppVersion: 3.1.3](https://img.shields.io/badge/AppVersion-3.1.3-informational?style=flat-square)
+![Version: 0.47.5-bb.0](https://img.shields.io/badge/Version-0.47.5--bb.0-informational?style=flat-square) ![AppVersion: 3.1.4](https://img.shields.io/badge/AppVersion-3.1.4-informational?style=flat-square)
 
 Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
 
 ## Upstream References
+
 * <https://fluentbit.io/>
 
 * <https://github.com/fluent/fluent-bit/>
 
+### Upstream Release Notes
+
+* [Find the upstream fluent-bit release notes here](https://fluentbit.io/announcements/)
+
 ## Learn More
+
 * [Application Overview](docs/overview.md)
 * [Other Documentation](docs/)
 
@@ -21,12 +28,13 @@ Fast and lightweight log processor and forwarder or Linux, OSX and BSD family op
 
 Install Helm
 
-https://helm.sh/docs/intro/install/
+<https://helm.sh/docs/intro/install/>
 
 ## Deployment
 
 * Clone down the repository
 * cd into directory
+
 ```bash
 helm install fluentbit chart/
 ```
@@ -69,7 +77,7 @@ helm install fluentbit chart/
 | replicaCount | int | `1` | Only applicable if kind=Deployment |
 | image.repository | string | `"registry1.dso.mil/ironbank/opensource/fluent/fluent-bit"` |  |
 | image.pullPolicy | string | `"Always"` |  |
-| image.tag | string | `"3.1.3"` |  |
+| image.tag | string | `"3.1.4"` |  |
 | networkPolicies.enabled | bool | `false` |  |
 | networkPolicies.controlPlaneCidr | string | `"0.0.0.0/0"` |  |
 | networkPolicies.additionalPolicies | list | `[]` |  |
@@ -240,3 +248,7 @@ helm install fluentbit chart/
 ## Contributing
 
 Please see the [contributing guide](./CONTRIBUTING.md) if you are interested in contributing.
+
+---
+
+_This file is programatically generated using `helm-docs` and some BigBang-specific templates. The `gluon` repository has [instructions for regenerating package READMEs](https://repo1.dso.mil/big-bang/product/packages/gluon/-/blob/master/docs/bb-package-readme.md)._
