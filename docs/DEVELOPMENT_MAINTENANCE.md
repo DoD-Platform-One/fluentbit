@@ -8,11 +8,18 @@ Fluentbit within Big Bang is a modified version of an upstream chart. `kpt` is u
 
 3. Append `-bb.0` to the `version` in `chart/Chart.yaml`.
 
-4. Update `CHANGELOG.md` adding an entry for the new version and noting all changes (at minimum should include `Updated Fluentbit to x.x.x`).
+4. Update dependencies and binaries using `helm dependency update ./chart`
 
-5. Generate the `README.md` updates by following the [guide in gluon](https://repo1.dso.mil/platform-one/big-bang/apps/library-charts/gluon/-/blob/master/docs/bb-package-readme.md).
+    - Pull assets and commit the binaries as well as the Chart.lock file that was generated.
+      ```shell
+      helm dependency update ./chart
+      ```
 
-6. As part of your MR that modifies bigbang packages, you should modify the bigbang  [bigbang/tests/test-values.yaml](https://repo1.dso.mil/big-bang/bigbang/-/blob/master/tests/test-values.yaml?ref_type=heads) against your branch for the CI/CD MR testing by enabling your packages. 
+5. Update `CHANGELOG.md` adding an entry for the new version and noting all changes (at minimum should include `Updated Fluentbit to x.x.x`).
+
+6. Generate the `README.md` updates by following the [guide in gluon](https://repo1.dso.mil/platform-one/big-bang/apps/library-charts/gluon/-/blob/master/docs/bb-package-readme.md).
+
+7. As part of your MR that modifies bigbang packages, you should modify the bigbang  [bigbang/tests/test-values.yaml](https://repo1.dso.mil/big-bang/bigbang/-/blob/master/tests/test-values.yaml?ref_type=heads) against your branch for the CI/CD MR testing by enabling your packages. 
 
     - To do this, at a minimum, you will need to follow the instructions at [bigbang/docs/developer/test-package-against-bb.md](https://repo1.dso.mil/big-bang/bigbang/-/blob/master/docs/developer/test-package-against-bb.md?ref_type=heads) with changes for Fluent Bit enabled (the below is a reference, actual changes could be more depending on what changes where made to Fluent Bit in the pakcage MR).
 
@@ -31,7 +38,7 @@ Fluentbit within Big Bang is a modified version of an upstream chart. `kpt` is u
     ```
 
 
-7. Once all manual testing is complete take your MR out of "Draft" status and add the review label.
+8. Once all manual testing is complete take your MR out of "Draft" status and add the review label.
 
 # Manual Testing for Updates
 
