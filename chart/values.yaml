@@ -866,7 +866,7 @@ hotReload:
   enabled: false
   image:
     repository: registry1.dso.mil/ironbank/opensource/jimmidyson/configmap-reload
-    tag: v0.13.1
+    tag: v0.14.0
     digest:
     pullPolicy: IfNotPresent
   resources: {}
