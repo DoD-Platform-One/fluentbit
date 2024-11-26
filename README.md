@@ -1,7 +1,7 @@
 <!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # fluentbit
 
-![Version: 0.47.10-bb.1](https://img.shields.io/badge/Version-0.47.10--bb.1-informational?style=flat-square) ![AppVersion: 3.1.9](https://img.shields.io/badge/AppVersion-3.1.9-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
+![Version: 0.48.2-bb.0](https://img.shields.io/badge/Version-0.48.2--bb.0-informational?style=flat-square) ![AppVersion: 3.2.1](https://img.shields.io/badge/AppVersion-3.2.1-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
 
 Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
 
@@ -76,7 +76,7 @@ helm install fluentbit chart/
 | replicaCount | int | `1` | Only applicable if kind=Deployment |
 | image.repository | string | `"registry1.dso.mil/ironbank/opensource/fluent/fluent-bit"` |  |
 | image.pullPolicy | string | `"Always"` |  |
-| image.tag | string | `"3.1.9"` |  |
+| image.tag | string | `"3.2.1"` |  |
 | networkPolicies.enabled | bool | `false` |  |
 | networkPolicies.controlPlaneCidr | string | `"0.0.0.0/0"` |  |
 | networkPolicies.additionalPolicies | list | `[]` |  |
@@ -97,10 +97,14 @@ helm install fluentbit chart/
 | rbac.eventsAccess | bool | `false` |  |
 | podSecurityPolicy.create | bool | `false` |  |
 | podSecurityPolicy.annotations | object | `{}` |  |
+| podSecurityPolicy.runAsUser.rule | string | `"RunAsAny"` |  |
+| podSecurityPolicy.seLinux.rule | string | `"RunAsAny"` |  |
 | openShift.enabled | bool | `false` |  |
 | openShift.securityContextConstraints.create | bool | `true` |  |
 | openShift.securityContextConstraints.name | string | `""` |  |
 | openShift.securityContextConstraints.annotations | object | `{}` |  |
+| openShift.securityContextConstraints.runAsUser.type | string | `"RunAsAny"` |  |
+| openShift.securityContextConstraints.seLinuxContext.type | string | `"MustRunAs"` |  |
 | openShift.securityContextConstraints.existingName | string | `""` |  |
 | podSecurityContext | object | `{}` |  |
 | hostNetwork | bool | `false` |  |
