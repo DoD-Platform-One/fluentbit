@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Updated gluon: 0.5.4 -> 0.5.8
 - Updated configmap-reload v0.13.1 -> v0.14.0
+- Added the maintenance track annotation and badge
 
 ## [0.47.10-bb.0] - 2024-10-02
 

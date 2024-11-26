@@ -21,6 +21,7 @@ maintainers:
   - name: stevehipwell
     email: steve.hipwell@gmail.com
 annotations:
+  bigbang.dev/maintenanceTrack: bb_integrated
   artifacthub.io/changes: |
     - kind: changed
       description: "Updated Fluent Bit OCI image to v3.1.9."
