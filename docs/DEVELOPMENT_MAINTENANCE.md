@@ -129,7 +129,7 @@ grafana:
 Testing Steps:
 - Login to Prometheus, validate under `Status` -> `Targets` that all fluentbit targets are showing as up
 - Login to Grafana, then navigate to `Dashboards` > `fluentbit-fluent-bit` and validate that the dashboard displays data
-- Login to Kibana, then navigate to https://kibana.dev.bigbang.mil/app/management/kibana/indexPatterns and add an index pattern for `logstash-*`
+- Login to Kibana, then navigate to https://kibana.dev.bigbang.mil/app/management/kibana/indexPatterns and create a data view for `logstash-*`
 - Navigate to `Analytics` -> `Discover` and validate that pod logs are appearing in the `logstash` index pattern
 
 Note: as of BB 2.0, if kyverno is not enabled in your cluster the following secrets will need to be copied from the logging namespace to fluentbit in order to successfully test fluentbit log shipping to elasticsearch.
