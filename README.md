@@ -1,18 +1,19 @@
 <!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # fluentbit
 
-![Version: 0.48.3-bb.0](https://img.shields.io/badge/Version-0.48.3--bb.0-informational?style=flat-square) ![AppVersion: 3.2.2](https://img.shields.io/badge/AppVersion-3.2.2-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
+![Version: 0.48.3-bb.1](https://img.shields.io/badge/Version-0.48.3--bb.1-informational?style=flat-square) ![AppVersion: 3.2.2](https://img.shields.io/badge/AppVersion-3.2.2-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
 
 Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
 
 ## Upstream References
+
 - <https://fluentbit.io/>
 
-* <https://github.com/fluent/fluent-bit/>
+- <https://github.com/fluent/fluent-bit/>
 
 ## Upstream Release Notes
 
-* [Find the upstream fluent-bit release notes here](https://fluentbit.io/announcements/)
+- [Find the upstream fluent-bit release notes here](https://fluentbit.io/announcements/)
 
 ## Learn More
 
@@ -27,7 +28,7 @@ Fast and lightweight log processor and forwarder or Linux, OSX and BSD family op
 
 Install Helm
 
-https://helm.sh/docs/intro/install/
+<https://helm.sh/docs/intro/install/>
 
 ## Deployment
 
@@ -54,24 +55,24 @@ helm install fluentbit chart/
 | additionalOutputs.elasticsearch.tls | bool | `true` | Toggle on TLS |
 | additionalOutputs.elasticsearch.tlsVerify | bool | `false` | Verify TLS certificates, requires a caCert to be specified |
 | additionalOutputs.elasticsearch.caCert | string | `""` | Full ca.crt specified as multiline string, see example |
-| additionalOutputs.elasticsearch.additionalConfig | object | `{}` | Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/elasticsearch |
+| additionalOutputs.elasticsearch.additionalConfig | object | `{}` | Reference configuration parameters provided by Fluentbit - <https://docs.fluentbit.io/manual/pipeline/outputs/elasticsearch> |
 | additionalOutputs.fluentd | object | `{"additionalConfig":{},"caCert":"","host":"","match":["kube.*","host.*"],"password":"","port":24224,"sharedKey":"","tls":true,"tlsVerify":false,"user":""}` | Options to enable a fluentd output |
 | additionalOutputs.fluentd.sharedKey | string | `""` | Overriden by username and password |
 | additionalOutputs.fluentd.tls | bool | `true` | Toggle on TLS |
 | additionalOutputs.fluentd.tlsVerify | bool | `false` | Verify TLS certificates, requires a caCert to be specified |
 | additionalOutputs.fluentd.caCert | string | `""` | Full ca.crt specified as multiline string, see example |
-| additionalOutputs.fluentd.additionalConfig | object | `{}` | Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/forward |
+| additionalOutputs.fluentd.additionalConfig | object | `{}` | Reference configuration parameters provided by Fluentbit - <https://docs.fluentbit.io/manual/pipeline/outputs/forward> |
 | additionalOutputs.loki | object | `{"additionalConfig":{},"caCert":"","host":"","match":["kube.*","host.*"],"password":"","port":3100,"tls":false,"tlsVerify":false,"user":""}` | Options to enable a loki output |
-| additionalOutputs.loki.user | string | `""` | User and Password are optional - only required if running proxy in front of Loki, see https://grafana.com/docs/loki/latest/operations/authentication/ |
+| additionalOutputs.loki.user | string | `""` | User and Password are optional - only required if running proxy in front of Loki, see <https://grafana.com/docs/loki/latest/operations/authentication/> |
 | additionalOutputs.loki.tls | bool | `false` | Toggle on TLS - disabled by default to support in cluster Loki |
 | additionalOutputs.loki.tlsVerify | bool | `false` | Verify TLS certificates, requires a caCert to be specified |
 | additionalOutputs.loki.caCert | string | `""` | Full ca.crt specified as multiline string, see example |
-| additionalOutputs.loki.additionalConfig | object | `{}` | Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/loki |
+| additionalOutputs.loki.additionalConfig | object | `{}` | Reference configuration parameters provided by Fluentbit - <https://docs.fluentbit.io/manual/pipeline/outputs/loki> |
 | additionalOutputs.s3 | object | `{"additionalConfig":{"total_file_size":"1M","upload_timeout":"1m","use_put_object":"On"},"aws_access_key_id":"","aws_secret_access_key":"","bucket":"","existingSecret":"","match":["kube.*","host.*"],"region":"us-east-1"}` | Options to enable a S3 output |
 | additionalOutputs.s3.existingSecret | string | `""` | Reference an existing secret with your access and secret key, must contain key values pairs for AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY |
-| additionalOutputs.s3.additionalConfig | object | `{"total_file_size":"1M","upload_timeout":"1m","use_put_object":"On"}` | Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/s3 |
-| storage_buffer | object | `{"path":"/var/log/flb-storage/"}` | Options to configure hostPath mounted storage buffer for production use Specified in fluentbit service configuration section below see https://docs.fluentbit.io/manual/administration/buffering-and-storage |
-| storage | object | `{"total_limit_size":"10G"}` | Limits the number of Chunks that exists in the file system for a certain logical output destination. If one destination reaches the storage.total_limit_size limit, the oldest Chunk from the queue for that logical output destination will be discarded. see https://docs.fluentbit.io/manual/administration/buffering-and-storage |
+| additionalOutputs.s3.additionalConfig | object | `{"total_file_size":"1M","upload_timeout":"1m","use_put_object":"On"}` | Reference configuration parameters provided by Fluentbit - <https://docs.fluentbit.io/manual/pipeline/outputs/s3> |
+| storage_buffer | object | `{"path":"/var/log/flb-storage/"}` | Options to configure hostPath mounted storage buffer for production use Specified in fluentbit service configuration section below see <https://docs.fluentbit.io/manual/administration/buffering-and-storage> |
+| storage | object | `{"total_limit_size":"10G"}` | Limits the number of Chunks that exists in the file system for a certain logical output destination. If one destination reaches the storage.total_limit_size limit, the oldest Chunk from the queue for that logical output destination will be discarded. see <https://docs.fluentbit.io/manual/administration/buffering-and-storage> |
 | kind | string | `"DaemonSet"` | DaemonSet or Deployment |
 | replicaCount | int | `1` | Only applicable if kind=Deployment |
 | image.repository | string | `"registry1.dso.mil/ironbank/opensource/fluent/fluent-bit"` |  |
@@ -257,4 +258,3 @@ Please see the [contributing guide](./CONTRIBUTING.md) if you are interested in 
 ---
 
 _This file is programatically generated using `helm-docs` and some BigBang-specific templates. The `gluon` repository has [instructions for regenerating package READMEs](https://repo1.dso.mil/big-bang/product/packages/gluon/-/blob/master/docs/bb-package-readme.md)._
-
