@@ -1,6 +1,6 @@
 # Code Changes for Updates
 
-Fluentbit within Big Bang is a modified version of an upstream chart. `kpt` is used to handle any automatic updates from upstream. The below details the steps required to update to a new version of the Fluentbit package.
+Fluentbit within Big Bang is a modified version of an upstream chart. `kpt` is used to handle any automatic updates from upstream. The below details the steps required to update to a new version of the fluentbit package.
 
 1. Navigate to the upstream [fluentbit helm chart repo](https://github.com/fluent/helm-charts/tree/main/charts/fluent-bit) and find the latest chart version that works with the image update. For example, if updating to 1.8.11 I would look at the [Chart.yaml](https://github.com/fluent/helm-charts/blob/main/charts/fluent-bit/Chart.yaml) `appVersion` field and switch through the latest git tags until I find one that matches 1.8.11. For this example that would be [`fluent-bit-0.19.16`](https://github.com/fluent/helm-charts/blob/fluent-bit-0.19.16/charts/fluent-bit/Chart.yaml#L9).
 
@@ -15,27 +15,27 @@ Fluentbit within Big Bang is a modified version of an upstream chart. `kpt` is u
       helm dependency update ./chart
       ```
 
-5. Update `CHANGELOG.md` adding an entry for the new version and noting all changes (at minimum should include `Updated Fluentbit to x.x.x`).
+5. Update `CHANGELOG.md` adding an entry for the new version and noting all changes (at minimum should include `Updated fluentbit to x.x.x`).
 
 6. Generate the `README.md` updates by following the [guide in gluon](https://repo1.dso.mil/platform-one/big-bang/apps/library-charts/gluon/-/blob/master/docs/bb-package-readme.md).
 
 7. As part of your MR that modifies bigbang packages, you should modify the bigbang  [bigbang/tests/test-values.yaml](https://repo1.dso.mil/big-bang/bigbang/-/blob/master/tests/test-values.yaml?ref_type=heads) against your branch for the CI/CD MR testing by enabling your packages. 
 
-    - To do this, at a minimum, you will need to follow the instructions at [bigbang/docs/developer/test-package-against-bb.md](https://repo1.dso.mil/big-bang/bigbang/-/blob/master/docs/developer/test-package-against-bb.md?ref_type=heads) with changes for Fluent Bit enabled (the below is a reference, actual changes could be more depending on what changes where made to Fluent Bit in the pakcage MR).
+    - To do this, at a minimum, you will need to follow the instructions at [bigbang/docs/developer/test-package-against-bb.md](https://repo1.dso.mil/big-bang/bigbang/-/blob/master/docs/developer/test-package-against-bb.md?ref_type=heads) with changes for fluentbit enabled (the below is a reference, actual changes could be more depending on what changes where made to fluentbit in the package MR).
 
 ### [test-values.yaml](https://repo1.dso.mil/big-bang/bigbang/-/blob/master/tests/test-values.yaml?ref_type=heads)
-    ```yaml
-    fluentbit:
-      enabled: true
-      git:
-        tag: null
-        branch: <my-package-branch-that-needs-testing>
-      values:
-        istio:
-          hardened:
-            enabled: true
-      ### Additional compononents of Fluent Bit should be changed to reflect testing changes introduced in the package MR
-    ```
+```yaml
+fluentbit:
+  enabled: true
+  git:
+    tag: null
+    branch: renovate/ironbank
+  values:
+    istio:
+      hardened:
+        enabled: true
+  ### Additional components of fluentbit should be changed to reflect testing changes introduced in the package MR
+```
 
 
 8. Once all manual testing is complete take your MR out of "Draft" status and add the review label.
@@ -44,7 +44,7 @@ Fluentbit within Big Bang is a modified version of an upstream chart. `kpt` is u
 
 >NOTE: For these testing steps it is good to do them on both a clean install and an upgrade. For clean install, point fluentbit to your branch. For an upgrade do an install with fluentbit pointing to the latest tag, then perform a helm upgrade with fluentbit pointing to your branch.
 
-The following overrides can be used for a bare minimum FluentBit deployment:
+The following overrides can be used for a bare minimum fluentbit deployment:
 
 ```yaml
 elasticsearchKibana:
@@ -137,7 +137,7 @@ Note: as of BB 2.0, if kyverno is not enabled in your cluster the following secr
 - `logging-ek-es-http-certs-internal`
 - `logging-ek-es-elastic-user`
 
-The following script can be run to copy the secrets over from the logging namespace. The yq package install instructions can be found [here](https://mikefarah.gitbook.io/yq/).
+The following script can be run to copy the secrets over from the logging namespace. The `yq` package install instructions can be found [here](https://mikefarah.gitbook.io/yq/).
 
 ```bash
 kubectl get secret -n logging logging-ek-es-http-certs-public -o yaml | yq '.metadata.namespace = "fluentbit"' - | kubectl apply -f -
@@ -156,23 +156,23 @@ Note that this list is likely incomplete currently.
 
 ## chart/templates/configmap.yaml
 
-- Add `fluent-bit.conf:` [OUTPUT]s, lines 11 to 226
+- Added `fluent-bit.conf:` configuration
 
 ## chart/templates/_pod.tpl
 
-- Add `additionalElastic` to `additionalLoki` (lines 50 to 77) with the adjustment in order to `envFrom` in the middle (lines 55-58)
-- Add `Values.additionalOutputs` (lines 122 to 137 and lines 162-180)
-- Change container name to `name: {{ default .Chart.Name .Values.nameOverride }}`
+- Changed container name to `name: {{ default .Chart.Name .Values.nameOverride }}`
+- Added `additionalOutputs` definitions and configs to `envFrom`
+- Added `additionalOutputs` ca-certs to `volumeMounts` and `volumes`
 
 ## chart/values.yaml
 
 - Added values for `elasticsearch`, `istio`, `additionalOutputs`, `storage_buffer`, `networkPolicies`, `openshift`, and `bbtests`
-- Changed image to default to Ironbank image
+- Changed default image source to Ironbank / Registry1
 - Set default `securityContext`, `imagePullSecrets`, `extraVolumes`, `extraVolumeMounts`, and `config`
 - Added commented out values for `serviceMonitor.scheme` and `serviceMonitor.tlsConfig`
 
 ## chart/Chart.yaml
 
 - Name changed to `fluentbit`
-- Annotations added for versioning, images
+- Annotations added for application and image versioning
 - Gluon dependency added for helm tests
