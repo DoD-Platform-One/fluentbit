@@ -22,3 +22,6 @@ ignore/*
 .history/
 
 node_modules
+
+# Helm Docs
+*.gotmpl
