@@ -6,9 +6,9 @@
 Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
 
 ## Upstream References
-- <https://fluentbit.io/>
 
-* <https://github.com/fluent/fluent-bit/>
+- <https://fluentbit.io/>
+- <https://github.com/fluent/fluent-bit/>
 
 ## Upstream Release Notes
 
