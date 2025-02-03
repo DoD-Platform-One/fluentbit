@@ -4,6 +4,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [0.48.5-bb.0] - 2025-01-28
+
+### Updated
+
+- Updated fluent-bit: 3.2.4 -> 3.2.5
+
 ## [0.48.4-bb.0] - 2025-01-03
 
 ### Updated
@@ -28,7 +34,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Updated gluon: 0.5.8 -> 0.5.12
 - Updated fluent-bit: 3.1.9 -> 3.2.1
-  
+
 ## [0.47.10-bb.1] - 2024-10-18
 
 ### Changed
@@ -98,7 +104,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 
-- Updated fluent-bit: 3.1.1 -> 3.1.2  
+- Updated fluent-bit: 3.1.1 -> 3.1.2
 
 ## [0.47.1-bb.0] - 2024-06-10
 

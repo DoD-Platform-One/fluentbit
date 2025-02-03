@@ -174,7 +174,7 @@ replicaCount: 1
 image:
   repository: registry1.dso.mil/ironbank/opensource/fluent/fluent-bit
   pullPolicy: Always
-  tag: 3.2.4
+  tag: 3.2.5
 
 networkPolicies:
   enabled: false
@@ -878,3 +878,4 @@ hotReload:
     digest:
     pullPolicy: IfNotPresent
   resources: {}
+  extraWatchVolumes: []
