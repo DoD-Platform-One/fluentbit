@@ -3,6 +3,11 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [0.48.5-bb.1] - 2025-02-11
+
+### Updated
+
+- Updated fluent-bit: 3.2.5 -> 3.2.6
 
 ## [0.48.5-bb.0] - 2025-01-28
 
