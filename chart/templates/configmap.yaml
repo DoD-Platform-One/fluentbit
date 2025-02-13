@@ -17,7 +17,7 @@ data:
 
     {{- with .Values.additionalOutputs.elasticsearch }}
     {{- if and .host .user .password .port }}
-    {{- $es := . }}
+    {{- $esTarget := . }}
     {{- $additionalConfig := .additionalConfig }}
     {{- range $match := .match}}
     [OUTPUT]
@@ -32,9 +32,9 @@ data:
         Retry_Limit False
         Replace_Dots On
         storage.total_limit_size {{ $.Values.storage.total_limit_size }}
-        tls {{ if $es.tls }}On{{ else }}Off{{ end }}
-        tls.verify {{ if and $es.tlsVerify $es.caCert }}On{{ else }}Off{{ end }}
-        {{- if and $es.tlsVerify $es.caCert }}
+        tls {{ if $esTarget.tls }}On{{ else }}Off{{ end }}
+        tls.verify {{ if and $esTarget.tlsVerify $esTarget.caCert }}On{{ else }}Off{{ end }}
+        {{- if and $esTarget.tlsVerify $esTarget.caCert }}
         tls.ca_file /etc/external-es/certs/ca.crt
         {{- end }}
         {{- if $additionalConfig }}
@@ -54,7 +54,7 @@ data:
     {{- with .Values.additionalOutputs.fluentd }}
     {{- $auth := (or (and .user .password) .sharedKey) }}
     {{- if and .host .port $auth }}
-    {{- $es := . }}
+    {{- $fluentTarget := . }}
     {{- $additionalConfig := .additionalConfig }}
     {{- range $match := .match}}
     [OUTPUT]
@@ -62,7 +62,7 @@ data:
         Match         {{ $match | quote }}
         Host          ${EXTERNAL_FLUENTD_HOST}
         Port          ${EXTERNAL_FLUENTD_PORT}
-        {{- if and .user .password }}
+        {{- if and $fluentTarget.user $fluentTarget.password }}
         Username      ${EXTERNAL_FLUENTD_USER}
         Password      ${EXTERNAL_FLUENTD_PASSWORD}
         {{- else }}
@@ -70,9 +70,9 @@ data:
         {{- end }}
         Retry_Limit   False
         storage.total_limit_size {{ $.Values.storage.total_limit_size }}
-        tls {{ if $es.tls }}On{{ else }}Off{{ end }}
-        tls.verify {{ if and $es.tlsVerify $es.caCert }}On{{ else }}Off{{ end }}
-        {{- if and $es.tlsVerify $es.caCert }}
+        tls {{ if $fluentTarget.tls }}On{{ else }}Off{{ end }}
+        tls.verify {{ if and $fluentTarget.tlsVerify $fluentTarget.caCert }}On{{ else }}Off{{ end }}
+        {{- if and $fluentTarget.tlsVerify $fluentTarget.caCert }}
         tls.ca_file   /etc/external-fluentd/certs/ca.crt
         {{- end }}
         {{- if $additionalConfig }}
@@ -91,7 +91,7 @@ data:
 
     {{- with .Values.additionalOutputs.loki }}
     {{- if and .host .port }}
-    {{- $es := . }}
+    {{- $lokiTarget := . }}
     {{- $additionalConfig := .additionalConfig }}
     {{- range $match := .match}}
     [OUTPUT]
@@ -101,15 +101,15 @@ data:
         host          ${EXTERNAL_LOKI_HOST}
         port          ${EXTERNAL_LOKI_PORT}
         auto_kubernetes_labels on
-        {{- if and .user .password }}
+        {{- if and $lokiTarget.user $lokiTarget.password }}
         http_user     ${EXTERNAL_LOKI_USER}
         http_passwd   ${EXTERNAL_LOKI_PASSWORD}
         {{- end }}
         Retry_Limit   False
         storage.total_limit_size {{ $.Values.storage.total_limit_size }}
-        tls {{ if $es.tls }}On{{ else }}Off{{ end }}
-        tls.verify {{ if and $es.tlsVerify $es.caCert }}On{{ else }}Off{{ end }}
-        {{- if and $es.tlsVerify $es.caCert }}
+        tls {{ if $lokiTarget.tls }}On{{ else }}Off{{ end }}
+        tls.verify {{ if and $lokiTarget.tlsVerify $lokiTarget.caCert }}On{{ else }}Off{{ end }}
+        {{- if and $lokiTarget.tlsVerify $lokiTarget.caCert }}
         tls.ca_file   /etc/external-loki/certs/ca.crt
         {{- end }}
         {{- if $additionalConfig }}
