@@ -1,43 +1,49 @@
 {
-    "baseBranches": ["main"],
-    "configWarningReuseIssue": false,
-    "dependencyDashboard": true,
-    "dependencyDashboardTitle": "Renovate: Upgrade Fluentbit Package Dependencies",
-    "draftPR": true,
-    "enabledManagers": ["custom.regex", "helm-values", "helmv3"],
-    "ignorePaths": ["chart/charts/**"],
-    "labels": ["fluentbit", "renovate", "kind::maintenance", "team::Observability"],
-    "packageRules": [
-        {
-            "matchDatasources": ["docker"],
-            "groupName": "Ironbank"
-        }
-    ],
-    "customManagers": [
-        {
-            "fileMatch": ["^chart/values\\.yaml$"],
-            "matchStrings": [
-              "^\\s+image:\\s+(?<depName>.+):(?<currentValue>.+)"
-            ],
-            "datasourceTemplate": "docker"
-        },
-        {
-        "fileMatch": ["^chart/Chart\\.yaml$"],
-        "matchStrings": [
-            "- Fluent Bit:\\s+(?<currentValue>.+)",
-            "appVersion:\\s+(?<currentValue>.+)"            
+  "baseBranches": ["main"],
+  "configWarningReuseIssue": false,
+  "dependencyDashboard": true,
+  "dependencyDashboardTitle": "SKIP UPDATE CHECK Renovate: Upgrade Fluentbit Package Dependencies",
+  "draftPR": true,
+  "enabledManagers": ["helm-values", "custom.regex", "helmv3"],
+  "ignorePaths": ["chart/charts/**"],
+  "labels": [
+    "fluentbit",
+    "renovate",
+    "kind::maintenance",
+    "team::Observability"
+  ],
+  "packageRules": [
+    {
+      "groupName": "Ironbank",
+      "matchDatasources": ["docker", "helm"],
+      "postUpgradeTasks": {
+        "commands": [
+          "match-chart-yaml-appversion",
+          "regenerate-helm-docs",
+          "bump-changelog '- {{{replace 'registry1.dso.mil/' '' depName}}} updated from {{{currentVersion}}} to {{{newVersion}}}'"
         ],
-        "depNameTemplate": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit",
-        "datasourceTemplate": "docker"
-        },
-        {
-            "fileMatch": ["^chart/Chart\\.yaml$"],
-            "matchStrings": [
-                "image:[^\\S\\r\\n]+(?<depName>.+):(?<currentValue>.+)"
-            ],
-            "datasourceTemplate": "docker"
-        }
-    ],
-    "separateMajorMinor": false,
-    "postUpdateOptions": ["helmUpdateSubChartArchives"]
+        "fileFilters": ["chart/Chart.yaml", "README.md", "CHANGELOG.md"]
+      }
+    }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["^chart/Chart\\.yaml$"],
+      "matchStrings": [
+        "- Fluent Bit:\\s+(?<currentValue>.+)",
+        "appVersion:\\s+(?<currentValue>.+)"
+      ],
+      "depNameTemplate": "registry1.dso.mil/ironbank/opensource/fluent/fluent-bit",
+      "datasourceTemplate": "docker"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": ["^chart/Chart\\.yaml$"],
+      "matchStrings": ["image:[^\\S\\r\\n]+(?<depName>.+):(?<currentValue>.+)"],
+      "datasourceTemplate": "docker"
+    }
+  ],
+  "separateMajorMinor": false,
+  "postUpdateOptions": ["helmUpdateSubChartArchives"]
 }
