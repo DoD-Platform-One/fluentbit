@@ -2,7 +2,7 @@
   "baseBranches": ["main"],
   "configWarningReuseIssue": false,
   "dependencyDashboard": true,
-  "dependencyDashboardTitle": "SKIP UPDATE CHECK Renovate: Upgrade Fluentbit Package Dependencies",
+  "dependencyDashboardTitle": "Renovate: Upgrade Fluentbit Package Dependencies",
   "draftPR": true,
   "enabledManagers": ["helm-values", "custom.regex", "helmv3"],
   "ignorePaths": ["chart/charts/**"],
@@ -18,10 +18,10 @@
       "matchDatasources": ["docker", "helm"],
       "postUpgradeTasks": {
         "commands": [
-          "match-chart-yaml-appversion",
           "regenerate-helm-docs",
           "bump-changelog '- {{{replace 'registry1.dso.mil/' '' depName}}} updated from {{{currentVersion}}} to {{{newVersion}}}'"
         ],
+        "executionMode": "update",
         "fileFilters": ["chart/Chart.yaml", "README.md", "CHANGELOG.md"]
       }
     }
@@ -29,6 +29,7 @@
   "customManagers": [
     {
       "customType": "regex",
+      "description": "Update app version chart annotations",
       "fileMatch": ["^chart/Chart\\.yaml$"],
       "matchStrings": [
         "- Fluent Bit:\\s+(?<currentValue>.+)",
@@ -39,9 +40,20 @@
     },
     {
       "customType": "regex",
+      "description": "Update docker image references",
       "fileMatch": ["^chart/Chart\\.yaml$"],
       "matchStrings": ["image:[^\\S\\r\\n]+(?<depName>.+):(?<currentValue>.+)"],
       "datasourceTemplate": "docker"
+    },
+    {
+      "customType": "regex",
+      "description": "Update chart version",
+      "fileMatch": ["^chart/Chart\\.yaml$"],
+      "matchStrings": ["version:\\s+(?<currentValue>.+)-bb\\.\\d+"],
+      "autoReplaceStringTemplate": "version: {{newValue}}-bb.0",
+      "depNameTemplate": "fluent-bit",
+      "datasourceTemplate": "helm",
+      "registryUrlTemplate": "https://fluent.github.io/helm-charts"
     }
   ],
   "separateMajorMinor": false,

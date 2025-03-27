@@ -3,12 +3,18 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [0.48.9-bb.0] - 2025-03-27
+### Updated
+- ironbank/opensource/fluent/fluent-bit updated from 3.2.7 to 3.2.9
+
 ## [0.48.6-bb.1] - 2025-03-14
 ### Added
 - Added dynamic network policy support for istio egress
 
 ## [0.48.6-bb.0] - 2025-02-25
-### Changed
+
+### Updated
+
 - ironbank/opensource/fluent/fluent-bit updated from 3.2.6 to 3.2.7
 
 ## [0.48.5-bb.2] - 2025-02-13
