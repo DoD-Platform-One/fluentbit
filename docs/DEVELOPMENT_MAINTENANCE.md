@@ -126,6 +126,58 @@ grafana:
         enabled: true
 ```
 
+The following is an example of how to run fluentbit with operatorless istio:
+```yaml
+######### Istio Operator-less (istioCore) Overrides #############
+networkPolicies:
+  enabled: true
+
+istio:
+  enabled: false
+
+istioOperator:
+  enabled: false
+  
+istioCore:
+  enabled: true
+
+istioGateway:
+  enabled: true 
+
+
+######### Additional Overrides ###########
+# sso:
+#   # This is needed because test-values.yaml overrides it to reference the internal keycloak
+#   url: https://login.dso.mil/auth/realms/baby-yoda
+
+elasticsearchKibana:
+  enabled: true
+  sso:
+    enabled: true
+    client_id: platform1_a8604cc9-f5e9-4656-802d-d05624370245_bb8-kibana
+
+eckOperator:
+  enabled: true
+
+fluentbit: 
+  enabled: true
+  git:
+    tag: null
+    branch: <branch>
+
+monitoring:
+  enabled: true
+
+loki:
+  enabled: true
+
+grafana:
+  enabled: true
+
+neuvector:
+  enabled: false
+```
+
 Testing Steps:
 - Login to Prometheus, validate under `Status` -> `Targets` that all fluentbit targets are showing as up
 - Login to Grafana, then navigate to `Dashboards` > `fluentbit-fluent-bit` and validate that the dashboard displays data
