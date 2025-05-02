@@ -174,7 +174,7 @@ replicaCount: 1
 image:
   repository: registry1.dso.mil/ironbank/opensource/fluent/fluent-bit
   pullPolicy: Always
-  tag: 4.0.0
+  tag: 4.0.1
 
 networkPolicies:
   enabled: false
@@ -276,6 +276,7 @@ service:
   internalTrafficPolicy:
   loadBalancerClass:
   loadBalancerSourceRanges: []
+  loadBalancerIP:
   labels: {}
   # nodePort: 30020
   # clusterIP: 172.16.10.1
@@ -840,7 +841,7 @@ hotReload:
   enabled: false
   image:
     repository: registry1.dso.mil/ironbank/opensource/jimmidyson/configmap-reload
-    tag: v0.14.0
+    tag: v0.15.0
     digest:
     pullPolicy: IfNotPresent
   resources: {}

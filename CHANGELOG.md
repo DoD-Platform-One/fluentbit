@@ -3,6 +3,13 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [0.48.10-bb.0] - (2025-04-26)
+### Changed
+- fluent-bit updated from 0.48.9 to 0.48.10
+- gluon updated from 0.5.15 to 0.5.16
+- ironbank/opensource/fluent/fluent-bit updated from 4.0.0 to 4.0.1
+- registry1.dso.mil/ironbank/opensource/jimmidyson/configmap-reload from v0.14.0 to v0.15.0
+
 ## [0.48.9-bb.3] - 2025-04-10
 ### Changed
 - registry1.dso.mil/ironbank/stedolan/jq changed to registry1.dso.mil/ironbank/big-bang/base:2.1.0
