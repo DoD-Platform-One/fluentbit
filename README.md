@@ -1,7 +1,7 @@
 <!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # fluentbit
 
-![Version: 0.48.9-bb.3](https://img.shields.io/badge/Version-0.48.9--bb.3-informational?style=flat-square) ![AppVersion: 4.0.0](https://img.shields.io/badge/AppVersion-4.0.0-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
+![Version: 0.48.10-bb.0](https://img.shields.io/badge/Version-0.48.10--bb.0-informational?style=flat-square) ![AppVersion: 4.0.1](https://img.shields.io/badge/AppVersion-4.0.1-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
 
 Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
 
@@ -76,7 +76,7 @@ helm install fluentbit chart/
 | replicaCount | int | `1` | Only applicable if kind=Deployment |
 | image.repository | string | `"registry1.dso.mil/ironbank/opensource/fluent/fluent-bit"` |  |
 | image.pullPolicy | string | `"Always"` |  |
-| image.tag | string | `"4.0.0"` |  |
+| image.tag | string | `"4.0.1"` |  |
 | networkPolicies.enabled | bool | `false` |  |
 | networkPolicies.controlPlaneCidr | string | `"0.0.0.0/0"` |  |
 | networkPolicies.additionalPolicies | list | `[]` |  |
@@ -245,7 +245,7 @@ helm install fluentbit chart/
 | bbtests.scripts.envs.desired_version | string | `"{{ .Values.image.tag }}"` | Version that should be running |
 | hotReload.enabled | bool | `false` |  |
 | hotReload.image.repository | string | `"registry1.dso.mil/ironbank/opensource/jimmidyson/configmap-reload"` |  |
-| hotReload.image.tag | string | `"v0.14.0"` |  |
+| hotReload.image.tag | string | `"v0.15.0"` |  |
 | hotReload.image.digest | string | `nil` |  |
 | hotReload.image.pullPolicy | string | `"IfNotPresent"` |  |
 | hotReload.resources | object | `{}` |  |
