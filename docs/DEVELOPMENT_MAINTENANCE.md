@@ -105,6 +105,9 @@ loki:
       hardened:
         enabled: true
 
+bbctl:
+  enabled: false
+
 promtail:
   enabled: false
   values:
@@ -170,6 +173,9 @@ monitoring:
 
 loki:
   enabled: true
+
+bbctl:
+  enabled: false
 
 grafana:
   enabled: true
