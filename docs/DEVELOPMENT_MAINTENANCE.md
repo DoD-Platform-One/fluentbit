@@ -19,7 +19,7 @@ Fluentbit within Big Bang is a modified version of an upstream chart. `kpt` is u
 
 6. Generate the `README.md` updates by following the [guide in gluon](https://repo1.dso.mil/platform-one/big-bang/apps/library-charts/gluon/-/blob/master/docs/bb-package-readme.md).
 
-7. As part of your MR that modifies bigbang packages, you should modify the bigbang  [bigbang/tests/test-values.yaml](https://repo1.dso.mil/big-bang/bigbang/-/blob/master/tests/test-values.yaml?ref_type=heads) against your branch for the CI/CD MR testing by enabling your packages. 
+7. (_Optional, only required if package changes are expected to have cascading effects on bigbang umbrella chart_) As part of your MR that modifies bigbang packages, you should modify the bigbang [bigbang/tests/test-values.yaml](https://repo1.dso.mil/big-bang/bigbang/-/blob/master/tests/test-values.yaml?ref_type=heads) against your branch for the CI/CD MR testing by enabling your packages.
 
     - To do this, at a minimum, you will need to follow the instructions at [bigbang/docs/developer/test-package-against-bb.md](https://repo1.dso.mil/big-bang/bigbang/-/blob/master/docs/developer/test-package-against-bb.md?ref_type=heads) with changes for fluentbit enabled (the below is a reference, actual changes could be more depending on what changes where made to fluentbit in the package MR).
 
@@ -36,7 +36,6 @@ fluentbit:
         enabled: true
   ### Additional components of fluentbit should be changed to reflect testing changes introduced in the package MR
 ```
-
 
 8. Once all manual testing is complete take your MR out of "Draft" status and add the review label.
 
@@ -137,19 +136,20 @@ istio:
 
 istioOperator:
   enabled: false
-  
-istioCore:
+
+istioCRDs:
+  enabled: true
+
+istiod:
   enabled: true
 
 istioGateway:
   enabled: true 
 
-
 ######### Additional Overrides ###########
 # sso:
 #   # This is needed because test-values.yaml overrides it to reference the internal keycloak
 #   url: https://login.dso.mil/auth/realms/baby-yoda
-
 elasticsearchKibana:
   enabled: true
   sso:
@@ -163,7 +163,7 @@ fluentbit:
   enabled: true
   git:
     tag: null
-    branch: <branch>
+    branch: renovate/ironbank
 
 monitoring:
   enabled: true
@@ -179,10 +179,10 @@ neuvector:
 ```
 
 Testing Steps:
-- Login to Prometheus, validate under `Status` -> `Targets` that all fluentbit targets are showing as up
-- Login to Grafana, then navigate to `Dashboards` > `fluentbit-fluent-bit` and validate that the dashboard displays data
-- Login to Kibana, then navigate to https://kibana.dev.bigbang.mil/app/management/kibana/indexPatterns and create a data view for `logstash-*`
-- Navigate to `Analytics` -> `Discover` and validate that pod logs are appearing in the `logstash` index pattern
+- Login to [Prometheus](https://prometheus.dev.bigbang.mil/), validate under `Status` -> `Targets` that all fluentbit targets are showing as up
+- Login to [Grafana](https://grafana.dev.bigbang.mil/), then navigate to `Dashboards` > `fluentbit-fluent-bit` and validate that the dashboard displays data
+- Login to [Kibana](https://kibana.dev.bigbang.mil/), then navigate to https://kibana.dev.bigbang.mil/app/management/kibana/indexPatterns and create a data view for `logstash-*`
+  - Navigate to `Analytics` -> `Discover` and validate that pod logs are appearing in the `logstash` index pattern
 
 Note: as of BB 2.0, if kyverno is not enabled in your cluster the following secrets will need to be copied from the logging namespace to fluentbit in order to successfully test fluentbit log shipping to elasticsearch.
 - `logging-ek-es-http-certs-public`
@@ -197,7 +197,6 @@ kubectl get secret -n logging logging-ek-es-http-certs-public -o yaml | yq '.met
 kubectl get secret -n logging logging-ek-es-http-certs-internal -o yaml | yq 'del(.metadata["creationTimestamp","resourceVersion","selfLink","uid","ownerReferences"])' | yq '.metadata.namespace = "fluentbit"' - | kubectl apply -f -
 
 kubectl get secret -n logging logging-ek-es-elastic-user -o yaml | yq '.metadata.namespace = "fluentbit"' - | kubectl apply -f -
-
 ```
 
 When in doubt with any testing or upgrade steps ask one of the CODEOWNERS for assistance.
