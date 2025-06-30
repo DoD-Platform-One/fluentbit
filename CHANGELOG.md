@@ -3,6 +3,11 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [0.49.1-bb.0] (2025-06-20)
+### Changed
+- fluent-bit updated from 0.49.0 to 0.49.1
+- Refactor chart to Big Bang passthrough chart pattern
+
 ## [0.49.0-bb.1] (2025-06-03)
 ### Changed
 - ironbank/opensource/fluent/fluent-bit updated from 4.0.2 to 4.0.3
