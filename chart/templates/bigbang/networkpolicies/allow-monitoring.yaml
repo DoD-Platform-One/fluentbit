@@ -1,4 +1,4 @@
-{{- if and .Values.networkPolicies.enabled .Values.serviceMonitor.enabled }}
+{{- if and .Values.networkPolicies.enabled .Values.upstream.serviceMonitor.enabled }}
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
@@ -20,5 +20,5 @@ spec:
           app: prometheus
     ports:
     - protocol: TCP
-      port: {{ .Values.service.port }}
+      port: {{ .Values.upstream.service.port }}
 {{- end }}

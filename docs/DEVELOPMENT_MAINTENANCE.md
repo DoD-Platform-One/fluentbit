@@ -1,144 +1,65 @@
-# Code Changes for Updates
+# Fluentbit Development and Maintenance Guide
 
-Fluentbit within Big Bang is a modified version of an upstream chart. `kpt` is used to handle any automatic updates from upstream. The below details the steps required to update to a new version of the fluentbit package.
+## To Update the Fluentbit Package
+**NOTE:** The fluentbit chart has been converted to the passthrough pattern and no longer uses `kpt`.
 
-1. Navigate to the upstream [fluentbit helm chart repo](https://github.com/fluent/helm-charts/tree/main/charts/fluent-bit) and find the latest chart version that works with the image update. For example, if updating to 1.8.11 I would look at the [Chart.yaml](https://github.com/fluent/helm-charts/blob/main/charts/fluent-bit/Chart.yaml) `appVersion` field and switch through the latest git tags until I find one that matches 1.8.11. For this example that would be [`fluent-bit-0.19.16`](https://github.com/fluent/helm-charts/blob/fluent-bit-0.19.16/charts/fluent-bit/Chart.yaml#L9).
+1. Navigate to the upstream [fluentbit helm chart repo](https://github.com/fluent/helm-charts/tree/main/charts/fluent-bit) and find the latest chart version that works with the current major version of the associated Iron Bank image. For example, if updating to 1.8.11 I would look at the [Chart.yaml](https://github.com/fluent/helm-charts/blob/main/charts/fluent-bit/Chart.yaml) `appVersion` field and switch through the latest git tags until I find one that matches 1.x.y.
 
-2. From the top level of the repo run `kpt pkg update chart@{GIT TAG} --strategy alpha-git-patch` replacing `{GIT TAG}` with the tag you found in step one. You may run into some merge conflicts, resolve these in the way that makes the most sense. In general, if something is a BB addition you will want to keep it, otherwise go with the upstream change.
+2. `git clone` the [fluentbit repository](https://repo1.dso.mil/big-bang/product/packages/fluentbit) from Repo1 and checkout the `renovate/ironbank` branch.
 
-3. Append `-bb.0` to the `version` in `chart/Chart.yaml`.
+3. Update the chart version in `./chart/Chart.yaml` and append or bump the `-bb.0` suffix (if missing or incorrect) to the chart version from upstream.
 
-4. Update dependencies and binaries using `helm dependency update ./chart`
+4. Ensure the Big Bang `./chart/Chart.yaml` and the target upstream version `Chart.yaml` align correctly with the following:
+    - Check `appVersion` and `bigbang.dev/applicationVersions` in `./chart/Chart.yaml` to make sure they match and have updated to the correct version
+    - Check the upstream chart dependencies and compare the dependency versions against the corresponding image tags in `./chart/values.yaml` to make sure they match
 
-    - Pull assets and commit the binaries as well as the Chart.lock file that was generated.
-      ```shell
-      helm dependency update ./chart
-      ```
+    **NOTE:** The Renovate issue may be blocked by one of the following conditions:
+    - The upstream chart expects a newer image tag that does not yet exist in Iron Bank
+      - If so, ensure that an issue exists in the associated Iron Bank container repository to track the upgrade version. Link the Iron Bank issue to the package Renovate issue for tracking purposes.
+    - There is a newer image tag in Iron Bank, but is not yet supported or tested by upstream
+    - If the newer image is a [major version](https://semver.org/) bump and/or contains breaking changes, the Renovate issue can be moved to `status::blocked` until the upstream chart catches up. If the newer image is only [a *patch* or *minor* version](https://semver.org/) bump, you can proceed with the Renovate (upgrading the image beyond the version referenced in the upstream chart).
 
-5. Update `CHANGELOG.md` adding an entry for the new version and noting all changes (at minimum should include `Updated fluentbit to x.x.x`).
+5. Update `upstream.image.tag` in `./chart/values.yaml` to match the updated version in Iron Bank.
 
-6. Generate the `README.md` updates by following the [guide in gluon](https://repo1.dso.mil/platform-one/big-bang/apps/library-charts/gluon/-/blob/master/docs/bb-package-readme.md).
+6. Update the `helm.sh/images` annotations in `./chart/Chart.yaml` to match updated versions in Iron Bank.
 
-7. (_Optional, only required if package changes are expected to have cascading effects on bigbang umbrella chart_) As part of your MR that modifies bigbang packages, you should modify the bigbang [bigbang/tests/test-values.yaml](https://repo1.dso.mil/big-bang/bigbang/-/blob/master/tests/test-values.yaml?ref_type=heads) against your branch for the CI/CD MR testing by enabling your packages.
+7. Update dependencies and binaries using `helm dependency update ./chart`.
+
+8. Update `CHANGELOG.md` adding an entry for the new version and noting all changes (at minimum should include `Updated fluentbit to x.x.x`).
+
+9. Generate the `README.md` updates by following the [guide in gluon](https://repo1.dso.mil/platform-one/big-bang/apps/library-charts/gluon/-/blob/master/docs/bb-package-readme.md).
+
+10. (_Optional, only required if package changes are expected to have cascading effects on bigbang umbrella chart_) As part of your MR that modifies bigbang packages, you should modify the bigbang [bigbang/tests/test-values.yaml](https://repo1.dso.mil/big-bang/bigbang/-/blob/master/tests/test-values.yaml?ref_type=heads) to target your branch for CI/CD MR testing.
 
     - To do this, at a minimum, you will need to follow the instructions at [bigbang/docs/developer/test-package-against-bb.md](https://repo1.dso.mil/big-bang/bigbang/-/blob/master/docs/developer/test-package-against-bb.md?ref_type=heads) with changes for fluentbit enabled (the below is a reference, actual changes could be more depending on what changes where made to fluentbit in the package MR).
 
-### [test-values.yaml](https://repo1.dso.mil/big-bang/bigbang/-/blob/master/tests/test-values.yaml?ref_type=heads)
-```yaml
-fluentbit:
-  enabled: true
-  git:
-    tag: null
-    branch: renovate/ironbank
-  values:
-    istio:
-      hardened:
-        enabled: true
-  ### Additional components of fluentbit should be changed to reflect testing changes introduced in the package MR
-```
+    **[test-values.yaml](https://repo1.dso.mil/big-bang/bigbang/-/blob/master/tests/test-values.yaml?ref_type=heads)**
+    ```yaml
+    fluentbit:
+      enabled: true
+      git:
+        tag: null
+        branch: renovate/ironbank
+      values:
+        istio:
+          hardened:
+            enabled: true
+      ### Additional components of fluentbit should be changed to reflect testing changes introduced in the package MR
+    ```
 
-8. Once all manual testing is complete take your MR out of "Draft" status and add the review label.
+11. Complete the manual testing steps in the following section.
 
-# Manual Testing for Updates
+12. Once all manual testing is complete, take your MR out of "Draft" status, assign reviewers, and add the review label.
+
+## Manual Testing for Updates
 
 >NOTE: For these testing steps it is good to do them on both a clean install and an upgrade. For clean install, point fluentbit to your branch. For an upgrade do an install with fluentbit pointing to the latest tag, then perform a helm upgrade with fluentbit pointing to your branch.
 
-The following overrides can be used for a bare minimum fluentbit deployment:
-
-```yaml
-elasticsearchKibana:
-  enabled: true
-  sso:
-    enabled: true
-    client_id: platform1_a8604cc9-f5e9-4656-802d-d05624370245_bb8-kibana
-  values:
-    istio:
-      enabled: true
-      hardened:
-        enabled: true
-
-eckOperator:
-  enabled: true
-
-kyverno:
-  enabled: true
-
-kyvernoPolicies:
-  enabled: true
-  values:
-    policies:
-      restrict-host-path-mount-pv:
-        parameters:
-          allow:
-          - /var/lib/rancher/k3s/storage/pvc-*
-
-istio:
-  enabled: true
-  values:
-    hardened:
-      enabled: true
-
-fluentbit: 
-  enabled: true
-  git:
-    tag: null
-    branch: renovate/ironbank
-  values:
-    istio:
-      enabled: true
-      hardened:
-        enabled: true
-
-monitoring:
-  enabled: true
-  values:
-    istio:
-      enabled: true
-      hardened:
-        enabled: true
-
-loki:
-  enabled: true
-  values:
-    istio:
-      enabled: true
-      hardened:
-        enabled: true
-
-bbctl:
-  enabled: false
-
-promtail:
-  enabled: false
-  values:
-    istio:
-      enabled: true
-      hardened:
-        enabled: true
-
-neuvector:
-  enabled: false
-
-grafana:
-  enabled: true
-  values:
-    istio:
-      enabled: true
-      hardened:
-        enabled: true
-```
-
-The following is an example of how to run fluentbit with operatorless istio:
+`overrides/fluentbit.yaml`
 ```yaml
 ######### Istio Operator-less (istioCore) Overrides #############
 networkPolicies:
   enabled: true
-
-istio:
-  enabled: false
-
-istioOperator:
-  enabled: false
 
 istioCRDs:
   enabled: true
@@ -186,7 +107,7 @@ neuvector:
 
 Testing Steps:
 - Login to [Prometheus](https://prometheus.dev.bigbang.mil/), validate under `Status` -> `Targets` that all fluentbit targets are showing as up
-- Login to [Grafana](https://grafana.dev.bigbang.mil/), then navigate to `Dashboards` > `fluentbit-fluent-bit` and validate that the dashboard displays data
+- Login to [Grafana](https://grafana.dev.bigbang.mil/), then navigate to `Dashboards` -> `fluentbit-fluent-bit` and validate that the dashboard displays data
 - Login to [Kibana](https://kibana.dev.bigbang.mil/), then navigate to https://kibana.dev.bigbang.mil/app/management/kibana/indexPatterns and create a data view for `logstash-*`
   - Navigate to `Analytics` -> `Discover` and validate that pod logs are appearing in the `logstash` index pattern
 
@@ -205,31 +126,4 @@ kubectl get secret -n logging logging-ek-es-http-certs-internal -o yaml | yq 'de
 kubectl get secret -n logging logging-ek-es-elastic-user -o yaml | yq '.metadata.namespace = "fluentbit"' - | kubectl apply -f -
 ```
 
-When in doubt with any testing or upgrade steps ask one of the CODEOWNERS for assistance.
-
-# Modifications made to upstream chart
-
-Note that this list is likely incomplete currently.
-
-## chart/templates/configmap.yaml
-
-- Added `fluent-bit.conf:` configuration
-
-## chart/templates/_pod.tpl
-
-- Changed container name to `name: {{ default .Chart.Name .Values.nameOverride }}`
-- Added `additionalOutputs` definitions and configs to `envFrom`
-- Added `additionalOutputs` ca-certs to `volumeMounts` and `volumes`
-
-## chart/values.yaml
-
-- Added values for `elasticsearch`, `istio`, `additionalOutputs`, `storage_buffer`, `networkPolicies`, `openshift`, and `bbtests`
-- Changed default image source to Ironbank / Registry1
-- Set default `securityContext`, `imagePullSecrets`, `extraVolumes`, `extraVolumeMounts`, and `config`
-- Added commented out values for `serviceMonitor.scheme` and `serviceMonitor.tlsConfig`
-
-## chart/Chart.yaml
-
-- Name changed to `fluentbit`
-- Annotations added for application and image versioning
-- Gluon dependency added for helm tests
+When in doubt with any testing or upgrade steps ask one of the [CODEOWNERS](https://repo1.dso.mil/big-bang/product/packages/fluentbit/-/blob/main/CODEOWNERS) for assistance.
