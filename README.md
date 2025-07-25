@@ -1,7 +1,7 @@
 <!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # fluentbit
 
-![Version: 0.49.1-bb.0](https://img.shields.io/badge/Version-0.49.1--bb.0-informational?style=flat-square) ![AppVersion: 4.0.3](https://img.shields.io/badge/AppVersion-4.0.3-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
+![Version: 0.50.0-bb.0](https://img.shields.io/badge/Version-0.50.0--bb.0-informational?style=flat-square) ![AppVersion: 4.0.4](https://img.shields.io/badge/AppVersion-4.0.4-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
 
 Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
 
@@ -42,9 +42,50 @@ helm install fluentbit chart/
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| elasticsearch | object | `{"name":""}` | Configuration for Elasticsearch interaction |
+| elasticsearch.name | string | `""` | Name is only used at the BB level for host templating |
+| istio | object | `{"enabled":false,"hardened":{"customAuthorizationPolicies":[],"customServiceEntries":[],"enabled":false,"outboundTrafficPolicyMode":"REGISTRY_ONLY"},"mtls":{"mode":"STRICT"}}` | Configuration for Istio interaction |
+| istio.enabled | bool | `false` | Toggle currently only controls NetworkPolicies |
+| istio.mtls | object | `{"mode":"STRICT"}` | Default peer authentication setting |
+| istio.mtls.mode | string | `"STRICT"` | STRICT = Allow only mutual TLS traffic PERMISSIVE = Allow both plain text and mutual TLS traffic |
+| networkPolicies.enabled | bool | `false` |  |
+| networkPolicies.controlPlaneCidr | string | `"0.0.0.0/0"` |  |
+| networkPolicies.additionalPolicies | list | `[]` |  |
+| additionalOutputs | object | `{"disableDefault":false,"elasticsearch":{"additionalConfig":{},"caCert":"","host":"","match":["kube.*","host.*"],"password":"","port":9200,"tls":true,"tlsVerify":false,"user":"elastic"},"fluentd":{"additionalConfig":{},"caCert":"","host":"","match":["kube.*","host.*"],"password":"","port":24224,"sharedKey":"","tls":true,"tlsVerify":false,"user":""},"loki":{"additionalConfig":{},"caCert":"","host":"","match":["kube.*","host.*"],"password":"","port":3100,"tls":false,"tlsVerify":false,"user":""},"s3":{"additionalConfig":{"total_file_size":"1M","upload_timeout":"1m","use_put_object":"On"},"aws_access_key_id":"","aws_secret_access_key":"","bucket":"","existingSecret":"","match":["kube.*","host.*"],"region":"us-east-1"}}` | Additional Outputs for Big Bang, these are wrappers to simplify the config of outputs and extend whatever is specified under the `outputs` values |
+| additionalOutputs.disableDefault | bool | `false` | Option to disable the default elastic output configured under `outputs`, this only works at the Big Bang chart level |
+| additionalOutputs.elasticsearch | object | `{"additionalConfig":{},"caCert":"","host":"","match":["kube.*","host.*"],"password":"","port":9200,"tls":true,"tlsVerify":false,"user":"elastic"}` | Options to enable an additional elastic output |
+| additionalOutputs.elasticsearch.tls | bool | `true` | Toggle on TLS |
+| additionalOutputs.elasticsearch.tlsVerify | bool | `false` | Verify TLS certificates, requires a caCert to be specified |
+| additionalOutputs.elasticsearch.caCert | string | `""` | Full ca.crt specified as multiline string, see example |
+| additionalOutputs.elasticsearch.additionalConfig | object | `{}` | Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/elasticsearch |
+| additionalOutputs.fluentd | object | `{"additionalConfig":{},"caCert":"","host":"","match":["kube.*","host.*"],"password":"","port":24224,"sharedKey":"","tls":true,"tlsVerify":false,"user":""}` | Options to enable a fluentd output |
+| additionalOutputs.fluentd.sharedKey | string | `""` | Overridden by username and password |
+| additionalOutputs.fluentd.tls | bool | `true` | Toggle on TLS |
+| additionalOutputs.fluentd.tlsVerify | bool | `false` | Verify TLS certificates, requires a caCert to be specified |
+| additionalOutputs.fluentd.caCert | string | `""` | Full ca.crt specified as multiline string, see example |
+| additionalOutputs.fluentd.additionalConfig | object | `{}` | Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/forward |
+| additionalOutputs.loki | object | `{"additionalConfig":{},"caCert":"","host":"","match":["kube.*","host.*"],"password":"","port":3100,"tls":false,"tlsVerify":false,"user":""}` | Options to enable a loki output |
+| additionalOutputs.loki.user | string | `""` | User and Password are optional - only required if running proxy in front of Loki, see https://grafana.com/docs/loki/latest/operations/authentication/ |
+| additionalOutputs.loki.tls | bool | `false` | Toggle on TLS - disabled by default to support in cluster Loki |
+| additionalOutputs.loki.tlsVerify | bool | `false` | Verify TLS certificates, requires a caCert to be specified |
+| additionalOutputs.loki.caCert | string | `""` | Full ca.crt specified as multiline string, see example |
+| additionalOutputs.loki.additionalConfig | object | `{}` | Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/loki |
+| additionalOutputs.s3 | object | `{"additionalConfig":{"total_file_size":"1M","upload_timeout":"1m","use_put_object":"On"},"aws_access_key_id":"","aws_secret_access_key":"","bucket":"","existingSecret":"","match":["kube.*","host.*"],"region":"us-east-1"}` | Options to enable a S3 output |
+| additionalOutputs.s3.existingSecret | string | `""` | Reference an existing secret with your access and secret key, must contain key values pairs for AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY |
+| additionalOutputs.s3.additionalConfig | object | `{"total_file_size":"1M","upload_timeout":"1m","use_put_object":"On"}` | Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/s3 |
+| storage | object | `{"total_limit_size":"10G"}` | Limits the number of Chunks that exists in the file system for a certain logical output destination. If one destination reaches the storage.total_limit_size limit, the oldest Chunk from the queue for that logical output destination will be discarded. see https://docs.fluentbit.io/manual/administration/buffering-and-storage |
+| openshift | bool | `false` | Toggle for Openshift, currently only controls NetworkPolicy changes |
+| loki | object | `{"enabled":false}` | List of enabled Big Bang log storage package(s), used to control networkPolicies and auth only |
+| elasticsearchKibana.enabled | bool | `false` |  |
+| bbtests | object | `{"enabled":false,"scripts":{"envs":{"desired_version":"{{ .Values.upstream.image.tag }}","fluent_host":"http://{{ include \"fluent-bit.fullname\" . }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.upstream.service.port }}"},"image":"registry1.dso.mil/ironbank/big-bang/base:2.1.0"}}` | Values used for Big Bang CI testing |
+| bbtests.enabled | bool | `false` | Toggles test manifests |
+| bbtests.scripts.image | string | `"registry1.dso.mil/ironbank/big-bang/base:2.1.0"` | Image used to run script tests, must include curl and jq |
+| bbtests.scripts.envs | object | `{"desired_version":"{{ .Values.upstream.image.tag }}","fluent_host":"http://{{ include \"fluent-bit.fullname\" . }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.upstream.service.port }}"}` | Envs that are passed into the script runner pod |
+| bbtests.scripts.envs.fluent_host | string | `"http://{{ include \"fluent-bit.fullname\" . }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.upstream.service.port }}"` | Hostname/port to contact Fluentbit |
+| bbtests.scripts.envs.desired_version | string | `"{{ .Values.upstream.image.tag }}"` | Version that should be running |
 | upstream.image.repository | string | `"registry1.dso.mil/ironbank/opensource/fluent/fluent-bit"` |  |
 | upstream.image.pullPolicy | string | `"Always"` |  |
-| upstream.image.tag | string | `"4.0.3"` |  |
+| upstream.image.tag | string | `"4.0.4"` |  |
 | upstream.testFramework.enabled | bool | `false` |  |
 | upstream.imagePullSecrets[0].name | string | `"private-registry"` |  |
 | upstream.nameOverride | string | `"fluent-bit"` |  |
@@ -92,47 +133,6 @@ helm install fluentbit chart/
 | upstream.daemonSetVolumeMounts[2].readOnly | bool | `true` |  |
 | upstream.hotReload.image.repository | string | `"registry1.dso.mil/ironbank/opensource/jimmidyson/configmap-reload"` |  |
 | upstream.hotReload.image.tag | string | `"v0.15.0"` |  |
-| elasticsearch | object | `{"name":""}` | Configuration for Elasticsearch interaction |
-| elasticsearch.name | string | `""` | Name is only used at the BB level for host templating |
-| istio | object | `{"enabled":false,"hardened":{"customAuthorizationPolicies":[],"customServiceEntries":[],"enabled":false,"outboundTrafficPolicyMode":"REGISTRY_ONLY"},"mtls":{"mode":"STRICT"}}` | Configuration for Istio interaction |
-| istio.enabled | bool | `false` | Toggle currently only controls NetworkPolicies |
-| istio.mtls | object | `{"mode":"STRICT"}` | Default peer authentication setting |
-| istio.mtls.mode | string | `"STRICT"` | STRICT = Allow only mutual TLS traffic PERMISSIVE = Allow both plain text and mutual TLS traffic |
-| networkPolicies.enabled | bool | `false` |  |
-| networkPolicies.controlPlaneCidr | string | `"0.0.0.0/0"` |  |
-| networkPolicies.additionalPolicies | list | `[]` |  |
-| additionalOutputs | object | `{"disableDefault":false,"elasticsearch":{"additionalConfig":{},"caCert":"","host":"","match":["kube.*","host.*"],"password":"","port":9200,"tls":true,"tlsVerify":false,"user":"elastic"},"fluentd":{"additionalConfig":{},"caCert":"","host":"","match":["kube.*","host.*"],"password":"","port":24224,"sharedKey":"","tls":true,"tlsVerify":false,"user":""},"loki":{"additionalConfig":{},"caCert":"","host":"","match":["kube.*","host.*"],"password":"","port":3100,"tls":false,"tlsVerify":false,"user":""},"s3":{"additionalConfig":{"total_file_size":"1M","upload_timeout":"1m","use_put_object":"On"},"aws_access_key_id":"","aws_secret_access_key":"","bucket":"","existingSecret":"","match":["kube.*","host.*"],"region":"us-east-1"}}` | Additional Outputs for Big Bang, these are wrappers to simplify the config of outputs and extend whatever is specified under the `outputs` values |
-| additionalOutputs.disableDefault | bool | `false` | Option to disable the default elastic output configured under `outputs`, this only works at the Big Bang chart level |
-| additionalOutputs.elasticsearch | object | `{"additionalConfig":{},"caCert":"","host":"","match":["kube.*","host.*"],"password":"","port":9200,"tls":true,"tlsVerify":false,"user":"elastic"}` | Options to enable an additional elastic output |
-| additionalOutputs.elasticsearch.tls | bool | `true` | Toggle on TLS |
-| additionalOutputs.elasticsearch.tlsVerify | bool | `false` | Verify TLS certificates, requires a caCert to be specified |
-| additionalOutputs.elasticsearch.caCert | string | `""` | Full ca.crt specified as multiline string, see example |
-| additionalOutputs.elasticsearch.additionalConfig | object | `{}` | Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/elasticsearch |
-| additionalOutputs.fluentd | object | `{"additionalConfig":{},"caCert":"","host":"","match":["kube.*","host.*"],"password":"","port":24224,"sharedKey":"","tls":true,"tlsVerify":false,"user":""}` | Options to enable a fluentd output |
-| additionalOutputs.fluentd.sharedKey | string | `""` | Overridden by username and password |
-| additionalOutputs.fluentd.tls | bool | `true` | Toggle on TLS |
-| additionalOutputs.fluentd.tlsVerify | bool | `false` | Verify TLS certificates, requires a caCert to be specified |
-| additionalOutputs.fluentd.caCert | string | `""` | Full ca.crt specified as multiline string, see example |
-| additionalOutputs.fluentd.additionalConfig | object | `{}` | Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/forward |
-| additionalOutputs.loki | object | `{"additionalConfig":{},"caCert":"","host":"","match":["kube.*","host.*"],"password":"","port":3100,"tls":false,"tlsVerify":false,"user":""}` | Options to enable a loki output |
-| additionalOutputs.loki.user | string | `""` | User and Password are optional - only required if running proxy in front of Loki, see https://grafana.com/docs/loki/latest/operations/authentication/ |
-| additionalOutputs.loki.tls | bool | `false` | Toggle on TLS - disabled by default to support in cluster Loki |
-| additionalOutputs.loki.tlsVerify | bool | `false` | Verify TLS certificates, requires a caCert to be specified |
-| additionalOutputs.loki.caCert | string | `""` | Full ca.crt specified as multiline string, see example |
-| additionalOutputs.loki.additionalConfig | object | `{}` | Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/loki |
-| additionalOutputs.s3 | object | `{"additionalConfig":{"total_file_size":"1M","upload_timeout":"1m","use_put_object":"On"},"aws_access_key_id":"","aws_secret_access_key":"","bucket":"","existingSecret":"","match":["kube.*","host.*"],"region":"us-east-1"}` | Options to enable a S3 output |
-| additionalOutputs.s3.existingSecret | string | `""` | Reference an existing secret with your access and secret key, must contain key values pairs for AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY |
-| additionalOutputs.s3.additionalConfig | object | `{"total_file_size":"1M","upload_timeout":"1m","use_put_object":"On"}` | Reference configuration parameters provided by Fluentbit - https://docs.fluentbit.io/manual/pipeline/outputs/s3 |
-| storage | object | `{"total_limit_size":"10G"}` | Limits the number of Chunks that exists in the file system for a certain logical output destination. If one destination reaches the storage.total_limit_size limit, the oldest Chunk from the queue for that logical output destination will be discarded. see https://docs.fluentbit.io/manual/administration/buffering-and-storage |
-| openshift | bool | `false` | Toggle for Openshift, currently only controls NetworkPolicy changes |
-| loki | object | `{"enabled":false}` | List of enabled Big Bang log storage package(s), used to control networkPolicies and auth only |
-| elasticsearchKibana.enabled | bool | `false` |  |
-| bbtests | object | `{"enabled":false,"scripts":{"envs":{"desired_version":"{{ .Values.upstream.image.tag }}","fluent_host":"http://{{ include \"fluent-bit.fullname\" . }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.upstream.service.port }}"},"image":"registry1.dso.mil/ironbank/big-bang/base:2.1.0"}}` | Values used for Big Bang CI testing |
-| bbtests.enabled | bool | `false` | Toggles test manifests |
-| bbtests.scripts.image | string | `"registry1.dso.mil/ironbank/big-bang/base:2.1.0"` | Image used to run script tests, must include curl and jq |
-| bbtests.scripts.envs | object | `{"desired_version":"{{ .Values.upstream.image.tag }}","fluent_host":"http://{{ include \"fluent-bit.fullname\" . }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.upstream.service.port }}"}` | Envs that are passed into the script runner pod |
-| bbtests.scripts.envs.fluent_host | string | `"http://{{ include \"fluent-bit.fullname\" . }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.upstream.service.port }}"` | Hostname/port to contact Fluentbit |
-| bbtests.scripts.envs.desired_version | string | `"{{ .Values.upstream.image.tag }}"` | Version that should be running |
 
 ## Contributing
 
