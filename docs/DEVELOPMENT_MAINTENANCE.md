@@ -55,55 +55,7 @@
 
 >NOTE: For these testing steps it is good to do them on both a clean install and an upgrade. For clean install, point fluentbit to your branch. For an upgrade do an install with fluentbit pointing to the latest tag, then perform a helm upgrade with fluentbit pointing to your branch.
 
-`overrides/fluentbit.yaml`
-```yaml
-######### Istio Operator-less (istioCore) Overrides #############
-networkPolicies:
-  enabled: true
-
-istioCRDs:
-  enabled: true
-
-istiod:
-  enabled: true
-
-istioGateway:
-  enabled: true 
-
-######### Additional Overrides ###########
-# sso:
-#   # This is needed because test-values.yaml overrides it to reference the internal keycloak
-#   url: https://login.dso.mil/auth/realms/baby-yoda
-elasticsearchKibana:
-  enabled: true
-  sso:
-    enabled: true
-    client_id: platform1_a8604cc9-f5e9-4656-802d-d05624370245_bb8-kibana
-
-eckOperator:
-  enabled: true
-
-fluentbit: 
-  enabled: true
-  git:
-    tag: null
-    branch: renovate/ironbank
-
-monitoring:
-  enabled: true
-
-loki:
-  enabled: true
-
-bbctl:
-  enabled: false
-
-grafana:
-  enabled: true
-
-neuvector:
-  enabled: false
-```
+Refer to [docs/dev-overrides.yaml](https://repo1.dso.mil/big-bang/product/packages/fluentbit/-/blob/main/docs/dev-overrides.yaml) for YAML values to deploy against Big Bang.
 
 Testing Steps:
 - Login to [Prometheus](https://prometheus.dev.bigbang.mil/), validate under `Status` -> `Targets` that all fluentbit targets are showing as up
