@@ -1,7 +1,7 @@
 <!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # fluentbit
 
-![Version: 0.50.0-bb.1](https://img.shields.io/badge/Version-0.50.0--bb.1-informational?style=flat-square) ![AppVersion: 4.0.5](https://img.shields.io/badge/AppVersion-4.0.5-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
+![Version: 0.52.0-bb.0](https://img.shields.io/badge/Version-0.52.0--bb.0-informational?style=flat-square) ![AppVersion: 4.0.8](https://img.shields.io/badge/AppVersion-4.0.8-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
 
 Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
 
@@ -85,7 +85,7 @@ helm install fluentbit chart/
 | bbtests.scripts.envs.desired_version | string | `"{{ .Values.upstream.image.tag }}"` | Version that should be running |
 | upstream.image.repository | string | `"registry1.dso.mil/ironbank/opensource/fluent/fluent-bit"` |  |
 | upstream.image.pullPolicy | string | `"Always"` |  |
-| upstream.image.tag | string | `"4.0.5"` |  |
+| upstream.image.tag | string | `"4.0.8"` |  |
 | upstream.testFramework.enabled | bool | `false` |  |
 | upstream.imagePullSecrets[0].name | string | `"private-registry"` |  |
 | upstream.nameOverride | string | `"fluent-bit"` |  |
