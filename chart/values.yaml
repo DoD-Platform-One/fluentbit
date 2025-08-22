@@ -198,7 +198,7 @@ upstream:
   image:
     repository: registry1.dso.mil/ironbank/opensource/fluent/fluent-bit
     pullPolicy: Always
-    tag: 4.0.5
+    tag: 4.0.8
 
   testFramework:
     enabled: false
