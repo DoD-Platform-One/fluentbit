@@ -1,11 +1,19 @@
 {
-  "baseBranches": ["main"],
+  "baseBranches": [
+    "main"
+  ],
   "configWarningReuseIssue": false,
   "dependencyDashboard": true,
   "dependencyDashboardTitle": "Renovate: Upgrade Fluentbit Package Dependencies",
   "draftPR": true,
-  "enabledManagers": ["helm-values", "custom.regex", "helmv3"],
-  "ignorePaths": ["chart/charts/**"],
+  "enabledManagers": [
+    "helm-values",
+    "custom.regex",
+    "helmv3"
+  ],
+  "ignorePaths": [
+    "chart/charts/**"
+  ],
   "labels": [
     "fluentbit",
     "renovate",
@@ -15,14 +23,21 @@
   "packageRules": [
     {
       "groupName": "Ironbank",
-      "matchDatasources": ["docker", "helm"],
+      "matchDatasources": [
+        "docker",
+        "helm"
+      ],
       "postUpgradeTasks": {
         "commands": [
           "regenerate-helm-docs",
           "bump-changelog '- {{{replace 'registry1.dso.mil/' '' depName}}} updated from {{{currentVersion}}} to {{{newVersion}}}'"
         ],
         "executionMode": "update",
-        "fileFilters": ["chart/Chart.yaml", "README.md", "CHANGELOG.md"]
+        "fileFilters": [
+          "chart/Chart.yaml",
+          "README.md",
+          "CHANGELOG.md"
+        ]
       }
     }
   ],
@@ -30,7 +45,9 @@
     {
       "customType": "regex",
       "description": "Update app version chart annotations",
-      "fileMatch": ["^chart/Chart\\.yaml$"],
+      "managerFilePatterns": [
+        "/^chart/Chart\\.yaml$/"
+      ],
       "matchStrings": [
         "- Fluent Bit:\\s+(?<currentValue>.+)",
         "appVersion:\\s+(?<currentValue>.+)"
@@ -41,15 +58,23 @@
     {
       "customType": "regex",
       "description": "Update docker image references",
-      "fileMatch": ["^chart/Chart\\.yaml$"],
-      "matchStrings": ["image:[^\\S\\r\\n]+(?<depName>.+):(?<currentValue>.+)"],
+      "managerFilePatterns": [
+        "/^chart/Chart\\.yaml$/"
+      ],
+      "matchStrings": [
+        "image:[^\\S\\r\\n]+(?<depName>.+):(?<currentValue>.+)"
+      ],
       "datasourceTemplate": "docker"
     },
     {
       "customType": "regex",
       "description": "Update chart version",
-      "fileMatch": ["^chart/Chart\\.yaml$"],
-      "matchStrings": ["version:\\s+(?<currentValue>.+)-bb\\.\\d+"],
+      "managerFilePatterns": [
+        "/^chart/Chart\\.yaml$/"
+      ],
+      "matchStrings": [
+        "version:\\s+(?<currentValue>.+)-bb\\.\\d+"
+      ],
       "autoReplaceStringTemplate": "version: {{newValue}}-bb.0",
       "depNameTemplate": "fluent-bit",
       "datasourceTemplate": "helm",
@@ -57,5 +82,7 @@
     }
   ],
   "separateMajorMinor": false,
-  "postUpdateOptions": ["helmUpdateSubChartArchives"]
+  "postUpdateOptions": [
+    "helmUpdateSubChartArchives"
+  ]
 }
