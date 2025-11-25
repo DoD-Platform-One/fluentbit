@@ -5,8 +5,8 @@ keywords:
   - logging
   - fluent-bit
   - fluentd
-version: 0.52.0-bb.1
-appVersion: 4.0.8
+version: 0.54.0-bb.0
+appVersion: 4.2.0
 icon: https://raw.githubusercontent.com/cncf/artwork/master/projects/fluentd/fluentbit/icon/fluentbit-icon-color.svg
 home: https://fluentbit.io/
 sources:
@@ -14,20 +14,20 @@ sources:
 annotations:
   bigbang.dev/maintenanceTrack: bb_integrated
   bigbang.dev/applicationVersions: |
-    - Fluent Bit: 4.0.8
+    - Fluent Bit: 4.2.0
   bigbang.dev/upstreamReleaseNotesMarkdown: |
     - [Find the upstream fluent-bit release notes here](https://fluentbit.io/announcements/)
   helm.sh/images: |
     - name: fluent-bit
-      image: registry1.dso.mil/ironbank/opensource/fluent/fluent-bit:4.0.8
+      image: registry1.dso.mil/ironbank/opensource/fluent/fluent-bit:4.2.0
     - name: script-tests
       condition: bbtests.enabled
       image: registry1.dso.mil/ironbank/big-bang/base:2.1.0
 dependencies:
   - name: gluon
-    version: 0.8.0
+    version: 0.9.6
     repository: oci://registry1.dso.mil/bigbang
   - name: fluent-bit
-    version: 0.52.0
+    version: 0.54.0
     repository: https://fluent.github.io/helm-charts
     alias: upstream
