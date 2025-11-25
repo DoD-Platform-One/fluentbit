@@ -189,7 +189,7 @@ bbtests:
     # -- Envs that are passed into the script runner pod
     envs:
       # -- Hostname/port to contact Fluentbit
-      fluent_host: "http://{{ include \"fluent-bit.fullname\" . }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.upstream.service.port }}"
+      fluent_host: "http://fluentbit-fluent-bit.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.upstream.service.port }}"
       # -- Version that should be running
       desired_version: "{{ .Values.upstream.image.tag }}"
 
@@ -198,7 +198,7 @@ upstream:
   image:
     repository: registry1.dso.mil/ironbank/opensource/fluent/fluent-bit
     pullPolicy: Always
-    tag: 4.0.8
+    tag: 4.2.0
 
   testFramework:
     enabled: false

@@ -1,9 +1,9 @@
 dependencies:
 - name: gluon
   repository: oci://registry1.dso.mil/bigbang
-  version: 0.8.0
+  version: 0.9.6
 - name: fluent-bit
   repository: https://fluent.github.io/helm-charts
-  version: 0.52.0
-digest: sha256:2e8f5ecc20d543cb5bd1181e854647591a83f540333ac43d9fd6b244b36820a6
-generated: "2025-08-19T06:16:17.470076056Z"
+  version: 0.54.0
+digest: sha256:fd3a9088e9c12c05a54e90fd7597f06525a06129fe98b17a587b9ef818304aa4
+generated: "2025-11-25T19:03:32.236197081Z"

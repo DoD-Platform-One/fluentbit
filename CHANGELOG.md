@@ -3,6 +3,11 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [0.54.0-bb.0] (2025-11-25)
+### Changed
+- fluent-bit updated from 0.52.0 to 0.54.0
+- gluon updated from 0.8.0 to 0.9.6
+
 ## [0.52.0-bb.1] (2025-11-25)
 ### Changed
 - changed log aggregation backend to Loki in test values
