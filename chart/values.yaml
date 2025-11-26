@@ -39,6 +39,7 @@ networkPolicies:
   enabled: false
   # See `kubectl cluster-info` and then resolve to IP
   controlPlaneCidr: 0.0.0.0/0
+  vpcCidr: 0.0.0.0/0
   additionalPolicies: []
 
 # -- Additional Outputs for Big Bang,
