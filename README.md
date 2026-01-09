@@ -1,7 +1,7 @@
 <!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # fluentbit
 
-![Version: 0.54.0-bb.1](https://img.shields.io/badge/Version-0.54.0--bb.1-informational?style=flat-square) ![AppVersion: 4.2.0](https://img.shields.io/badge/AppVersion-4.2.0-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
+![Version: 0.54.0-bb.2](https://img.shields.io/badge/Version-0.54.0--bb.2-informational?style=flat-square) ![AppVersion: 4.2.1](https://img.shields.io/badge/AppVersion-4.2.1-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
 
 Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
 
@@ -78,15 +78,15 @@ helm install fluentbit chart/
 | openshift | bool | `false` | Toggle for Openshift, currently only controls NetworkPolicy changes |
 | loki | object | `{"enabled":false}` | List of enabled Big Bang log storage package(s), used to control networkPolicies and auth only |
 | elasticsearchKibana.enabled | bool | `false` |  |
-| bbtests | object | `{"enabled":false,"scripts":{"envs":{"desired_version":"{{ .Values.upstream.image.tag }}","fluent_host":"http://{{ include \"fluent-bit.fullname\" . }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.upstream.service.port }}"},"image":"registry1.dso.mil/ironbank/big-bang/base:2.1.0"}}` | Values used for Big Bang CI testing |
+| bbtests | object | `{"enabled":false,"scripts":{"envs":{"desired_version":"{{ .Values.upstream.image.tag }}","fluent_host":"http://fluentbit-fluent-bit.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.upstream.service.port }}"},"image":"registry1.dso.mil/ironbank/big-bang/base:2.1.0"}}` | Values used for Big Bang CI testing |
 | bbtests.enabled | bool | `false` | Toggles test manifests |
 | bbtests.scripts.image | string | `"registry1.dso.mil/ironbank/big-bang/base:2.1.0"` | Image used to run script tests, must include curl and jq |
-| bbtests.scripts.envs | object | `{"desired_version":"{{ .Values.upstream.image.tag }}","fluent_host":"http://{{ include \"fluent-bit.fullname\" . }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.upstream.service.port }}"}` | Envs that are passed into the script runner pod |
-| bbtests.scripts.envs.fluent_host | string | `"http://{{ include \"fluent-bit.fullname\" . }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.upstream.service.port }}"` | Hostname/port to contact Fluentbit |
+| bbtests.scripts.envs | object | `{"desired_version":"{{ .Values.upstream.image.tag }}","fluent_host":"http://fluentbit-fluent-bit.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.upstream.service.port }}"}` | Envs that are passed into the script runner pod |
+| bbtests.scripts.envs.fluent_host | string | `"http://fluentbit-fluent-bit.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.upstream.service.port }}"` | Hostname/port to contact Fluentbit |
 | bbtests.scripts.envs.desired_version | string | `"{{ .Values.upstream.image.tag }}"` | Version that should be running |
 | upstream.image.repository | string | `"registry1.dso.mil/ironbank/opensource/fluent/fluent-bit"` |  |
 | upstream.image.pullPolicy | string | `"Always"` |  |
-| upstream.image.tag | string | `"4.2.0"` |  |
+| upstream.image.tag | string | `"4.2.1"` |  |
 | upstream.testFramework.enabled | bool | `false` |  |
 | upstream.imagePullSecrets[0].name | string | `"private-registry"` |  |
 | upstream.nameOverride | string | `"fluent-bit"` |  |
