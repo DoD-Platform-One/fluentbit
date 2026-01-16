@@ -3,6 +3,10 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [0.54.1-bb.0] (2026-01-10)
+### Changed
+- fluent-bit updated from 0.54.0 to 0.54.1
+- repo1.dso.mil/big-bang/product/packages/fluentbit/-/tree/renovate/ironbank updated from 4.2.1 to 4.2.2
 ## [0.54.0-bb.2] (2025-12-18) 
 ### Changed
 - gluon updated from 0.9.6 to 0.9.7
