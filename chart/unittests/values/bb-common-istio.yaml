@@ -1,0 +1,33 @@
+istio:
+  enabled: true
+  mtls:
+    mode: PERMISSIVE
+  sidecar:
+    enabled: true
+    outboundTrafficPolicyMode: ALLOW_ANY
+  authorizationPolicies:
+    enabled: false
+    custom:
+      - name: allow-metrics
+        spec:
+          selector:
+            matchLabels:
+              app: fluent-bit
+          action: ALLOW
+          rules:
+            - to:
+                - operation:
+                    ports:
+                      - "2020"
+  serviceEntries:
+    custom:
+      - name: allow-google
+        spec:
+          hosts:
+            - google.com
+          ports:
+            - number: 443
+              name: https
+              protocol: TLS
+          location: MESH_EXTERNAL
+          resolution: DNS

@@ -42,7 +42,8 @@
         branch: renovate/ironbank
       values:
         istio:
-          hardened:
+          enabled: true
+          sidecar:
             enabled: true
       ### Additional components of fluentbit should be changed to reflect testing changes introduced in the package MR
     ```

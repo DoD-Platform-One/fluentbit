@@ -1,0 +1,64 @@
+networkPolicies:
+  enabled: true
+  egress:
+    definitions:
+      external-loki:
+        to:
+          - ipBlock:
+              cidr: 198.51.100.0/24
+        ports:
+          - port: 3100
+            protocol: TCP
+      storage-subnets:
+        to:
+          - ipBlock:
+              cidr: 0.0.0.0/0
+        ports:
+          - port: 443
+            protocol: TCP
+    from:
+      fluent-bit:
+        to:
+          definition:
+            external-loki: true
+            external-fluentd: true
+            storage-subnets: true
+          k8s:
+            logging/elasticsearch:9200:
+              enabled: false
+              podSelector:
+                matchLabels:
+                  common.k8s.elastic.co/type: elasticsearch
+            logging/logging-loki:3100: true
+            tempo/tempo:9411: true
+  ingress:
+    defaults:
+      enabled: false
+    to:
+      "fluent-bit:2020":
+        from:
+          k8s:
+            monitoring-monitoring-kube-prometheus@monitoring/prometheus: true
+upstream:
+  serviceMonitor:
+    enabled: true
+additionalOutputs:
+  elasticsearch:
+    host: elastic.example
+    user: user
+    password: pass
+    port: 9200
+  loki:
+    host: loki.example
+    user: user
+    port: 3100
+  fluentd:
+    host: fluentd.example
+    port: 24224
+    user: user
+    password: pass
+  s3:
+    bucket: test-bucket
+    region: us-east-1
+    aws_access_key_id: test
+    aws_secret_access_key: test

@@ -1,0 +1,15 @@
+istio:
+  enabled: true
+  authorizationPolicies:
+    enabled: true
+    generateFromNetpol: true
+networkPolicies:
+  enabled: true
+  ingress:
+    defaults:
+      enabled: false
+    to:
+      "fluent-bit:2020":
+        from:
+          k8s:
+            monitoring-monitoring-kube-prometheus@monitoring/prometheus: true

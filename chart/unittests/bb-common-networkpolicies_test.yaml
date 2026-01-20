@@ -1,0 +1,117 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/helm-unittest/helm-unittest/main/schema/helm-testsuite.json
+suite: Fluentbit bb-common network policies
+templates:
+  - templates/bigbang/network-policies.yaml
+release:
+  name: test
+values:
+  - values/bb-common-networkpolicies.yaml
+tests:
+  - it: renders default kube-dns egress via bb-common defaults
+    documentSelector:
+      path: spec.egress[0].ports[0].port
+      value: 53
+    asserts:
+      - equal:
+          path: spec.egress[0].ports[0].port
+          value: 53
+      - equal:
+          path: spec.egress[0].ports[0].protocol
+          value: UDP
+      - equal:
+          path: spec.egress[0].ports[1].protocol
+          value: TCP
+
+  - it: renders default istiod egress via bb-common defaults
+    documentSelector:
+      path: spec.egress[0].ports[0].port
+      value: 15012
+    asserts:
+      - equal:
+          path: spec.egress[0].to[0].namespaceSelector.matchLabels["kubernetes.io/metadata.name"]
+          value: istio-system
+      - equal:
+          path: spec.egress[0].to[0].podSelector.matchLabels.app
+          value: istiod
+      - equal:
+          path: spec.egress[0].ports[0].port
+          value: 15012
+
+  - it: renders kubeAPI egress for fluent-bit
+    documentSelector:
+      path: spec.egress[0].to[0].ipBlock.cidr
+      value: 10.0.0.0/8
+    asserts:
+      - equal:
+          path: spec.egress[0].to[0].ipBlock.cidr
+          value: 10.0.0.0/8
+
+  - it: renders logging-loki egress for fluent-bit
+    documentSelector:
+      path: spec.egress[0].to[0].namespaceSelector.matchLabels["kubernetes.io/metadata.name"]
+      value: logging
+    asserts:
+      - equal:
+          path: spec.egress[0].to[0].namespaceSelector.matchLabels["kubernetes.io/metadata.name"]
+          value: logging
+      - equal:
+          path: spec.egress[0].ports[0].port
+          value: 3100
+
+
+  - it: renders tempo egress for fluent-bit
+    documentSelector:
+      path: spec.egress[0].to[0].namespaceSelector.matchLabels["kubernetes.io/metadata.name"]
+      value: tempo
+    asserts:
+      - equal:
+          path: spec.egress[0].to[0].namespaceSelector.matchLabels["kubernetes.io/metadata.name"]
+          value: tempo
+      - equal:
+          path: spec.egress[0].ports[0].port
+          value: 9411
+
+  - it: renders external loki egress for fluent-bit
+    documentSelector:
+      path: spec.egress[0].to[0].ipBlock.cidr
+      value: 198.51.100.0/24
+    asserts:
+      - equal:
+          path: spec.egress[0].to[0].ipBlock.cidr
+          value: 198.51.100.0/24
+      - equal:
+          path: spec.egress[0].ports[0].port
+          value: 3100
+
+  - it: renders external fluentd egress for fluent-bit
+    documentSelector:
+      path: spec.egress[0].ports[0].port
+      value: 24224
+    asserts:
+      - equal:
+          path: spec.egress[0].ports[0].port
+          value: 24224
+
+  - it: renders storage subnets egress for fluent-bit
+    documentSelector:
+      path: spec.egress[0].ports[0].port
+      value: 443
+    asserts:
+      - equal:
+          path: spec.egress[0].ports[0].port
+          value: 443
+
+  - it: renders monitoring ingress to fluent-bit on 2020
+    documentSelector:
+      path: spec.ingress[0].ports[0].port
+      value: 2020
+    asserts:
+      - equal:
+          path: spec.ingress[0].from[0].namespaceSelector.matchLabels["kubernetes.io/metadata.name"]
+          value: monitoring
+      - equal:
+          path: spec.ingress[0].from[0].podSelector.matchLabels["app.kubernetes.io/name"]
+          value: prometheus
+      - equal:
+          path: spec.ingress[0].ports[0].port
+          value: 2020

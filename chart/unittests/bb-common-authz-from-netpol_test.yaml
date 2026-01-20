@@ -1,0 +1,17 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/helm-unittest/helm-unittest/main/schema/helm-testsuite.json
+suite: Fluentbit bb-common authz from netpol
+templates:
+  - templates/bigbang/network-policies.yaml
+release:
+  name: test
+values:
+  - values/bb-common-authz-from-netpol.yaml
+tests:
+  - it: renders AuthorizationPolicy with SPIFFE principal from k8s identity
+    documentSelector:
+      path: kind
+      value: AuthorizationPolicy
+    asserts:
+      - equal:
+          path: spec.rules[0].from[0].source.principals[0]
+          value: cluster.local/ns/monitoring/sa/monitoring-monitoring-kube-prometheus
