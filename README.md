@@ -1,7 +1,7 @@
 <!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # fluentbit
 
-![Version: 0.54.1-bb.0](https://img.shields.io/badge/Version-0.54.1--bb.0-informational?style=flat-square) ![AppVersion: 4.2.2](https://img.shields.io/badge/AppVersion-4.2.2-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
+![Version: 0.54.1-bb.1](https://img.shields.io/badge/Version-0.54.1--bb.1-informational?style=flat-square) ![AppVersion: 4.2.2](https://img.shields.io/badge/AppVersion-4.2.2-informational?style=flat-square) ![Maintenance Track: bb_integrated](https://img.shields.io/badge/Maintenance_Track-bb_integrated-green?style=flat-square)
 
 Fast and lightweight log processor and forwarder or Linux, OSX and BSD family operating systems.
 
@@ -44,13 +44,23 @@ helm install fluentbit chart/
 |-----|------|---------|-------------|
 | elasticsearch | object | `{"name":""}` | Configuration for Elasticsearch interaction |
 | elasticsearch.name | string | `""` | Name is only used at the BB level for host templating |
-| istio | object | `{"enabled":false,"hardened":{"customAuthorizationPolicies":[],"customServiceEntries":[],"enabled":false,"outboundTrafficPolicyMode":"REGISTRY_ONLY"},"mtls":{"mode":"STRICT"}}` | Configuration for Istio interaction |
-| istio.enabled | bool | `false` | Toggle currently only controls NetworkPolicies |
+| istio | object | `{"authorizationPolicies":{"custom":[],"enabled":false,"generateFromNetpol":false},"enabled":false,"mtls":{"mode":"STRICT"},"serviceEntries":{"custom":[]},"sidecar":{"enabled":false,"outboundTrafficPolicyMode":"REGISTRY_ONLY"}}` | Configuration for Istio interaction |
 | istio.mtls | object | `{"mode":"STRICT"}` | Default peer authentication setting |
 | istio.mtls.mode | string | `"STRICT"` | STRICT = Allow only mutual TLS traffic PERMISSIVE = Allow both plain text and mutual TLS traffic |
 | networkPolicies.enabled | bool | `false` |  |
-| networkPolicies.controlPlaneCidr | string | `"0.0.0.0/0"` |  |
-| networkPolicies.vpcCidr | string | `"0.0.0.0/0"` |  |
+| networkPolicies.egress.definitions.external-elastic | object | `{"ports":[{"port":9200,"protocol":"TCP"}],"to":[{"ipBlock":{"cidr":"0.0.0.0/0","except":["169.254.169.254/32"]}}]}` | Definition for external elasticsearch output egress from fluent-bit |
+| networkPolicies.egress.definitions.external-loki | object | `{"ports":[{"port":3100,"protocol":"TCP"}],"to":[{"ipBlock":{"cidr":"0.0.0.0/0","except":["169.254.169.254/32"]}}]}` | Definition for external loki output egress from fluent-bit |
+| networkPolicies.egress.definitions.external-fluentd | object | `{"ports":[{"port":24224,"protocol":"TCP"}],"to":[{"ipBlock":{"cidr":"0.0.0.0/0","except":["169.254.169.254/32"]}}]}` | Definition for external fluentd output egress from fluent-bit |
+| networkPolicies.egress.from.fluent-bit.to.definition.external-elastic | bool | `false` |  |
+| networkPolicies.egress.from.fluent-bit.to.definition.external-loki | bool | `false` |  |
+| networkPolicies.egress.from.fluent-bit.to.definition.external-fluentd | bool | `false` |  |
+| networkPolicies.egress.from.fluent-bit.to.definition.storage-subnets | bool | `false` |  |
+| networkPolicies.egress.from.fluent-bit.to.definition.kubeAPI | bool | `true` |  |
+| networkPolicies.egress.from.fluent-bit.to.k8s.logging/elasticsearch:9200.enabled | bool | `false` |  |
+| networkPolicies.egress.from.fluent-bit.to.k8s.logging/elasticsearch:9200.podSelector.matchLabels."common.k8s.elastic.co/type" | string | `"elasticsearch"` |  |
+| networkPolicies.egress.from.fluent-bit.to.k8s.logging/logging-loki:3100 | bool | `false` |  |
+| networkPolicies.egress.from.fluent-bit.to.k8s.tempo/tempo:9411 | bool | `false` |  |
+| networkPolicies.ingress.to.fluent-bit:2020.from.k8s.monitoring-monitoring-kube-prometheus@monitoring/prometheus | bool | `false` |  |
 | networkPolicies.additionalPolicies | list | `[]` |  |
 | additionalOutputs | object | `{"disableDefault":false,"elasticsearch":{"additionalConfig":{},"caCert":"","host":"","match":["kube.*","host.*"],"password":"","port":9200,"tls":true,"tlsVerify":false,"user":"elastic"},"fluentd":{"additionalConfig":{},"caCert":"","host":"","match":["kube.*","host.*"],"password":"","port":24224,"sharedKey":"","tls":true,"tlsVerify":false,"user":""},"loki":{"additionalConfig":{},"caCert":"","host":"","match":["kube.*","host.*"],"password":"","port":3100,"tls":false,"tlsVerify":false,"user":""},"s3":{"additionalConfig":{"total_file_size":"1M","upload_timeout":"1m","use_put_object":"On"},"aws_access_key_id":"","aws_secret_access_key":"","bucket":"","existingSecret":"","match":["kube.*","host.*"],"region":"us-east-1"}}` | Additional Outputs for Big Bang, these are wrappers to simplify the config of outputs and extend whatever is specified under the `outputs` values |
 | additionalOutputs.disableDefault | bool | `false` | Option to disable the default elastic output configured under `outputs`, this only works at the Big Bang chart level |

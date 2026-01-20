@@ -25,6 +25,17 @@ addons:
 ########################
 fluentbit:
   enabled: true
+  values:
+    bbtests:
+      enabled: true
+    networkPolicies:
+      enabled: true
+      egress:
+        from:
+          fluent-bit:
+            to:
+              k8s:
+                logging/logging-loki:3100: true
 kyvernoPolicies:
   values:
     bbtests:

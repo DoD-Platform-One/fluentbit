@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/helm-unittest/helm-unittest/main/schema/helm-testsuite.json
+suite: Fluentbit bb-common elasticsearchKibana egress
+templates:
+  - templates/bigbang/network-policies.yaml
+release:
+  name: test
+values:
+  - values/bb-common-egress-elasticsearchKibana.yaml
+tests:
+  - it: renders elasticsearchKibana egress via bb-common k8s rule
+    documentSelector:
+      path: spec.egress[0].ports[0].port
+      value: 9200
+    asserts:
+      - equal:
+          path: spec.podSelector.matchLabels["app.kubernetes.io/name"]
+          value: fluent-bit
+      - equal:
+          path: spec.policyTypes[0]
+          value: Egress
+      - equal:
+          path: spec.egress[0].to[0].namespaceSelector.matchLabels["kubernetes.io/metadata.name"]
+          value: logging
+      - equal:
+          path: spec.egress[0].to[0].podSelector.matchLabels["common.k8s.elastic.co/type"]
+          value: elasticsearch
+      - equal:
+          path: spec.egress[0].ports[0].port
+          value: 9200
+      - equal:
+          path: spec.egress[0].ports[0].protocol
+          value: TCP

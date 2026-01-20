@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/helm-unittest/helm-unittest/main/schema/helm-testsuite.json
+suite: Fluentbit bb-common external elastic egress
+templates:
+  - templates/bigbang/network-policies.yaml
+release:
+  name: test
+values:
+  - values/bb-common-egress-elastic.yaml
+tests:
+  - it: renders external elasticsearch egress via bb-common with excepts
+    documentSelector:
+      path: spec.egress[0].ports[0].port
+      value: 9200
+    asserts:
+      - equal:
+          path: spec.podSelector.matchLabels["app.kubernetes.io/name"]
+          value: fluent-bit
+      - equal:
+          path: spec.policyTypes[0]
+          value: Egress
+      - equal:
+          path: spec.egress[0].to[0].ipBlock.cidr
+          value: 0.0.0.0/0
+      - equal:
+          path: spec.egress[0].to[0].ipBlock.except
+          value:
+            - 169.254.169.254/32
+      - equal:
+          path: spec.egress[0].ports[0].port
+          value: 9200
+      - equal:
+          path: spec.egress[0].ports[0].protocol
+          value: TCP

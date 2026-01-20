@@ -7,14 +7,13 @@ elasticsearch:
 
 # -- Configuration for Istio interaction
 istio:
-  # -- Toggle currently only controls NetworkPolicies
   enabled: false
-  hardened:
+  sidecar:
     enabled: false
     outboundTrafficPolicyMode: "REGISTRY_ONLY"
-    customServiceEntries: []
+  serviceEntries:
+    custom: []
       # - name: "allow-google"
-      #   enabled: true
       #   spec:
       #     hosts:
       #       - google.com
@@ -25,22 +24,88 @@ istio:
       #         protocol: TLS
       #         name: https
       #         resolution: DNS
-    customAuthorizationPolicies: []
-    # - name: "allow-nothing"
-    #   enabled: true
-    #   spec: {}
+  authorizationPolicies:
+    enabled: false
+    generateFromNetpol: false
+    custom: []
+      # - name: "allow-nothing"
+      #   spec: {}
   # -- Default peer authentication setting
   mtls:
     # -- STRICT = Allow only mutual TLS traffic
     # PERMISSIVE = Allow both plain text and mutual TLS traffic
     mode: STRICT
 
+
+## bb-common network policies configuration
 networkPolicies:
   enabled: false
-  # See `kubectl cluster-info` and then resolve to IP
-  controlPlaneCidr: 0.0.0.0/0
-  vpcCidr: 0.0.0.0/0
+
+  egress:
+    definitions:
+      # -- Definition for external elasticsearch output egress from fluent-bit
+      external-elastic:
+        to:
+          - ipBlock:
+              cidr: 0.0.0.0/0
+              # NOTE: For improved security posture, replace this with your
+              # specific CIDR(s) instead of allowing all destinations.
+              except:
+                - 169.254.169.254/32
+        ports:
+          - port: 9200
+            protocol: TCP
+      # -- Definition for external loki output egress from fluent-bit
+      external-loki:
+        to:
+          - ipBlock:
+              cidr: 0.0.0.0/0
+              # NOTE: For improved security posture, replace this with your
+              # specific CIDR(s) instead of allowing all destinations.
+              except:
+                - 169.254.169.254/32
+        ports:
+          - port: 3100
+            protocol: TCP
+      # -- Definition for external fluentd output egress from fluent-bit
+      external-fluentd:
+        to:
+          - ipBlock:
+              cidr: 0.0.0.0/0
+              # NOTE: For improved security posture, replace this with your
+              # specific CIDR(s) instead of allowing all destinations.
+              except:
+                - 169.254.169.254/32
+        ports:
+          - port: 24224
+            protocol: TCP
+    from:
+      fluent-bit:
+        to:
+          definition:
+            external-elastic: false
+              # NOTE: External output egress is explicit; no implicit enablement from
+              # additionalOutputs. Toggle these on when needed.
+            external-loki: false
+            external-fluentd: false
+            storage-subnets: false # NOTE: This is normally set in umbrella chart
+            kubeAPI: true
+          k8s:
+            logging/elasticsearch:9200:
+              enabled: false
+              podSelector:
+                matchLabels:
+                  common.k8s.elastic.co/type: elasticsearch
+            logging/logging-loki:3100: false
+            tempo/tempo:9411: false
+  ingress:
+    to:
+      "fluent-bit:2020":
+        from:
+          k8s:
+            monitoring-monitoring-kube-prometheus@monitoring/prometheus: false
   additionalPolicies: []
+
 
 # -- Additional Outputs for Big Bang,
 # these are wrappers to simplify the config of outputs and

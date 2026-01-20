@@ -1,0 +1,23 @@
+networkPolicies:
+  enabled: true
+  egress:
+    defaults:
+      enabled: false
+    from:
+      fluent-bit:
+        to:
+          definition:
+            kubeAPI: false
+          k8s:
+            logging/elasticsearch:9200:
+              enabled: true
+              podSelector:
+                matchLabels:
+                  common.k8s.elastic.co/type: elasticsearch
+            logging/logging-loki:3100: false
+            tempo/tempo:9411: false
+  ingress:
+    defaults:
+      enabled: false
+elasticsearchKibana:
+  enabled: true

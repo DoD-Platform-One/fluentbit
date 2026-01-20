@@ -3,6 +3,12 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+
+## [0.54.1-bb.1] (2026-01-20)
+### Changed
+- Migrate fluent-bit network policies and Istio resources to bb-common and add bb-common dependency
+- Add helm-unittest coverage for bb-common network policies and Istio rendering
+
 ## [0.54.1-bb.0] (2026-01-10)
 ### Changed
 - fluent-bit updated from 0.54.0 to 0.54.1

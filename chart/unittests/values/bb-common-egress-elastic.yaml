@@ -1,0 +1,30 @@
+networkPolicies:
+  enabled: true
+  egress:
+    defaults:
+      enabled: false
+    from:
+      fluent-bit:
+        to:
+          definition:
+            external-elastic: true
+            kubeAPI: false
+          k8s:
+            logging/elasticsearch:9200:
+              enabled: false
+              podSelector:
+                matchLabels:
+                  common.k8s.elastic.co/type: elasticsearch
+            logging/logging-loki:3100: false
+            tempo/tempo:9411: false
+  ingress:
+    defaults:
+      enabled: false
+elasticsearchKibana:
+  enabled: false
+additionalOutputs:
+  elasticsearch:
+    host: elastic.example
+    user: user
+    password: pass
+    port: 9200

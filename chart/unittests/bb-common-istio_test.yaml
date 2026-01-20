@@ -1,0 +1,63 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/helm-unittest/helm-unittest/main/schema/helm-testsuite.json
+suite: Fluentbit bb-common istio resources
+templates:
+  - templates/bigbang/istio.yaml
+release:
+  name: test
+values:
+  - values/bb-common-istio.yaml
+tests:
+  - it: renders nothing when istio is disabled
+    set:
+      istio.enabled: false
+    asserts:
+      - hasDocuments:
+          count: 0
+
+  - it: renders sidecar with outbound policy
+    documentSelector:
+      path: metadata.name
+      value: test-sidecar
+    asserts:
+      - equal:
+          path: kind
+          value: Sidecar
+      - equal:
+          path: spec.outboundTrafficPolicy.mode
+          value: ALLOW_ANY
+
+  - it: renders default peer authentication
+    documentSelector:
+      path: metadata.name
+      value: default-peer-auth
+    asserts:
+      - equal:
+          path: kind
+          value: PeerAuthentication
+      - equal:
+          path: spec.mtls.mode
+          value: PERMISSIVE
+
+  - it: renders custom service entry
+    documentSelector:
+      path: metadata.name
+      value: allow-google
+    asserts:
+      - equal:
+          path: kind
+          value: ServiceEntry
+      - equal:
+          path: spec.hosts[0]
+          value: google.com
+
+  - it: renders custom authorization policy
+    documentSelector:
+      path: metadata.name
+      value: allow-metrics
+    asserts:
+      - equal:
+          path: kind
+          value: AuthorizationPolicy
+      - equal:
+          path: spec.action
+          value: ALLOW
