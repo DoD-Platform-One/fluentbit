@@ -4,6 +4,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [0.55.0-bb.0] (2026-01-23)
+### Changed
+- bb-common updated from 0.12.3 to 0.13.0
+- fluent-bit updated from 0.54.1 to 0.55.0
+
 ## [0.54.1-bb.1] (2026-01-20)
 ### Changed
 - Migrate fluent-bit network policies and Istio resources to bb-common and add bb-common dependency
@@ -13,7 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 - fluent-bit updated from 0.54.0 to 0.54.1
 - repo1.dso.mil/big-bang/product/packages/fluentbit/-/tree/renovate/ironbank updated from 4.2.1 to 4.2.2
-## [0.54.0-bb.2] (2025-12-18) 
+## [0.54.0-bb.2] (2025-12-18)
 ### Changed
 - gluon updated from 0.9.6 to 0.9.7
 - registry1.dso.mil/ironbank/opensource/fluent/fluent-bit updated from 4.2.0 to 4.2.1
