@@ -4,9 +4,9 @@ dependencies:
   version: 0.9.7
 - name: bb-common
   repository: oci://registry1.dso.mil/bigbang
-  version: 0.12.3
+  version: 0.13.0
 - name: fluent-bit
   repository: https://fluent.github.io/helm-charts
-  version: 0.54.1
-digest: sha256:e0205d7317f8fc1f2bb7087e24e24c7f441a4c540d34e5fd30d94b054e4ce1f3
-generated: "2026-01-20T10:23:40.516044-07:00"
+  version: 0.55.0
+digest: sha256:f7fa53a1043abbdef6d6c87c8f52e44eb76d4c73adfb03221649a56d64ae3a39
+generated: "2026-01-23T07:29:14.625542084Z"

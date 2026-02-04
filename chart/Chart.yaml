@@ -5,7 +5,7 @@ keywords:
   - logging
   - fluent-bit
   - fluentd
-version: 0.54.1-bb.1
+version: 0.55.0-bb.0
 appVersion: 4.2.2
 icon: https://raw.githubusercontent.com/cncf/artwork/master/projects/fluentd/fluentbit/icon/fluentbit-icon-color.svg
 home: https://fluentbit.io/
@@ -28,9 +28,9 @@ dependencies:
     version: 0.9.7
     repository: oci://registry1.dso.mil/bigbang
   - name: bb-common
-    version: 0.12.3
+    version: 0.13.0
     repository: "oci://registry1.dso.mil/bigbang"
   - name: fluent-bit
-    version: 0.54.1
+    version: 0.55.0
     repository: https://fluent.github.io/helm-charts
     alias: upstream
