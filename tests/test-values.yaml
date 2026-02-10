@@ -8,7 +8,7 @@ grafana:
 neuvector:
   enabled: false
 loki:
-  enabled: true
+  enabled: false
 bbctl:
   enabled: false
 tempo:
@@ -20,6 +20,16 @@ kiali:
 addons:
   minioOperator:
     enabled: false
+elasticsearchKibana:
+  enabled: true
+  values:
+    bbtests:
+      enabled: false
+eckOperator:
+  enabled: true
+  values:
+    bbtests:
+      enabled: false
 ########################
 # Required for package #
 ########################
@@ -35,7 +45,11 @@ fluentbit:
           fluent-bit:
             to:
               k8s:
-                logging/logging-loki:3100: true
+                logging/elasticsearch:9200:
+                  enabled: true
+                  podSelector:
+                    matchLabels:
+                      common.k8s.elastic.co/type: elasticsearch
 kyvernoPolicies:
   values:
     bbtests:
