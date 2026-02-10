@@ -4,6 +4,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [0.55.0-bb.1] (2026-02-04)
+### Fixed
+- Fixed Kyverno ClusterPolicies for elastic secret sync to trigger on Secret creation instead of Namespace creation, resolving race condition
+- Reverted CI test backend from Loki to Elasticsearch
+
 ## [0.55.0-bb.0] (2026-01-23)
 ### Changed
 - bb-common updated from 0.12.3 to 0.13.0
