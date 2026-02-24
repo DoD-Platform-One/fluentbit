@@ -4,41 +4,46 @@ Affinity is exposed through values options for this package. If you want to sche
 
 It is good to have a basic knowledge of node affinity and available options to you before customizing in this way - the upstream kubernetes documentation [has a good walkthrough of this](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#affinity-and-anti-affinity).
 
+> **Note:** These values must be nested under `upstream:` as this chart wraps the upstream fluent-bit Helm chart.
+
 ## Values for NodeSelector
 
-The `nodeSelector` value at the top level can be set to do basic node selection for deployments. See the below example for an example to schedule pods to only nodes with the label `node-type` equal to `fluent`:
+The `nodeSelector` value can be set to do basic node selection for deployments. See the below example for an example to schedule pods to only nodes with the label `node-type` equal to `fluent`:
 
 ```yaml
-nodeSelector:
-  node-type: fluent
+upstream:
+  nodeSelector:
+    node-type: fluent
 ```
 
 ## Values for Affinity
 
-The `affinity` value at the top level should be used to specify affinity. The format to include follows what you'd specify at a pod/deployment level. See the example below for scheduling the operator pods only to nodes with the label `node-type` equal to `fluent`:
+The `affinity` value should be used to specify affinity. The format to include follows what you'd specify at a pod/deployment level. See the example below for scheduling the operator pods only to nodes with the label `node-type` equal to `fluent`:
 
 ```yaml
-affinity:
-  nodeAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: node-type
-          operator: In
-          values:
-          - fluent
+upstream:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: node-type
+            operator: In
+            values:
+            - fluent
 ```
 
 ## Values for Anti-Affinity
 
-The `affinity` value at the top level can be set in the same way to schedule pods based on anti-affinity. See the below example to schedule pods to not be present on the nodes that already have pods with the `dont-schedule-with: fluent` label:
+The `affinity` value can be set in the same way to schedule pods based on anti-affinity. See the below example to schedule pods to not be present on the nodes that already have pods with the `dont-schedule-with: fluent` label:
 
 ```yaml
-affinity:
-  podAntiAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
-      - topologyKey: "kubernetes.io/hostname"
-        labelSelector:
-          matchLabels:
-            dont-schedule-with: fluent
+upstream:
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - topologyKey: "kubernetes.io/hostname"
+          labelSelector:
+            matchLabels:
+              dont-schedule-with: fluent
 ```

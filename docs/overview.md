@@ -17,5 +17,5 @@ Fluent-bit mounts a hostPath volume at `/var/log` for each node in a cluster and
   - Logging enabled - Elasticsearch (es) output configured for fluent-bit
   - Please review the `additionalOutputs` section of the values and [README](../README.md) for other package-specific outputs.
 
-Please review the BigBang [Architecture Document](https://repo1.dso.mil/platform-one/big-bang/bigbang/-/blob/master/charter/packages/fluentbit/Architecture.md) for more information about it's role within BigBang.
+Please review the BigBang [Architecture Document](https://repo1.dso.mil/platform-one/big-bang/bigbang/-/blob/master/charter/packages/fluentbit/Architecture.md) for more information about its role within BigBang.
 

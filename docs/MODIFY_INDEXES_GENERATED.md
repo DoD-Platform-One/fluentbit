@@ -7,25 +7,28 @@ For example, inside the outputs configuration values section you will need to de
 Below is the elasticsearch output specific information for fluentbit:
 [es output plugin](https://docs.fluentbit.io/manual/pipeline/outputs/elasticsearch)
 
+> **Note:** These values must be nested under `upstream:` as this chart wraps the upstream fluent-bit Helm chart.
+
 ### Example
 
 ```yaml
+upstream:
   config:
     outputs: |
-        [OUTPUT]
-            Name es
-            Match kube.*
-            # -- Pointing to Elasticsearch service installed by ECK, based off EK name "logging-ek", update elasticsearch.name above to update.
-            Host {{ .Values.elasticsearch.name }}-es-http
-            HTTP_User elastic
-            HTTP_Passwd ${FLUENT_ELASTICSEARCH_PASSWORD}
-            Logstash_Format On
-    # generate a new index for each hour of the day the configuration
-            Logstash_DateFormat %Y.%m.%d-%k  
-            Retry_Limit False
-            Replace_Dots On
-            tls On
-            tls.verify On
-            tls.ca_file /etc/elasticsearch/certs/ca.crt
-            storage.total_limit_size {{ .Values.storage.total_limit_size }}
+      [OUTPUT]
+          Name es
+          Match kube.*
+          # -- Pointing to Elasticsearch service installed by ECK, based off EK name "logging-ek", update elasticsearch.name above to update.
+          Host {{ .Values.elasticsearch.name }}-es-http
+          HTTP_User elastic
+          HTTP_Passwd ${FLUENT_ELASTICSEARCH_PASSWORD}
+          Logstash_Format On
+          # generate a new index for each hour of the day
+          Logstash_DateFormat %Y.%m.%d-%k
+          Retry_Limit False
+          Replace_Dots On
+          tls On
+          tls.verify On
+          tls.ca_file /etc/elasticsearch/certs/ca.crt
+          storage.total_limit_size {{ .Values.storage.total_limit_size }}
 ```
