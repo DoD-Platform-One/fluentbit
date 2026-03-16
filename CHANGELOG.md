@@ -4,6 +4,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [0.56.0-bb.0] (2026-02-28)
+### Changed
+- bb-common updated from 0.13.0 to 0.14.1
+- fluent-bit updated from 0.55.0 to 0.56.0
+- gluon updated from 0.9.7 to 0.9.8
+
 ## [0.55.0-bb.1] (2026-02-04)
 ### Fixed
 - Fixed Kyverno ClusterPolicies for elastic secret sync to trigger on Secret creation instead of Namespace creation, resolving race condition

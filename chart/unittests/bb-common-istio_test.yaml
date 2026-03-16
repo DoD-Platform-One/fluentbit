@@ -17,7 +17,7 @@ tests:
   - it: renders sidecar with outbound policy
     documentSelector:
       path: metadata.name
-      value: test-sidecar
+      value: sidecar
     asserts:
       - equal:
           path: kind
